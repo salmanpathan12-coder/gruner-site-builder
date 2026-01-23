@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Zap, CheckCircle } from "lucide-react";
+import { ArrowRight, Sparkles, TrendingUp } from "lucide-react";
 
 const AboutHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -9,85 +9,113 @@ const AboutHero = () => {
     offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
     <section 
       ref={containerRef}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden min-h-[85vh]"
     >
-      {/* Multi-color gradient background */}
+      {/* Innovative multi-color gradient - Deep navy to teal */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(200,25%,12%)] via-[hsl(180,20%,15%)] to-[hsl(160,25%,10%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,35%,12%)] via-[hsl(200,30%,18%)] to-[hsl(175,35%,15%)]" />
         
-        {/* Dynamic color orbs */}
-        <div className="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-primary/30 to-accent/20 rounded-full blur-[120px] opacity-60" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent/25 to-primary/15 rounded-full blur-[100px] opacity-50" />
-        <div className="absolute top-1/2 right-0 w-[300px] h-[300px] bg-gradient-to-bl from-[hsl(180,60%,40%)]/20 to-transparent rounded-full blur-[80px]" />
-        
-        {/* Subtle grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
+        {/* Animated gradient orbs */}
+        <motion.div 
+          className="absolute top-1/4 -right-20 w-[600px] h-[600px] rounded-full blur-[150px]"
+          style={{ background: 'radial-gradient(circle, hsl(160,50%,45%,0.3) 0%, transparent 70%)' }}
+          animate={{ 
+            scale: [1, 1.2, 1],
+            x: [0, 30, 0],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{ background: 'radial-gradient(circle, hsl(45,60%,55%,0.2) 0%, transparent 70%)' }}
+          animate={{ 
+            scale: [1, 1.15, 1],
+            y: [0, -20, 0],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div 
+          className="absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full blur-[100px]"
+          style={{ background: 'radial-gradient(circle, hsl(280,40%,50%,0.15) 0%, transparent 70%)' }}
+          animate={{ 
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+
+        {/* Subtle noise texture */}
+        <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay"
           style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
           }}
         />
       </div>
 
-      {/* Main content - properly spaced from header */}
-      <div className="container-wide relative z-10 pt-32 pb-20 lg:pt-36 lg:pb-24">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      {/* Main content with safe header offset */}
+      <div className="container-wide relative z-10 pt-36 pb-16 lg:pt-40 lg:pb-20">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left: Content */}
+          {/* Left: Content - 7 columns */}
           <motion.div 
             style={{ y }}
-            className="relative z-10"
+            className="lg:col-span-7 relative z-10"
           >
-            {/* Badge */}
+            {/* Animated badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="mb-5"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
-                <Zap className="w-4 h-4 text-accent" />
-                <span className="text-xs tracking-[0.12em] uppercase text-white/90 font-medium font-body">
-                  India's Clean Energy Pioneer
+              <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-[hsl(160,50%,45%)]/20 to-[hsl(45,60%,55%)]/20 border border-white/10 backdrop-blur-sm">
+                <motion.span
+                  animate={{ rotate: [0, 15, -15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  <Sparkles className="w-4 h-4 text-[hsl(45,60%,60%)]" />
+                </motion.span>
+                <span className="text-xs tracking-[0.15em] uppercase text-white/80 font-medium font-body">
+                  India's Bio-CNG Pioneer
                 </span>
               </span>
             </motion.div>
 
-            {/* Headline - Compact sizing */}
+            {/* Bold headline with gradient text */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-[1.1] mb-5"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.08] mb-5"
             >
-              Transforming
-              <span className="block mt-1">
-                <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
-                  Agricultural Waste
+              Powering India's
+              <br />
+              <span className="relative">
+                <span className="bg-gradient-to-r from-[hsl(160,55%,50%)] via-[hsl(45,65%,60%)] to-[hsl(160,55%,50%)] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+                  Clean Energy
                 </span>
               </span>
-              <span className="block mt-1">Into Clean Energy</span>
+              <br />
+              Revolution
             </motion.h1>
 
-            {/* Description */}
+            {/* Description with better contrast */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-base md:text-lg text-white/70 leading-relaxed mb-8 max-w-lg font-body"
+              className="text-base md:text-lg text-white/65 leading-relaxed mb-7 max-w-lg font-body"
             >
-              We're building India's largest Bio-CNG infrastructure, turning organic 
-              waste into sustainable fuel for a greener tomorrow.
+              Transforming agricultural waste into sustainable Bio-CNG fuel, 
+              building India's largest clean energy infrastructure network.
             </motion.p>
 
-            {/* CTA Buttons - Compact */}
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,101 +124,111 @@ const AboutHero = () => {
             >
               <a 
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-medium shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 font-body text-sm"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[hsl(160,50%,45%)] to-[hsl(175,45%,40%)] text-white font-medium shadow-lg shadow-[hsl(160,50%,45%)]/25 hover:shadow-xl hover:shadow-[hsl(160,50%,45%)]/35 hover:-translate-y-0.5 transition-all duration-300 font-body text-sm"
               >
-                Start Your Project
+                Partner With Us
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a 
                 href="/solutions"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-medium transition-all duration-300 font-body text-sm backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/25 text-white font-medium transition-all duration-300 font-body text-sm backdrop-blur-sm"
               >
-                Explore Solutions
+                Our Solutions
               </a>
             </motion.div>
 
-            {/* Stats - Compact horizontal */}
+            {/* Stats row */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap gap-6 md:gap-10"
+              className="flex flex-wrap gap-8"
             >
               {[
-                { value: "63+", label: "Plants" },
-                { value: "₹1,500Cr", label: "Value" },
-                { value: "8 States", label: "Pan-India" },
+                { value: "63+", label: "Plants Built" },
+                { value: "₹1,500Cr", label: "Project Value" },
+                { value: "8 States", label: "Nationwide" },
               ].map((stat, index) => (
-                <div key={stat.label} className="relative">
+                <motion.div 
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 + index * 0.1 }}
+                  className="relative"
+                >
                   <div className="text-2xl md:text-3xl font-heading font-bold text-white">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-white/60 font-body uppercase tracking-wider">
+                  <div className="text-xs text-white/50 font-body uppercase tracking-wider">
                     {stat.label}
                   </div>
                   <motion.div 
-                    className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
+                    className="absolute -bottom-1 left-0 h-0.5 rounded-full bg-gradient-to-r from-[hsl(160,50%,45%)] to-[hsl(45,60%,55%)]"
                     initial={{ width: 0 }}
-                    animate={{ width: 24 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    animate={{ width: 28 }}
+                    transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   />
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right: Image composition */}
+          {/* Right: Creative image composition - 5 columns */}
           <motion.div
-            style={{ y: imageY }}
-            initial={{ opacity: 0, x: 40, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="relative"
+            className="lg:col-span-5 relative"
           >
+            {/* Asymmetric frame container */}
             <div className="relative">
-              {/* Background decorative shapes */}
-              <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-br from-primary/30 to-accent/20 rounded-2xl blur-sm" />
+              {/* Background accent shape */}
+              <motion.div 
+                className="absolute -inset-4 bg-gradient-to-br from-[hsl(160,50%,45%)]/20 via-[hsl(45,60%,55%)]/10 to-transparent rounded-3xl blur-sm"
+                style={{ scale: imageScale }}
+              />
               
               {/* Main image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/30">
-                <img
-                  src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop"
-                  alt="Clean Energy Infrastructure"
-                  className="w-full aspect-[4/3] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
-
-              {/* Floating stats card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20, x: -20 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="absolute -bottom-4 -left-4 md:left-4 z-10"
+              <motion.div 
+                className="relative rounded-2xl overflow-hidden shadow-2xl"
+                style={{ scale: imageScale }}
               >
-                <div className="bg-white/95 backdrop-blur-lg rounded-xl p-4 shadow-xl border border-white/50">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 text-white" />
+                <img
+                  src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2070&auto=format&fit=crop"
+                  alt="Clean Energy Future"
+                  className="w-full aspect-[4/5] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,35%,12%)]/60 via-transparent to-transparent" />
+                
+                {/* Overlay content */}
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 }}
+                    className="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/10"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[hsl(160,50%,45%)] to-[hsl(45,60%,55%)] flex items-center justify-center">
+                        <TrendingUp className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-lg font-heading font-bold text-white">Since 2018</div>
+                        <div className="text-xs text-white/60 font-body">Building the future</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-xl font-heading font-bold text-foreground">100%</div>
-                      <div className="text-xs text-muted-foreground font-body">Success Rate</div>
-                    </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
-              {/* Top accent badge */}
+              {/* Floating accent elements */}
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                className="absolute -top-3 right-4 z-10"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.2 }}
+                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-[hsl(45,60%,55%)] to-[hsl(35,70%,50%)] rounded-2xl flex items-center justify-center shadow-xl"
               >
-                <div className="bg-gradient-to-r from-accent to-primary px-4 py-2 rounded-full shadow-lg">
-                  <span className="text-xs font-medium text-white font-body">Since 2018</span>
-                </div>
+                <span className="text-white font-heading font-bold text-xl">100%</span>
               </motion.div>
             </div>
           </motion.div>
