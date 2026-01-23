@@ -1,225 +1,253 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, animate } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
+
+/* ---------- Animated Counter ---------- */
+const Counter = ({ value }: { value: number }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const controls = animate(0, value, {
+      duration: 2.5,
+      ease: "easeOut",
+      onUpdate(v) {
+        setCount(Math.floor(v));
+      },
+    });
+    return () => controls.stop();
+  }, [value]);
+
+  return <span>{count.toLocaleString()}</span>;
+};
 
 const AboutHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
-  const glowY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.93]);
 
   return (
-    <section ref={containerRef} className="relative min-h-[95vh] overflow-hidden">
-      {/* ================= BACKGROUND ================= */}
+    <section ref={containerRef} className="relative min-h-[100vh] overflow-hidden">
+      {/* ================= CINEMATIC SKY BACKGROUND ================= */}
       <div className="absolute inset-0">
+        {/* Animated sky gradient */}
         <motion.div
           className="absolute inset-0"
           animate={{
             background: [
-              "linear-gradient(135deg, #f6faf7 0%, #eaf4ef 30%, #f9fbf8 60%, #eef6f2 100%)",
-              "linear-gradient(135deg, #eef6f2 0%, #f9fbf8 30%, #eaf4ef 60%, #f6faf7 100%)",
+              "linear-gradient(to bottom, #fff7e6 0%, #fdebd2 30%, #e8f5ef 65%, #f7fbf9 100%)",
+              "linear-gradient(to bottom, #fff2dc 0%, #fde6c8 30%, #e2f3ec 65%, #f7fbf9 100%)",
             ],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Ambient orbs */}
+        {/* 🌅 Sun core */}
         <motion.div
-          className="absolute top-20 right-[5%] w-[600px] h-[600px] rounded-full blur-[140px] opacity-50"
-          style={{ background: "radial-gradient(circle, #cdeee0 0%, transparent 70%)" }}
-          animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
-          transition={{ duration: 14, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-[-10%] left-[5%] w-[500px] h-[500px] rounded-full blur-[120px] opacity-45"
-          style={{ background: "radial-gradient(circle, #f4efd8 0%, transparent 70%)" }}
-          animate={{ x: [0, -30, 0], y: [0, 30, 0] }}
-          transition={{ duration: 16, repeat: Infinity }}
-        />
-
-        {/* AI grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute top-[12%] right-[15%] w-[420px] h-[420px] rounded-full blur-[60px]"
           style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(60,120,90,0.4) 1px, transparent 1px),linear-gradient(to bottom, rgba(60,120,90,0.4) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
+            background: "radial-gradient(circle, #ffd27d 0%, #ffb347 40%, #ff944d 65%, transparent 75%)",
+          }}
+          animate={{
+            y: [0, 25, 0],
+            opacity: [0.8, 1, 0.8],
+            scale: [1, 1.05, 1],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Sun rays */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute top-[18%] right-[18%] w-[500px] h-[2px] opacity-30"
+            style={{
+              background: "linear-gradient(to right, #ffd27d, transparent)",
+            }}
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 30 + i * 5, repeat: Infinity, ease: "linear" }}
+          />
+        ))}
+
+        {/* Energy waves */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[280px]"
+          animate={{ backgroundPositionX: ["0%", "200%"] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          style={{
+            background: "linear-gradient(90deg, rgba(47,122,96,0.08), rgba(110,231,183,0.15), rgba(47,122,96,0.08))",
+            backgroundSize: "200% 100%",
+          }}
+        />
+
+        {/* Floating particles */}
+        {[...Array(18)].map((_, i) => (
+          <motion.span
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full bg-[#6ee7b7]"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              opacity: 0.4,
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: 6 + Math.random() * 6,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
+
+        {/* Horizon glow */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[220px]"
+          animate={{ opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            background: "linear-gradient(to top, rgba(255,179,71,0.25), transparent)",
           }}
         />
       </div>
 
       {/* ================= CONTENT ================= */}
-      <div className="container-wide relative z-10 pt-36 pb-20 lg:pt-44 lg:pb-24">
-        <div className="grid lg:grid-cols-12 gap-10 items-center min-h-[75vh]">
+      <div className="container-wide relative z-10 pt-40 pb-24">
+        <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[80vh]">
           {/* LEFT CONTENT */}
-          <motion.div style={{ y }} className="lg:col-span-5 relative z-10">
-            {/* Badge */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-              <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-[#dbeee5] shadow-lg">
-                <motion.div animate={{ rotate: 360 }} transition={{ duration: 6, repeat: Infinity, ease: "linear" }}>
-                  <Sparkles className="w-4 h-4 text-[#2f7a60]" />
-                </motion.div>
-                <span className="text-xs tracking-[0.15em] uppercase text-[#2f7a60] font-semibold">
-                  Clean Energy Innovation
+          <motion.div style={{ y }} className="lg:col-span-5">
+            <motion.div className="mb-8">
+              <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-[#f1e6d5] shadow-lg">
+                <Sparkles className="w-4 h-4 text-[#ff944d]" />
+                <span className="text-xs tracking-[0.18em] uppercase text-[#8a5a2b] font-semibold">
+                  Clean Energy Revolution
                 </span>
               </span>
             </motion.div>
 
-            {/* Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-[#0e2f23] leading-[1.05] mb-6"
-            >
-              <span className="block">Engineering</span>
-              <span className="block mt-2">
-                <span className="bg-gradient-to-r from-[#2f7a60] via-[#3a8c6d] to-[#1f5f4b] bg-clip-text text-transparent">
-                  Living Energy
-                </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-[#1f3b32] mb-6">
+              <span className="block">Where</span>
+              <span className="block mt-2 bg-gradient-to-r from-[#ff944d] via-[#6ee7b7] to-[#2f7a60] bg-clip-text text-transparent">
+                Energy Meets Future
               </span>
-              <span className="block mt-2">Systems</span>
-            </motion.h1>
+              <span className="block mt-2">Innovation</span>
+            </h1>
 
-            {/* Text */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-base md:text-lg text-[#4b6f63] leading-relaxed mb-8 max-w-md"
-            >
-              Transforming agricultural waste into intelligent clean energy ecosystems. Building India's next-generation
+            <p className="text-base md:text-lg text-[#4b6f63] max-w-md mb-8">
+              Transforming agricultural waste into intelligent clean-energy ecosystems. Building India's next-generation
               Bio-CNG infrastructure.
-            </motion.p>
+            </p>
 
-            {/* CTAs */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-10">
               <a
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#2f7a60] to-[#1f5f4b] text-white font-semibold shadow-xl hover:-translate-y-1 transition-all"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#ff944d] to-[#ffb347] text-white font-semibold shadow-xl hover:-translate-y-1 transition-all"
               >
                 Start Your Project
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="/solutions"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/80 backdrop-blur border border-[#dbeee5] text-[#1f5f4b] font-semibold shadow-lg"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/80 backdrop-blur border border-[#f1e6d5] text-[#2f7a60] font-semibold shadow-lg"
               >
                 <Play className="w-4 h-4" />
                 Watch Vision
               </a>
             </div>
+
+            {/* Animated Counters */}
+            <div className="flex gap-10">
+              <div>
+                <div className="text-3xl font-bold text-[#1f3b32]">
+                  <Counter value={63} />+
+                </div>
+                <div className="text-xs text-[#5f8572]">Plants Delivered</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-[#1f3b32]">
+                  ₹<Counter value={1500} />
+                  Cr
+                </div>
+                <div className="text-xs text-[#5f8572]">Project Value</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-[#1f3b32]">
+                  <Counter value={8} />+
+                </div>
+                <div className="text-xs text-[#5f8572]">Indian States</div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* ================= RIGHT IMAGE SYSTEM ================= */}
+          {/* RIGHT VISUAL */}
           <motion.div style={{ y: imageY, scale }} className="lg:col-span-7 relative">
-            <div className="relative">
-              {/* Rotating energy ring */}
-              <motion.div
-                className="absolute -inset-8 rounded-full border border-[#6ee7b7]/30"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            {/* Energy aura */}
+            <motion.div
+              className="absolute -inset-10 rounded-full blur-[120px] opacity-40"
+              animate={{ opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 6, repeat: Infinity }}
+              style={{
+                background: "radial-gradient(circle, rgba(255,179,71,0.4), rgba(110,231,183,0.3), transparent 65%)",
+              }}
+            />
+
+            {/* Floating ring */}
+            <motion.div
+              className="absolute -inset-6 rounded-full border border-[#ffb347]/30"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 60, scale: 0.92 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="relative rounded-3xl overflow-hidden shadow-2xl"
+            >
+              <motion.img
+                src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop"
+                alt="Clean Energy Infrastructure"
+                className="w-full aspect-[4/3] object-cover"
+                animate={{ scale: [1, 1.03, 1] }}
+                transition={{ duration: 10, repeat: Infinity }}
               />
 
-              {/* Light sweep */}
+              {/* Light flow */}
               <motion.div
-                className="absolute inset-0 rounded-3xl"
-                animate={{ backgroundPosition: ["0% 0%", "200% 0%"] }}
+                className="absolute inset-0"
+                animate={{ backgroundPositionX: ["0%", "200%"] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                 style={{
-                  background: "linear-gradient(120deg, transparent 30%, rgba(110,231,183,0.15) 50%, transparent 70%)",
+                  background: "linear-gradient(120deg, transparent 30%, rgba(255,179,71,0.25) 50%, transparent 70%)",
                   backgroundSize: "200% 100%",
                 }}
               />
 
-              {/* Floating particles */}
-              {[...Array(12)].map((_, i) => (
-                <motion.span
-                  key={i}
-                  className="absolute w-1.5 h-1.5 rounded-full bg-[#6ee7b7]"
-                  style={{
-                    top: `${Math.random() * 100}%`,
-                    left: `${Math.random() * 100}%`,
-                    opacity: 0.6,
-                  }}
-                  animate={{
-                    y: [0, -30, 0],
-                    opacity: [0.2, 0.8, 0.2],
-                  }}
-                  transition={{
-                    duration: 4 + Math.random() * 4,
-                    repeat: Infinity,
-                    delay: Math.random() * 2,
-                  }}
-                />
-              ))}
-
-              {/* Main image */}
+              {/* Pulse overlay */}
               <motion.div
-                initial={{ opacity: 0, x: 60, scale: 0.92 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 1 }}
-                className="relative rounded-3xl overflow-hidden shadow-2xl"
-              >
-                <motion.img
-                  src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop"
-                  alt="Clean Energy Infrastructure"
-                  className="w-full aspect-[4/3] object-cover"
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                />
-
-                {/* animated overlays */}
-                <motion.div
-                  className="absolute inset-0"
-                  animate={{ opacity: [0.15, 0.3, 0.15] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  style={{
-                    background: "radial-gradient(circle at 50% 50%, rgba(110,231,183,0.25), transparent 60%)",
-                  }}
-                />
-
-                {/* scanline glow */}
-                <motion.div
-                  className="absolute inset-0"
-                  animate={{ y: ["-100%", "100%"] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                  style={{
-                    background: "linear-gradient(to bottom, transparent, rgba(110,231,183,0.15), transparent)",
-                    height: "200%",
-                  }}
-                />
-              </motion.div>
-
-              {/* Floating data card */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="absolute -bottom-6 left-6 bg-white/90 backdrop-blur-xl rounded-2xl p-5 shadow-xl border border-[#dbeee5]"
-              >
-                <div className="text-xl font-bold text-[#0e2f23]">100%</div>
-                <div className="text-xs text-[#5f8572]">Project Success</div>
-              </motion.div>
-
-              {/* Floating badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="absolute -top-4 right-8 bg-gradient-to-r from-[#2f7a60] to-[#1f5f4b] px-5 py-2.5 rounded-full shadow-xl"
-              >
-                <span className="text-xs font-semibold text-white tracking-wide">Since 2018</span>
-              </motion.div>
-            </div>
+                className="absolute inset-0"
+                animate={{ opacity: [0.1, 0.3, 0.1] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                style={{
+                  background: "radial-gradient(circle at center, rgba(110,231,183,0.25), transparent 60%)",
+                }}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#f9fcfa] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#f7fbf9] to-transparent" />
     </section>
   );
 };
