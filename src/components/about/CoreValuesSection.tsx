@@ -9,35 +9,31 @@ interface ValueCardProps {
   description: string;
   index: number;
   isInView: boolean;
-  color: string;
+  gradient: string;
 }
 
-const ValueCard = ({ icon: Icon, title, description, index, isInView, color }: ValueCardProps) => {
+const ValueCard = ({ icon: Icon, title, description, index, isInView, gradient }: ValueCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 25 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: 0.1 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.5, delay: 0.05 + index * 0.08 }}
       className="group"
     >
-      <div className="relative h-full bg-white rounded-2xl p-6 md:p-8 shadow-md shadow-foreground/5 border border-foreground/5 overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
-        {/* Hover background accent */}
-        <div className={`absolute inset-0 ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+      <div className="relative h-full bg-white rounded-xl p-5 shadow-md shadow-foreground/5 border border-foreground/5 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+        {/* Hover gradient overlay */}
+        <div className={`absolute inset-0 ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
         
         {/* Icon */}
-        <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          transition={{ duration: 0.3 }}
-          className={`relative w-14 h-14 rounded-xl ${color.replace('bg-gradient-to-br', 'bg-gradient-to-br').replace('/5', '/100')} flex items-center justify-center mb-6`}
-        >
-          <Icon className="w-6 h-6 text-white" />
-        </motion.div>
+        <div className={`relative w-10 h-10 rounded-lg ${gradient.replace('/5', '')} flex items-center justify-center mb-4`}>
+          <Icon className="w-5 h-5 text-white" />
+        </div>
 
         {/* Content */}
-        <h3 className="relative text-xl font-heading font-bold text-foreground mb-3 group-hover:text-foreground transition-colors">
+        <h3 className="relative text-base font-heading font-bold text-foreground mb-2">
           {title}
         </h3>
-        <p className="relative text-muted-foreground leading-relaxed font-body text-sm">
+        <p className="relative text-muted-foreground text-sm leading-relaxed font-body">
           {description}
         </p>
       </div>
@@ -49,74 +45,78 @@ const coreValues = [
   {
     icon: Leaf,
     title: "Sustainability First",
-    description: "Every decision is guided by our commitment to environmental responsibility and building a cleaner future.",
-    color: "bg-gradient-to-br from-primary/5 to-accent/5"
+    description: "Every decision guided by environmental responsibility and building a cleaner future.",
+    gradient: "bg-gradient-to-br from-primary to-accent"
   },
   {
     icon: Lightbulb,
     title: "Innovation",
-    description: "Continuously pushing boundaries of biogas technology with cutting-edge solutions for maximum efficiency.",
-    color: "bg-gradient-to-br from-accent/5 to-primary/5"
+    description: "Pushing boundaries of biogas technology with cutting-edge solutions.",
+    gradient: "bg-gradient-to-br from-accent to-primary"
   },
   {
     icon: Users,
     title: "Partnership",
-    description: "Building long-term relationships with clients, communities, and stakeholders based on trust and growth.",
-    color: "bg-gradient-to-br from-primary/5 to-accent/5"
+    description: "Building long-term relationships based on trust and mutual growth.",
+    gradient: "bg-gradient-to-br from-[hsl(200,60%,45%)] to-primary"
   },
   {
     icon: Target,
     title: "Impact at Scale",
-    description: "Making substantial, measurable impact on India's renewable energy landscape and carbon reduction.",
-    color: "bg-gradient-to-br from-accent/5 to-primary/5"
+    description: "Making substantial impact on India's renewable energy landscape.",
+    gradient: "bg-gradient-to-br from-primary to-[hsl(160,60%,40%)]"
   },
   {
     icon: Shield,
     title: "Integrity",
-    description: "Complete transparency and ethical practices form the foundation of every project we undertake.",
-    color: "bg-gradient-to-br from-primary/5 to-accent/5"
+    description: "Complete transparency and ethical practices in every project.",
+    gradient: "bg-gradient-to-br from-[hsl(180,50%,40%)] to-accent"
   },
   {
     icon: Heart,
     title: "Excellence",
-    description: "Striving for operational excellence in every plant we design, build, and operate.",
-    color: "bg-gradient-to-br from-accent/5 to-primary/5"
+    description: "Striving for operational excellence in every plant we build.",
+    gradient: "bg-gradient-to-br from-accent to-[hsl(140,50%,45%)]"
   }
 ];
 
 const CoreValuesSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section ref={ref} className="relative overflow-hidden py-24 md:py-32">
-      {/* Clean background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
+    <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
+      {/* Soft green-tinted background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(140,20%,96%)] via-[hsl(160,15%,97%)] to-[hsl(150,20%,95%)]" />
+      
+      {/* Accent orbs */}
+      <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-gradient-to-r from-accent/10 to-transparent rounded-full blur-[80px]" />
+      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-gradient-to-l from-primary/10 to-transparent rounded-full blur-[100px]" />
 
       <div className="container-wide relative z-10">
-        {/* Section header */}
+        {/* Compact header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <Heart className="w-4 h-4 text-primary" />
-            <span className="text-xs tracking-[0.15em] uppercase text-primary font-medium font-body">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
+            <Heart className="w-3.5 h-3.5 text-primary" />
+            <span className="text-xs tracking-[0.12em] uppercase text-primary font-medium font-body">
               What We Stand For
             </span>
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
             Our Core <span className="text-primary">Values</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-body text-lg">
+          <p className="text-muted-foreground max-w-xl mx-auto font-body text-sm">
             The principles that guide everything we do at Gruner Renewable.
           </p>
         </motion.div>
 
-        {/* Values Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* Compact values grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {coreValues.map((value, index) => (
             <ValueCard
               key={value.title}
@@ -125,34 +125,30 @@ const CoreValuesSection = () => {
               description={value.description}
               index={index}
               isInView={isInView}
-              color={value.color}
+              gradient={value.gradient}
             />
           ))}
         </div>
 
-        {/* Bottom commitment banner */}
+        {/* Compact promise banner */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 max-w-4xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-10 max-w-3xl mx-auto"
         >
-          <div className="relative bg-gradient-to-r from-primary to-accent rounded-2xl p-8 md:p-10 text-center overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+          <div className="relative bg-gradient-to-r from-primary via-primary/90 to-accent rounded-xl p-6 text-center overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
             
-            <div className="relative">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Sparkles className="w-5 h-5 text-white/80" />
-                <span className="text-xs uppercase tracking-[0.2em] text-white/70 font-body">Our Promise</span>
-                <Sparkles className="w-5 h-5 text-white/80" />
-              </div>
-              <p className="text-xl md:text-2xl font-heading font-semibold text-white leading-relaxed">
-                "Building sustainable infrastructure that powers India's clean energy future, 
-                one Bio-CNG plant at a time."
-              </p>
+            <div className="relative flex items-center justify-center gap-2 mb-2">
+              <Sparkles className="w-4 h-4 text-white/80" />
+              <span className="text-xs uppercase tracking-[0.15em] text-white/70 font-body">Our Promise</span>
+              <Sparkles className="w-4 h-4 text-white/80" />
             </div>
+            <p className="text-base md:text-lg font-heading font-medium text-white leading-relaxed">
+              "Building sustainable infrastructure that powers India's clean energy future."
+            </p>
           </div>
         </motion.div>
       </div>
