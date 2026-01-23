@@ -34,26 +34,26 @@ interface StatCardProps {
 const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView }: StatCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 25, scale: 0.96 }}
+      initial={{ opacity: 0, y: 20, scale: 0.97 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -4, scale: 1.015 }}
+      whileHover={{ y: -3, scale: 1.015 }}
       className="group"
     >
-      <div className="relative h-full rounded-2xl p-5 bg-white/6 backdrop-blur-xl border border-white/10 shadow-xl overflow-hidden">
-        {/* glow accent */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#2f7a60]/15 via-transparent to-[#1f5f4b]/20" />
+      <div className="relative h-full rounded-2xl p-5 bg-white/70 backdrop-blur-xl border border-[#e4f0ea] shadow-lg overflow-hidden">
+        {/* soft glow */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#2f7a60]/10 via-transparent to-[#6ee7b7]/15" />
 
         <div className="relative flex items-center gap-4">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2f7a60] to-[#1f5f4b] flex items-center justify-center shadow-lg">
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2f7a60] to-[#1f5f4b] flex items-center justify-center shadow-md">
             <Icon className="w-5 h-5 text-white" />
           </div>
 
           <div className="flex-1">
-            <div className="text-2xl font-bold text-white leading-tight">
+            <div className="text-2xl font-bold text-[#0e2f23] leading-tight">
               <AnimatedCounter value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
             </div>
-            <div className="text-xs text-white/65 tracking-wide mt-0.5">{label}</div>
+            <div className="text-xs text-[#5f8572] tracking-wide mt-0.5">{label}</div>
           </div>
         </div>
       </div>
@@ -77,42 +77,52 @@ const ImpactStatsSection = () => {
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
       {/* ================= BACKGROUND ================= */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f17] via-[#0e2a21] to-[#0b1f17]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#f7fbf8] via-[#eef6f2] to-[#f9fcfa]" />
 
-      {/* ambient lights */}
+      {/* soft ambient lights */}
       <motion.div
-        className="absolute top-[-20%] left-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30"
-        style={{ background: "radial-gradient(circle, #2f7a60 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-[-20%] right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-25"
-        style={{ background: "radial-gradient(circle, #1f5f4b 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.12, 1] }}
+        className="absolute top-[-15%] right-[-10%] w-[480px] h-[480px] rounded-full blur-[120px] opacity-45"
+        style={{ background: "radial-gradient(circle, #cdeee0 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.08, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="absolute bottom-[-20%] left-[-10%] w-[480px] h-[480px] rounded-full blur-[120px] opacity-40"
+        style={{ background: "radial-gradient(circle, #f4efd8 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* subtle mesh */}
+      <div
+        className="absolute inset-0 opacity-[0.025]"
+        style={{
+          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(60,120,90,0.6) 1px, transparent 0)",
+          backgroundSize: "44px 44px",
+        }}
       />
 
       {/* ================= CONTENT ================= */}
       <div className="container-wide relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 mb-4">
-            <Zap className="w-4 h-4 text-[#6ee7b7]" />
-            <span className="text-[11px] tracking-[0.18em] uppercase text-white/70 font-semibold">Impact Metrics</span>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-[#e4f0ea] mb-4 shadow-sm">
+            <Zap className="w-4 h-4 text-[#2f7a60]" />
+            <span className="text-[11px] tracking-[0.18em] uppercase text-[#2f7a60] font-semibold">Impact Metrics</span>
           </span>
 
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-white leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-[#0e2f23] leading-tight">
             Measurable{" "}
-            <span className="bg-gradient-to-r from-[#6ee7b7] to-[#34d399] bg-clip-text text-transparent">Impact</span>
+            <span className="bg-gradient-to-r from-[#2f7a60] to-[#6ee7b7] bg-clip-text text-transparent">Impact</span>
           </h2>
 
-          <p className="text-white/60 text-sm md:text-base max-w-xl mx-auto mt-3">
+          <p className="text-[#5f8572] text-sm md:text-base max-w-xl mx-auto mt-3">
             Real performance indicators driving India’s clean energy transformation.
           </p>
         </motion.div>
@@ -133,14 +143,14 @@ const ImpactStatsSection = () => {
           ))}
         </div>
 
-        {/* Footer line */}
+        {/* Footer */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-8 text-center"
         >
-          <p className="text-xs text-white/50 tracking-wide">
+          <p className="text-xs text-[#6f9485] tracking-wide">
             Structured growth • Scalable systems • Sustainable engineering
           </p>
         </motion.div>
