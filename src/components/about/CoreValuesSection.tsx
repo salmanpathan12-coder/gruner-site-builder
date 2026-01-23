@@ -12,43 +12,49 @@ interface ValueCardProps {
 }
 
 const ValueCard = ({ icon: Icon, title, description, index, isInView }: ValueCardProps) => {
+  const isLarge = index === 0 || index === 3;
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-      className="group relative"
+      transition={{ duration: 0.7, delay: 0.1 + index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+      className={`group relative ${isLarge ? 'lg:col-span-2' : ''}`}
     >
-      <div className="relative h-full p-8 rounded-2xl bg-card border border-border hover:border-primary/20 transition-all duration-500 overflow-hidden">
+      <div className="relative h-full p-8 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/[0.06] backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-primary/20">
         {/* Background gradient on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] to-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
-        {/* Decorative corner */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Decorative element */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/[0.04] to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        {/* Icon */}
-        <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          transition={{ duration: 0.3 }}
-          className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6 shadow-lg shadow-primary/20"
-        >
-          <Icon className="w-7 h-7 text-white" />
-        </motion.div>
+        <div className={`relative flex ${isLarge ? 'flex-col md:flex-row md:items-center gap-6' : 'flex-col gap-5'}`}>
+          {/* Icon */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            className={`${isLarge ? 'w-16 h-16' : 'w-14 h-14'} rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 border border-primary/20 flex items-center justify-center flex-shrink-0`}
+          >
+            <Icon className={`${isLarge ? 'w-8 h-8' : 'w-6 h-6'} text-primary`} />
+          </motion.div>
 
-        {/* Content */}
-        <h3 className="relative text-xl font-heading font-semibold text-foreground mb-3">
-          {title}
-        </h3>
-        <p className="relative text-muted-foreground leading-relaxed font-body">
-          {description}
-        </p>
+          {/* Content */}
+          <div className="flex-1">
+            <h3 className={`relative ${isLarge ? 'text-xl md:text-2xl' : 'text-lg'} font-heading font-semibold text-white mb-2`}>
+              {title}
+            </h3>
+            <p className="relative text-white/40 leading-relaxed font-body text-sm">
+              {description}
+            </p>
+          </div>
+        </div>
 
         {/* Bottom accent line */}
         <motion.div
           initial={{ width: 0 }}
           whileHover={{ width: '100%' }}
-          transition={{ duration: 0.3 }}
-          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent"
+          transition={{ duration: 0.4 }}
+          className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary via-accent to-transparent"
         />
       </div>
     </motion.div>
@@ -93,20 +99,32 @@ const CoreValuesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="section-padding bg-muted/30 relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 pointer-events-none">
-        <svg className="absolute inset-0 w-full h-full opacity-[0.02]">
-          <defs>
-            <pattern id="values-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="1" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#values-grid)" />
-        </svg>
+    <section ref={ref} className="relative overflow-hidden">
+      {/* Layered background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(220,20%,8%)] via-[hsl(210,18%,9%)] to-[hsl(200,15%,10%)]" />
+        
+        {/* Subtle pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}
+        />
+        
+        {/* Gradient orb */}
+        <motion.div
+          animate={{ 
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-radial from-primary/[0.06] via-transparent to-transparent blur-3xl"
+        />
       </div>
 
-      <div className="container-wide relative z-10">
+      <div className="container-wide relative z-10 py-24 md:py-32">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -114,26 +132,34 @@ const CoreValuesSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 60 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-px bg-gradient-to-r from-primary to-accent mx-auto mb-6"
-          />
-          <span className="text-primary text-sm font-medium uppercase tracking-[0.2em] font-body">
-            Our Foundation
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold mt-4 text-foreground mb-6">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={isInView ? { width: 40 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-px bg-gradient-to-r from-transparent to-primary"
+            />
+            <span className="text-primary text-xs font-medium uppercase tracking-[0.3em] font-body">
+              Our Foundation
+            </span>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={isInView ? { width: 40 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-px bg-gradient-to-l from-transparent to-primary"
+            />
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-white mb-5">
             Core Values
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-body text-lg">
+          <p className="text-white/40 max-w-2xl mx-auto font-body text-lg">
             The principles that guide everything we do at Gruner Renewable, 
             driving our mission to transform India's energy future.
           </p>
         </motion.div>
 
-        {/* Values grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Values grid - Bento style */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {coreValues.map((value, index) => (
             <ValueCard
               key={value.title}

@@ -1,94 +1,90 @@
-import { motion, useInView, Variants } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Eye, Zap, ArrowRight } from "lucide-react";
+import { Target, Eye, Zap, ArrowUpRight } from "lucide-react";
 
 const VisionMissionSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8 }
-    }
-  };
-
   return (
-    <section ref={ref} className="section-padding bg-background relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-primary/[0.02] to-transparent" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-accent/[0.02] to-transparent" />
+    <section ref={ref} className="relative overflow-hidden">
+      {/* Layered gradient background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(200,15%,6%)] to-[hsl(168,20%,8%)]" />
+        
+        {/* Ambient glow */}
+        <motion.div
+          animate={{ opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-radial from-primary/[0.08] via-transparent to-transparent blur-3xl"
+        />
       </div>
 
-      <div className="container-wide relative z-10">
+      <div className="container-wide relative z-10 py-24 md:py-32">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 60 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-px bg-gradient-to-r from-primary to-accent mx-auto mb-6"
-          />
-          <span className="text-primary text-sm font-medium uppercase tracking-[0.2em] font-body">
-            Our Purpose
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold mt-4 text-foreground">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={isInView ? { width: 40 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-px bg-gradient-to-r from-transparent to-primary"
+            />
+            <span className="text-primary text-xs font-medium uppercase tracking-[0.3em] font-body">
+              Our Purpose
+            </span>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={isInView ? { width: 40 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-px bg-gradient-to-l from-transparent to-primary"
+            />
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-white">
             Vision & Mission
           </h2>
         </motion.div>
 
-        {/* Cards grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid lg:grid-cols-2 gap-8 lg:gap-12"
-        >
+        {/* Cards - Premium glass design */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {/* Mission Card */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 40, x: -20 }}
+            animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="group relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative p-8 md:p-10 rounded-3xl bg-card border border-border hover:border-primary/20 transition-all duration-500 h-full">
+            {/* Glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-transparent to-accent/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            <div className="relative h-full p-8 md:p-10 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08] backdrop-blur-sm overflow-hidden">
+              {/* Background accent */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/[0.08] to-transparent rounded-bl-full" />
+              
               {/* Icon */}
-              <div className="mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/20">
+              <div className="relative mb-8">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[hsl(168,55%,40%)] flex items-center justify-center shadow-lg shadow-primary/30">
                   <Target className="w-8 h-8 text-white" />
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl md:text-3xl font-heading font-semibold text-foreground mb-4">
+              <h3 className="relative text-2xl md:text-3xl font-heading font-semibold text-white mb-5">
                 Our Mission
               </h3>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8 font-body">
+              <p className="relative text-white/50 text-lg leading-relaxed mb-8 font-body">
                 To transform India's energy landscape by converting agricultural waste into sustainable 
                 Bio-CNG fuel, creating a circular economy that benefits farmers, reduces emissions, 
                 and powers cleaner transportation across the nation.
               </p>
 
               {/* Key points */}
-              <div className="space-y-4">
+              <div className="relative space-y-4">
                 {[
                   "Zero waste to landfill approach",
                   "Converting trash to treasure",
@@ -98,13 +94,13 @@ const VisionMissionSection = () => {
                     key={point}
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                     className="flex items-center gap-3"
                   >
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0">
                       <Zap className="w-3 h-3 text-primary" />
                     </div>
-                    <span className="text-foreground font-body">{point}</span>
+                    <span className="text-white/70 font-body text-sm">{point}</span>
                   </motion.div>
                 ))}
               </div>
@@ -113,23 +109,30 @@ const VisionMissionSection = () => {
 
           {/* Vision Card */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 40, x: 20 }}
+            animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
             className="group relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative p-8 md:p-10 rounded-3xl bg-card border border-border hover:border-accent/20 transition-all duration-500 h-full flex flex-col">
+            {/* Glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-br from-accent/20 via-transparent to-primary/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            <div className="relative h-full p-8 md:p-10 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08] backdrop-blur-sm overflow-hidden flex flex-col">
+              {/* Background accent */}
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-accent/[0.08] to-transparent rounded-tr-full" />
+              
               {/* Icon */}
-              <div className="mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center shadow-lg shadow-accent/20">
+              <div className="relative mb-8">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-[hsl(100,45%,45%)] flex items-center justify-center shadow-lg shadow-accent/30">
                   <Eye className="w-8 h-8 text-white" />
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl md:text-3xl font-heading font-semibold text-foreground mb-4">
+              <h3 className="relative text-2xl md:text-3xl font-heading font-semibold text-white mb-5">
                 Our Vision
               </h3>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8 font-body flex-grow">
+              <p className="relative text-white/50 text-lg leading-relaxed mb-8 font-body flex-grow">
                 We work on the motto of Zero Waste to Landfill. As a proud member of the Indian Biogas 
                 Association, we are committed to helping India become a global leader in clean energy 
                 production within this decade.
@@ -139,24 +142,25 @@ const VisionMissionSection = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="relative p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/10 overflow-hidden"
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="relative p-6 rounded-xl bg-gradient-to-br from-accent/10 to-primary/5 border border-accent/20 overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full" />
-                <div className="relative">
-                  <div className="text-3xl md:text-4xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-                    100 Bio Gas Plants
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-accent/20 to-transparent rounded-bl-full" />
+                <div className="relative flex items-center justify-between">
+                  <div>
+                    <div className="text-3xl md:text-4xl font-heading font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent mb-1">
+                      100 Plants
+                    </div>
+                    <div className="text-white/40 font-body text-sm">Target by 2025</div>
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground font-body">
-                    <span>by 2025</span>
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    <span className="text-primary font-medium">On Track</span>
+                  <div className="w-12 h-12 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center">
+                    <ArrowUpRight className="w-5 h-5 text-accent" />
                   </div>
                 </div>
               </motion.div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
