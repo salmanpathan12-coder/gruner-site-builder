@@ -1,14 +1,14 @@
-import { motion, useScroll, useTransform, animate } from "framer-motion";
+import { motion, useScroll, useTransform, animate, useMotionValue } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
 
-/* ---------- Animated Counter ---------- */
-const Counter = ({ value }: { value: number }) => {
+/* ---------------- Animated Counter ---------------- */
+const HologramCounter = ({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     const controls = animate(0, value, {
-      duration: 2.5,
+      duration: 2.8,
       ease: "easeOut",
       onUpdate(v) {
         setCount(Math.floor(v));
@@ -17,12 +17,26 @@ const Counter = ({ value }: { value: number }) => {
     return () => controls.stop();
   }, [value]);
 
-  return <span>{count.toLocaleString()}</span>;
+  return (
+    <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="relative">
+      {prefix}
+      {count.toLocaleString()}
+      {suffix}
+      {/* hologram glow */}
+      <motion.span
+        className="absolute inset-0 -z-10 blur-lg opacity-30"
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 2.5, repeat: Infinity }}
+        style={{ background: "radial-gradient(circle, rgba(110,231,183,0.6), transparent 60%)" }}
+      />
+    </motion.span>
+  );
 };
 
 const AboutHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  /* scroll motion */
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -30,64 +44,101 @@ const AboutHero = () => {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.93]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+
+  /* mouse reactive sun orbit */
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      mouseX.set((e.clientX / window.innerWidth - 0.5) * 40);
+      mouseY.set((e.clientY / window.innerHeight - 0.5) * 40);
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] overflow-hidden">
-      {/* ================= CINEMATIC SKY BACKGROUND ================= */}
+      {/* ================= HEADER CONTRAST ZONE ================= */}
+      {/* ensures white header is always visible */}
+      <div className="absolute top-0 left-0 right-0 h-[140px] z-10 bg-gradient-to-b from-[#0b1f17]/70 via-[#0b1f17]/40 to-transparent" />
+
+      {/* ================= BACKGROUND WORLD ================= */}
       <div className="absolute inset-0">
-        {/* Animated sky gradient */}
+        {/* cinematic sky gradient */}
         <motion.div
           className="absolute inset-0"
           animate={{
             background: [
-              "linear-gradient(to bottom, #fff7e6 0%, #fdebd2 30%, #e8f5ef 65%, #f7fbf9 100%)",
-              "linear-gradient(to bottom, #fff2dc 0%, #fde6c8 30%, #e2f3ec 65%, #f7fbf9 100%)",
+              "linear-gradient(to bottom, #f7fbf9 0%, #eef6f2 35%, #fdf2df 70%, #fff7e8 100%)",
+              "linear-gradient(to bottom, #f9fcfa 0%, #eef6f2 35%, #fdebd2 70%, #fff4e2 100%)",
             ],
           }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* 🌅 Sun core */}
-        <motion.div
-          className="absolute top-[12%] right-[15%] w-[420px] h-[420px] rounded-full blur-[60px]"
+        {/* neural horizon grid */}
+        <div
+          className="absolute inset-0 opacity-[0.05]"
           style={{
-            background: "radial-gradient(circle, #ffd27d 0%, #ffb347 40%, #ff944d 65%, transparent 75%)",
+            backgroundImage:
+              "linear-gradient(to right, rgba(47,122,96,0.4) 1px, transparent 1px),linear-gradient(to bottom, rgba(47,122,96,0.4) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
           }}
-          animate={{
-            y: [0, 25, 0],
-            opacity: [0.8, 1, 0.8],
-            scale: [1, 1.05, 1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Sun rays */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute top-[18%] right-[18%] w-[500px] h-[2px] opacity-30"
-            style={{
-              background: "linear-gradient(to right, #ffd27d, transparent)",
-            }}
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 30 + i * 5, repeat: Infinity, ease: "linear" }}
-          />
-        ))}
-
-        {/* Energy waves */}
+        {/* AI noise waves */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-[280px]"
           animate={{ backgroundPositionX: ["0%", "200%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
           style={{
-            background: "linear-gradient(90deg, rgba(47,122,96,0.08), rgba(110,231,183,0.15), rgba(47,122,96,0.08))",
+            background: "linear-gradient(90deg, rgba(47,122,96,0.08), rgba(110,231,183,0.18), rgba(47,122,96,0.08))",
             backgroundSize: "200% 100%",
           }}
         />
 
-        {/* Floating particles */}
-        {[...Array(18)].map((_, i) => (
+        {/* ================= SUN SYSTEM ================= */}
+
+        {/* solar core */}
+        <motion.div
+          className="absolute top-[12%] right-[18%] w-[420px] h-[420px] rounded-full blur-[60px]"
+          style={{
+            x: mouseX,
+            y: mouseY,
+            background: "radial-gradient(circle, #ffd27d 0%, #ffb347 35%, #ff944d 60%, transparent 72%)",
+          }}
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.85, 1, 0.85],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* lens flare */}
+        <motion.div
+          className="absolute top-[16%] right-[20%] w-[600px] h-[120px] blur-[80px] opacity-40"
+          animate={{ opacity: [0.2, 0.5, 0.2] }}
+          transition={{ duration: 6, repeat: Infinity }}
+          style={{
+            background: "linear-gradient(to right, transparent, rgba(255,210,125,0.8), transparent)",
+          }}
+        />
+
+        {/* parallax clouds */}
+        <motion.div
+          className="absolute top-[25%] left-[10%] w-[600px] h-[180px] blur-[60px] opacity-30"
+          animate={{ x: [0, 120, 0] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            background: "radial-gradient(circle, rgba(255,255,255,0.9), transparent 70%)",
+          }}
+        />
+
+        {/* particle physics */}
+        {[...Array(22)].map((_, i) => (
           <motion.span
             key={i}
             className="absolute w-1.5 h-1.5 rounded-full bg-[#6ee7b7]"
@@ -97,8 +148,8 @@ const AboutHero = () => {
               opacity: 0.4,
             }}
             animate={{
-              y: [0, -40, 0],
-              opacity: [0.2, 0.6, 0.2],
+              y: [0, -50, 0],
+              opacity: [0.2, 0.7, 0.2],
             }}
             transition={{
               duration: 6 + Math.random() * 6,
@@ -107,45 +158,37 @@ const AboutHero = () => {
             }}
           />
         ))}
-
-        {/* Horizon glow */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[220px]"
-          animate={{ opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            background: "linear-gradient(to top, rgba(255,179,71,0.25), transparent)",
-          }}
-        />
       </div>
 
       {/* ================= CONTENT ================= */}
-      <div className="container-wide relative z-10 pt-40 pb-24">
+      <div className="container-wide relative z-20 pt-40 pb-24">
         <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[80vh]">
           {/* LEFT CONTENT */}
           <motion.div style={{ y }} className="lg:col-span-5">
-            <motion.div className="mb-8">
-              <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-[#f1e6d5] shadow-lg">
-                <Sparkles className="w-4 h-4 text-[#ff944d]" />
-                <span className="text-xs tracking-[0.18em] uppercase text-[#8a5a2b] font-semibold">
-                  Clean Energy Revolution
-                </span>
+            {/* badge */}
+            <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-[#e6f1ec] shadow-lg mb-8">
+              <Sparkles className="w-4 h-4 text-[#ff944d]" />
+              <span className="text-xs tracking-[0.18em] uppercase text-[#2f7a60] font-semibold">
+                Intelligent Clean Energy
               </span>
-            </motion.div>
+            </span>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-[#1f3b32] mb-6">
-              <span className="block">Where</span>
+            {/* heading */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-[#0e2f23] mb-6">
+              <span className="block">Building</span>
               <span className="block mt-2 bg-gradient-to-r from-[#ff944d] via-[#6ee7b7] to-[#2f7a60] bg-clip-text text-transparent">
-                Energy Meets Future
+                Living Energy
               </span>
-              <span className="block mt-2">Innovation</span>
+              <span className="block mt-2">Ecosystems</span>
             </h1>
 
+            {/* text */}
             <p className="text-base md:text-lg text-[#4b6f63] max-w-md mb-8">
-              Transforming agricultural waste into intelligent clean-energy ecosystems. Building India's next-generation
+              Transforming agricultural waste into intelligent clean-energy systems. Engineering India’s next-generation
               Bio-CNG infrastructure.
             </p>
 
+            {/* CTAs */}
             <div className="flex gap-4 mb-10">
               <a
                 href="/contact"
@@ -156,31 +199,30 @@ const AboutHero = () => {
               </a>
               <a
                 href="/solutions"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/80 backdrop-blur border border-[#f1e6d5] text-[#2f7a60] font-semibold shadow-lg"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/85 backdrop-blur border border-[#e6f1ec] text-[#2f7a60] font-semibold shadow-lg"
               >
                 <Play className="w-4 h-4" />
                 Watch Vision
               </a>
             </div>
 
-            {/* Animated Counters */}
-            <div className="flex gap-10">
+            {/* animated counters */}
+            <div className="flex gap-12">
               <div>
-                <div className="text-3xl font-bold text-[#1f3b32]">
-                  <Counter value={63} />+
+                <div className="text-3xl font-bold text-[#0e2f23]">
+                  <HologramCounter value={63} suffix="+" />
                 </div>
                 <div className="text-xs text-[#5f8572]">Plants Delivered</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#1f3b32]">
-                  ₹<Counter value={1500} />
-                  Cr
+                <div className="text-3xl font-bold text-[#0e2f23]">
+                  <HologramCounter value={1500} prefix="₹" suffix="Cr" />
                 </div>
                 <div className="text-xs text-[#5f8572]">Project Value</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#1f3b32]">
-                  <Counter value={8} />+
+                <div className="text-3xl font-bold text-[#0e2f23]">
+                  <HologramCounter value={8} suffix="+" />
                 </div>
                 <div className="text-xs text-[#5f8572]">Indian States</div>
               </div>
@@ -189,24 +231,24 @@ const AboutHero = () => {
 
           {/* RIGHT VISUAL */}
           <motion.div style={{ y: imageY, scale }} className="lg:col-span-7 relative">
-            {/* Energy aura */}
+            {/* cinematic camera motion aura */}
             <motion.div
-              className="absolute -inset-10 rounded-full blur-[120px] opacity-40"
+              className="absolute -inset-12 rounded-full blur-[140px] opacity-40"
               animate={{ opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 6, repeat: Infinity }}
               style={{
-                background: "radial-gradient(circle, rgba(255,179,71,0.4), rgba(110,231,183,0.3), transparent 65%)",
+                background: "radial-gradient(circle, rgba(255,210,125,0.35), rgba(110,231,183,0.25), transparent 65%)",
               }}
             />
 
-            {/* Floating ring */}
+            {/* energy orbit ring */}
             <motion.div
-              className="absolute -inset-6 rounded-full border border-[#ffb347]/30"
+              className="absolute -inset-6 rounded-full border border-[#ffb347]/25"
               animate={{ rotate: 360 }}
-              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* Image */}
+            {/* image container */}
             <motion.div
               initial={{ opacity: 0, x: 60, scale: 0.92 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -221,24 +263,24 @@ const AboutHero = () => {
                 transition={{ duration: 10, repeat: Infinity }}
               />
 
-              {/* Light flow */}
+              {/* energy flow paths */}
               <motion.div
                 className="absolute inset-0"
                 animate={{ backgroundPositionX: ["0%", "200%"] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
                 style={{
-                  background: "linear-gradient(120deg, transparent 30%, rgba(255,179,71,0.25) 50%, transparent 70%)",
+                  background: "linear-gradient(120deg, transparent 35%, rgba(255,179,71,0.25) 50%, transparent 65%)",
                   backgroundSize: "200% 100%",
                 }}
               />
 
-              {/* Pulse overlay */}
+              {/* hologram pulse */}
               <motion.div
                 className="absolute inset-0"
                 animate={{ opacity: [0.1, 0.3, 0.1] }}
                 transition={{ duration: 4, repeat: Infinity }}
                 style={{
-                  background: "radial-gradient(circle at center, rgba(110,231,183,0.25), transparent 60%)",
+                  background: "radial-gradient(circle at center, rgba(110,231,183,0.3), transparent 60%)",
                 }}
               />
             </motion.div>
@@ -246,7 +288,7 @@ const AboutHero = () => {
         </div>
       </div>
 
-      {/* Bottom fade */}
+      {/* bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#f7fbf9] to-transparent" />
     </section>
   );
