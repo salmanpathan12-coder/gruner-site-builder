@@ -1,12 +1,17 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { Factory, TrendingUp, Users, MapPin, Leaf, Zap } from "lucide-react";
+import { Factory, TrendingUp, Users, MapPin, Leaf, BarChart3, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-const AnimatedCounter = ({ value, suffix = "", prefix = "", isInView }: { 
-  value: number; suffix?: string; prefix?: string; isInView: boolean 
-}) => {
-  const spring = useSpring(0, { duration: 2000, bounce: 0 });
+interface AnimatedCounterProps {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  isInView: boolean;
+}
+
+const AnimatedCounter = ({ value, suffix = "", prefix = "", isInView }: AnimatedCounterProps) => {
+  const spring = useSpring(0, { duration: 2200, bounce: 0 });
   const display = useTransform(spring, (current) => `${prefix}${Math.round(current).toLocaleString()}${suffix}`);
 
   useEffect(() => {
@@ -16,7 +21,7 @@ const AnimatedCounter = ({ value, suffix = "", prefix = "", isInView }: {
   return <motion.span>{display}</motion.span>;
 };
 
-interface StatItemProps {
+interface StatCardProps {
   value: number;
   suffix?: string;
   prefix?: string;
@@ -24,43 +29,31 @@ interface StatItemProps {
   icon: LucideIcon;
   index: number;
   isInView: boolean;
-  size: 'large' | 'medium' | 'small';
 }
 
-const StatItem = ({ value, suffix, prefix, label, icon: Icon, index, isInView, size }: StatItemProps) => {
-  const sizeStyles = {
-    large: "lg:col-span-2 lg:row-span-2 p-6 md:p-7",
-    medium: "lg:col-span-1 lg:row-span-2 p-5",
-    small: "lg:col-span-1 p-4"
-  };
-
-  const textStyles = {
-    large: "text-4xl md:text-5xl",
-    medium: "text-2xl md:text-3xl",
-    small: "text-xl md:text-2xl"
-  };
-
+const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView }: StatCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 25, scale: 0.95 }}
+      initial={{ opacity: 0, y: 25, scale: 0.96 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.5, delay: 0.05 + index * 0.07 }}
-      className={`group relative bg-white rounded-xl shadow-md shadow-foreground/5 border border-foreground/5 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${sizeStyles[size]}`}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      whileHover={{ y: -4, scale: 1.015 }}
+      className="group"
     >
-      {/* Hover gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(260,35%,45%)]/5 to-[hsl(220,40%,50%)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      <div className="relative h-full flex flex-col justify-between">
-        <div className={`w-9 h-9 rounded-lg bg-gradient-to-br from-[hsl(260,35%,50%)] to-[hsl(220,40%,45%)] flex items-center justify-center mb-3 ${size === 'large' ? 'w-11 h-11' : ''}`}>
-          <Icon className={`text-white ${size === 'large' ? 'w-5 h-5' : 'w-4 h-4'}`} />
-        </div>
+      <div className="relative h-full rounded-2xl p-5 bg-white/6 backdrop-blur-xl border border-white/10 shadow-xl overflow-hidden">
+        {/* glow accent */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#2f7a60]/15 via-transparent to-[#1f5f4b]/20" />
 
-        <div>
-          <div className={`font-heading font-bold text-foreground mb-1 ${textStyles[size]}`}>
-            <AnimatedCounter value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
+        <div className="relative flex items-center gap-4">
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2f7a60] to-[#1f5f4b] flex items-center justify-center shadow-lg">
+            <Icon className="w-5 h-5 text-white" />
           </div>
-          <div className={`text-muted-foreground font-body ${size === 'large' ? 'text-sm' : 'text-xs'}`}>
-            {label}
+
+          <div className="flex-1">
+            <div className="text-2xl font-bold text-white leading-tight">
+              <AnimatedCounter value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
+            </div>
+            <div className="text-xs text-white/65 tracking-wide mt-0.5">{label}</div>
           </div>
         </div>
       </div>
@@ -69,60 +62,88 @@ const StatItem = ({ value, suffix, prefix, label, icon: Icon, index, isInView, s
 };
 
 const stats = [
-  { value: 63, suffix: "+", label: "Bio-CNG Plants Commissioned", icon: Factory, size: 'large' as const },
-  { value: 1500, suffix: "", prefix: "₹", label: "Crore Project Value", icon: TrendingUp, size: 'medium' as const },
-  { value: 8, suffix: "+", label: "Indian States", icon: MapPin, size: 'small' as const },
-  { value: 250, suffix: "+", label: "Team Members", icon: Users, size: 'small' as const },
-  { value: 9000, suffix: "+", label: "Engineering Hours", icon: Zap, size: 'small' as const },
-  { value: 100, suffix: "K+", label: "Tons CO₂ Reduced", icon: Leaf, size: 'small' as const },
+  { value: 63, suffix: "+", label: "Bio-CNG Plants", icon: Factory },
+  { value: 1500, suffix: "+", prefix: "₹", label: "Crore Value", icon: TrendingUp },
+  { value: 8, suffix: "+", label: "Indian States", icon: MapPin },
+  { value: 250, suffix: "+", label: "Team Members", icon: Users },
+  { value: 60, suffix: "M", prefix: "$", label: "Funding Raised", icon: BarChart3 },
+  { value: 9000, suffix: "+", label: "Engineering Hours", icon: Leaf },
 ];
 
 const ImpactStatsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* Purple-indigo gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(260,25%,94%)] via-[hsl(240,20%,96%)] to-[hsl(220,25%,93%)]" />
-      
-      {/* Accent orbs */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[hsl(260,40%,65%)]/10 to-transparent rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-gradient-to-tl from-[hsl(220,45%,60%)]/10 to-transparent rounded-full blur-[80px]" />
+      {/* ================= BACKGROUND ================= */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f17] via-[#0e2a21] to-[#0b1f17]" />
 
+      {/* ambient lights */}
+      <motion.div
+        className="absolute top-[-20%] left-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30"
+        style={{ background: "radial-gradient(circle, #2f7a60 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-[-20%] right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] opacity-25"
+        style={{ background: "radial-gradient(circle, #1f5f4b 0%, transparent 70%)" }}
+        animate={{ scale: [1, 1.12, 1] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* ================= CONTENT ================= */}
       <div className="container-wide relative z-10">
-        {/* Compact header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[hsl(260,40%,50%)]/10 border border-[hsl(260,40%,50%)]/20 mb-4">
-            <TrendingUp className="w-3.5 h-3.5 text-[hsl(260,40%,50%)]" />
-            <span className="text-xs tracking-[0.12em] uppercase text-[hsl(260,40%,50%)] font-medium font-body">
-              Our Impact
-            </span>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 mb-4">
+            <Zap className="w-4 h-4 text-[#6ee7b7]" />
+            <span className="text-[11px] tracking-[0.18em] uppercase text-white/70 font-semibold">Impact Metrics</span>
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
-            Driving <span className="text-[hsl(260,40%,50%)]">Measurable</span> Change
+
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-white leading-tight">
+            Measurable{" "}
+            <span className="bg-gradient-to-r from-[#6ee7b7] to-[#34d399] bg-clip-text text-transparent">Impact</span>
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto font-body text-sm">
-            Real metrics reflecting our commitment to India's clean energy transformation.
+
+          <p className="text-white/60 text-sm md:text-base max-w-xl mx-auto mt-3">
+            Real performance indicators driving India’s clean energy transformation.
           </p>
         </motion.div>
 
-        {/* Creative bento grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto auto-rows-fr">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
-            <StatItem
+            <StatCard
               key={stat.label}
-              {...stat}
+              value={stat.value}
+              suffix={stat.suffix}
+              prefix={stat.prefix}
+              label={stat.label}
+              icon={stat.icon}
               index={index}
               isInView={isInView}
             />
           ))}
         </div>
+
+        {/* Footer line */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-8 text-center"
+        >
+          <p className="text-xs text-white/50 tracking-wide">
+            Structured growth • Scalable systems • Sustainable engineering
+          </p>
+        </motion.div>
       </div>
     </section>
   );
