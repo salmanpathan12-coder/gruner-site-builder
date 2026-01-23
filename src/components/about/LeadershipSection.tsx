@@ -7,37 +7,37 @@ const leadership = [
     name: "Mr. Anil Kumar Tyagi",
     role: "Chief Consultant",
     bio: "Strategic advisor with decades of experience in renewable energy infrastructure and policy development.",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/9c778952225.png"
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
   },
   {
     name: "Mr. Asit Chaterjee",
     role: "Group President",
     bio: "Veteran leader driving organizational excellence and strategic partnerships across the energy sector.",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/21eff9bca03.jpeg"
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
   },
   {
     name: "Mr. Anil Dhussa",
     role: "Chief Advisor",
     bio: "Industry pioneer with extensive expertise in biogas technology and sustainable energy solutions.",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/60737fd0ffe.png"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
   },
   {
     name: "Mr. Rajesh Gupta",
     role: "EVP - Engineering",
     bio: "Engineering excellence leader ensuring highest quality standards across all plant installations.",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/457decaf8d4.jpeg"
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop"
   },
   {
     name: "Ajmal Singh Kathat",
     role: "EVP - Projects",
     bio: "Project management expert overseeing multi-state operations and ensuring timely delivery.",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/36a83cac955.jpeg"
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop"
   },
   {
     name: "Mr. Sanjay Nandre",
     role: "EVP - Design",
     bio: "Innovative design leader creating cutting-edge Bio-CNG plant architectures and systems.",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/c6b23a5abd9.jpeg"
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
   }
 ];
 
@@ -52,86 +52,75 @@ const LeaderCard = ({ leader, index, isInView }: LeaderCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.7, delay: 0.1 + index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
       className="group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative h-full rounded-2xl overflow-hidden">
-        {/* Premium border */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/30 via-white/10 to-accent/20 p-[1px]">
-          <div className="absolute inset-[1px] rounded-[calc(1rem-1px)] bg-[hsl(220,25%,9%)]" />
-        </div>
-
-        <div className="relative z-10 overflow-hidden rounded-2xl">
-          {/* Image container - Compact aspect ratio */}
-          <div className="relative aspect-[4/5] overflow-hidden">
-            <motion.img
-              src={leader.image}
-              alt={leader.name}
-              className="w-full h-full object-cover object-top"
-              animate={{ scale: isHovered ? 1.08 : 1 }}
-              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            />
-            
-            {/* Multi-layer overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,25%,6%)] via-[hsl(220,25%,6%)]/40 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            {/* Hover reveal overlay with bio */}
+      <div className="relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-foreground/5 border border-foreground/5 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
+        {/* Image container */}
+        <div className="relative aspect-[3/4] overflow-hidden">
+          <motion.img
+            src={leader.image}
+            alt={leader.name}
+            className="w-full h-full object-cover object-top"
+            animate={{ scale: isHovered ? 1.05 : 1 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          />
+          
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
+          
+          {/* Hover overlay with bio */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/80 to-primary/60 flex items-end"
+          >
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0 bg-gradient-to-t from-[hsl(220,25%,6%)] via-[hsl(220,25%,6%)]/95 to-[hsl(220,25%,6%)]/80 flex items-end"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="p-5"
             >
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: isHovered ? 0 : 30, opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="p-5"
-              >
-                <p className="text-white/70 text-sm leading-relaxed font-body mb-5">
-                  {leader.bio}
-                </p>
-                
-                {/* Social links */}
-                <div className="flex gap-3">
-                  <motion.button 
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/20 to-accent/10 hover:from-primary/30 hover:to-accent/20 border border-white/10 flex items-center justify-center transition-colors"
-                  >
-                    <Linkedin className="w-4 h-4 text-white/70" />
-                  </motion.button>
-                  <motion.button 
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/20 to-accent/10 hover:from-primary/30 hover:to-accent/20 border border-white/10 flex items-center justify-center transition-colors"
-                  >
-                    <Mail className="w-4 h-4 text-white/70" />
-                  </motion.button>
-                </div>
-              </motion.div>
+              <p className="text-white/90 text-sm leading-relaxed font-body mb-4">
+                {leader.bio}
+              </p>
+              
+              {/* Social links */}
+              <div className="flex gap-2">
+                <motion.button 
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-9 h-9 rounded-lg bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                >
+                  <Linkedin className="w-4 h-4 text-white" />
+                </motion.button>
+                <motion.button 
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-9 h-9 rounded-lg bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-white" />
+                </motion.button>
+              </div>
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* Info section - Compact & premium */}
-          <div className="relative p-5 bg-[hsl(220,25%,9%)]">
-            {/* Gradient accent line */}
+          {/* Default info overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-5">
             <motion.div
-              initial={{ width: '30px' }}
-              animate={{ width: isHovered ? '100%' : '30px' }}
-              transition={{ duration: 0.5 }}
-              className="h-[2px] bg-gradient-to-r from-primary via-accent to-transparent mb-4 rounded-full"
-            />
-            
-            <h3 className="text-base font-heading font-semibold text-white mb-1 truncate group-hover:text-primary transition-colors duration-300">
-              {leader.name}
-            </h3>
-            <p className="text-primary/80 text-xs font-body tracking-wide uppercase">{leader.role}</p>
+              animate={{ opacity: isHovered ? 0 : 1, y: isHovered ? 10 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-lg font-heading font-semibold text-white mb-1">
+                {leader.name}
+              </h3>
+              <p className="text-white/80 text-sm font-body">{leader.role}</p>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -144,70 +133,38 @@ const LeadershipSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative overflow-hidden">
-      {/* Premium layered background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[hsl(220,25%,6%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(168,20%,6%)] via-[hsl(200,22%,7%)] to-[hsl(220,25%,8%)]" />
-        
-        {/* Ambient orbs */}
-        <motion.div
-          animate={{ 
-            x: [0, 30, 0],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-primary/[0.06] via-transparent to-transparent blur-[120px]"
-        />
-        <motion.div
-          animate={{ 
-            x: [0, -25, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-accent/[0.05] via-transparent to-transparent blur-[100px]"
-        />
-        
-        {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px'
-          }}
-        />
-      </div>
+    <section ref={ref} className="relative overflow-hidden py-24 md:py-32">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-background to-secondary/50" />
+      
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-primary/5 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-3xl" />
 
-      <div className="container-wide relative z-10 py-28 md:py-36">
+      <div className="container-wide relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 border border-primary/20 mb-8"
-          >
-            <Users className="w-7 h-7 text-primary" />
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-            Our <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Leadership</span>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Users className="w-4 h-4 text-primary" />
+            <span className="text-xs tracking-[0.15em] uppercase text-primary font-medium font-body">
+              Meet The Team
+            </span>
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+            Our <span className="text-primary">Leadership</span>
           </h2>
-          <p className="text-white/40 max-w-2xl mx-auto font-body text-lg leading-relaxed">
-            Seasoned industry veterans from the Biofuel sector guiding Gruner Renewable 
-            with deep expertise and unwavering commitment to India's clean energy future.
+          <p className="text-muted-foreground max-w-2xl mx-auto font-body text-lg">
+            Seasoned industry veterans guiding Gruner Renewable with deep expertise 
+            and unwavering commitment to India's clean energy future.
           </p>
         </motion.div>
 
-        {/* Leadership grid - Compact, modern 3-column layout */}
+        {/* Leadership grid - Compact 3-column */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
           {leadership.map((leader, index) => (
             <LeaderCard
@@ -221,24 +178,24 @@ const LeadershipSection = () => {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="text-center mt-20"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mt-16"
         >
           <div className="inline-flex flex-col sm:flex-row gap-4 items-center">
             <a 
               href="/careers"
-              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-gradient-to-r from-white/[0.04] to-white/[0.02] border border-white/[0.1] text-white hover:border-primary/30 hover:bg-white/[0.06] transition-all duration-300 font-body text-sm"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-foreground/20 text-foreground hover:border-primary hover:text-primary transition-all duration-300 font-body"
             >
-              <span>Join Our Team</span>
+              Join Our Team
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
               href="/contact"
-              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-[hsl(168,55%,35%)] text-white font-body text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 transition-all duration-300"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 transition-all duration-300 font-body"
             >
-              <span>Contact Leadership</span>
+              Contact Us
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

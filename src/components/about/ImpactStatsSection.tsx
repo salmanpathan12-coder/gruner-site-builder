@@ -1,23 +1,17 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { Factory, TrendingUp, Users, Award, Globe, Leaf, Zap, Building } from "lucide-react";
+import { Factory, TrendingUp, Users, MapPin, Leaf, BarChart3 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-interface StatItemProps {
+interface AnimatedCounterProps {
   value: number;
   suffix?: string;
   prefix?: string;
-  label: string;
-  sublabel?: string;
-  icon: LucideIcon;
-  delay: number;
   isInView: boolean;
-  size?: "large" | "medium" | "small";
-  gradient: string;
 }
 
-const AnimatedNumber = ({ value, suffix = "", prefix = "", isInView }: { value: number; suffix?: string; prefix?: string; isInView: boolean }) => {
-  const spring = useSpring(0, { duration: 2500, bounce: 0 });
+const AnimatedCounter = ({ value, suffix = "", prefix = "", isInView }: AnimatedCounterProps) => {
+  const spring = useSpring(0, { duration: 2000, bounce: 0 });
   const display = useTransform(spring, (current) => `${prefix}${Math.round(current).toLocaleString()}${suffix}`);
 
   useEffect(() => {
@@ -29,79 +23,77 @@ const AnimatedNumber = ({ value, suffix = "", prefix = "", isInView }: { value: 
   return <motion.span>{display}</motion.span>;
 };
 
-const StatItem = ({ value, suffix, prefix, label, sublabel, icon: Icon, delay, isInView, size = "medium", gradient }: StatItemProps) => {
-  const sizeClasses = {
-    large: "lg:col-span-2 lg:row-span-2",
-    medium: "lg:col-span-1 lg:row-span-1",
-    small: "lg:col-span-1 lg:row-span-1"
-  };
+interface StatCardProps {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  label: string;
+  sublabel?: string;
+  icon: LucideIcon;
+  index: number;
+  isInView: boolean;
+  featured?: boolean;
+}
 
-  const numberSize = {
-    large: "text-6xl md:text-7xl lg:text-8xl",
-    medium: "text-4xl md:text-5xl",
-    small: "text-3xl md:text-4xl"
-  };
-
-  const iconSize = {
-    large: "w-8 h-8",
-    medium: "w-5 h-5",
-    small: "w-4 h-4"
-  };
-
+const StatCard = ({ value, suffix, prefix, label, sublabel, icon: Icon, index, isInView, featured }: StatCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.8, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`group relative ${sizeClasses[size]}`}
+      transition={{ duration: 0.7, delay: 0.1 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+      className={`group relative ${featured ? 'md:col-span-2 md:row-span-2' : ''}`}
     >
-      <div className="relative h-full rounded-2xl overflow-hidden">
-        {/* Gradient border */}
-        <div className={`absolute inset-0 rounded-2xl ${gradient} p-[1px]`}>
-          <div className="absolute inset-[1px] rounded-[calc(1rem-1px)] bg-[hsl(220,25%,8%)]" />
-        </div>
+      <div className={`relative h-full rounded-3xl overflow-hidden transition-all duration-500 ${
+        featured 
+          ? 'bg-gradient-to-br from-primary to-primary/90 p-8 md:p-10' 
+          : 'bg-white p-6 md:p-8 shadow-lg shadow-foreground/5 border border-foreground/5 hover:shadow-xl hover:shadow-primary/10'
+      }`}>
+        {/* Decorative elements */}
+        {featured && (
+          <>
+            <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/20 rounded-full translate-y-1/2 -translate-x-1/2" />
+          </>
+        )}
 
-        <div className="relative z-10 h-full p-6 md:p-8 flex flex-col justify-between">
-          {/* Background glow on hover */}
-          <div className={`absolute inset-0 ${gradient.replace('from-', 'from-').replace('/40', '/10').replace('/30', '/5')} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl`} />
-          
-          {/* Decorative corner */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/[0.02] to-transparent rounded-bl-full" />
-          
+        <div className="relative flex flex-col h-full">
           {/* Icon */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: delay + 0.2 }}
-            className={`relative ${size === 'large' ? 'w-16 h-16' : 'w-12 h-12'} rounded-xl bg-gradient-to-br from-primary/15 to-accent/10 border border-primary/20 flex items-center justify-center mb-auto`}
-          >
-            <Icon className={`${iconSize[size]} text-primary`} />
-          </motion.div>
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${
+            featured 
+              ? 'bg-white/20' 
+              : 'bg-gradient-to-br from-primary/10 to-accent/10'
+          }`}>
+            <Icon className={`w-6 h-6 ${featured ? 'text-white' : 'text-primary'}`} />
+          </div>
 
-          <div className="relative mt-6">
-            {/* Number with premium styling */}
-            <div className={`${numberSize[size]} font-heading font-bold bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent mb-2`}>
-              <AnimatedNumber value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
+          {/* Content */}
+          <div className="mt-auto">
+            <div className={`font-heading font-bold mb-2 ${
+              featured 
+                ? 'text-5xl md:text-6xl lg:text-7xl text-white' 
+                : 'text-4xl md:text-5xl text-foreground'
+            }`}>
+              <AnimatedCounter value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
             </div>
-
-            {/* Label */}
-            <div className="text-sm text-white/50 uppercase tracking-wider font-body">
+            <div className={`font-body ${featured ? 'text-white/80 text-lg' : 'text-muted-foreground text-sm'}`}>
               {label}
             </div>
             {sublabel && (
-              <div className="text-xs text-white/30 font-body mt-1">
+              <div className={`text-xs mt-1 font-body ${featured ? 'text-white/60' : 'text-muted-foreground/60'}`}>
                 {sublabel}
               </div>
             )}
-
-            {/* Animated underline */}
-            <motion.div
-              initial={{ width: 0 }}
-              animate={isInView ? { width: '50%' } : {}}
-              transition={{ duration: 1, delay: delay + 0.4 }}
-              className="absolute -bottom-4 left-0 h-[2px] bg-gradient-to-r from-primary via-accent to-transparent rounded-full"
-            />
           </div>
+
+          {/* Hover effect line */}
+          {!featured && (
+            <motion.div
+              className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-accent rounded-full"
+              initial={{ width: '0%' }}
+              whileHover={{ width: '100%' }}
+              transition={{ duration: 0.4 }}
+            />
+          )}
         </div>
       </div>
     </motion.div>
@@ -113,54 +105,43 @@ const stats = [
     value: 63, 
     suffix: "+", 
     label: "Bio-CNG Plants", 
-    sublabel: "Across India",
-    icon: Factory, 
-    size: "large" as const,
-    gradient: "bg-gradient-to-br from-primary/40 via-primary/20 to-accent/10" 
+    sublabel: "Operational across India",
+    icon: Factory,
+    featured: true
   },
   { 
     value: 1500, 
     suffix: "+", 
     prefix: "₹", 
-    label: "Crore", 
-    sublabel: "Project Orders",
-    icon: Award, 
-    size: "medium" as const,
-    gradient: "bg-gradient-to-br from-accent/35 via-accent/15 to-primary/10" 
+    label: "Crore Project Value", 
+    icon: TrendingUp
   },
   { 
     value: 8, 
     suffix: "+", 
-    label: "States", 
-    sublabel: "Pan-India Presence",
-    icon: Globe, 
-    size: "medium" as const,
-    gradient: "bg-gradient-to-br from-primary/30 via-primary/10 to-transparent" 
+    label: "Indian States", 
+    sublabel: "Pan-India presence",
+    icon: MapPin
   },
   { 
     value: 250, 
     suffix: "+", 
     label: "Team Members", 
-    icon: Users, 
-    size: "medium" as const,
-    gradient: "bg-gradient-to-br from-[hsl(180,50%,30%)]/30 via-primary/10 to-transparent" 
-  },
-  { 
-    value: 9000, 
-    suffix: "+", 
-    label: "Engineering Hours", 
-    icon: TrendingUp, 
-    size: "medium" as const,
-    gradient: "bg-gradient-to-br from-accent/30 via-accent/10 to-transparent" 
+    icon: Users
   },
   { 
     value: 60, 
     suffix: "M", 
     prefix: "$", 
     label: "Funding Secured", 
-    icon: Building, 
-    size: "medium" as const,
-    gradient: "bg-gradient-to-br from-primary/35 via-accent/15 to-transparent" 
+    icon: BarChart3
+  },
+  { 
+    value: 9000, 
+    suffix: "+", 
+    label: "Engineering Hours", 
+    sublabel: "Annual expertise",
+    icon: Leaf
   },
 ];
 
@@ -169,73 +150,42 @@ const ImpactStatsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative overflow-hidden">
-      {/* Premium layered background */}
+    <section ref={ref} className="relative overflow-hidden py-24 md:py-32">
+      {/* Modern gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-background to-secondary/30" />
+      
+      {/* Subtle patterns */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[hsl(220,25%,6%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(168,25%,6%)] via-[hsl(200,22%,7%)] to-[hsl(220,25%,6%)]" />
-        
-        {/* Dynamic ambient lighting */}
-        <motion.div
-          animate={{ 
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.15, 1]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-40 right-0 w-[700px] h-[700px] rounded-full bg-gradient-radial from-primary/15 via-primary/5 to-transparent blur-[120px]"
-        />
-        <motion.div
-          animate={{ 
-            x: [0, -30, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-20 -left-20 w-[500px] h-[500px] rounded-full bg-gradient-radial from-accent/10 via-transparent to-transparent blur-[100px]"
-        />
-
-        {/* Premium grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '100px 100px'
-          }}
-        />
+        <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-l from-accent/5 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="container-wide relative z-10 py-28 md:py-36">
+      <div className="container-wide relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 border border-primary/20 mb-8"
-          >
-            <Leaf className="w-7 h-7 text-primary" />
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-            Driving <span className="bg-gradient-to-r from-primary via-[hsl(140,50%,45%)] to-accent bg-clip-text text-transparent">Impact</span> at Scale
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <BarChart3 className="w-4 h-4 text-primary" />
+            <span className="text-xs tracking-[0.15em] uppercase text-primary font-medium font-body">
+              Our Impact
+            </span>
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+            Driving <span className="text-primary">Measurable</span> Change
           </h2>
-          <p className="text-white/40 max-w-2xl mx-auto font-body text-lg leading-relaxed">
-            Real metrics that demonstrate our commitment to transforming India's clean energy landscape.
+          <p className="text-muted-foreground max-w-2xl mx-auto font-body text-lg">
+            Real metrics that showcase our commitment to India's clean energy transformation.
           </p>
         </motion.div>
 
-        {/* Premium Bento Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+        {/* Stats Grid - Modern bento layout */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
           {stats.map((stat, index) => (
-            <StatItem
+            <StatCard
               key={stat.label}
               value={stat.value}
               suffix={stat.suffix}
@@ -243,10 +193,9 @@ const ImpactStatsSection = () => {
               label={stat.label}
               sublabel={stat.sublabel}
               icon={stat.icon}
-              delay={0.1 + index * 0.1}
+              index={index}
               isInView={isInView}
-              size={stat.size}
-              gradient={stat.gradient}
+              featured={stat.featured}
             />
           ))}
         </div>
