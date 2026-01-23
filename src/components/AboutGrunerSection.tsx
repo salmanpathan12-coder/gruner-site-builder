@@ -1,167 +1,331 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Target, Leaf, Factory, Globe } from "lucide-react";
+import { Leaf, Globe, Zap, Users, Factory, Target, ChevronRight } from "lucide-react";
 
-const highlights = [
+const leadership = [
   {
-    icon: Target,
-    title: "Our Mission",
-    description: "To accelerate India's transition to clean energy by converting agricultural waste into sustainable Bio-CNG fuel.",
+    name: "Utkarsh Gupta",
+    title: "Founder & CEO",
+    description:
+      "Chartered Accountant turned visionary greenpreneur driving Gruner's mission to revolutionize India's clean fuel landscape with innovative Bio-CNG solutions.",
+    image:
+      "https://www.pv-magazine-india.com/wp-content/uploads/sites/8/2024/04/Utkarsh-Gupta-Founder-CEO-Gruner-Renewable-Energy.jpeg-1200x810.jpg",
   },
   {
-    icon: Factory,
-    title: "Industry Leader",
-    description: "Building Asia's largest CBG plant in Gujarat with 1 million TPY processing capacity.",
+    name: "Michael Wallis Olausson",
+    title: "Chief Operating Officer",
+    description:
+      "Global operations expert strengthening execution excellence across Gruner's expanding portfolio of world-class CBG plants.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=1000&fit=crop&crop=face",
   },
   {
-    icon: Globe,
-    title: "Pan-India Presence",
-    description: "Operating across 8+ states with partnerships from major Oil Marketing Companies.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainable Impact",
-    description: "Reducing carbon emissions while creating rural employment and farmer income opportunities.",
+    name: "Senior Executive",
+    title: "Executive Leadership",
+    description:
+      "Seasoned professionals driving strategic growth, partnerships, and operational scalability in India's renewable energy sector.",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop&crop=face",
   },
 ];
 
-const AboutGrunerSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+export default function AboutPage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const ySecondary = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-background relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-accent/[0.02]" />
-        <svg className="absolute inset-0 w-full h-full opacity-[0.02]">
-          <defs>
-            <pattern id="about-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <circle cx="30" cy="30" r="1" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#about-grid)" />
-        </svg>
-      </div>
+    <>
+      {/* Premium Left-Right Hero with Parallax Depth */}
+      <section
+        ref={heroRef}
+        className="relative h-screen overflow-hidden bg-gradient-to-br from-emerald-950 via-teal-900 to-slate-900"
+      >
+        {/* Layered Background Gradients & Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/30 to-teal-700/20" />
 
-      <div className="container-wide relative z-10" ref={ref}>
-        {/* Header */}
+        {/* High-Impact Parallax Main Background - Modern CBG Plant Aerial */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 80 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full"
-          />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
-            About <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Gruner Renewable</span>
-          </h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-base md:text-lg font-body leading-relaxed">
-            Gruner Renewable Energy is a Noida-based clean energy company pioneering India's Bio-CNG revolution. 
-            We design, build, and operate compressed biogas plants that transform agricultural residue into 
-            sustainable transportation fuel, reducing fossil fuel dependency while empowering rural communities.
-          </p>
-        </motion.div>
+          style={{ y }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('https://plus.unsplash.com/premium_photo-1661824244216-de3ef89de37d?fm=jpg&q=80&w=3000&auto=format&fit=crop')",
+          }}
+        />
 
-        {/* Main content grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12">
-          {/* Left: Story */}
+        {/* Secondary Depth Layer - Agricultural Overlay */}
+        <motion.div
+          style={{ y: ySecondary }}
+          className="absolute inset-0 opacity-40 bg-cover bg-center bg-no-repeat mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url('https://www.canextechno.com/wp-content/uploads/2025/10/government-subsidies-for-cbg-plants-in-iIndia.webp')",
+          }}
+        />
+
+        <div className="relative z-10 container-wide h-full flex items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto px-6">
+            {/* Left: Brand Authority Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -80 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="space-y-8 text-white"
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                Pioneering India's{" "}
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                  Bio-CNG Revolution
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-emerald-100 max-w-2xl leading-relaxed">
+                Transforming agricultural waste into clean, sustainable fuel. Building a future-defining energy
+                ecosystem that empowers rural India and accelerates net-zero ambitions.
+              </p>
+              <div className="flex items-center gap-6">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full font-semibold text-lg shadow-2xl hover:shadow-emerald-500/50 transition-all flex items-center gap-3"
+                >
+                  Explore Our Vision <ChevronRight className="w-5 h-5" />
+                </motion.button>
+              </div>
+            </motion.div>
+
+            {/* Right: Impact Stats with Premium Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+              className="grid grid-cols-2 gap-6"
+            >
+              {[
+                { value: "₹1,500+ Cr", label: "Project Orders Secured" },
+                { value: "$60M", label: "Funding Raised" },
+                { value: "50+", label: "CBG Plants Planned" },
+                { value: "8+ States", label: "Pan-India Footprint" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  className="p-6 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl"
+                >
+                  <div className="text-4xl font-bold text-emerald-300">{stat.value}</div>
+                  <div className="text-sm text-emerald-100 mt-2">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Company Identity & Purpose - Visually Rich Split */}
+      <section className="py-32 bg-gradient-to-b from-slate-900 to-emerald-950 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://d382rz2cea0pah.cloudfront.net/wp-content/uploads/2024/01/GAIL-and-TruAlt-Announce-72-Million-Compressed-Biogas-Joint-Venture.jpg')",
+          }}
+        />
+        <div className="container-wide relative z-10">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="space-y-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid lg:grid-cols-2 gap-16 items-center"
           >
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border/50">
-              <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                Pioneering Clean Energy Since 2023
-              </h3>
-              <p className="text-muted-foreground font-body leading-relaxed mb-4">
-                Founded with a vision to address India's dual challenge of agricultural waste management and 
-                energy security, Gruner has rapidly grown to become a leading Bio-CNG infrastructure company. 
-                We've secured over ₹1,500 Crore in project orders and $60M in funding to expand our CBG footprint.
+            <div className="space-y-8">
+              <h2 className="text-5xl lg:text-6xl font-bold text-white">
+                Our <span className="text-emerald-400">Purpose</span>
+              </h2>
+              <p className="text-xl text-emerald-100 leading-relaxed">
+                To lead India's clean energy transformation by converting abundant agricultural residue into
+                high-quality Bio-CNG, reducing fossil fuel dependency, cutting emissions, and generating rural
+                prosperity.
               </p>
-              <p className="text-muted-foreground font-body leading-relaxed">
-                Our proprietary technology processes diverse feedstocks including Napier Grass, agricultural 
-                residue, and organic waste to produce high-quality compressed biogas that meets automotive fuel standards.
-              </p>
+              <ul className="space-y-6">
+                {[
+                  { icon: Target, text: "Accelerate net-zero transition through scalable waste-to-fuel technology" },
+                  { icon: Leaf, text: "Empower farmers with sustainable income from crop residue" },
+                  { icon: Globe, text: "Build energy independence with indigenous renewable fuel" },
+                ].map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.li
+                      key={i}
+                      className="flex items-start gap-4 text-emerald-100"
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.2 }}
+                    >
+                      <div className="p-3 rounded-xl bg-emerald-500/20">
+                        <Icon className="w-8 h-8 text-emerald-400" />
+                      </div>
+                      <span className="text-lg">{item.text}</span>
+                    </motion.li>
+                  );
+                })}
+              </ul>
             </div>
-
-            {/* Key achievement */}
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-border/50 shadow-sm">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-                <Factory className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="font-heading font-bold text-foreground">Asia's Largest CBG Plant</div>
-                <div className="text-sm text-muted-foreground font-body">Rs 220 Crore investment in Gujarat</div>
-              </div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="rounded-3xl overflow-hidden shadow-3xl"
+            >
+              <img
+                src="https://powerline.net.in/wp-content/uploads/2025/08/23-678x381.jpg"
+                alt="Gruner CBG Plant in Action"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Right: Highlight cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-2 gap-4"
+      {/* Why Choose Us - Icon Grid with Depth */}
+      <section className="py-32 bg-slate-950">
+        <div className="container-wide">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-5xl lg:text-6xl font-bold text-center text-white mb-20"
           >
-            {highlights.map((item, index) => {
+            Why <span className="text-emerald-400">Gruner</span>
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              {
+                icon: Factory,
+                title: "Industry Pioneer",
+                desc: "Building Asia's largest CBG facility with unmatched scale and proprietary German technology.",
+              },
+              {
+                icon: Zap,
+                title: "End-to-End Mastery",
+                desc: "From feedstock sourcing to fuel dispensing – complete control for superior quality and reliability.",
+              },
+              {
+                icon: Users,
+                title: "Rural Empowerment",
+                desc: "Creating thousands of jobs and sustainable income streams for farming communities.",
+              },
+            ].map((item, i) => {
               const Icon = item.icon;
               return (
                 <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  className="p-5 rounded-xl bg-white border border-border/50 shadow-sm hover:shadow-md transition-all duration-300 hover:border-primary/30 group"
+                  key={i}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                  className="group p-10 rounded-3xl bg-gradient-to-br from-emerald-900/30 to-teal-900/20 border border-emerald-700/30 backdrop-blur-sm hover:border-emerald-400 transition-all duration-500"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-3 shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
-                    <Icon className="w-5 h-5 text-white" />
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                    <Icon className="w-10 h-10 text-white" />
                   </div>
-                  <h4 className="font-heading font-semibold text-foreground text-sm mb-1">
-                    {item.title}
-                  </h4>
-                  <p className="text-xs text-muted-foreground font-body leading-relaxed">
-                    {item.description}
-                  </p>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-emerald-100">{item.desc}</p>
                 </motion.div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
+      </section>
 
-        {/* Bottom stats bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-wrap justify-center gap-6 md:gap-10 p-6 rounded-2xl bg-gradient-to-r from-primary to-accent"
-        >
-          {[
-            { value: "₹1,500+ Cr", label: "Project Orders" },
-            { value: "$60M", label: "Funding Secured" },
-            { value: "50+", label: "Plants Planned" },
-            { value: "8+", label: "States Covered" },
-          ].map((stat, index) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl md:text-3xl font-heading font-bold text-white mb-1">
-                {stat.value}
-              </div>
-              <div className="text-xs md:text-sm text-white/60 font-body">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+      {/* Our Impact - Stats with Visual Backdrop */}
+      <section className="py-32 relative bg-gradient-to-r from-emerald-950 to-teal-900 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-30 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://c8.alamy.com/comp/2RCPTTG/biogas-production-biogas-plants-bioenergyaerial-panorama-landscape-view-of-bio-gas-production-facility-and-powerplant-european-energy-crisisgreen-2RCPTTG.jpg')",
+          }}
+        />
+        <div className="container-wide relative z-10 text-center text-white">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-5xl lg:text-6xl font-bold mb-20"
+          >
+            Global-Scale <span className="text-emerald-400">Impact</span>
+          </motion.h2>
+          <div className="grid md:grid-cols-4 gap-12">
+            {[
+              { value: "1M+ TPY", label: "Feedstock Processing Capacity" },
+              { value: "Massive CO₂", label: "Emissions Avoided Annually" },
+              { value: "5,000+", label: "Jobs Created by 2025" },
+              { value: "Net-Zero", label: "Aligned Vision" },
+            ].map((impact, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+              >
+                <div className="text-5xl font-bold text-emerald-300 mb-4">{impact.value}</div>
+                <div className="text-xl">{impact.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership - Compact Executive Cards */}
+      <section className="py-32 bg-slate-950">
+        <div className="container-wide">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-5xl lg:text-6xl font-bold text-center text-white mb-20"
+          >
+            Visionary <span className="text-emerald-400">Leadership</span>
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+            {leadership.map((leader, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900/40 to-slate-900/60 border border-emerald-800/50 backdrop-blur-md hover:border-emerald-400 transition-all duration-700"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <h3 className="text-2xl font-bold">{leader.name}</h3>
+                  <p className="text-emerald-300 mb-4">{leader.title}</p>
+                  <p className="text-sm text-emerald-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {leader.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
-};
-
-export default AboutGrunerSection;
+}
