@@ -1,0 +1,4743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gruner Renewable Energy - India's Leading Bio-CNG Infrastructure Company</title>
+  <meta name="description" content="Gruner Renewable Energy designs, builds, and operates Bio-CNG plants that convert agricultural and organic waste into clean, reliable fuel.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========================================
+       GRUNER RENEWABLE - COMPLETE CSS
+       Converted from React + Tailwind + Framer Motion
+       ======================================== */
+    
+    /* CSS Variables / Design Tokens */
+    :root {
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      
+      /* Colors (HSL) */
+      --background: 0 0% 100%;
+      --foreground: 220 15% 15%;
+      --card: 60 10% 98%;
+      --card-foreground: 220 15% 15%;
+      --primary: 168 65% 32%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 40 10% 95%;
+      --secondary-foreground: 220 15% 20%;
+      --muted: 40 5% 92%;
+      --muted-foreground: 220 10% 45%;
+      --accent: 85 55% 45%;
+      --accent-foreground: 0 0% 100%;
+      --border: 40 10% 88%;
+      --charcoal: 220 15% 15%;
+      --off-white: 60 10% 98%;
+      --light-grey: 40 10% 96%;
+      
+      --radius: 0.375rem;
+    }
+    
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: hsl(var(--foreground));
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Container */
+    .container-wide {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Section Padding */
+    .section-padding {
+      padding: 5rem 0;
+    }
+    
+    .section-padding-sm {
+      padding: 3rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      .section-padding { padding: 7rem 0; }
+      .section-padding-sm { padding: 4rem 0; }
+    }
+    
+    @media (min-width: 1024px) {
+      .section-padding { padding: 8rem 0; }
+      .section-padding-sm { padding: 5rem 0; }
+    }
+    
+    /* Gradient Utilities */
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .bg-foreground {
+      background-color: hsl(var(--foreground));
+    }
+    
+    .bg-off-white {
+      background-color: hsl(var(--off-white));
+    }
+    
+    /* Divider */
+    .divider-accent {
+      width: 5rem;
+      height: 4px;
+      background: linear-gradient(90deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      border-radius: 2px;
+    }
+    
+    /* ========================================
+       KEYFRAME ANIMATIONS
+       ======================================== */
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes slideInRight {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    
+    @keyframes expandWidth {
+      from { width: 0; }
+      to { width: 5rem; }
+    }
+    
+    @keyframes expandWidthFull {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.1;
+      }
+      50% {
+        transform: translateY(-100px) translateX(25px);
+        opacity: 0.3;
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes pulseRing {
+      0% {
+        transform: scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes moveProgress {
+      0% { left: 0%; }
+      100% { left: 100%; }
+    }
+    
+    @keyframes moveProgressVertical {
+      0% { top: 0%; }
+      100% { top: 100%; }
+    }
+    
+    @keyframes scaleBreath {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    
+    @keyframes rotateIcon {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes loaderProgress {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+    
+    @keyframes loaderFadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; visibility: hidden; }
+    }
+    
+    /* Animation Classes */
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    
+    .animate-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-fade-in-left {
+      opacity: 0;
+      animation: fadeInLeft 0.8s ease-out forwards;
+    }
+    
+    .animate-fade-in-right {
+      opacity: 0;
+      animation: fadeInRight 0.8s ease-out forwards;
+    }
+    
+    .animate-scale-in {
+      opacity: 0;
+      animation: scaleIn 0.5s ease-out forwards;
+    }
+    
+    .animate-expand-width {
+      animation: expandWidth 0.8s ease-out forwards;
+    }
+    
+    .animate-bounce {
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+    
+    /* Scroll Animation - elements hidden until in view */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .scroll-animate-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .scroll-animate-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .scroll-animate-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .scroll-animate-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .scroll-animate-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .scroll-animate-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Stagger delays */
+    .delay-100 { transition-delay: 0.1s; animation-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; animation-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; animation-delay: 0.3s; }
+    .delay-400 { transition-delay: 0.4s; animation-delay: 0.4s; }
+    .delay-500 { transition-delay: 0.5s; animation-delay: 0.5s; }
+    .delay-600 { transition-delay: 0.6s; animation-delay: 0.6s; }
+    .delay-700 { transition-delay: 0.7s; animation-delay: 0.7s; }
+    .delay-800 { transition-delay: 0.8s; animation-delay: 0.8s; }
+    
+    /* ========================================
+       PAGE LOADER
+       ======================================== */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background-color: hsl(var(--background));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease-out;
+    }
+    
+    .page-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .page-loader-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .page-loader-logo {
+      height: 3rem;
+      width: auto;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
+    
+    .page-loader-bar {
+      position: relative;
+      width: 12rem;
+      height: 2px;
+      background-color: hsl(var(--muted));
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    
+    .page-loader-bar-fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      border-radius: 1rem;
+      animation: loaderProgress 1.5s ease-in-out forwards;
+    }
+    
+    .page-loader-tagline {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: hsl(var(--muted-foreground));
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 0.3s forwards;
+    }
+    
+    .page-loader-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .page-loader-particle {
+      position: absolute;
+      width: 16rem;
+      height: 16rem;
+      border-radius: 50%;
+      opacity: 0.05;
+      background: radial-gradient(circle, hsl(168, 65%, 32%) 0%, transparent 70%);
+      animation: scaleBreath 3s ease-in-out infinite;
+    }
+    
+    .page-loader-particle:nth-child(1) { left: 20%; top: 30%; animation-delay: 0s; }
+    .page-loader-particle:nth-child(2) { left: 50%; top: 50%; animation-delay: 0.5s; }
+    .page-loader-particle:nth-child(3) { left: 80%; top: 70%; animation-delay: 1s; }
+    
+    @media (min-width: 768px) {
+      .page-loader-logo { height: 3.5rem; }
+    }
+    
+    /* ========================================
+       HEADER
+       ======================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      transition: all 0.3s ease;
+    }
+    
+    .header-bg {
+      position: absolute;
+      inset: 0;
+      background-color: hsla(0, 0%, 100%, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .header.scrolled .header-bg {
+      opacity: 1;
+    }
+    
+    .header-inner {
+      position: relative;
+      padding: 1.25rem 0;
+      transition: padding 0.3s ease;
+    }
+    
+    .header.scrolled .header-inner {
+      padding: 0.75rem 0;
+    }
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .header-logo {
+      position: relative;
+      z-index: 50;
+      transition: transform 0.2s ease;
+    }
+    
+    .header-logo:hover {
+      transform: scale(1.02);
+    }
+    
+    .header-logo img {
+      height: 2.75rem;
+      width: auto;
+      transition: height 0.3s ease;
+    }
+    
+    .header.scrolled .header-logo img {
+      height: 2.25rem;
+    }
+    
+    .header-nav {
+      display: none;
+      align-items: center;
+      gap: 0.125rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .header-nav { display: flex; }
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.025em;
+      color: rgba(255, 255, 255, 0.7);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all 0.2s ease;
+    }
+    
+    .nav-link:hover {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .header.scrolled .nav-link {
+      color: hsl(var(--foreground) / 0.7);
+    }
+    
+    .header.scrolled .nav-link:hover {
+      color: hsl(var(--foreground));
+      background-color: hsl(var(--muted));
+    }
+    
+    .nav-link.active {
+      color: white;
+    }
+    
+    .header.scrolled .nav-link.active {
+      color: hsl(var(--primary));
+    }
+    
+    .nav-link-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0.75rem;
+      right: 0.75rem;
+      height: 2px;
+      background-color: hsl(var(--primary));
+      border-radius: 1px;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .nav-link.active .nav-link-indicator {
+      transform: scaleX(1);
+    }
+    
+    .nav-dropdown {
+      position: relative;
+    }
+    
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.25rem;
+      padding: 0.5rem 0;
+      background-color: hsl(var(--background));
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      border: 1px solid hsl(var(--border));
+      min-width: 180px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.2s ease;
+    }
+    
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .nav-dropdown-item {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      color: hsl(var(--foreground) / 0.7);
+      transition: all 0.2s ease;
+    }
+    
+    .nav-dropdown-item:hover {
+      color: hsl(var(--foreground));
+      background-color: hsl(var(--muted));
+    }
+    
+    .nav-chevron {
+      width: 0.875rem;
+      height: 0.875rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .nav-dropdown:hover .nav-chevron {
+      transform: rotate(180deg);
+    }
+    
+    .nav-cta {
+      margin-left: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.625rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: white;
+      border-radius: 0.375rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-cta:hover {
+      transform: scale(1.02) translateY(-1px);
+      box-shadow: 0 8px 25px hsl(168, 65%, 32%, 0.25);
+    }
+    
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .header.scrolled .mobile-menu-btn {
+      color: hsl(var(--foreground));
+    }
+    
+    .mobile-menu-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .header.scrolled .mobile-menu-btn:hover {
+      background-color: hsl(var(--muted));
+    }
+    
+    @media (min-width: 1024px) {
+      .mobile-menu-btn { display: none; }
+    }
+    
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background-color: hsl(var(--background));
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .mobile-menu-link {
+      font-size: 1.5rem;
+      font-family: var(--font-heading);
+      font-weight: 500;
+      color: hsl(var(--foreground));
+      transition: color 0.2s ease;
+    }
+    
+    .mobile-menu-link:hover {
+      color: hsl(var(--primary));
+    }
+    
+    .mobile-menu-cta {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      border-radius: 0.375rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    }
+    
+    @media (min-width: 1024px) {
+      .mobile-menu { display: none; }
+    }
+    
+    /* ========================================
+       HERO SECTION
+       ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 5rem 0 6rem;
+    }
+    
+    .hero-video-container {
+      position: absolute;
+      inset: 0;
+    }
+    
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.7) 100%);
+    }
+    
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .hero-particle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      animation: float 20s ease-in-out infinite;
+    }
+    
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+    
+    .hero-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out 0.2s forwards;
+    }
+    
+    @media (min-width: 640px) { .hero-title { font-size: 1.875rem; } }
+    @media (min-width: 768px) { .hero-title { font-size: 2.25rem; } }
+    @media (min-width: 1024px) { .hero-title { font-size: 3rem; } }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 42rem;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out 0.4s forwards;
+    }
+    
+    @media (min-width: 768px) { .hero-subtitle { font-size: 1.125rem; } }
+    
+    /* Hero Metrics */
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    @media (min-width: 768px) { .hero-metrics { gap: 1rem; } }
+    
+    .hero-metric {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(4px);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
+    
+    .hero-metric:nth-child(1) { animation-delay: 0.8s; }
+    .hero-metric:nth-child(2) { animation-delay: 1.1s; }
+    .hero-metric:nth-child(3) { animation-delay: 1.4s; }
+    
+    .hero-metric-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.3) 0%, hsl(85, 55%, 45%, 0.3) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-metric-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: white;
+    }
+    
+    .hero-metric-content {
+      text-align: left;
+    }
+    
+    .hero-metric-value {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+    
+    .hero-metric-number {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    @media (min-width: 768px) { .hero-metric-number { font-size: 1.5rem; } }
+    
+    .hero-metric-suffix {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: hsl(var(--primary));
+    }
+    
+    @media (min-width: 768px) { .hero-metric-suffix { font-size: 1.25rem; } }
+    
+    .hero-metric-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Hero CTAs */
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out 1.6s forwards;
+    }
+    
+    @media (min-width: 640px) {
+      .hero-ctas { flex-direction: row; }
+    }
+    
+    .hero-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: white;
+      border-radius: 0.375rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      transition: all 0.3s ease;
+    }
+    
+    .hero-cta-primary:hover {
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 8px 25px hsl(168, 65%, 32%, 0.3);
+    }
+    
+    .hero-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: white;
+      border-radius: 0.375rem;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+    
+    .hero-cta-secondary:hover {
+      transform: scale(1.02) translateY(-2px);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Scroll Indicator */
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 20;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 2s forwards;
+    }
+    
+    .hero-scroll-text {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .hero-scroll-arrow {
+      width: 1rem;
+      height: 1rem;
+      color: rgba(255, 255, 255, 0.4);
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+    
+    /* Hero Bottom Fade */
+    .hero-bottom-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5rem;
+      background: linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    /* ========================================
+       TRUSTED BY SECTION
+       ======================================== */
+    .trusted-by {
+      padding: 3rem 0 4rem;
+      background-color: hsl(var(--muted) / 0.3);
+      border-top: 1px solid hsl(var(--border) / 0.5);
+      border-bottom: 1px solid hsl(var(--border) / 0.5);
+    }
+    
+    .trusted-by-label {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .trusted-by-label span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: hsl(var(--muted-foreground));
+      font-weight: 500;
+    }
+    
+    .trusted-by-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    
+    @media (min-width: 768px) { .trusted-by-logos { gap: 3.5rem; } }
+    @media (min-width: 1024px) { .trusted-by-logos { gap: 5rem; } }
+    
+    .partner-logo {
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .partner-logo:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    
+    .partner-logo svg {
+      height: 2rem;
+      width: auto;
+    }
+    
+    @media (min-width: 768px) {
+      .partner-logo svg { height: 2.5rem; }
+    }
+    
+    /* ========================================
+       CONTEXT SECTION
+       ======================================== */
+    .context-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .context-grid {
+      display: grid;
+      min-height: 50vh;
+    }
+    
+    @media (min-width: 1024px) {
+      .context-grid {
+        grid-template-columns: 2fr 3fr;
+      }
+    }
+    
+    /* Left Panel */
+    .context-left {
+      background: linear-gradient(135deg, hsl(220, 20%, 12%) 0%, hsl(168, 40%, 15%) 50%, hsl(220, 20%, 10%) 100%);
+      color: hsl(var(--background));
+      padding: 2.5rem 0;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    @media (min-width: 768px) { .context-left { padding: 3rem 0; } }
+    @media (min-width: 1024px) { .context-left { padding: 4rem 0; } }
+    
+    .context-left-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .context-left-orb {
+      position: absolute;
+      border-radius: 50%;
+      animation: scaleBreath 8s ease-in-out infinite;
+    }
+    
+    .context-left-orb-1 {
+      width: 24rem;
+      height: 24rem;
+      background: radial-gradient(circle, hsl(168, 65%, 30%) 0%, transparent 70%);
+      opacity: 0.2;
+      top: -20%;
+      right: -10%;
+    }
+    
+    .context-left-orb-2 {
+      width: 16rem;
+      height: 16rem;
+      background: radial-gradient(circle, hsl(85, 55%, 40%) 0%, transparent 70%);
+      opacity: 0.15;
+      bottom: -10%;
+      left: -5%;
+      animation-delay: 2s;
+    }
+    
+    .context-left-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+    }
+    
+    .context-left-content {
+      position: relative;
+      z-index: 10;
+      padding: 0 1.5rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .context-left-content {
+        padding-left: 2rem;
+        padding-right: 1rem;
+      }
+    }
+    
+    .context-divider {
+      height: 4px;
+      width: 0;
+      background: linear-gradient(90deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+    
+    .context-divider.visible {
+      animation: expandWidth 0.8s ease-out 0.2s forwards;
+    }
+    
+    .context-subtitle {
+      display: block;
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.5rem;
+    }
+    
+    @media (min-width: 768px) { .context-subtitle { font-size: 1.5rem; } }
+    
+    .context-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    
+    @media (min-width: 768px) { .context-title { font-size: 2.25rem; } }
+    @media (min-width: 1024px) { .context-title { font-size: 3rem; } }
+    
+    .context-title-gradient {
+      display: block;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding-bottom: 0.25rem;
+    }
+    
+    /* Right Panel */
+    .context-right {
+      background-color: hsl(var(--off-white));
+      padding: 2.5rem 0;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    @media (min-width: 768px) { .context-right { padding: 3rem 0; } }
+    @media (min-width: 1024px) { .context-right { padding: 4rem 0; } }
+    
+    .context-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.02) 0%, hsl(85, 55%, 45%, 0.02) 100%);
+    }
+    
+    .context-right-content {
+      position: relative;
+      z-index: 10;
+      padding: 0 1.5rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .context-right-content {
+        padding-right: 2.5rem;
+        padding-left: 2rem;
+      }
+    }
+    
+    .context-text-block {
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.7;
+    }
+    
+    @media (min-width: 768px) { .context-text-block { font-size: 1.125rem; } }
+    
+    /* Context Stats */
+    .context-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid hsl(var(--border));
+    }
+    
+    .context-stat {
+      text-align: center;
+    }
+    
+    .context-stat-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 auto 0.75rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px hsl(168, 65%, 32%, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .context-stat:hover .context-stat-icon {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px hsl(168, 65%, 32%, 0.3);
+    }
+    
+    .context-stat-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: white;
+    }
+    
+    .context-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.25rem;
+    }
+    
+    @media (min-width: 768px) { .context-stat-value { font-size: 1.875rem; } }
+    @media (min-width: 1024px) { .context-stat-value { font-size: 2.25rem; } }
+    
+    .context-stat-label {
+      font-size: 0.75rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.3;
+    }
+    
+    @media (min-width: 768px) { .context-stat-label { font-size: 0.875rem; } }
+    
+    /* ========================================
+       ABOUT GRUNER SECTION
+       ======================================== */
+    .about-section {
+      padding: 4rem 0 6rem;
+      background-color: hsl(var(--background));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @media (min-width: 768px) { .about-section { padding: 6rem 0; } }
+    
+    .about-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    
+    .about-bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.02) 0%, hsl(85, 55%, 45%, 0.02) 100%);
+    }
+    
+    .about-bg-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.02;
+    }
+    
+    .about-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .about-header .divider-accent {
+      margin: 0 auto 1.5rem;
+    }
+    
+    .about-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    @media (min-width: 768px) { .about-title { font-size: 2.25rem; } }
+    @media (min-width: 1024px) { .about-title { font-size: 3rem; } }
+    
+    .about-description {
+      color: hsl(var(--muted-foreground));
+      max-width: 48rem;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    @media (min-width: 768px) { .about-description { font-size: 1.125rem; } }
+    
+    /* About Grid */
+    .about-grid {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+    
+    .about-story {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .about-story-card {
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.05) 0%, hsl(85, 55%, 45%, 0.05) 100%);
+      border: 1px solid hsl(var(--border) / 0.5);
+    }
+    
+    .about-story-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    
+    .about-story-card p {
+      font-size: 0.9375rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .about-story-card p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .about-achievement {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      background-color: white;
+      border: 1px solid hsl(var(--border) / 0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .about-achievement-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .about-achievement-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: white;
+    }
+    
+    .about-achievement-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: hsl(var(--foreground));
+    }
+    
+    .about-achievement-desc {
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+    }
+    
+    /* Highlights Grid */
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .about-highlight-card {
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      background-color: white;
+      border: 1px solid hsl(var(--border) / 0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .about-highlight-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-color: hsl(var(--primary) / 0.3);
+    }
+    
+    .about-highlight-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 4px 12px hsl(168, 65%, 32%, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .about-highlight-card:hover .about-highlight-icon {
+      transform: scale(1.1);
+    }
+    
+    .about-highlight-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: white;
+    }
+    
+    .about-highlight-title {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+      transition: color 0.3s ease;
+    }
+    
+    .about-highlight-card:hover .about-highlight-title {
+      color: hsl(var(--primary));
+    }
+    
+    .about-highlight-desc {
+      font-size: 0.75rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+    }
+    
+    /* About Stats Bar */
+    .about-stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    }
+    
+    @media (min-width: 768px) {
+      .about-stats-bar { gap: 2.5rem; }
+    }
+    
+    .about-stats-item {
+      text-align: center;
+    }
+    
+    .about-stats-value {
+      font-size: 1.5rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+    
+    @media (min-width: 768px) { .about-stats-value { font-size: 1.875rem; } }
+    
+    .about-stats-label {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    @media (min-width: 768px) { .about-stats-label { font-size: 0.875rem; } }
+    
+    /* ========================================
+       SOLUTIONS SECTION
+       ======================================== */
+    .solutions-section {
+      padding: 4rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @media (min-width: 768px) { .solutions-section { padding: 6rem 0; } }
+    
+    .solutions-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .solutions-header .divider-accent {
+      margin: 0 auto 1.5rem;
+    }
+    
+    .solutions-subtitle {
+      display: block;
+      font-size: 1.125rem;
+      color: hsl(var(--background) / 0.6);
+      margin-bottom: 0.5rem;
+    }
+    
+    @media (min-width: 768px) { .solutions-subtitle { font-size: 1.25rem; } }
+    
+    .solutions-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: hsl(var(--background));
+      margin-bottom: 1rem;
+    }
+    
+    @media (min-width: 768px) { .solutions-title { font-size: 2.25rem; } }
+    @media (min-width: 1024px) { .solutions-title { font-size: 3rem; } }
+    
+    .solutions-description {
+      color: hsl(var(--background) / 0.6);
+      max-width: 36rem;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    @media (min-width: 768px) { .solutions-description { font-size: 1.125rem; } }
+    
+    /* Solutions Grid */
+    .solutions-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    
+    @media (min-width: 768px) {
+      .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (min-width: 1024px) {
+      .solutions-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    
+    .solution-card {
+      position: relative;
+      background-color: white;
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .solution-card:hover {
+      border-color: hsl(var(--primary) / 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px hsl(168, 65%, 32%, 0.2);
+    }
+    
+    .solution-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    
+    .solution-card-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px hsl(168, 65%, 32%, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .solution-card:hover .solution-card-icon {
+      transform: scale(1.1);
+    }
+    
+    .solution-card-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: white;
+    }
+    
+    .solution-card-stat {
+      text-align: right;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .solution-card:hover .solution-card-stat {
+      opacity: 1;
+    }
+    
+    .solution-card-stat-value {
+      font-size: 1.25rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    @media (min-width: 768px) { .solution-card-stat-value { font-size: 1.5rem; } }
+    
+    .solution-card-stat-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: hsl(var(--muted-foreground));
+    }
+    
+    .solution-card-title {
+      font-size: 1rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    @media (min-width: 768px) { .solution-card-title { font-size: 1.125rem; } }
+    
+    .solution-card:hover .solution-card-title {
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .solution-card-chevron {
+      width: 1rem;
+      height: 1rem;
+      color: hsl(var(--primary));
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: all 0.3s ease;
+    }
+    
+    .solution-card:hover .solution-card-chevron {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .solution-card-description {
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    
+    .solution-card-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid hsl(var(--border) / 0.5);
+    }
+    
+    .solution-card-feature {
+      font-size: 0.75rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.1) 0%, hsl(85, 55%, 45%, 0.1) 100%);
+      color: hsl(var(--primary));
+      font-weight: 500;
+    }
+    
+    /* Corner Accent */
+    .solution-card-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3rem;
+      height: 3rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .solution-card:hover .solution-card-corner {
+      opacity: 1;
+    }
+    
+    /* ========================================
+       PROCESS SECTION
+       ======================================== */
+    .process-section {
+      padding: 5rem 0 7rem;
+      background-color: hsl(var(--background));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @media (min-width: 768px) { .process-section { padding: 7rem 0; } }
+    
+    .process-bg-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.02;
+    }
+    
+    .process-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .process-header .divider-accent {
+      margin: 0 auto 1.5rem;
+    }
+    
+    .process-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    @media (min-width: 768px) { .process-title { font-size: 2.25rem; } }
+    @media (min-width: 1024px) { .process-title { font-size: 3rem; } }
+    
+    .process-description {
+      color: hsl(var(--muted-foreground));
+      max-width: 42rem;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    @media (min-width: 768px) { .process-description { font-size: 1.125rem; } }
+    
+    /* Process Desktop */
+    .process-desktop {
+      display: none;
+      max-width: 64rem;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    @media (min-width: 1024px) {
+      .process-desktop { display: block; }
+    }
+    
+    .process-line-container {
+      position: absolute;
+      top: 3rem;
+      left: calc(12.5% + 1.5rem);
+      right: calc(12.5% + 1.5rem);
+      height: 4px;
+      z-index: 0;
+    }
+    
+    .process-line-bg {
+      position: absolute;
+      inset: 0;
+      background-color: hsl(var(--border) / 0.5);
+      border-radius: 2px;
+    }
+    
+    .process-line-fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, hsl(168, 65%, 40%) 0%, hsl(85, 55%, 50%) 100%);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    
+    .process-line-fill.animate {
+      animation: expandWidthFull 1.5s ease-out 0.5s forwards;
+    }
+    
+    .process-dot {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 50%), hsl(85, 55%, 55%));
+      box-shadow: 0 0 20px hsl(168, 65%, 50%, 0.6), 0 0 40px hsl(85, 55%, 50%, 0.4);
+      opacity: 0;
+    }
+    
+    .process-dot.animate {
+      opacity: 1;
+      animation: moveProgress 4s linear 0.5s infinite;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .process-step-node {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    
+    .process-step-glow {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.15), hsl(85, 55%, 45%, 0.15));
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    .process-step:nth-child(2) .process-step-glow { animation-delay: 0.5s; }
+    .process-step:nth-child(3) .process-step-glow { animation-delay: 1s; }
+    .process-step:nth-child(4) .process-step-glow { animation-delay: 1.5s; }
+    
+    .process-step-circle {
+      position: relative;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px hsl(168, 65%, 32%, 0.25);
+      transition: transform 0.3s ease;
+    }
+    
+    .process-step:hover .process-step-circle {
+      transform: scale(1.05);
+    }
+    
+    .process-step-circle svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: white;
+      stroke-width: 1.5;
+    }
+    
+    .process-step-number {
+      position: absolute;
+      bottom: -0.25rem;
+      right: -0.25rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: hsl(var(--accent));
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    
+    .process-step-title {
+      font-size: 1.125rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0.75rem;
+      color: hsl(var(--primary));
+    }
+    
+    .process-step-description {
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+      text-align: center;
+      max-width: 200px;
+      line-height: 1.6;
+    }
+    
+    /* Process Mobile */
+    .process-mobile {
+      display: block;
+      max-width: 28rem;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 5rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .process-mobile { display: none; }
+    }
+    
+    .process-mobile-line {
+      position: absolute;
+      left: 2.125rem;
+      top: 1.5rem;
+      bottom: 1.5rem;
+      width: 4px;
+    }
+    
+    .process-mobile-line-bg {
+      position: absolute;
+      inset: 0;
+      background-color: hsl(var(--border) / 0.5);
+      border-radius: 2px;
+    }
+    
+    .process-mobile-line-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, hsl(168, 65%, 40%) 0%, hsl(85, 55%, 50%) 100%);
+      border-radius: 2px;
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    
+    .process-mobile-line-fill.animate {
+      animation: expandWidthFull 1.5s ease-out 0.5s forwards;
+    }
+    
+    .process-mobile-dot {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 50%), hsl(85, 55%, 55%));
+      box-shadow: 0 0 15px hsl(168, 65%, 50%, 0.6);
+      opacity: 0;
+      z-index: 10;
+    }
+    
+    .process-mobile-dot.animate {
+      opacity: 1;
+      animation: moveProgressVertical 4s linear 0.5s infinite;
+    }
+    
+    .process-mobile-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .process-mobile-step {
+      position: relative;
+    }
+    
+    .process-mobile-step-node {
+      position: absolute;
+      left: -2.875rem;
+      top: 0.25rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px hsl(168, 65%, 32%, 0.3);
+      z-index: 10;
+    }
+    
+    .process-mobile-step-node svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: white;
+      stroke-width: 1.5;
+    }
+    
+    .process-mobile-step-card {
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.05) 0%, hsl(85, 55%, 45%, 0.05) 100%);
+      border: 1px solid hsl(var(--primary) / 0.2);
+    }
+    
+    .process-mobile-step-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.25rem;
+    }
+    
+    .process-mobile-step-title {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .process-mobile-step-description {
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.6;
+    }
+    
+    /* ========================================
+       MEDIA MENTIONS SECTION
+       ======================================== */
+    .media-section {
+      padding: 3rem 0 4rem;
+      background-color: hsl(var(--background));
+      border-top: 1px solid hsl(var(--border) / 0.3);
+      border-bottom: 1px solid hsl(var(--border) / 0.3);
+    }
+    
+    .media-label {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .media-label span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: hsl(var(--muted-foreground));
+      font-weight: 500;
+    }
+    
+    .media-label svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+    
+    .media-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 768px) { .media-logos { gap: 3rem; } }
+    @media (min-width: 1024px) { .media-logos { gap: 4rem; } }
+    
+    .media-logo {
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .media-logo:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    .media-logo svg {
+      height: 1.5rem;
+      width: auto;
+    }
+    
+    @media (min-width: 768px) {
+      .media-logo svg { height: 2rem; }
+    }
+    
+    /* ========================================
+       PROJECTS MAP SECTION
+       ======================================== */
+    .projects-section {
+      padding: 3rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @media (min-width: 768px) { .projects-section { padding: 4rem 0 5rem; } }
+    @media (min-width: 1024px) { .projects-section { padding: 5rem 0; } }
+    
+    .projects-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    
+    .projects-header .divider-accent {
+      margin: 0 auto 1rem;
+    }
+    
+    .projects-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: hsl(var(--background));
+      margin-bottom: 0.75rem;
+    }
+    
+    @media (min-width: 768px) { .projects-title { font-size: 1.875rem; } }
+    
+    .projects-description {
+      color: hsl(var(--background) / 0.6);
+      max-width: 42rem;
+      margin: 0 auto;
+    }
+    
+    .projects-grid {
+      display: grid;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: 1fr 1.2fr;
+      }
+    }
+    
+    /* Project List */
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+    
+    .project-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem;
+      border-radius: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .project-item:hover,
+    .project-item.active {
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.2) 0%, hsl(85, 55%, 45%, 0.2) 100%);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .project-item-count {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 0.25rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .project-item:hover .project-item-count,
+    .project-item.active .project-item-count {
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    }
+    
+    .project-item-count span {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .project-item-name {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: white;
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .project-item-status {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    
+    .project-item-status.active {
+      background-color: hsl(var(--accent) / 0.3);
+      color: hsl(var(--accent));
+    }
+    
+    .project-item-status.soon {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Projects Summary Card */
+    .projects-summary {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .projects-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+    
+    .projects-summary-value {
+      font-size: 1.5rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+    
+    .projects-summary-value.gradient {
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .projects-summary-value.white {
+      color: white;
+    }
+    
+    .projects-summary-label {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Map Container */
+    .projects-map-container {
+      position: relative;
+      max-width: 28rem;
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 1024px) {
+      .projects-map-container { max-width: none; }
+    }
+    
+    .projects-map-glow {
+      position: absolute;
+      inset: 0;
+      filter: blur(48px);
+      opacity: 0.2;
+    }
+    
+    .projects-map-glow-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      border-radius: 50%;
+    }
+    
+    .projects-map-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .projects-map-image {
+      width: 100%;
+      height: auto;
+      opacity: 0.7;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.1));
+    }
+    
+    .projects-map-markers {
+      position: absolute;
+      inset: 0;
+    }
+    
+    /* Map Markers */
+    .map-marker-group {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+    
+    .map-marker {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .map-marker-group:hover .map-marker,
+    .map-marker-group.active .map-marker {
+      width: 1.5rem;
+      height: 1.5rem;
+      box-shadow: 0 0 12px hsl(168, 65%, 40%);
+    }
+    
+    .map-marker-count {
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: white;
+      transition: font-size 0.3s ease;
+    }
+    
+    .map-marker-group:hover .map-marker-count,
+    .map-marker-group.active .map-marker-count {
+      font-size: 0.625rem;
+    }
+    
+    .map-marker-glow {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.2) 0%, hsl(85, 55%, 45%, 0.2) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .map-marker-group:hover .map-marker-glow,
+    .map-marker-group.active .map-marker-glow {
+      opacity: 1;
+      animation: pulseRing 1.5s ease-out infinite;
+    }
+    
+    /* Map Tooltip */
+    .map-tooltip {
+      position: absolute;
+      z-index: 20;
+      transform: translate(-50%, -100%);
+      padding: 0.5rem 0.75rem;
+      background-color: hsl(var(--foreground));
+      color: hsl(var(--background));
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      margin-top: -0.75rem;
+    }
+    
+    .map-tooltip.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .map-tooltip-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.125rem;
+    }
+    
+    .map-tooltip-icon {
+      width: 0.75rem;
+      height: 0.75rem;
+      color: hsl(var(--accent));
+    }
+    
+    .map-tooltip-title {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    
+    .map-tooltip-info {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      color: hsl(var(--background) / 0.7);
+    }
+    
+    .map-tooltip-info svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+    
+    /* Map Legend */
+    .projects-map-legend {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .projects-map-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .projects-map-legend-dot {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    }
+    
+    .projects-map-legend-text {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .projects-map-legend-divider {
+      width: 1px;
+      height: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .projects-map-legend-count {
+      font-size: 0.75rem;
+    }
+    
+    .projects-map-legend-count .highlight {
+      font-weight: 600;
+      color: hsl(var(--primary));
+    }
+    
+    .projects-map-legend-count span:last-child {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* ========================================
+       TEAM SECTION
+       ======================================== */
+    .team-section {
+      padding: 3rem 0 5rem;
+      background-color: hsl(var(--off-white));
+    }
+    
+    @media (min-width: 768px) { .team-section { padding: 4rem 0 5rem; } }
+    @media (min-width: 1024px) { .team-section { padding: 5rem 0; } }
+    
+    .team-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    
+    .team-header .divider-accent {
+      margin: 0 auto 1rem;
+    }
+    
+    .team-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    
+    @media (min-width: 768px) { .team-title { font-size: 1.875rem; } }
+    
+    .team-description {
+      color: hsl(var(--muted-foreground));
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+    
+    .team-grid {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 768px) {
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    
+    .team-card {
+      text-align: center;
+    }
+    
+    .team-card-image-container {
+      position: relative;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      aspect-ratio: 1;
+    }
+    
+    .team-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: all 0.5s ease;
+    }
+    
+    .team-card:hover .team-card-image {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+    
+    .team-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .team-card:hover .team-card-overlay {
+      opacity: 1;
+    }
+    
+    .team-card-name {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    
+    .team-card-role {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: hsl(var(--primary));
+      margin-bottom: 0.5rem;
+    }
+    
+    .team-card-description {
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+    }
+    
+    /* ========================================
+       AWARDS SECTION
+       ======================================== */
+    .awards-section {
+      padding: 3rem 0 5rem;
+      background: linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--off-white)) 100%);
+      border-top: 1px solid hsl(var(--border));
+    }
+    
+    @media (min-width: 768px) { .awards-section { padding: 4rem 0 5rem; } }
+    @media (min-width: 1024px) { .awards-section { padding: 5rem 0; } }
+    
+    .awards-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .awards-header .divider-accent {
+      width: 3.75rem;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .awards-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    @media (min-width: 768px) { .awards-title { font-size: 1.5rem; } }
+    
+    .awards-description {
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+    }
+    
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .awards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    
+    @media (min-width: 1024px) {
+      .awards-grid { grid-template-columns: repeat(6, 1fr); }
+    }
+    
+    .award-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      background-color: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      transition: all 0.3s ease;
+    }
+    
+    .award-card:hover {
+      border-color: hsl(var(--primary) / 0.2);
+      box-shadow: 0 8px 24px hsl(var(--primary) / 0.05);
+    }
+    
+    .award-card-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px hsl(168, 65%, 32%, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .award-card:hover .award-card-icon {
+      transform: scale(1.1);
+    }
+    
+    .award-card-icon svg {
+      width: 1.75rem;
+      height: 1.75rem;
+      color: white;
+      stroke-width: 1.5;
+    }
+    
+    .award-card-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      transition: color 0.3s ease;
+    }
+    
+    .award-card:hover .award-card-title {
+      color: hsl(var(--primary));
+    }
+    
+    .award-card-description {
+      font-size: 0.75rem;
+      color: hsl(var(--muted-foreground));
+    }
+    
+    /* ========================================
+       CONTACT FORM SECTION
+       ======================================== */
+    .contact-section {
+      padding: 5rem 0 7rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @media (min-width: 768px) { .contact-section { padding: 7rem 0 8rem; } }
+    
+    .contact-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    
+    .contact-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, hsl(var(--background) / 0.05) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+    
+    .contact-bg-orb {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, hsl(168, 65%, 32%, 0.15) 0%, transparent 70%);
+      top: -20%;
+      right: -10%;
+      animation: scaleBreath 8s ease-in-out infinite;
+    }
+    
+    .contact-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .contact-header .divider-accent {
+      margin: 0 auto 1.5rem;
+    }
+    
+    .contact-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: hsl(var(--background));
+      margin-bottom: 1rem;
+    }
+    
+    @media (min-width: 768px) { .contact-title { font-size: 2.25rem; } }
+    
+    .contact-description {
+      color: hsl(var(--background) / 0.6);
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+    
+    .contact-grid {
+      display: grid;
+      gap: 3rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+    }
+    
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: hsl(var(--background) / 0.8);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      background-color: hsl(var(--background) / 0.1);
+      border: 1px solid hsl(var(--background) / 0.2);
+      color: hsl(var(--background));
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+    
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: hsl(var(--background) / 0.4);
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: hsl(var(--primary));
+    }
+    
+    .form-input.error,
+    .form-textarea.error {
+      border-color: #f87171;
+    }
+    
+    .form-textarea {
+      resize: none;
+      min-height: 120px;
+    }
+    
+    .form-error {
+      font-size: 0.875rem;
+      color: #f87171;
+      margin-top: 0.25rem;
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      color: white;
+      font-weight: 500;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px hsl(168, 65%, 32%, 0.2);
+    }
+    
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    
+    .form-submit svg {
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    /* Success Message */
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 1rem;
+      background-color: hsl(var(--background) / 0.1);
+      backdrop-filter: blur(4px);
+      border: 1px solid hsl(var(--background) / 0.1);
+      text-align: center;
+    }
+    
+    .form-success.visible {
+      display: flex;
+    }
+    
+    .form-success-icon {
+      width: 4rem;
+      height: 4rem;
+      margin-bottom: 1rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .form-success-icon svg {
+      width: 2rem;
+      height: 2rem;
+      color: white;
+    }
+    
+    .form-success-title {
+      font-size: 1.25rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: hsl(var(--background));
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-success-message {
+      color: hsl(var(--background) / 0.6);
+    }
+    
+    /* Contact Info */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .contact-info-card {
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.1) 0%, hsl(85, 55%, 45%, 0.1) 100%);
+      backdrop-filter: blur(4px);
+      border: 1px solid hsl(var(--primary) / 0.2);
+    }
+    
+    .contact-info-card h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: hsl(var(--background));
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .contact-info-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px hsl(168, 65%, 32%, 0.2);
+    }
+    
+    .contact-info-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: white;
+    }
+    
+    .contact-info-label {
+      font-size: 0.75rem;
+      color: hsl(var(--background) / 0.5);
+    }
+    
+    .contact-info-value {
+      font-weight: 500;
+      color: hsl(var(--background));
+    }
+    
+    .contact-info-description {
+      font-size: 0.875rem;
+      color: hsl(var(--background) / 0.6);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: hsl(var(--primary));
+      transition: color 0.2s ease;
+    }
+    
+    .contact-info-link:hover {
+      color: hsl(var(--accent));
+    }
+    
+    .contact-info-link svg {
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      background-color: hsl(var(--foreground));
+      color: hsl(var(--background));
+    }
+    
+    .footer-divider {
+      border-top: 1px solid hsl(var(--background) / 0.1);
+    }
+    
+    .footer-main {
+      padding: 3rem 0 4rem;
+    }
+    
+    @media (min-width: 768px) { .footer-main { padding: 4rem 0; } }
+    
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+    }
+    
+    @media (min-width: 1024px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    }
+    
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+    
+    @media (min-width: 1024px) {
+      .footer-brand { grid-column: 1 / 3; }
+    }
+    
+    .footer-logo {
+      display: inline-block;
+      margin-bottom: 1rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .footer-logo:hover {
+      transform: scale(1.02);
+    }
+    
+    .footer-logo img {
+      height: 2.5rem;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    
+    .footer-description {
+      font-size: 0.875rem;
+      color: hsl(var(--background) / 0.6);
+      line-height: 1.7;
+      max-width: 24rem;
+    }
+    
+    .footer-column h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: hsl(var(--background));
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .footer-link {
+      font-size: 0.875rem;
+      color: hsl(var(--background) / 0.6);
+      transition: color 0.2s ease;
+    }
+    
+    .footer-link:hover {
+      color: hsl(var(--background));
+    }
+    
+    /* Footer Bottom */
+    .footer-bottom {
+      padding: 1.5rem 0;
+      border-top: 1px solid hsl(var(--background) / 0.1);
+    }
+    
+    .footer-bottom-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    @media (min-width: 768px) {
+      .footer-bottom-content {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    
+    .footer-copyright {
+      font-size: 0.75rem;
+      color: hsl(var(--background) / 0.4);
+    }
+    
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .footer-social-link {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: hsl(var(--background) / 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: hsl(var(--background) / 0.6);
+      transition: all 0.2s ease;
+    }
+    
+    .footer-social-link:hover {
+      background-color: hsl(var(--primary));
+      color: white;
+    }
+    
+    .footer-social-link svg {
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .footer-legal-link {
+      font-size: 0.75rem;
+      color: hsl(var(--background) / 0.4);
+      transition: color 0.2s ease;
+    }
+    
+    .footer-legal-link:hover {
+      color: hsl(var(--background) / 0.6);
+    }
+    
+    /* ========================================
+       UTILITY CLASSES
+       ======================================== */
+    .relative { position: relative; }
+    .z-10 { z-index: 10; }
+    .hidden { display: none; }
+    .block { display: block; }
+    .flex { display: flex; }
+    .grid { display: grid; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .text-center { text-align: center; }
+    .w-full { width: 100%; }
+    .h-full { height: 100%; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+  </style>
+</head>
+<body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="page-loader-content">
+      <img src="https://gruner-roots-build.lovable.app/lovable-uploads/73e50bc0-70dc-4dc6-a30d-12197fd8f27f.png" alt="Gruner Renewable Energy" class="page-loader-logo">
+      <div class="page-loader-bar">
+        <div class="page-loader-bar-fill"></div>
+      </div>
+      <p class="page-loader-tagline">Energies for Tomorrow</p>
+    </div>
+    <div class="page-loader-particles">
+      <div class="page-loader-particle"></div>
+      <div class="page-loader-particle"></div>
+      <div class="page-loader-particle"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-bg"></div>
+    <div class="header-inner">
+      <div class="container-wide header-container">
+        <a href="#" class="header-logo">
+          <img src="https://gruner-roots-build.lovable.app/lovable-uploads/73e50bc0-70dc-4dc6-a30d-12197fd8f27f.png" alt="Gruner Renewable Energy">
+        </a>
+        
+        <nav class="header-nav">
+          <div class="nav-dropdown">
+            <a href="#about" class="nav-link">
+              About
+              <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+              <span class="nav-link-indicator"></span>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="#about" class="nav-dropdown-item">Our Story</a>
+              <a href="#team" class="nav-dropdown-item">Leadership</a>
+              <a href="#awards" class="nav-dropdown-item">Awards & Recognition</a>
+            </div>
+          </div>
+          
+          <div class="nav-dropdown">
+            <a href="#solutions" class="nav-link">
+              Solutions
+              <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+              <span class="nav-link-indicator"></span>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="#solutions" class="nav-dropdown-item">Bio-CNG Plants</a>
+              <a href="#solutions" class="nav-dropdown-item">Technology</a>
+              <a href="#solutions" class="nav-dropdown-item">Operations & Maintenance</a>
+            </div>
+          </div>
+          
+          <div class="nav-dropdown">
+            <a href="#projects" class="nav-link">
+              Projects
+              <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+              <span class="nav-link-indicator"></span>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="#projects" class="nav-dropdown-item">Ongoing Projects</a>
+              <a href="#projects" class="nav-dropdown-item">Completed Projects</a>
+              <a href="#projects" class="nav-dropdown-item">Project Map</a>
+            </div>
+          </div>
+          
+          <a href="#about" class="nav-link">Investors<span class="nav-link-indicator"></span></a>
+          <a href="#contact" class="nav-link">Careers<span class="nav-link-indicator"></span></a>
+          <a href="#contact" class="nav-link">Contact<span class="nav-link-indicator"></span></a>
+          
+          <a href="#contact" class="nav-cta">Partner With Us</a>
+        </nav>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="close-icon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-menu-link">About</a>
+    <a href="#solutions" class="mobile-menu-link">Solutions</a>
+    <a href="#projects" class="mobile-menu-link">Projects</a>
+    <a href="#about" class="mobile-menu-link">Investors</a>
+    <a href="#contact" class="mobile-menu-link">Careers</a>
+    <a href="#contact" class="mobile-menu-link">Contact</a>
+    <a href="#contact" class="mobile-menu-cta">Partner With Us</a>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-video-container">
+        <video autoplay loop muted playsinline class="hero-video">
+          <source src="https://gruner-roots-build.lovable.app/assets/hero-video-DjLk3J_P.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-overlay"></div>
+      
+      <!-- Floating Particles -->
+      <div class="hero-particles" id="heroParticles"></div>
+      
+      <div class="hero-grain"></div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">India's Leading Bio-CNG Infrastructure Company</h1>
+        <p class="hero-subtitle">Gruner Renewable Energy designs, builds, and operates Bio-CNG plants that convert agricultural and organic waste into clean, reliable fuel.</p>
+        
+        <div class="hero-metrics">
+          <div class="hero-metric">
+            <div class="hero-metric-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23,6 13.5,15.5 8.5,10.5 1,18"></polyline>
+                <polyline points="17,6 23,6 23,12"></polyline>
+              </svg>
+            </div>
+            <div class="hero-metric-content">
+              <div class="hero-metric-value">
+                <span class="hero-metric-number" data-value="1500">0</span>
+                <span class="hero-metric-suffix">Cr+</span>
+              </div>
+              <span class="hero-metric-label">Secured Projects</span>
+            </div>
+          </div>
+          
+          <div class="hero-metric">
+            <div class="hero-metric-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                <path d="M17 18h1"></path>
+                <path d="M12 18h1"></path>
+                <path d="M7 18h1"></path>
+              </svg>
+            </div>
+            <div class="hero-metric-content">
+              <div class="hero-metric-value">
+                <span class="hero-metric-number" data-value="60">0</span>
+                <span class="hero-metric-suffix">M</span>
+              </div>
+              <span class="hero-metric-label">USD Funding</span>
+            </div>
+          </div>
+          
+          <div class="hero-metric">
+            <div class="hero-metric-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <div class="hero-metric-content">
+              <div class="hero-metric-value">
+                <span class="hero-metric-number" data-value="88">0</span>
+                <span class="hero-metric-suffix">K+</span>
+              </div>
+              <span class="hero-metric-label">TPY Capacity</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-ctas">
+          <a href="#projects" class="hero-cta-primary">Explore Our Projects</a>
+          <a href="#contact" class="hero-cta-secondary">Partner With Us</a>
+        </div>
+      </div>
+      
+      <div class="hero-scroll-indicator">
+        <span class="hero-scroll-text">Scroll</span>
+        <svg class="hero-scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"></path>
+        </svg>
+      </div>
+      
+      <div class="hero-bottom-fade"></div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-by scroll-animate">
+      <div class="container-wide">
+        <div class="trusted-by-label">
+          <span>Trusted by Industry Leaders</span>
+        </div>
+        
+        <div class="trusted-by-logos">
+          <div class="partner-logo" title="Indian Oil">
+            <svg viewBox="0 0 200 60">
+              <text x="10" y="40" font-family="Arial Black, sans-serif" font-size="32" font-weight="900">
+                <tspan fill="#E21836">Indian</tspan>
+                <tspan fill="#F7941D">Oil</tspan>
+              </text>
+            </svg>
+          </div>
+          <div class="partner-logo" title="Bharat Petroleum">
+            <svg viewBox="0 0 120 50">
+              <text x="5" y="35" font-family="Arial Black, sans-serif" font-size="24" font-weight="900" fill="#1B4F8E">BPCL</text>
+            </svg>
+          </div>
+          <div class="partner-logo" title="Hindustan Petroleum">
+            <svg viewBox="0 0 120 50">
+              <text x="5" y="35" font-family="Arial Black, sans-serif" font-size="24" font-weight="900" fill="#00529B">HPCL</text>
+            </svg>
+          </div>
+          <div class="partner-logo" title="GAIL India">
+            <svg viewBox="0 0 120 50">
+              <text x="5" y="35" font-family="Arial Black, sans-serif" font-size="24" font-weight="900" fill="#005DAA">GAIL</text>
+            </svg>
+          </div>
+          <div class="partner-logo" title="Adani Group">
+            <svg viewBox="0 0 140 50">
+              <text x="5" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#002B5C" letter-spacing="2">ADANI</text>
+            </svg>
+          </div>
+          <div class="partner-logo" title="Indraprastha Gas">
+            <svg viewBox="0 0 100 50">
+              <text x="5" y="35" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#E31937">IGL</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context Section -->
+    <section class="context-section" id="context">
+      <div class="context-grid">
+        <div class="context-left">
+          <div class="context-left-bg">
+            <div class="context-left-orb context-left-orb-1"></div>
+            <div class="context-left-orb context-left-orb-2"></div>
+            <svg class="context-left-grid" width="100%" height="100%">
+              <defs>
+                <pattern id="context-grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <circle cx="20" cy="20" r="1" fill="white"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#context-grid-pattern)"/>
+            </svg>
+          </div>
+          <div class="context-left-content scroll-animate-left">
+            <div class="context-divider" id="contextDivider"></div>
+            <h2 class="context-title">
+              <span class="context-subtitle">India's Waste Problem</span>
+              Is Also an
+              <span class="context-title-gradient">Energy Opportunity</span>
+            </h2>
+          </div>
+        </div>
+        
+        <div class="context-right">
+          <div class="context-right-overlay"></div>
+          <div class="context-right-content scroll-animate-right">
+            <p class="context-text-block">India generates over 500 million tonnes of agricultural residue annually. Much of this biomass is burned in fields, contributing to severe air pollution and health hazards.</p>
+            <p class="context-text-block">The nation depends on costly fossil fuel imports, exposing the economy to volatile global energy prices and supply disruptions.</p>
+            <p class="context-text-block">Bio-CNG presents a strategic opportunity — converting agricultural waste into clean, domestically-produced transportation fuel while creating rural employment.</p>
+            
+            <div class="context-stats">
+              <div class="context-stat scroll-animate delay-300">
+                <div class="context-stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23,6 13.5,15.5 8.5,10.5 1,18"></polyline>
+                    <polyline points="17,6 23,6 23,12"></polyline>
+                  </svg>
+                </div>
+                <div class="context-stat-value" data-value="500">0</div>
+                <div class="context-stat-label">Tonnes agri-waste yearly</div>
+              </div>
+              <div class="context-stat scroll-animate delay-400">
+                <div class="context-stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 22h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v15c0 1.1.9 2 2 2z"></path>
+                    <path d="M17 2h2c1.1 0 2 .9 2 2v5"></path>
+                    <path d="M21 15v5c0 1.1-.9 2-2 2h-2"></path>
+                    <path d="M5 9h8"></path>
+                    <path d="M5 13h8"></path>
+                    <path d="M5 17h4"></path>
+                  </svg>
+                </div>
+                <div class="context-stat-value" data-value="85">0</div>
+                <div class="context-stat-label">Import dependency on fuel</div>
+              </div>
+              <div class="context-stat scroll-animate delay-500">
+                <div class="context-stat-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                  </svg>
+                </div>
+                <div class="context-stat-value">2070</div>
+                <div class="context-stat-label">Net-zero target year</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Gruner Section -->
+    <section class="about-section" id="about">
+      <div class="about-bg">
+        <div class="about-bg-gradient"></div>
+        <svg class="about-bg-grid" width="100%" height="100%">
+          <defs>
+            <pattern id="about-grid-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="1" fill="currentColor"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#about-grid-pattern)"/>
+        </svg>
+      </div>
+      
+      <div class="container-wide relative z-10">
+        <div class="about-header scroll-animate">
+          <div class="divider-accent"></div>
+          <h2 class="about-title">About <span class="text-gradient">Gruner Renewable</span></h2>
+          <p class="about-description">
+            Gruner Renewable Energy is a Noida-based clean energy company pioneering India's Bio-CNG revolution. 
+            We design, build, and operate compressed biogas plants that transform agricultural residue into 
+            sustainable transportation fuel, reducing fossil fuel dependency while empowering rural communities.
+          </p>
+        </div>
+        
+        <div class="about-grid">
+          <div class="about-story scroll-animate-left">
+            <div class="about-story-card">
+              <h3>Pioneering Clean Energy Since 2023</h3>
+              <p>Founded with a vision to address India's dual challenge of agricultural waste management and 
+              energy security, Gruner has rapidly grown to become a leading Bio-CNG infrastructure company. 
+              We've secured over ₹1,500 Crore in project orders and $60M in funding to expand our CBG footprint.</p>
+              <p>Our proprietary technology processes diverse feedstocks including Napier Grass, agricultural 
+              residue, and organic waste to produce high-quality compressed biogas that meets automotive fuel standards.</p>
+            </div>
+            
+            <div class="about-achievement">
+              <div class="about-achievement-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="about-achievement-title">Asia's Largest CBG Plant</div>
+                <div class="about-achievement-desc">Rs 220 Crore investment in Gujarat</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-highlights scroll-animate-right">
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
+              </div>
+              <h4 class="about-highlight-title">Our Mission</h4>
+              <p class="about-highlight-desc">To accelerate India's transition to clean energy by converting agricultural waste into sustainable Bio-CNG fuel.</p>
+            </div>
+            
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                </svg>
+              </div>
+              <h4 class="about-highlight-title">Industry Leader</h4>
+              <p class="about-highlight-desc">Building Asia's largest CBG plant in Gujarat with 1 million TPY processing capacity.</p>
+            </div>
+            
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
+              </div>
+              <h4 class="about-highlight-title">Pan-India Presence</h4>
+              <p class="about-highlight-desc">Operating across 8+ states with partnerships from major Oil Marketing Companies.</p>
+            </div>
+            
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                </svg>
+              </div>
+              <h4 class="about-highlight-title">Sustainable Impact</h4>
+              <p class="about-highlight-desc">Reducing carbon emissions while creating rural employment and farmer income opportunities.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-stats-bar scroll-animate">
+          <div class="about-stats-item">
+            <div class="about-stats-value">₹1,500+ Cr</div>
+            <div class="about-stats-label">Project Orders</div>
+          </div>
+          <div class="about-stats-item">
+            <div class="about-stats-value">$60M</div>
+            <div class="about-stats-label">Funding Secured</div>
+          </div>
+          <div class="about-stats-item">
+            <div class="about-stats-value">50+</div>
+            <div class="about-stats-label">Plants Planned</div>
+          </div>
+          <div class="about-stats-item">
+            <div class="about-stats-value">8+</div>
+            <div class="about-stats-label">States Covered</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <div class="bg-foreground">
+      <section class="solutions-section" id="solutions">
+        <div class="container-wide relative z-10">
+          <div class="solutions-header scroll-animate">
+            <div class="divider-accent"></div>
+            <span class="solutions-subtitle">Our Expertise</span>
+            <h2 class="solutions-title">Why Partners Choose <span class="text-gradient">Gruner Renewable</span></h2>
+            <p class="solutions-description">Complete capabilities across the bioenergy value chain, from development to operations.</p>
+          </div>
+          
+          <div class="solutions-grid">
+            <div class="solution-card scroll-animate delay-100">
+              <div class="solution-card-header">
+                <div class="solution-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                    <path d="M17 18h1"></path>
+                    <path d="M12 18h1"></path>
+                    <path d="M7 18h1"></path>
+                  </svg>
+                </div>
+                <div class="solution-card-stat">
+                  <div class="solution-card-stat-value">50+</div>
+                  <div class="solution-card-stat-label">Plants Planned</div>
+                </div>
+              </div>
+              <h3 class="solution-card-title">
+                EPC Services
+                <svg class="solution-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </h3>
+              <p class="solution-card-description">End-to-end turnkey Bio-CNG plant development from design to commissioning with German technology partnership.</p>
+              <div class="solution-card-features">
+                <span class="solution-card-feature">Feasibility studies</span>
+                <span class="solution-card-feature">Engineering design</span>
+                <span class="solution-card-feature">Construction</span>
+                <span class="solution-card-feature">Commissioning</span>
+              </div>
+            </div>
+            
+            <div class="solution-card scroll-animate delay-200">
+              <div class="solution-card-header">
+                <div class="solution-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                  </svg>
+                </div>
+                <div class="solution-card-stat">
+                  <div class="solution-card-stat-value">99.5%</div>
+                  <div class="solution-card-stat-label">Uptime Target</div>
+                </div>
+              </div>
+              <h3 class="solution-card-title">
+                O&M Services
+                <svg class="solution-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </h3>
+              <p class="solution-card-description">Comprehensive operations and maintenance ensuring optimal plant performance and longevity.</p>
+              <div class="solution-card-features">
+                <span class="solution-card-feature">24/7 monitoring</span>
+                <span class="solution-card-feature">Preventive maintenance</span>
+                <span class="solution-card-feature">Performance optimization</span>
+                <span class="solution-card-feature">Compliance</span>
+              </div>
+            </div>
+            
+            <div class="solution-card scroll-animate delay-300">
+              <div class="solution-card-header">
+                <div class="solution-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="solution-card-stat">
+                  <div class="solution-card-stat-value">German</div>
+                  <div class="solution-card-stat-label">Tech Partner</div>
+                </div>
+              </div>
+              <h3 class="solution-card-title">
+                Technology Partnership
+                <svg class="solution-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </h3>
+              <p class="solution-card-description">Collaboration with BioEnergy Germany for cutting-edge biogas technology and engineering design.</p>
+              <div class="solution-card-features">
+                <span class="solution-card-feature">German technology</span>
+                <span class="solution-card-feature">Process design</span>
+                <span class="solution-card-feature">Quality systems</span>
+                <span class="solution-card-feature">Training</span>
+              </div>
+            </div>
+            
+            <div class="solution-card scroll-animate delay-400">
+              <div class="solution-card-header">
+                <div class="solution-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 22h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v15c0 1.1.9 2 2 2z"></path>
+                    <path d="M17 2h2c1.1 0 2 .9 2 2v5"></path>
+                    <path d="M21 15v5c0 1.1-.9 2-2 2h-2"></path>
+                    <path d="M5 9h8"></path>
+                    <path d="M5 13h8"></path>
+                    <path d="M5 17h4"></path>
+                  </svg>
+                </div>
+                <div class="solution-card-stat">
+                  <div class="solution-card-stat-value">88K+</div>
+                  <div class="solution-card-stat-label">TPY Capacity</div>
+                </div>
+              </div>
+              <h3 class="solution-card-title">
+                Fuel Offtake
+                <svg class="solution-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </h3>
+              <p class="solution-card-description">Structured arrangements with major oil marketing companies for Bio-CNG distribution.</p>
+              <div class="solution-card-features">
+                <span class="solution-card-feature">OMC partnerships</span>
+                <span class="solution-card-feature">Gas networks</span>
+                <span class="solution-card-feature">Fleet supply</span>
+                <span class="solution-card-feature">Quality assurance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <svg class="process-bg-grid" width="100%" height="100%">
+        <defs>
+          <pattern id="process-grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="20" cy="20" r="1" fill="currentColor"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#process-grid-pattern)"/>
+      </svg>
+      
+      <div class="container-wide relative z-10">
+        <div class="process-header scroll-animate">
+          <div class="divider-accent"></div>
+          <h2 class="process-title">How It Works</h2>
+          <p class="process-description">From agricultural waste to clean energy — a proven transformation process</p>
+        </div>
+        
+        <!-- Desktop Process -->
+        <div class="process-desktop">
+          <div class="process-line-container">
+            <div class="process-line-bg"></div>
+            <div class="process-line-fill" id="processLineFill"></div>
+            <div class="process-dot" id="processDot"></div>
+          </div>
+          
+          <div class="process-steps">
+            <div class="process-step scroll-animate delay-100">
+              <div class="process-step-node">
+                <div class="process-step-glow"></div>
+                <div class="process-step-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M2 22 16 8"></path>
+                    <path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"></path>
+                    <path d="M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"></path>
+                    <path d="M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"></path>
+                    <path d="M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z"></path>
+                    <path d="M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"></path>
+                    <path d="M15.47 13.47 17 15l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"></path>
+                    <path d="M19.47 9.47 21 11l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L13 11l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z"></path>
+                  </svg>
+                </div>
+                <div class="process-step-number">01</div>
+              </div>
+              <h3 class="process-step-title">Feedstock Collection</h3>
+              <p class="process-step-description">Agricultural residues, cattle dung, and Napier Grass collected through established supply chains.</p>
+            </div>
+            
+            <div class="process-step scroll-animate delay-200">
+              <div class="process-step-node">
+                <div class="process-step-glow"></div>
+                <div class="process-step-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9 3L5 6.99h3V14a2 2 0 0 0 4 0V6.99h3L9 3z"></path>
+                    <path d="M15 21l4-3.99h-3V10a2 2 0 0 0-4 0v7.01H9L15 21z"></path>
+                  </svg>
+                </div>
+                <div class="process-step-number">02</div>
+              </div>
+              <h3 class="process-step-title">Anaerobic Digestion</h3>
+              <p class="process-step-description">Organic matter broken down in controlled digesters to produce raw biogas.</p>
+            </div>
+            
+            <div class="process-step scroll-animate delay-300">
+              <div class="process-step-node">
+                <div class="process-step-glow"></div>
+                <div class="process-step-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+                  </svg>
+                </div>
+                <div class="process-step-number">03</div>
+              </div>
+              <h3 class="process-step-title">Purification & Compression</h3>
+              <p class="process-step-description">Biogas purified to 97%+ methane and compressed to produce high-quality Bio-CNG.</p>
+            </div>
+            
+            <div class="process-step scroll-animate delay-400">
+              <div class="process-step-node">
+                <div class="process-step-glow"></div>
+                <div class="process-step-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                  </svg>
+                </div>
+                <div class="process-step-number">04</div>
+              </div>
+              <h3 class="process-step-title">Distribution</h3>
+              <p class="process-step-description">Clean fuel distributed through OMC networks to replace fossil alternatives.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile Process -->
+        <div class="process-mobile">
+          <div class="process-mobile-line">
+            <div class="process-mobile-line-bg"></div>
+            <div class="process-mobile-line-fill" id="processMobileLineFill"></div>
+            <div class="process-mobile-dot" id="processMobileDot"></div>
+          </div>
+          
+          <div class="process-mobile-steps">
+            <div class="process-mobile-step scroll-animate">
+              <div class="process-mobile-step-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M2 22 16 8"></path>
+                  <path d="M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z"></path>
+                </svg>
+              </div>
+              <div class="process-mobile-step-card">
+                <div class="process-mobile-step-label">Step 01</div>
+                <h3 class="process-mobile-step-title">Feedstock Collection</h3>
+                <p class="process-mobile-step-description">Agricultural residues, cattle dung, and Napier Grass collected through established supply chains.</p>
+              </div>
+            </div>
+            
+            <div class="process-mobile-step scroll-animate delay-100">
+              <div class="process-mobile-step-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M9 3L5 6.99h3V14a2 2 0 0 0 4 0V6.99h3L9 3z"></path>
+                </svg>
+              </div>
+              <div class="process-mobile-step-card">
+                <div class="process-mobile-step-label">Step 02</div>
+                <h3 class="process-mobile-step-title">Anaerobic Digestion</h3>
+                <p class="process-mobile-step-description">Organic matter broken down in controlled digesters to produce raw biogas.</p>
+              </div>
+            </div>
+            
+            <div class="process-mobile-step scroll-animate delay-200">
+              <div class="process-mobile-step-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+              </div>
+              <div class="process-mobile-step-card">
+                <div class="process-mobile-step-label">Step 03</div>
+                <h3 class="process-mobile-step-title">Purification & Compression</h3>
+                <p class="process-mobile-step-description">Biogas purified to 97%+ methane and compressed to produce high-quality Bio-CNG.</p>
+              </div>
+            </div>
+            
+            <div class="process-mobile-step scroll-animate delay-300">
+              <div class="process-mobile-step-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                </svg>
+              </div>
+              <div class="process-mobile-step-card">
+                <div class="process-mobile-step-label">Step 04</div>
+                <h3 class="process-mobile-step-title">Distribution</h3>
+                <p class="process-mobile-step-description">Clean fuel distributed through OMC networks to replace fossil alternatives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Media Mentions Section -->
+    <section class="media-section scroll-animate">
+      <div class="container-wide">
+        <div class="media-label">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15,3 21,3 21,9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            As Featured In
+          </span>
+        </div>
+        
+        <div class="media-logos">
+          <div class="media-logo" title="Economic Times">
+            <svg viewBox="0 0 180 40">
+              <text x="5" y="28" font-family="Georgia, serif" font-size="20" font-weight="700" font-style="italic">
+                <tspan fill="#E42313">The</tspan>
+                <tspan fill="#1A1A1A"> Economic Times</tspan>
+              </text>
+            </svg>
+          </div>
+          <div class="media-logo" title="The Hindu">
+            <svg viewBox="0 0 140 40">
+              <text x="5" y="28" font-family="Times New Roman, serif" font-size="22" font-weight="700" fill="#1A1A1A">The Hindu</text>
+            </svg>
+          </div>
+          <div class="media-logo" title="Business Standard">
+            <svg viewBox="0 0 200 40">
+              <text x="5" y="26" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#C00000">Business Standard</text>
+            </svg>
+          </div>
+          <div class="media-logo" title="Financial Express">
+            <svg viewBox="0 0 200 40">
+              <text x="5" y="26" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#E31837">Financial Express</text>
+            </svg>
+          </div>
+          <div class="media-logo" title="Mint">
+            <svg viewBox="0 0 100 40">
+              <text x="5" y="30" font-family="Arial, sans-serif" font-size="28" font-weight="300" fill="#2AA87B">mint</text>
+            </svg>
+          </div>
+          <div class="media-logo" title="Energetica India">
+            <svg viewBox="0 0 160 40">
+              <text x="5" y="26" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#0066CC">Energetica India</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Map Section -->
+    <div class="bg-foreground">
+      <section class="projects-section" id="projects">
+        <div class="container-wide relative z-10">
+          <div class="projects-header scroll-animate">
+            <div class="divider-accent"></div>
+            <h2 class="projects-title">Upcoming Bio-CNG Plants Across India</h2>
+            <p class="projects-description">Strategic expansion targeting high-feedstock regions with strong demand for clean transportation fuel</p>
+          </div>
+          
+          <div class="projects-grid">
+            <div class="scroll-animate-left">
+              <div class="projects-list" id="projectsList">
+                <!-- Projects will be populated by JavaScript -->
+              </div>
+              
+              <div class="projects-summary">
+                <div class="projects-summary-grid">
+                  <div>
+                    <p class="projects-summary-value gradient" id="totalPlants">37</p>
+                    <p class="projects-summary-label">Total Plants</p>
+                  </div>
+                  <div>
+                    <p class="projects-summary-value white">10</p>
+                    <p class="projects-summary-label">States</p>
+                  </div>
+                  <div>
+                    <p class="projects-summary-value gradient">88K+</p>
+                    <p class="projects-summary-label">TPY CBG</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="scroll-animate-right">
+              <div class="projects-map-container">
+                <div class="projects-map-glow">
+                  <div class="projects-map-glow-inner"></div>
+                </div>
+                
+                <div class="projects-map-wrapper">
+                  <img src="https://gruner-roots-build.lovable.app/assets/india-map-DNKY5Kj3.svg" alt="India Map" class="projects-map-image">
+                  
+                  <div class="projects-map-markers" id="mapMarkers">
+                    <!-- Map markers will be populated by JavaScript -->
+                  </div>
+                </div>
+                
+                <div id="mapTooltip" class="map-tooltip">
+                  <div class="map-tooltip-header">
+                    <svg class="map-tooltip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <p class="map-tooltip-title" id="tooltipState"></p>
+                  </div>
+                  <p class="map-tooltip-info">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                    </svg>
+                    <span id="tooltipInfo"></span>
+                  </p>
+                </div>
+                
+                <div class="projects-map-legend">
+                  <div class="projects-map-legend-item">
+                    <div class="projects-map-legend-dot"></div>
+                    <span class="projects-map-legend-text">Project Sites</span>
+                  </div>
+                  <div class="projects-map-legend-divider"></div>
+                  <div class="projects-map-legend-count">
+                    <span class="highlight">37</span>
+                    <span> Total Plants</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+      <div class="container-wide">
+        <div class="team-header scroll-animate">
+          <div class="divider-accent"></div>
+          <h2 class="team-title">Our Leadership</h2>
+          <p class="team-description">Experienced team driving India's bioenergy transformation with expertise in finance, technology, and operations.</p>
+        </div>
+        
+        <div class="team-grid">
+          <div class="team-card scroll-animate delay-100">
+            <div class="team-card-image-container">
+              <img src="https://gruner-roots-build.lovable.app/assets/team-1-Q9v9P1kt.jpg" alt="Founder & CEO" class="team-card-image">
+              <div class="team-card-overlay"></div>
+            </div>
+            <h3 class="team-card-name">Founder & CEO</h3>
+            <p class="team-card-role">Leadership</p>
+            <p class="team-card-description">Chartered Accountant with deep expertise in energy sector finance and infrastructure development.</p>
+          </div>
+          
+          <div class="team-card scroll-animate delay-200">
+            <div class="team-card-image-container">
+              <img src="https://gruner-roots-build.lovable.app/assets/team-2-DqNh6xWu.jpg" alt="Technical Director" class="team-card-image">
+              <div class="team-card-overlay"></div>
+            </div>
+            <h3 class="team-card-name">Technical Director</h3>
+            <p class="team-card-role">Chief Technology Officer</p>
+            <p class="team-card-description">Leads technology partnerships including collaboration with BioEnergy Germany.</p>
+          </div>
+          
+          <div class="team-card scroll-animate delay-300">
+            <div class="team-card-image-container">
+              <img src="https://gruner-roots-build.lovable.app/assets/team-3-EHY3bujz.jpg" alt="Operations Head" class="team-card-image">
+              <div class="team-card-overlay"></div>
+            </div>
+            <h3 class="team-card-name">Operations Head</h3>
+            <p class="team-card-role">Chief Operations Officer</p>
+            <p class="team-card-description">Oversees plant operations and O&M services across all Bio-CNG facilities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards-section" id="awards">
+      <div class="container-wide">
+        <div class="awards-header scroll-animate">
+          <div class="divider-accent"></div>
+          <h3 class="awards-title">Recognition & Certifications</h3>
+          <p class="awards-description">Trusted by industry, certified by authorities</p>
+        </div>
+        
+        <div class="awards-grid">
+          <div class="award-card scroll-animate delay-100">
+            <div class="award-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+              </svg>
+            </div>
+            <h4 class="award-card-title">Industry Recognition</h4>
+            <p class="award-card-description">Acknowledged leader in Bio-CNG</p>
+          </div>
+          
+          <div class="award-card scroll-animate delay-200">
+            <div class="award-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h4 class="award-card-title">Association Memberships</h4>
+            <p class="award-card-description">Active industry participation</p>
+          </div>
+          
+          <div class="award-card scroll-animate delay-300">
+            <div class="award-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h4 class="award-card-title">Regulatory Compliance</h4>
+            <p class="award-card-description">100% compliant operations</p>
+          </div>
+          
+          <div class="award-card scroll-animate delay-400">
+            <div class="award-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <path d="m9 15 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h4 class="award-card-title">Certified Bio-CNG Quality</h4>
+            <p class="award-card-description">ISO certified processes</p>
+          </div>
+          
+          <div class="award-card scroll-animate delay-500">
+            <div class="award-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"></polygon>
+              </svg>
+            </div>
+            <h4 class="award-card-title">Excellence Awards</h4>
+            <p class="award-card-description">Multiple recognitions</p>
+          </div>
+          
+          <div class="award-card scroll-animate delay-600">
+            <div class="award-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15"></path>
+                <path d="M11 12 5.12 2.2"></path>
+                <path d="m13 12 5.88-9.8"></path>
+                <path d="M8 7h8"></path>
+                <circle cx="12" cy="17" r="5"></circle>
+                <path d="M12 18v-2h-.5"></path>
+              </svg>
+            </div>
+            <h4 class="award-card-title">Safety Standards</h4>
+            <p class="award-card-description">Zero incident record</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <div class="bg-foreground">
+      <section class="contact-section" id="contact">
+        <div class="contact-bg">
+          <div class="contact-bg-grid"></div>
+          <div class="contact-bg-orb"></div>
+        </div>
+        
+        <div class="container-wide relative z-10">
+          <div class="contact-header scroll-animate">
+            <div class="divider-accent"></div>
+            <h2 class="contact-title">Get in Touch</h2>
+            <p class="contact-description">Interested in partnering with us or learning more about our Bio-CNG solutions? We'd love to hear from you.</p>
+          </div>
+          
+          <div class="contact-grid">
+            <div class="scroll-animate-left">
+              <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                  <label for="name" class="form-label">Full Name *</label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+                  <p class="form-error" id="nameError"></p>
+                </div>
+                
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+                  <p class="form-error" id="emailError"></p>
+                </div>
+                
+                <div class="form-group">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX">
+                  <p class="form-error" id="phoneError"></p>
+                </div>
+                
+                <div class="form-group">
+                  <label for="message" class="form-label">Message *</label>
+                  <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project or inquiry..." rows="4" required></textarea>
+                  <p class="form-error" id="messageError"></p>
+                </div>
+                
+                <button type="submit" class="form-submit" id="submitBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                  </svg>
+                  <span>Send Message</span>
+                </button>
+              </form>
+              
+              <div class="form-success" id="formSuccess">
+                <div class="form-success-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                  </svg>
+                </div>
+                <h3 class="form-success-title">Thank You!</h3>
+                <p class="form-success-message">We've received your message and will get back to you soon.</p>
+              </div>
+            </div>
+            
+            <div class="contact-info scroll-animate-right">
+              <div class="contact-info-card">
+                <h3>Contact Information</h3>
+                <div class="contact-info-item">
+                  <div class="contact-info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="contact-info-label">Email</p>
+                    <p class="contact-info-value">info@grunerrenewable.com</p>
+                  </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="contact-info-label">Phone</p>
+                    <p class="contact-info-value">+91 120 XXX XXXX</p>
+                  </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="contact-info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="contact-info-label">Office</p>
+                    <p class="contact-info-value">Noida, Uttar Pradesh, India</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="contact-info-card">
+                <h3>Partnership Inquiries</h3>
+                <p class="contact-info-description">For business partnerships and large-scale project discussions, reach out to our partnerships team directly.</p>
+                <a href="mailto:partnerships@grunerrenewable.com" class="contact-info-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  partnerships@grunerrenewable.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-divider"></div>
+    
+    <div class="footer-main">
+      <div class="container-wide">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="footer-logo">
+              <img src="https://gruner-roots-build.lovable.app/lovable-uploads/73e50bc0-70dc-4dc6-a30d-12197fd8f27f.png" alt="Gruner Renewable Energy">
+            </a>
+            <p class="footer-description">
+              India's leading Bio-CNG infrastructure company, transforming agricultural waste into clean, reliable fuel for a sustainable future.
+            </p>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul class="footer-links">
+              <li><a href="#about" class="footer-link">About Us</a></li>
+              <li><a href="#team" class="footer-link">Leadership</a></li>
+              <li><a href="#contact" class="footer-link">Careers</a></li>
+              <li><a href="#" class="footer-link">News & Media</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Solutions</h4>
+            <ul class="footer-links">
+              <li><a href="#solutions" class="footer-link">EPC Services</a></li>
+              <li><a href="#solutions" class="footer-link">O&M Services</a></li>
+              <li><a href="#solutions" class="footer-link">Technology</a></li>
+              <li><a href="#projects" class="footer-link">Projects</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#about" class="footer-link">Investor Relations</a></li>
+              <li><a href="#" class="footer-link">Sustainability</a></li>
+              <li><a href="#awards" class="footer-link">Certifications</a></li>
+              <li><a href="#contact" class="footer-link">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container-wide">
+        <div class="footer-bottom-content">
+          <p class="footer-copyright">© 2026 Gruner Renewable Energy Pvt. Ltd. All rights reserved.</p>
+          
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="footer-legal">
+            <a href="#" class="footer-legal-link">Privacy Policy</a>
+            <a href="#" class="footer-legal-link">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // ========================================
+    // GRUNER RENEWABLE - VANILLA JS
+    // Converted from React + Framer Motion
+    // ========================================
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // ========================================
+      // PAGE LOADER
+      // ========================================
+      const pageLoader = document.getElementById('pageLoader');
+      setTimeout(function() {
+        pageLoader.classList.add('hidden');
+      }, 1800);
+      
+      // ========================================
+      // HEADER SCROLL EFFECT
+      // ========================================
+      const header = document.getElementById('header');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // ========================================
+      // MOBILE MENU
+      // ========================================
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIcon = mobileMenuBtn.querySelector('.menu-icon');
+      const closeIcon = mobileMenuBtn.querySelector('.close-icon');
+      let mobileMenuOpen = false;
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuOpen = !mobileMenuOpen;
+        
+        if (mobileMenuOpen) {
+          mobileMenu.classList.add('open');
+          menuIcon.style.display = 'none';
+          closeIcon.style.display = 'block';
+        } else {
+          mobileMenu.classList.remove('open');
+          menuIcon.style.display = 'block';
+          closeIcon.style.display = 'none';
+        }
+      });
+      
+      // Close mobile menu when clicking links
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenuOpen = false;
+          mobileMenu.classList.remove('open');
+          menuIcon.style.display = 'block';
+          closeIcon.style.display = 'none';
+        });
+      });
+      
+      // ========================================
+      // FLOATING PARTICLES (HERO)
+      // ========================================
+      const heroParticles = document.getElementById('heroParticles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'hero-particle';
+        
+        const size = Math.random() * 4 + 2;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const duration = Math.random() * 20 + 15;
+        const delay = Math.random() * 5;
+        
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = x + '%';
+        particle.style.top = y + '%';
+        particle.style.animationDuration = duration + 's';
+        particle.style.animationDelay = delay + 's';
+        
+        heroParticles.appendChild(particle);
+      }
+      
+      // ========================================
+      // ANIMATED COUNTERS
+      // ========================================
+      function animateCounter(element, targetValue, duration) {
+        const startTime = performance.now();
+        const startValue = 0;
+        
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Easing function
+          const easeOutQuad = 1 - (1 - progress) * (1 - progress);
+          const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOutQuad);
+          
+          element.textContent = currentValue;
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            element.textContent = targetValue;
+          }
+        }
+        
+        requestAnimationFrame(update);
+      }
+      
+      // Hero metrics counters
+      const heroMetrics = document.querySelectorAll('.hero-metric-number');
+      heroMetrics.forEach(function(metric, index) {
+        const value = parseInt(metric.getAttribute('data-value'));
+        setTimeout(function() {
+          animateCounter(metric, value, 2000);
+        }, 800 + index * 300);
+      });
+      
+      // Context stats counters
+      const contextStats = document.querySelectorAll('.context-stat-value');
+      let contextAnimated = false;
+      
+      function checkContextStats() {
+        if (contextAnimated) return;
+        
+        const contextSection = document.getElementById('context');
+        const rect = contextSection.getBoundingClientRect();
+        
+        if (rect.top < window.innerHeight * 0.75) {
+          contextAnimated = true;
+          contextStats.forEach(function(stat, index) {
+            const value = stat.getAttribute('data-value');
+            if (value) {
+              setTimeout(function() {
+                animateCounter(stat, parseInt(value), 2000);
+                if (value === '500') stat.textContent = '500M+';
+                if (value === '85') stat.textContent = '85%';
+              }, 300 + index * 100);
+            }
+          });
+        }
+      }
+      
+      // ========================================
+      // SCROLL ANIMATIONS (Intersection Observer)
+      // ========================================
+      const scrollAnimateElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-100px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Trigger context divider animation
+            if (entry.target.classList.contains('scroll-animate-left')) {
+              const divider = entry.target.querySelector('.context-divider');
+              if (divider) {
+                divider.classList.add('visible');
+              }
+            }
+          }
+        });
+      }, observerOptions);
+      
+      scrollAnimateElements.forEach(function(el) {
+        observer.observe(el);
+      });
+      
+      // ========================================
+      // PROCESS LINE ANIMATION
+      // ========================================
+      const processSection = document.querySelector('.process-section');
+      let processAnimated = false;
+      
+      function checkProcessAnimation() {
+        if (processAnimated) return;
+        
+        const rect = processSection.getBoundingClientRect();
+        
+        if (rect.top < window.innerHeight * 0.6) {
+          processAnimated = true;
+          
+          // Desktop
+          const lineFill = document.getElementById('processLineFill');
+          const dot = document.getElementById('processDot');
+          if (lineFill) lineFill.classList.add('animate');
+          if (dot) dot.classList.add('animate');
+          
+          // Mobile
+          const mobileLineFill = document.getElementById('processMobileLineFill');
+          const mobileDot = document.getElementById('processMobileDot');
+          if (mobileLineFill) mobileLineFill.classList.add('animate');
+          if (mobileDot) mobileDot.classList.add('animate');
+        }
+      }
+      
+      // ========================================
+      // PROJECTS MAP
+      // ========================================
+      const projects = [
+        { state: "Punjab", plants: 4, status: "Upcoming", x: 44, y: 18 },
+        { state: "Haryana", plants: 3, status: "Upcoming", x: 46, y: 24 },
+        { state: "Uttar Pradesh", plants: 6, status: "Upcoming", x: 54, y: 32 },
+        { state: "Maharashtra", plants: 5, status: "Upcoming", x: 48, y: 52 },
+        { state: "Gujarat", plants: 4, status: "In Progress", x: 38, y: 42 },
+        { state: "Madhya Pradesh", plants: 4, status: "Upcoming", x: 50, y: 40 },
+        { state: "Karnataka", plants: 3, status: "Upcoming", x: 48, y: 65 },
+        { state: "Tamil Nadu", plants: 3, status: "Upcoming", x: 52, y: 75 },
+        { state: "Rajasthan", plants: 3, status: "Upcoming", x: 40, y: 30 },
+        { state: "Bihar", plants: 2, status: "Upcoming", x: 62, y: 32 }
+      ];
+      
+      const projectsList = document.getElementById('projectsList');
+      const mapMarkers = document.getElementById('mapMarkers');
+      const mapTooltip = document.getElementById('mapTooltip');
+      const tooltipState = document.getElementById('tooltipState');
+      const tooltipInfo = document.getElementById('tooltipInfo');
+      
+      // Populate project list
+      projects.forEach(function(project, index) {
+        const item = document.createElement('div');
+        item.className = 'project-item';
+        item.setAttribute('data-index', index);
+        
+        item.innerHTML = `
+          <div class="project-item-count"><span>${project.plants}</span></div>
+          <div class="project-item-name">${project.state}</div>
+          <span class="project-item-status ${project.status === 'In Progress' ? 'active' : 'soon'}">
+            ${project.status === 'In Progress' ? 'Active' : 'Soon'}
+          </span>
+        `;
+        
+        item.addEventListener('mouseenter', function() {
+          highlightProject(index);
+        });
+        
+        item.addEventListener('mouseleave', function() {
+          clearHighlight();
+        });
+        
+        projectsList.appendChild(item);
+      });
+      
+      // Populate map markers
+      projects.forEach(function(project, index) {
+        const markerGroup = document.createElement('div');
+        markerGroup.className = 'map-marker-group';
+        markerGroup.style.left = project.x + '%';
+        markerGroup.style.top = project.y + '%';
+        markerGroup.setAttribute('data-index', index);
+        
+        markerGroup.innerHTML = `
+          <div class="map-marker-glow"></div>
+          <div class="map-marker">
+            <span class="map-marker-count">${project.plants}</span>
+          </div>
+        `;
+        
+        markerGroup.addEventListener('mouseenter', function() {
+          highlightProject(index);
+        });
+        
+        markerGroup.addEventListener('mouseleave', function() {
+          clearHighlight();
+        });
+        
+        mapMarkers.appendChild(markerGroup);
+      });
+      
+      function highlightProject(index) {
+        const project = projects[index];
+        
+        // Update list items
+        const items = projectsList.querySelectorAll('.project-item');
+        items.forEach(function(item, i) {
+          if (i === index) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+        
+        // Update markers
+        const markers = mapMarkers.querySelectorAll('.map-marker-group');
+        markers.forEach(function(marker, i) {
+          if (i === index) {
+            marker.classList.add('active');
+          } else {
+            marker.classList.remove('active');
+          }
+        });
+        
+        // Show tooltip
+        tooltipState.textContent = project.state;
+        tooltipInfo.textContent = project.plants + ' Plants • ' + project.status;
+        mapTooltip.style.left = project.x + '%';
+        mapTooltip.style.top = (project.y - 12) + '%';
+        mapTooltip.classList.add('visible');
+      }
+      
+      function clearHighlight() {
+        const items = projectsList.querySelectorAll('.project-item');
+        items.forEach(function(item) {
+          item.classList.remove('active');
+        });
+        
+        const markers = mapMarkers.querySelectorAll('.map-marker-group');
+        markers.forEach(function(marker) {
+          marker.classList.remove('active');
+        });
+        
+        mapTooltip.classList.remove('visible');
+      }
+      
+      // ========================================
+      // CONTACT FORM
+      // ========================================
+      const contactForm = document.getElementById('contactForm');
+      const formSuccess = document.getElementById('formSuccess');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Clear previous errors
+        document.querySelectorAll('.form-error').forEach(function(el) {
+          el.textContent = '';
+        });
+        document.querySelectorAll('.form-input, .form-textarea').forEach(function(el) {
+          el.classList.remove('error');
+        });
+        
+        // Validate
+        let isValid = true;
+        
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+        
+        if (!name.value.trim()) {
+          document.getElementById('nameError').textContent = 'Name is required';
+          name.classList.add('error');
+          isValid = false;
+        }
+        
+        if (!email.value.trim() || !email.value.includes('@')) {
+          document.getElementById('emailError').textContent = 'Valid email is required';
+          email.classList.add('error');
+          isValid = false;
+        }
+        
+        if (!message.value.trim()) {
+          document.getElementById('messageError').textContent = 'Message is required';
+          message.classList.add('error');
+          isValid = false;
+        }
+        
+        if (!isValid) return;
+        
+        // Simulate submission
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+        
+        setTimeout(function() {
+          contactForm.style.display = 'none';
+          formSuccess.classList.add('visible');
+        }, 1500);
+      });
+      
+      // ========================================
+      // SCROLL EVENT LISTENERS
+      // ========================================
+      window.addEventListener('scroll', function() {
+        checkContextStats();
+        checkProcessAnimation();
+      });
+      
+      // Initial check
+      checkContextStats();
+      checkProcessAnimation();
+      
+      // ========================================
+      // SMOOTH SCROLL FOR ANCHOR LINKS
+      // ========================================
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+      
+    });
+  </script>
+</body>
+</html>

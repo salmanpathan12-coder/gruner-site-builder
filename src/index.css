@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gruner Renewable Design System
+   Enterprise-grade, infrastructure-focused, serious and credible
+   Neutral base with forest green accents ONLY
+*/
+
+@layer base {
+  :root {
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Base neutrals */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
+
+    /* Surface colors */
+    --card: 60 10% 98%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    /* Primary - Teal Green */
+    --primary: 168 65% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Warm Grey */
+    --secondary: 40 10% 95%;
+    --secondary-foreground: 220 15% 20%;
+
+    /* Muted */
+    --muted: 40 5% 92%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Accent - Lime Green */
+    --accent: 85 55% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders */
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 168 65% 32%;
+
+    --radius: 0.375rem;
+
+    /* Custom tokens */
+    --charcoal: 220 15% 15%;
+    --warm-grey: 40 5% 55%;
+    --off-white: 60 10% 98%;
+    --light-grey: 40 10% 96%;
+    --divider-green: 168 65% 32%;
+    
+    /* Gradient tokens - Teal to Lime */
+    --gradient-start: 168 65% 32%;
+    --gradient-end: 85 55% 45%;
+    --gradient-primary: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    --gradient-primary-reverse: linear-gradient(135deg, hsl(85, 55%, 45%) 0%, hsl(168, 65%, 32%) 100%);
+    --gradient-radial: radial-gradient(circle, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+
+    /* Sidebar (keeping defaults) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 15% 8%;
+    --foreground: 40 10% 95%;
+
+    --card: 220 15% 12%;
+    --card-foreground: 40 10% 95%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 40 10% 95%;
+
+    --primary: 168 55% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 10% 95%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 40 5% 60%;
+
+    --accent: 85 45% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 168 55% 45%;
+    
+    --gradient-start: 168 55% 45%;
+    --gradient-end: 85 45% 55%;
+    --gradient-primary: linear-gradient(135deg, hsl(168, 55%, 45%) 0%, hsl(85, 45%, 55%) 100%);
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-semibold tracking-tight text-foreground;
+  }
+}
+
+@layer components {
+  /* Section spacing */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Container */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-6;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  /* Typography styles */
+  .heading-hero {
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight;
+    font-family: var(--font-heading);
+  }
+
+  .heading-section {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight;
+    font-family: var(--font-heading);
+  }
+
+  .heading-subsection {
+    @apply text-2xl md:text-3xl font-medium;
+    font-family: var(--font-heading);
+  }
+
+  .body-large {
+    @apply text-lg md:text-xl leading-relaxed;
+    font-family: var(--font-body);
+    color: hsl(var(--muted-foreground));
+  }
+
+  .body-standard {
+    @apply text-base md:text-lg leading-relaxed;
+    font-family: var(--font-body);
+  }
+
+  /* Divider with green accent */
+  .divider-accent {
+    @apply w-16 h-0.5 bg-primary;
+  }
+
+  /* Video overlay */
+  .video-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsla(220, 15%, 8%, 0.7) 0%,
+      hsla(220, 15%, 8%, 0.6) 50%,
+      hsla(220, 15%, 8%, 0.75) 100%
+    );
+  }
+
+  /* Stat counter */
+  .stat-number {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold;
+    font-family: var(--font-heading);
+    color: hsl(var(--primary));
+  }
+
+  /* Card hover effect */
+  .card-infrastructure {
+    @apply bg-card border border-border rounded-lg p-6 md:p-8 transition-all duration-300;
+  }
+
+  .card-infrastructure:hover {
+    @apply shadow-lg border-primary/20;
+    transform: translateY(-2px);
+  }
+
+  /* Process step */
+  .process-step {
+    @apply relative;
+  }
+
+  .process-step::before {
+    content: '';
+    @apply absolute top-0 left-1/2 w-px h-full bg-border -translate-x-1/2;
+  }
+
+  /* Map marker */
+  .map-marker {
+    @apply w-3 h-3 rounded-full bg-primary cursor-pointer transition-transform duration-200;
+  }
+
+  .map-marker:hover {
+    @apply scale-150;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded transition-all duration-200;
+  }
+
+  .btn-primary:hover {
+    @apply opacity-90;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/80 text-white font-medium rounded transition-all duration-200;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-white/10;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-primary text-primary font-medium rounded transition-all duration-200;
+  }
+
+  .btn-outline:hover {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Gradient icon wrapper */
+  .icon-gradient {
+    background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  /* Gradient backgrounds for sections */
+  .bg-gradient-teal-lime {
+    background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+  }
+  
+  .bg-gradient-teal-lime-subtle {
+    background: linear-gradient(135deg, hsl(168, 65%, 32%, 0.1) 0%, hsl(85, 55%, 45%, 0.1) 100%);
+  }
+  
+  .bg-gradient-dark-teal {
+    background: linear-gradient(135deg, hsl(220, 20%, 12%) 0%, hsl(168, 40%, 15%) 50%, hsl(220, 20%, 10%) 100%);
+  }
+  
+  /* Gradient border effect */
+  .border-gradient {
+    position: relative;
+  }
+  
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(168, 65%, 32%) 0%, hsl(85, 55%, 45%) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@layer utilities {
+  /* Smooth fade for scroll animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
