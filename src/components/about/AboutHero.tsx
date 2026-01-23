@@ -1,59 +1,38 @@
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-  useTransform as useMotionTransform,
-  useInView,
-} from "framer-motion";
-import { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform, animate, useMotionValue } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
 
-/* ================= HOLOGRAM COUNTER ================= */
+/* ---------------- Animated Counter ---------------- */
 const HologramCounter = ({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
-  const motionValue = useMotionValue(0);
-  const spring = useSpring(motionValue, {
-    stiffness: 70,
-    damping: 20,
-    mass: 1,
-  });
-
-  const display = useMotionTransform(spring, (latest) => `${prefix}${Math.floor(latest).toLocaleString()}${suffix}`);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, value, motionValue]);
+    const controls = animate(0, value, {
+      duration: 2.8,
+      ease: "easeOut",
+      onUpdate(v) {
+        setCount(Math.floor(v));
+      },
+    });
+    return () => controls.stop();
+  }, [value]);
 
   return (
-    <motion.span
-      ref={ref}
-      className="relative inline-block"
-      initial={{ opacity: 0, y: 10 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6 }}
-    >
-      {display}
-
+    <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="relative">
+      {prefix}
+      {count.toLocaleString()}
+      {suffix}
       {/* hologram glow */}
       <motion.span
-        className="absolute inset-0 -z-10 blur-xl"
-        animate={{ opacity: [0.25, 0.55, 0.25] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background: "radial-gradient(circle, rgba(110,231,183,0.55), transparent 60%)",
-        }}
+        className="absolute inset-0 -z-10 blur-lg opacity-30"
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 2.5, repeat: Infinity }}
+        style={{ background: "radial-gradient(circle, rgba(110,231,183,0.6), transparent 60%)" }}
       />
     </motion.span>
   );
 };
 
-/* ================= HERO ================= */
 const AboutHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -78,16 +57,17 @@ const AboutHero = () => {
     };
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, [mouseX, mouseY]);
+  }, []);
 
   return (
     <section ref={containerRef} className="relative min-h-[100vh] overflow-hidden">
-      {/* ================= HEADER SAFE ZONE ================= */}
+      {/* ================= HEADER CONTRAST ZONE ================= */}
+      {/* ensures white header is always visible */}
       <div className="absolute top-0 left-0 right-0 h-[140px] z-10 bg-gradient-to-b from-[#0b1f17]/70 via-[#0b1f17]/40 to-transparent" />
 
       {/* ================= BACKGROUND WORLD ================= */}
       <div className="absolute inset-0">
-        {/* cinematic sky */}
+        {/* cinematic sky gradient */}
         <motion.div
           className="absolute inset-0"
           animate={{
@@ -99,7 +79,7 @@ const AboutHero = () => {
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* neural grid */}
+        {/* neural horizon grid */}
         <div
           className="absolute inset-0 opacity-[0.05]"
           style={{
@@ -185,6 +165,7 @@ const AboutHero = () => {
         <div className="grid lg:grid-cols-12 gap-12 items-center min-h-[80vh]">
           {/* LEFT CONTENT */}
           <motion.div style={{ y }} className="lg:col-span-5">
+            {/* badge */}
             <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/70 backdrop-blur-xl border border-[#e6f1ec] shadow-lg mb-8">
               <Sparkles className="w-4 h-4 text-[#ff944d]" />
               <span className="text-xs tracking-[0.18em] uppercase text-[#2f7a60] font-semibold">
@@ -192,6 +173,7 @@ const AboutHero = () => {
               </span>
             </span>
 
+            {/* heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-[#0e2f23] mb-6">
               <span className="block">Building</span>
               <span className="block mt-2 bg-gradient-to-r from-[#ff944d] via-[#6ee7b7] to-[#2f7a60] bg-clip-text text-transparent">
@@ -200,11 +182,13 @@ const AboutHero = () => {
               <span className="block mt-2">Ecosystems</span>
             </h1>
 
+            {/* text */}
             <p className="text-base md:text-lg text-[#4b6f63] max-w-md mb-8">
               Transforming agricultural waste into intelligent clean-energy systems. Engineering India’s next-generation
               Bio-CNG infrastructure.
             </p>
 
+            {/* CTAs */}
             <div className="flex gap-4 mb-10">
               <a
                 href="/contact"
@@ -222,7 +206,7 @@ const AboutHero = () => {
               </a>
             </div>
 
-            {/* COUNTERS */}
+            {/* animated counters */}
             <div className="flex gap-12">
               <div>
                 <div className="text-3xl font-bold text-[#0e2f23]">
@@ -247,7 +231,7 @@ const AboutHero = () => {
 
           {/* RIGHT VISUAL */}
           <motion.div style={{ y: imageY, scale }} className="lg:col-span-7 relative">
-            {/* cinematic aura */}
+            {/* cinematic camera motion aura */}
             <motion.div
               className="absolute -inset-12 rounded-full blur-[140px] opacity-40"
               animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -264,7 +248,7 @@ const AboutHero = () => {
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* image */}
+            {/* image container */}
             <motion.div
               initial={{ opacity: 0, x: 60, scale: 0.92 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -279,7 +263,7 @@ const AboutHero = () => {
                 transition={{ duration: 10, repeat: Infinity }}
               />
 
-              {/* energy flow */}
+              {/* energy flow paths */}
               <motion.div
                 className="absolute inset-0"
                 animate={{ backgroundPositionX: ["0%", "200%"] }}
