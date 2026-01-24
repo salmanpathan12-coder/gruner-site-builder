@@ -94,7 +94,7 @@ const AboutHero = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
-              <a href="/solutions" className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-black/15 text-black font-medium transition-all duration-300 text-sm hover:bg-black/5">
+              <a href="/solutions" className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-black/15 text-black font-medium transition-all duration-300 text-sm rounded-md hover:bg-black/5">
                 Explore Solutions
               </a>
             </motion.div>

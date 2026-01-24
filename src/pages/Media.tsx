@@ -107,7 +107,7 @@ const Media = () => {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT}`}>Media Coverage</span>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT} rounded-md`}>Media Coverage</span>
 
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
               Gruner Renewable Energy in the <span className={GRADIENT_TEXT}>News</span>
@@ -122,14 +122,14 @@ const Media = () => {
             <div className="flex flex-wrap gap-4 pt-4">
               <a
                 href="#coverage"
-                className={`inline-flex items-center gap-2 px-7 py-3 text-white font-semibold ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+                className={`inline-flex items-center gap-2 px-7 py-3 text-white font-semibold ${GRADIENT} rounded-md shadow-lg hover:shadow-xl transition-all`}
               >
                 Explore Coverage
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="mailto:info@grunerrenewable.com"
-                className="inline-flex items-center gap-2 px-7 py-3 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3 font-semibold text-black border border-black/15 rounded-md hover:border-black/30 transition-all"
               >
                 Press Contact
               </a>
@@ -322,7 +322,7 @@ const Media = () => {
             </p>
             <a
               href="mailto:info@grunerrenewable.com"
-              className={`inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-lg ${GRADIENT} hover:shadow-lg transition-all duration-300`}
+              className={`inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-md ${GRADIENT} hover:shadow-lg transition-all duration-300`}
             >
               Contact Press Team
               <ArrowRight className="w-5 h-5 ml-2" />
