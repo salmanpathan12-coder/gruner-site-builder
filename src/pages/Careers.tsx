@@ -15,7 +15,6 @@ import {
   ArrowRight,
   ChevronDown,
 } from "lucide-react";
-
 const jobOpenings = [
   {
     id: 1,
@@ -66,7 +65,6 @@ const jobOpenings = [
     description: "Supervise construction activities at plant sites. Ensure safety compliance and quality standards.",
   },
 ];
-
 const benefits = [
   {
     icon: TrendingUp,
@@ -89,10 +87,8 @@ const benefits = [
     description: "Continuous training and skill development programs",
   },
 ];
-
 const Careers = () => {
   const [expandedJob, setExpandedJob] = useState<number | null>(null);
-
   return (
     <PageLayout>
       <PageHero
@@ -113,7 +109,6 @@ const Careers = () => {
           </a>
         </div>
       </PageHero>
-
       {/* Company Culture */}
       <section className="section-padding bg-background">
         <div className="container-wide">
@@ -158,7 +153,6 @@ const Careers = () => {
                 </div>
               </div>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -186,48 +180,20 @@ const Careers = () => {
           </div>
         </div>
       </section>
-
-      {/* ================= JOB OPENINGS (CREATIVE STRUCTURE) ================= */}
+      {/* Job Openings */}
       <section id="openings" className="section-padding bg-muted/30">
-        <div className="container-wide grid lg:grid-cols-3 gap-14 items-start">
-          {/* LEFT PANEL */}
+        <div className="container-wide">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:sticky lg:top-32 space-y-6"
+            className="text-center mb-16"
           >
-            <span className="inline-flex px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]">
-              Opportunities
-            </span>
-
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-black leading-tight">
-              Open <span className={GRADIENT_TEXT}>Positions</span>
-            </h2>
-
-            <p className="text-gray-600 leading-relaxed max-w-sm">
-              Find the best available position for you and become part of India’s clean energy transformation journey.
-            </p>
-
-            {/* Decorative stat bar */}
-            <div className="pt-6 space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-[#1f8f7a]" />
-                <span className="text-sm text-gray-600">Engineering Roles</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-[#7fbf2e]" />
-                <span className="text-sm text-gray-600">Operations & Management</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-[#1f8f7a]" />
-                <span className="text-sm text-gray-600">Pan-India Opportunities</span>
-              </div>
-            </div>
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">Opportunities</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold mt-3 mb-4">Open Positions</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Find the best one available position for you</p>
           </motion.div>
-
-          {/* RIGHT JOB LIST */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="space-y-4 max-w-4xl mx-auto">
             {jobOpenings.map((job, index) => (
               <motion.div
                 key={job.id}
@@ -235,19 +201,19 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white border border-black/5 shadow-md hover:shadow-lg transition-all overflow-hidden"
+                className="bg-background rounded-xl border border-border hover:border-primary/20 overflow-hidden transition-all duration-300"
               >
                 <button
                   onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
                   className="w-full p-6 text-left flex items-center justify-between"
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 flex items-center justify-center text-white ${GRADIENT}`}>
-                      <Briefcase className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                      <Briefcase className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h3 className="font-heading font-semibold text-lg mb-2">{job.title}</h3>
-                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1">
                           <Users className="w-4 h-4" />
                           {job.department}
@@ -264,7 +230,9 @@ const Careers = () => {
                     </div>
                   </div>
                   <ChevronDown
-                    className={`w-5 h-5 transition-transform ${expandedJob === job.id ? "rotate-180" : ""}`}
+                    className={`w-5 h-5 text-muted-foreground transition-transform ${
+                      expandedJob === job.id ? "rotate-180" : ""
+                    }`}
                   />
                 </button>
 
@@ -276,15 +244,15 @@ const Careers = () => {
                   }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-6 pt-2 border-t border-black/5">
+                  <div className="px-6 pb-6 pt-2 border-t border-border">
                     <div className="mb-4">
-                      <span className="text-sm font-medium text-black">Experience Required: </span>
+                      <span className="text-sm font-medium text-foreground">Experience Required: </span>
                       <span className="text-sm text-muted-foreground">{job.experience}</span>
                     </div>
                     <p className="text-muted-foreground mb-6">{job.description}</p>
                     <Link
                       to="/contact"
-                      className={`inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+                      className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
                     >
                       Apply Now
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -296,7 +264,6 @@ const Careers = () => {
           </div>
         </div>
       </section>
-
       {/* General Application CTA */}
       <section className="section-padding bg-foreground">
         <div className="container-narrow text-center">
@@ -319,5 +286,4 @@ const Careers = () => {
     </PageLayout>
   );
 };
-
 export default Careers;
