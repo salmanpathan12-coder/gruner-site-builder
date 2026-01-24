@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
 import {
   Briefcase,
@@ -104,28 +103,94 @@ const Careers = () => {
 
   return (
     <PageLayout>
-      <PageHero
-        title="Join Our Team"
-        subtitle="Be part of India's renewable energy revolution. Build a career that makes a difference."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Careers", href: "/careers" },
-        ]}
-      >
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="#openings"
-            className={`inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white ${GRADIENT} hover:shadow-lg hover:shadow-primary/30 transition-all duration-300`}
+      {/* ================= HERO (ELITE SPLIT) ================= */}
+      <section className="relative bg-white pt-28 pb-24 overflow-hidden">
+        <div className="container-wide grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
+          {/* LEFT */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
           >
-            View Open Positions
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </a>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT}`}>
+              Careers at Gruner
+            </span>
+
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
+              Build Your Career in <span className={GRADIENT_TEXT}>Clean Energy</span>
+            </h1>
+
+            <p className="text-gray-700 text-lg max-w-xl leading-relaxed">
+              Be part of India’s renewable energy revolution. Build a career that creates real-world impact while
+              working on cutting-edge Bio-CNG and clean energy infrastructure projects.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a
+                href="#openings"
+                className={`inline-flex items-center gap-2 px-7 py-3 text-white font-semibold ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+              >
+                View Open Positions
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href="mailto:careers@grunerrenewable.com"
+                className="inline-flex items-center gap-2 px-7 py-3 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"
+              >
+                Submit Resume
+              </a>
+            </div>
+
+            {/* STATS */}
+            <div className="grid grid-cols-3 gap-6 pt-8 max-w-xl">
+              {[
+                { value: "250+", label: "Team Members" },
+                { value: "63+", label: "Projects" },
+                { value: "Pan India", label: "Presence" },
+              ].map((item) => (
+                <div key={item.label} className="border-l-2 border-[#1f8f7a] pl-4">
+                  <div className={`text-xl font-bold ${GRADIENT_TEXT}`}>{item.value}</div>
+                  <div className="text-xs text-gray-600 font-medium">{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="bg-white border border-black/5 shadow-2xl overflow-hidden">
+              <img
+                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                alt="Careers at Gruner"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Floating Cards */}
+            <div className="absolute -bottom-8 -left-8 bg-white p-5 border border-black/5 shadow-lg">
+              <div className="text-sm font-bold text-black">Growth Culture</div>
+              <div className="text-xs text-gray-600">Fast-growing organization</div>
+            </div>
+
+            <div className="absolute -top-8 -right-8 bg-white p-5 border border-black/5 shadow-lg">
+              <div className="text-sm font-bold text-black">Clean Energy</div>
+              <div className="text-xs text-gray-600">Purpose-driven careers</div>
+            </div>
+          </motion.div>
         </div>
-      </PageHero>
+      </section>
 
       {/* ================= CULTURE ================= */}
       <section className="section-padding bg-background">
         <div className="container-wide grid lg:grid-cols-2 gap-16 items-center">
+          {/* TEXT */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -146,6 +211,7 @@ const Careers = () => {
             </p>
           </motion.div>
 
+          {/* BENEFITS GRID */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -173,44 +239,21 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ================= JOB OPENINGS (CREATIVE STRUCTURE) ================= */}
+      {/* ================= JOB OPENINGS ================= */}
       <section id="openings" className="section-padding bg-muted/30">
-        <div className="container-wide grid lg:grid-cols-3 gap-14 items-start">
-          {/* LEFT PANEL */}
+        <div className="container-wide">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:sticky lg:top-32 space-y-6"
+            className="text-center mb-16"
           >
-            <span className={`inline-flex px-4 py-2 text-sm font-semibold text-white ${GRADIENT}`}>Opportunities</span>
-
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-black leading-tight">
-              Open <span className={GRADIENT_TEXT}>Positions</span>
-            </h2>
-
-            <p className="text-gray-600 leading-relaxed max-w-sm">
-              Find the best available position for you and become part of India’s clean energy transformation journey.
-            </p>
-
-            <div className="pt-6 space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-[#1f8f7a]" />
-                <span className="text-sm text-gray-600">Engineering Roles</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-[#7fbf2e]" />
-                <span className="text-sm text-gray-600">Operations & Management</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-[#1f8f7a]" />
-                <span className="text-sm text-gray-600">Pan-India Opportunities</span>
-              </div>
-            </div>
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">Opportunities</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold mt-3 mb-4">Open Positions</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Find the best available position for you</p>
           </motion.div>
 
-          {/* RIGHT LIST */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="space-y-4 max-w-4xl mx-auto">
             {jobOpenings.map((job, index) => (
               <motion.div
                 key={job.id}
@@ -253,7 +296,10 @@ const Careers = () => {
 
                 <motion.div
                   initial={false}
-                  animate={{ height: expandedJob === job.id ? "auto" : 0, opacity: expandedJob === job.id ? 1 : 0 }}
+                  animate={{
+                    height: expandedJob === job.id ? "auto" : 0,
+                    opacity: expandedJob === job.id ? 1 : 0,
+                  }}
                   className="overflow-hidden"
                 >
                   <div className="px-6 pb-6 pt-2 border-t border-black/5">
@@ -277,42 +323,22 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ================= CREATIVE GENERAL CTA ================= */}
-      <section className="relative section-padding overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] opacity-95" />
-
-        <div className="relative container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-16 items-center bg-white/10 backdrop-blur-md p-12 border border-white/20"
-          >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Don't See Your Role?</h2>
-              <p className="text-white/80 text-lg leading-relaxed max-w-xl">
-                We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future
-                opportunities.
-              </p>
-              <div className="mt-6 h-[2px] w-24 bg-white/40" />
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
-              <a
-                href="mailto:careers@grunerrenewable.com"
-                className="inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-black bg-white hover:bg-white/90 transition-all shadow-xl"
-              >
-                Submit General Application
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
-
-              <a
-                href="#openings"
-                className="inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-white border border-white/50 hover:bg-white/10 transition-all"
-              >
-                Explore Open Roles
-              </a>
-            </div>
+      {/* ================= GENERAL CTA ================= */}
+      <section className="section-padding bg-foreground">
+        <div className="container-narrow text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-white mb-4">Don't See Your Role?</h2>
+            <p className="text-white/60 mb-8">
+              We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future
+              opportunities.
+            </p>
+            <a
+              href="mailto:careers@grunerrenewable.com"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-black bg-white hover:bg-white/90 transition-all"
+            >
+              Submit General Application
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </a>
           </motion.div>
         </div>
       </section>
