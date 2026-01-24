@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import TechnologyHero from "@/components/technology/TechnologyHero";
-import { Beaker, Thermometer, Clock, Settings, ArrowRight, Leaf, Zap, Recycle, ChevronDown } from "lucide-react";
+import { Beaker, Thermometer, Clock, Settings, Leaf, Zap, Recycle, ChevronDown } from "lucide-react";
+import cstrProcessVideo from "@/assets/cstr-process-video.mp4";
 
 /* ---------------- CONSTANTS ---------------- */
 
@@ -85,7 +86,7 @@ const Technology = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Our Technology</span>
+            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Our Technology</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 leading-tight">
               Introduction to <span className={GRADIENT_TEXT}>CSTR Technology</span>
@@ -112,10 +113,10 @@ const Technology = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="p-4 bg-white border border-black/5 hover:shadow-md transition-all"
+                  className="p-4 bg-white border border-black/5 rounded-md hover:shadow-md transition-all"
                 >
                   <div className="flex items-center gap-3 mb-1">
-                    <div className={`w-8 h-8 flex items-center justify-center text-white ${GRADIENT}`}>
+                    <div className={`w-8 h-8 rounded-md flex items-center justify-center text-white ${GRADIENT}`}>
                       <spec.icon className="w-4 h-4" />
                     </div>
                     <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">{spec.label}</span>
@@ -136,7 +137,7 @@ const Technology = () => {
             <img
               src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/fc3678381a9.png"
               alt="CSTR Technology"
-              className="w-full h-full object-cover shadow-lg"
+              className="w-full h-full object-cover rounded-md shadow-lg"
             />
           </motion.div>
         </div>
@@ -153,7 +154,7 @@ const Technology = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>The Process</span>
+            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>The Process</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               How CSTR Transforms <span className={GRADIENT_TEXT}>Biomass into Energy</span>
@@ -165,7 +166,7 @@ const Technology = () => {
               <motion.div
                 animate={{ height: ["0%", "100%"] }}
                 transition={{ duration: 1.2 }}
-                className={`absolute left-1 top-0 w-[3px] ${GRADIENT}`}
+                className={`absolute left-1 top-0 w-[3px] rounded-md ${GRADIENT}`}
               />
 
               {processSteps.map((step, i) => (
@@ -188,12 +189,12 @@ const Technology = () => {
                   />
 
                   <div
-                    className={`p-4 bg-white border border-black/5 transition-all ${
+                    className={`p-4 bg-white border border-black/5 rounded-md transition-all ${
                       activeStep === i ? "shadow-md" : "hover:shadow-sm"
                     }`}
                   >
                     <div className="flex gap-3 items-start">
-                      <div className={`w-9 h-9 flex items-center justify-center text-white ${GRADIENT}`}>
+                      <div className={`w-9 h-9 rounded-md flex items-center justify-center text-white ${GRADIENT}`}>
                         <step.icon className="w-4 h-4" />
                       </div>
 
@@ -216,35 +217,22 @@ const Technology = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT VISUAL */}
+          {/* RIGHT VISUAL - CSTR Process Video */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-8 bg-white border border-black/5 shadow-md flex items-center justify-center"
+            className="rounded-md overflow-hidden shadow-md"
           >
-            <div className="text-center space-y-4">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className={`w-20 h-20 mx-auto flex items-center justify-center text-white rounded-full ${GRADIENT}`}
-              >
-                <Settings className="w-10 h-10" />
-              </motion.div>
-
-              <div className="text-base font-bold text-gray-900">CSTR Reactor Core</div>
-
-              <motion.div
-                animate={{ x: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="flex items-center justify-center gap-3 text-sm font-semibold text-gray-600"
-              >
-                <span>Input</span>
-                <ArrowRight className="w-4 h-4" />
-                <span>Biogas</span>
-              </motion.div>
-            </div>
+            <video
+              src={cstrProcessVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
       </section>
@@ -253,7 +241,7 @@ const Technology = () => {
       <section className="py-16 bg-white">
         <div className="container-wide space-y-10">
           <div className="space-y-4">
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Benefits</span>
+            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Benefits</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               Technology <span className={GRADIENT_TEXT}>Advantages</span>
@@ -268,9 +256,9 @@ const Technology = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="p-5 bg-white border border-black/5 hover:shadow-md hover:-translate-y-1 transition-all"
+                className="p-5 bg-white border border-black/5 rounded-md hover:shadow-md hover:-translate-y-1 transition-all"
               >
-                <div className={`w-9 h-9 mb-2 flex items-center justify-center text-white ${GRADIENT}`}>
+                <div className={`w-9 h-9 rounded-md mb-2 flex items-center justify-center text-white ${GRADIENT}`}>
                   <adv.icon className="w-4 h-4" />
                 </div>
                 <h3 className="text-sm font-bold text-gray-900 mb-1">{adv.title}</h3>
@@ -292,7 +280,7 @@ const Technology = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Sustainability</span>
+            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Sustainability</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               CSTRs and <span className={GRADIENT_TEXT}>Environmental Impact</span>
@@ -325,7 +313,7 @@ const Technology = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="p-4 bg-white border border-black/5 text-center hover:shadow-md transition-all"
+                className="p-4 bg-white border border-black/5 rounded-md text-center hover:shadow-md transition-all"
               >
                 <div className={`text-lg font-bold ${GRADIENT_TEXT}`}>{item.value}</div>
                 <div className="text-sm font-semibold text-gray-900">{item.label}</div>
