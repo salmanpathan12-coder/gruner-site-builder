@@ -95,12 +95,11 @@ const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, v
         duration: 0.5,
         delay: 0.05 + index * 0.08,
       }}
-      className="group"
     >
       <div
         className={`relative h-full p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${variants[variant]}`}
       >
-        {/* Decorative accent */}
+        {/* Soft accents */}
         {variant === "primary" && (
           <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 -translate-y-1/2 translate-x-1/2 rounded-full" />
         )}
@@ -142,50 +141,12 @@ const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, v
 ================================ */
 
 const stats = [
-  {
-    value: 63,
-    suffix: "+",
-    label: "Bio-CNG Plants",
-    icon: Factory,
-    variant: "primary" as const,
-  },
-  {
-    value: 1500,
-    suffix: "+",
-    prefix: "₹",
-    label: "Crore Value",
-    icon: TrendingUp,
-    variant: "light" as const,
-  },
-  {
-    value: 8,
-    suffix: "+",
-    label: "Indian States",
-    icon: MapPin,
-    variant: "primary" as const,
-  },
-  {
-    value: 250,
-    suffix: "+",
-    label: "Team Members",
-    icon: Users,
-    variant: "light" as const,
-  },
-  {
-    value: 60,
-    suffix: "M",
-    prefix: "$",
-    label: "Funding",
-    icon: BarChart3,
-    variant: "light" as const,
-  },
-  {
-    value: 9000,
-    suffix: "+",
-    label: "Eng. Hours",
-    icon: Leaf,
-    variant: "primary" as const,
-  },
+  { value: 63, suffix: "+", label: "Bio-CNG Plants", icon: Factory, variant: "primary" as const },
+  { value: 1500, suffix: "+", prefix: "₹", label: "Crore Value", icon: TrendingUp, variant: "light" as const },
+  { value: 8, suffix: "+", label: "Indian States", icon: MapPin, variant: "primary" as const },
+  { value: 250, suffix: "+", label: "Team Members", icon: Users, variant: "light" as const },
+  { value: 60, suffix: "M", prefix: "$", label: "Funding", icon: BarChart3, variant: "light" as const },
+  { value: 9000, suffix: "+", label: "Eng. Hours", icon: Leaf, variant: "primary" as const },
 ];
 
 /* ================================
@@ -202,12 +163,21 @@ const ImpactStatsSection = () => {
 
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* Soft theme background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10" />
+      {/* ===== PROFESSIONAL THEME BACKGROUND ===== */}
+      <div className="absolute inset-0">
+        {/* Base neutral layer */}
+        <div className="absolute inset-0 bg-[hsl(160,30%,97%)]" />
 
-      {/* Theme orbs */}
-      <div className="absolute top-0 left-1/4 w-[420px] h-[420px] bg-gradient-to-br from-primary/15 to-transparent blur-[120px] rounded-full" />
-      <div className="absolute bottom-0 right-1/4 w-[320px] h-[320px] bg-gradient-to-tl from-accent/15 to-transparent blur-[100px] rounded-full" />
+        {/* Theme gradient wash */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-accent/8 to-primary/12" />
+
+        {/* Energy flow overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent" />
+      </div>
+
+      {/* Theme glow orbs */}
+      <div className="absolute top-0 left-[15%] w-[420px] h-[420px] bg-primary/15 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 right-[15%] w-[360px] h-[360px] bg-accent/15 blur-[110px] rounded-full" />
 
       <div className="container-wide relative z-10">
         {/* Header */}
