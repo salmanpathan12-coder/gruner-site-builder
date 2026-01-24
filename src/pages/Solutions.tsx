@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
 import { Factory, Settings, Wrench, TrendingUp, Leaf, Zap, Shield, CheckCircle2, ArrowRight } from "lucide-react";
 
@@ -90,26 +89,128 @@ const benefits = [
 const Solutions = () => {
   return (
     <PageLayout>
-      <PageHero
-        title="Our Solutions"
-        subtitle="Comprehensive Bio-CNG solutions from plant development to operations, designed for efficiency, scalability and sustainability."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Solutions", href: "/solutions" },
-        ]}
-        image="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/db934269a9b.png"
-      />
+      {/* ================= HERO ================= */}
+      <section className="relative bg-white overflow-hidden">
+        <div className="container-wide grid lg:grid-cols-2 min-h-[85vh] items-center gap-12">
+          {/* LEFT */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT}`}>
+              Renewable Energy Solutions
+            </span>
+
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
+              Engineering the Future of <span className={GRADIENT_TEXT}>Bio-CNG & Renewable Energy</span>
+            </h1>
+
+            <p className="text-gray-700 text-lg leading-relaxed max-w-xl">
+              We design, build and operate next-generation Bio-CNG and biogas infrastructure using advanced CSTR
+              technology, delivering scalable, sustainable and commercially viable clean energy solutions.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link
+                to="/contact"
+                className={`inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+              >
+                Start Your Project
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+
+              <Link
+                to="/technology"
+                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"
+              >
+                Explore Technology
+              </Link>
+            </div>
+
+            {/* STATS */}
+            <div className="grid grid-cols-3 gap-6 pt-8 max-w-xl">
+              {[
+                { value: "100+", label: "Projects Designed" },
+                { value: "25+", label: "Cities Impacted" },
+                { value: "1M+", label: "Tons Waste Converted" },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + i * 0.2 }}
+                  className="border-l-2 border-[#1f8f7a] pl-4"
+                >
+                  <div className={`text-xl font-bold ${GRADIENT_TEXT}`}>{item.value}</div>
+                  <div className="text-xs text-gray-600 font-medium">{item.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative"
+          >
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.4 }}
+              className="relative bg-white border border-black/5 shadow-2xl"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1581092160607-ee67c8a4f1e3?q=80&w=1600&auto=format&fit=crop"
+                alt="Renewable Energy Infrastructure"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+
+            {/* Floating Cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="absolute -bottom-10 -left-10 bg-white p-5 border border-black/5 shadow-lg"
+            >
+              <div className="flex items-center gap-3">
+                <div className={`w-10 h-10 flex items-center justify-center text-white ${GRADIENT}`}>
+                  <Leaf className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-black">Clean Energy</div>
+                  <div className="text-xs text-gray-600">Low carbon systems</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="absolute -top-10 -right-10 bg-white p-5 border border-black/5 shadow-lg"
+            >
+              <div className="flex items-center gap-3">
+                <div className={`w-10 h-10 flex items-center justify-center text-white ${GRADIENT}`}>
+                  <Factory className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-black">Industrial Scale</div>
+                  <div className="text-xs text-gray-600">Utility-grade plants</div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ================= SOLUTIONS ================= */}
       <section className="py-20 bg-white">
         <div className="container-wide space-y-24">
-          {/* HEADER */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
-          >
+          <div className="text-center max-w-3xl mx-auto">
             <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>What We Offer</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4">
@@ -119,9 +220,8 @@ const Solutions = () => {
             <p className="text-gray-600 mt-4">
               From concept to commissioning, we deliver complete, scalable and future-ready renewable energy solutions.
             </p>
-          </motion.div>
+          </div>
 
-          {/* SOLUTION BLOCKS */}
           {solutions.map((solution, index) => (
             <motion.div
               key={solution.title}
@@ -131,7 +231,6 @@ const Solutions = () => {
               transition={{ duration: 0.6 }}
               className="grid lg:grid-cols-2 gap-14 items-center"
             >
-              {/* TEXT */}
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className={`w-12 h-12 flex items-center justify-center text-white ${GRADIENT}`}>
@@ -160,7 +259,6 @@ const Solutions = () => {
                 </Link>
               </div>
 
-              {/* IMAGE */}
               <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
