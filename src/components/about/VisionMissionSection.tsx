@@ -26,7 +26,7 @@ const VisionMissionSection = () => {
       } : {}} transition={{
         duration: 0.6
       }} className="text-center mb-10">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs tracking-[0.12em] uppercase text-primary font-medium font-body mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs tracking-[0.12em] uppercase font-medium font-body mb-4 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
             Our Direction
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
@@ -60,7 +60,7 @@ const VisionMissionSection = () => {
                   <ArrowUpRight className="w-5 h-5 text-primary/30 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                 </div>
 
-                <h3 className="text-xl font-heading font-bold text-foreground mb-3">
+                <h3 className="text-xl font-heading font-bold mb-3 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
                   Our Vision
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed font-body mb-5">
@@ -107,7 +107,7 @@ const VisionMissionSection = () => {
                   <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                 </div>
 
-                <h3 className="text-xl font-heading font-bold text-white mb-3">
+                <h3 className="text-xl font-heading font-bold mb-3 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
                   Our Mission
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed font-body mb-5">

@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Zap, CheckCircle } from "lucide-react";
+import aboutHeroVideo from "@/assets/about-hero-video.mp4";
+
 const AboutHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const {
@@ -11,15 +13,15 @@ const AboutHero = () => {
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-  return <section ref={containerRef} className="relative min-h-[70vh] flex items-center bg-white overflow-hidden">
+  return <section ref={containerRef} className="relative min-h-[70vh] flex items-center overflow-hidden">
+      {/* Light gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
+
       {/* HEADER SAFE ZONE */}
       <div className="absolute top-0 left-0 right-0 h-[96px] md:h-[120px] z-20 pointer-events-none" />
 
       {/* TOP GRADIENT BUFFER */}
-      <div className="absolute top-0 left-0 right-0 h-[140px] bg-gradient-to-b from-white via-white/95 to-transparent z-10" />
-
-      {/* MAIN WHITE BACKGROUND */}
-      <div className="absolute inset-0 bg-white z-0" />
+      <div className="absolute top-0 left-0 right-0 h-[140px] bg-gradient-to-b from-[hsl(45,30%,96%)] via-[hsl(45,30%,96%)]/95 to-transparent z-10" />
 
       {/* CONTENT */}
       <div className="container-wide relative z-20 pt-[96px] md:pt-[120px] pb-20 lg:pb-24">
@@ -59,7 +61,7 @@ const AboutHero = () => {
             delay: 0.2
           }} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-black leading-[1.1] mb-5">
               Transforming
-              <span className="block mt-1 text-green-700">Agricultural Waste</span>
+              <span className="block mt-1 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Agricultural Waste</span>
               <span className="block mt-1">Into Clean Energy</span>
             </motion.h1>
 
@@ -134,7 +136,7 @@ const AboutHero = () => {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT IMAGE (UNCHANGED STYLE) */}
+          {/* RIGHT VIDEO */}
           <motion.div style={{
           y: imageY
         }} initial={{
@@ -153,9 +155,16 @@ const AboutHero = () => {
               {/* Background decorative shape */}
               <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-br from-green-600/30 to-green-400/20 rounded-2xl blur-sm" />
 
-              {/* Main image */}
+              {/* Main video */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
-                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop" alt="Clean Energy Infrastructure" className="w-full aspect-[4/3] object-cover" />
+                <video
+                  src={aboutHeroVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full aspect-[4/3] object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 

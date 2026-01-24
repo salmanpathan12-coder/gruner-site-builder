@@ -154,21 +154,11 @@ const ImpactStatsSection = () => {
 
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* ===== THEME ENERGY BACKGROUND ===== */}
-      <div className="absolute inset-0">
-        {/* Base eco-neutral */}
-        <div className="absolute inset-0 bg-[hsl(160,35%,96%)]" />
+      {/* ===== LIGHT GRADIENT BACKGROUND ===== */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
 
-        {/* Theme gradient wash */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-accent/8 to-primary/12" />
-
-        {/* Energy flow animation */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent"
-          animate={{ x: ["-100%", "100%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
+      {/* Theme gradient wash */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-accent/5 to-primary/8" />
 
       {/* Floating eco orbs */}
       <motion.div

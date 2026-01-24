@@ -85,8 +85,8 @@ const CoreValuesSection = () => {
     margin: "-50px"
   });
   return <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* Soft green-tinted background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(140,20%,96%)] via-[hsl(160,15%,97%)] to-[hsl(150,20%,95%)]" />
+      {/* Light gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
       
       {/* Accent orbs */}
       <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-gradient-to-r from-accent/10 to-transparent rounded-full blur-[80px]" />
