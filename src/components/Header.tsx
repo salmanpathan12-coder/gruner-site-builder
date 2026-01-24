@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, FolderKanban, HardHat, FlaskConical, Fuel, Leaf, Wrench } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/gruner-logo.png";
 
@@ -37,8 +37,12 @@ const Header = () => {
       label: "Solutions", 
       href: "/solutions",
       dropdown: [
-        { label: "Bio-CNG Plants", href: "/solutions" },
-        { label: "Operations & Maintenance", href: "/solutions#om" },
+        { label: "Project Development", href: "/solutions/project-development", icon: FolderKanban },
+        { label: "Engineering & Construction", href: "/solutions/engineering-construction", icon: HardHat },
+        { label: "R&D", href: "/solutions/rd", icon: FlaskConical },
+        { label: "CNG Retail Outlets", href: "/solutions/cng-retail", icon: Fuel },
+        { label: "Bio-Gas", href: "/solutions/bio-gas", icon: Leaf },
+        { label: "O&M", href: "/solutions/om", icon: Wrench },
       ]
     },
     { label: "Media", href: "/media" },
@@ -48,11 +52,18 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Background with animated opacity */}
+      {/* Background with animated opacity - enhanced for light hero visibility */}
       <motion.div 
         style={{ opacity: headerOpacity }}
         className="absolute inset-0 bg-background/95 backdrop-blur-md shadow-sm"
       />
+      
+      {/* Subtle always-visible backdrop for light backgrounds */}
+      <div className={`absolute inset-0 transition-all duration-300 ${
+        isScrolled 
+          ? "bg-transparent" 
+          : "bg-gradient-to-b from-black/20 via-black/10 to-transparent backdrop-blur-[2px]"
+      }`} />
       
       <div className={`relative transition-all duration-500 ${isScrolled ? "py-3" : "py-5"}`}>
         <div className="container-wide flex items-center justify-between">
@@ -74,6 +85,7 @@ const Header = () => {
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href || location.pathname.startsWith(link.href + "/");
               const hasDropdown = link.dropdown && link.dropdown.length > 0;
+              const isSolutionsDropdown = link.label === "Solutions";
               
               return (
                 <div
@@ -91,8 +103,11 @@ const Header = () => {
                           : "text-foreground/70 hover:text-foreground hover:bg-muted"
                         : isActive
                           ? "text-white"
-                          : "text-white/70 hover:text-white hover:bg-white/10"
+                          : "text-white/90 hover:text-white hover:bg-white/10"
                     }`}
+                    style={{
+                      textShadow: !isScrolled ? "0 1px 2px rgba(0,0,0,0.3)" : "none"
+                    }}
                   >
                     {link.label}
                     {hasDropdown && (
@@ -113,17 +128,27 @@ const Header = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-1 py-2 bg-background rounded-lg shadow-xl border border-border min-w-[180px]"
+                        className={`absolute top-full left-0 mt-1 py-3 bg-background rounded-lg shadow-xl border border-border ${
+                          isSolutionsDropdown ? "min-w-[260px]" : "min-w-[180px]"
+                        }`}
                       >
-                        {link.dropdown.map((item) => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            className="block px-4 py-2 text-sm text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
-                          >
-                            {item.label}
-                          </a>
-                        ))}
+                        {link.dropdown.map((item) => {
+                          const IconComponent = 'icon' in item ? item.icon : null;
+                          return (
+                            <Link
+                              key={item.label}
+                              to={item.href}
+                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
+                            >
+                              {IconComponent && (
+                                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center flex-shrink-0">
+                                  <IconComponent className="w-4 h-4 text-primary" />
+                                </div>
+                              )}
+                              <span className="font-medium">{item.label}</span>
+                            </Link>
+                          );
+                        })}
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -131,10 +156,10 @@ const Header = () => {
               );
             })}
             
-            {/* Gradient CTA Button */}
+            {/* Gradient CTA Button - Sharp edges, matching reference */}
             <Link to="/contact">
               <motion.span 
-                className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+                className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -155,6 +180,9 @@ const Header = () => {
             }`}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.9 }}
+            style={{
+              textShadow: !isScrolled && !isMobileMenuOpen ? "0 1px 2px rgba(0,0,0,0.3)" : "none"
+            }}
           >
             <AnimatePresence mode="wait">
               {isMobileMenuOpen ? (
@@ -206,12 +234,12 @@ const Header = () => {
                     </motion.a>
                   ))}
                   <motion.a
-                    href="#contact"
+                    href="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: navLinks.length * 0.1 }}
-                    className="mt-4 inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent"
+                    className="mt-4 inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gradient-to-r from-primary to-accent"
                   >
                     Partner With Us
                   </motion.a>
@@ -221,8 +249,6 @@ const Header = () => {
           </AnimatePresence>
         </div>
       </div>
-      
-      {/* Removed progress bar for multi-page navigation */}
     </header>
   );
 };
