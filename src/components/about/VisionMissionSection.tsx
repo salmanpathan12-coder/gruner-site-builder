@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Eye, Compass, Globe } from "lucide-react";
+import { Target, Eye, ArrowUpRight } from "lucide-react";
 
 const VisionMissionSection = () => {
   const ref = useRef(null);
@@ -8,12 +8,12 @@ const VisionMissionSection = () => {
 
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* Warm cream to sage gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,35%,92%)] via-[hsl(60,25%,94%)] to-[hsl(140,20%,92%)]" />
+      {/* Multi-color gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
       
-      {/* Subtle accent layers */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[hsl(160,30%,88%)]/50 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[hsl(45,50%,80%)]/30 to-transparent rounded-full blur-[100px]" />
+      {/* Warm accent orbs */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-[hsl(35,70%,60%)]/10 to-transparent rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-[80px]" />
 
       <div className="container-wide relative z-10">
         {/* Compact header */}
@@ -23,91 +23,88 @@ const VisionMissionSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[hsl(160,40%,35%)]/10 border border-[hsl(160,40%,35%)]/20 mb-4">
-            <Compass className="w-3.5 h-3.5 text-[hsl(160,40%,35%)]" />
-            <span className="text-xs tracking-[0.12em] uppercase text-[hsl(160,40%,35%)] font-medium font-body">
-              Our Direction
-            </span>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs tracking-[0.12em] uppercase text-primary font-medium font-body mb-4">
+            Our Direction
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
-            Driving India's <span className="text-[hsl(160,40%,35%)]">Sustainable</span> Future
+            Driving India's <span className="text-primary">Clean Energy</span> Future
           </h2>
         </motion.div>
 
-        {/* Vision & Mission - Creative asymmetric layout */}
-        <div className="grid lg:grid-cols-12 gap-5 max-w-5xl mx-auto">
-          {/* Vision Card - Larger */}
+        {/* Compact two-column cards */}
+        <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+          {/* Vision Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-7 group"
+            initial={{ opacity: 0, y: 30, x: -20 }}
+            animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="group"
           >
-            <div className="relative h-full bg-gradient-to-br from-[hsl(160,35%,25%)] to-[hsl(180,30%,20%)] rounded-2xl p-6 md:p-7 overflow-hidden">
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[hsl(45,60%,55%)]/20 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-[hsl(160,50%,45%)]/20 to-transparent rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="relative h-full bg-white rounded-2xl p-6 md:p-7 shadow-lg shadow-foreground/5 border border-foreground/5 overflow-hidden hover:shadow-xl transition-all duration-500">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
               
               <div className="relative">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[hsl(45,60%,55%)] to-[hsl(35,65%,50%)] flex items-center justify-center shadow-lg">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg shadow-primary/20">
                     <Eye className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-xs uppercase tracking-[0.15em] text-white/50 font-body">Our Vision</span>
+                  <ArrowUpRight className="w-5 h-5 text-primary/30 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                 </div>
 
-                <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-3 leading-snug">
-                  To be India's leading Bio-CNG infrastructure company
+                <h3 className="text-xl font-heading font-bold text-foreground mb-3">
+                  Our Vision
                 </h3>
-                <p className="text-white/65 text-sm leading-relaxed font-body mb-5">
-                  Creating a sustainable ecosystem where agricultural waste transforms into 
-                  clean energy, powering India's green revolution.
+                <p className="text-muted-foreground text-sm leading-relaxed font-body mb-5">
+                  To be India's leading force in the Bio-CNG revolution, creating a sustainable 
+                  ecosystem where agricultural waste transforms into clean energy.
                 </p>
 
-                <div className="flex gap-5 pt-4 border-t border-white/10">
+                <div className="flex gap-6 pt-4 border-t border-foreground/10">
                   <div>
-                    <div className="text-xl font-heading font-bold text-[hsl(45,60%,55%)]">2030</div>
-                    <div className="text-xs text-white/50 font-body">Net Zero Target</div>
+                    <div className="text-lg font-heading font-bold text-primary">2030</div>
+                    <div className="text-xs text-muted-foreground font-body">Net Zero Goal</div>
                   </div>
                   <div>
-                    <div className="text-xl font-heading font-bold text-[hsl(45,60%,55%)]">500+</div>
-                    <div className="text-xs text-white/50 font-body">Plants Planned</div>
+                    <div className="text-lg font-heading font-bold text-primary">500+</div>
+                    <div className="text-xs text-muted-foreground font-body">Plants Target</div>
                   </div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Mission Card - Smaller */}
+          {/* Mission Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-5 group"
+            initial={{ opacity: 0, y: 30, x: 20 }}
+            animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="group"
           >
-            <div className="relative h-full bg-white rounded-2xl p-6 md:p-7 shadow-lg shadow-foreground/5 border border-foreground/5 overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[hsl(160,40%,35%)]/10 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="relative h-full bg-gradient-to-br from-[hsl(200,25%,15%)] to-[hsl(180,20%,12%)] rounded-2xl p-6 md:p-7 shadow-xl overflow-hidden">
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/30 to-transparent rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/20 to-transparent rounded-full" />
               
               <div className="relative">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[hsl(160,40%,35%)] to-[hsl(175,35%,30%)] flex items-center justify-center shadow-lg shadow-[hsl(160,40%,35%)]/20">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-primary flex items-center justify-center shadow-lg">
                     <Target className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground font-body">Our Mission</span>
+                  <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                 </div>
 
-                <h3 className="text-lg font-heading font-bold text-foreground mb-3">
-                  Delivering world-class infrastructure
+                <h3 className="text-xl font-heading font-bold text-white mb-3">
+                  Our Mission
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed font-body mb-5">
-                  Through innovative technology and operational excellence in every project.
+                <p className="text-white/70 text-sm leading-relaxed font-body mb-5">
+                  Delivering world-class Bio-CNG infrastructure through innovative technology, 
+                  operational excellence, and environmental stewardship.
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {["Innovation", "Excellence", "Impact"].map((pillar) => (
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                  {["Innovation", "Sustainability", "Excellence"].map((pillar) => (
                     <span 
                       key={pillar}
-                      className="px-3 py-1.5 rounded-full bg-[hsl(160,40%,35%)]/10 text-[hsl(160,40%,35%)] text-xs font-medium font-body border border-[hsl(160,40%,35%)]/15"
+                      className="px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-xs font-body border border-white/10"
                     >
                       {pillar}
                     </span>
@@ -116,32 +113,29 @@ const VisionMissionSection = () => {
               </div>
             </div>
           </motion.div>
-
-          {/* Quote banner - Full width */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-12"
-          >
-            <div className="relative rounded-xl overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=2074&auto=format&fit=crop"
-                alt="Sustainable Future"
-                className="w-full h-36 md:h-44 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(160,35%,25%)]/90 via-[hsl(160,35%,25%)]/70 to-transparent" />
-              <div className="absolute inset-0 flex items-center px-6 md:px-8">
-                <div className="flex items-center gap-4">
-                  <Globe className="w-8 h-8 text-[hsl(45,60%,55%)] flex-shrink-0" />
-                  <p className="text-base md:text-lg font-heading font-medium text-white leading-relaxed max-w-lg">
-                    "Building a circular economy where waste becomes wealth and energy becomes sustainable."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
+
+        {/* Compact quote banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 max-w-4xl mx-auto"
+        >
+          <div className="relative rounded-xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=2070&auto=format&fit=crop"
+              alt="Sustainable Energy"
+              className="w-full h-40 md:h-48 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/60 to-transparent" />
+            <div className="absolute inset-0 flex items-center px-6 md:px-10">
+              <p className="text-base md:text-lg font-heading font-medium text-white leading-relaxed max-w-md">
+                "Building a circular economy where waste becomes wealth and energy becomes sustainable."
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

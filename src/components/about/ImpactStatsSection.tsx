@@ -1,6 +1,6 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { Factory, TrendingUp, Users, MapPin, Leaf, BarChart3, Zap } from "lucide-react";
+import { Factory, TrendingUp, Users, MapPin, Leaf, BarChart3 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface AnimatedCounterProps {
@@ -11,11 +11,13 @@ interface AnimatedCounterProps {
 }
 
 const AnimatedCounter = ({ value, suffix = "", prefix = "", isInView }: AnimatedCounterProps) => {
-  const spring = useSpring(0, { duration: 2200, bounce: 0 });
+  const spring = useSpring(0, { duration: 2000, bounce: 0 });
   const display = useTransform(spring, (current) => `${prefix}${Math.round(current).toLocaleString()}${suffix}`);
 
   useEffect(() => {
-    if (isInView) spring.set(value);
+    if (isInView) {
+      spring.set(value);
+    }
   }, [isInView, value, spring]);
 
   return <motion.span>{display}</motion.span>;
@@ -29,31 +31,52 @@ interface StatCardProps {
   icon: LucideIcon;
   index: number;
   isInView: boolean;
+  variant: 'primary' | 'dark' | 'light';
 }
 
-const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView }: StatCardProps) => {
+const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, variant }: StatCardProps) => {
+  const variants = {
+    primary: "bg-gradient-to-br from-primary to-primary/90 text-white",
+    dark: "bg-gradient-to-br from-[hsl(200,25%,15%)] to-[hsl(180,20%,12%)] text-white",
+    light: "bg-white text-foreground shadow-lg shadow-foreground/5 border border-foreground/5"
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.97 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -3, scale: 1.015 }}
+      transition={{ duration: 0.5, delay: 0.05 + index * 0.08 }}
       className="group"
     >
-      <div className="relative h-full rounded-2xl p-5 bg-white/70 backdrop-blur-xl border border-[#e4f0ea] shadow-lg overflow-hidden">
-        {/* soft glow */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#2f7a60]/10 via-transparent to-[#6ee7b7]/15" />
+      <div className={`relative h-full rounded-xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${variants[variant]}`}>
+        {/* Decorative accent */}
+        {variant === 'primary' && (
+          <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+        )}
+        {variant === 'dark' && (
+          <div className="absolute bottom-0 left-0 w-16 h-16 bg-accent/20 rounded-full translate-y-1/2 -translate-x-1/2" />
+        )}
 
-        <div className="relative flex items-center gap-4">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2f7a60] to-[#1f5f4b] flex items-center justify-center shadow-md">
-            <Icon className="w-5 h-5 text-white" />
+        <div className="relative flex items-start gap-4">
+          <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+            variant === 'light' 
+              ? 'bg-gradient-to-br from-primary/10 to-accent/10' 
+              : 'bg-white/15'
+          }`}>
+            <Icon className={`w-5 h-5 ${variant === 'light' ? 'text-primary' : 'text-white'}`} />
           </div>
 
-          <div className="flex-1">
-            <div className="text-2xl font-bold text-[#0e2f23] leading-tight">
+          <div>
+            <div className={`font-heading font-bold text-2xl md:text-3xl mb-1 ${
+              variant === 'light' ? 'text-foreground' : 'text-white'
+            }`}>
               <AnimatedCounter value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
             </div>
-            <div className="text-xs text-[#5f8572] tracking-wide mt-0.5">{label}</div>
+            <div className={`text-xs font-body ${
+              variant === 'light' ? 'text-muted-foreground' : 'text-white/70'
+            }`}>
+              {label}
+            </div>
           </div>
         </div>
       </div>
@@ -62,73 +85,51 @@ const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView }:
 };
 
 const stats = [
-  { value: 63, suffix: "+", label: "Bio-CNG Plants", icon: Factory },
-  { value: 1500, suffix: "+", prefix: "₹", label: "Crore Value", icon: TrendingUp },
-  { value: 8, suffix: "+", label: "Indian States", icon: MapPin },
-  { value: 250, suffix: "+", label: "Team Members", icon: Users },
-  { value: 60, suffix: "M", prefix: "$", label: "Funding Raised", icon: BarChart3 },
-  { value: 9000, suffix: "+", label: "Engineering Hours", icon: Leaf },
+  { value: 63, suffix: "+", label: "Bio-CNG Plants", icon: Factory, variant: 'primary' as const },
+  { value: 1500, suffix: "+", prefix: "₹", label: "Crore Value", icon: TrendingUp, variant: 'light' as const },
+  { value: 8, suffix: "+", label: "Indian States", icon: MapPin, variant: 'dark' as const },
+  { value: 250, suffix: "+", label: "Team Members", icon: Users, variant: 'light' as const },
+  { value: 60, suffix: "M", prefix: "$", label: "Funding", icon: BarChart3, variant: 'light' as const },
+  { value: 9000, suffix: "+", label: "Eng. Hours", icon: Leaf, variant: 'primary' as const },
 ];
 
 const ImpactStatsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* ================= BACKGROUND ================= */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#f7fbf8] via-[#eef6f2] to-[#f9fcfa]" />
+      {/* Teal-blue gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(180,25%,92%)] via-[hsl(190,20%,95%)] to-[hsl(200,25%,93%)]" />
+      
+      {/* Accent orbs */}
+      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-gradient-to-tl from-accent/10 to-transparent rounded-full blur-[80px]" />
 
-      {/* soft ambient lights */}
-      <motion.div
-        className="absolute top-[-15%] right-[-10%] w-[480px] h-[480px] rounded-full blur-[120px] opacity-45"
-        style={{ background: "radial-gradient(circle, #cdeee0 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <motion.div
-        className="absolute bottom-[-20%] left-[-10%] w-[480px] h-[480px] rounded-full blur-[120px] opacity-40"
-        style={{ background: "radial-gradient(circle, #f4efd8 0%, transparent 70%)" }}
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* subtle mesh */}
-      <div
-        className="absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(60,120,90,0.6) 1px, transparent 0)",
-          backgroundSize: "44px 44px",
-        }}
-      />
-
-      {/* ================= CONTENT ================= */}
       <div className="container-wide relative z-10">
-        {/* Header */}
+        {/* Compact header */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-[#e4f0ea] mb-4 shadow-sm">
-            <Zap className="w-4 h-4 text-[#2f7a60]" />
-            <span className="text-[11px] tracking-[0.18em] uppercase text-[#2f7a60] font-semibold">Impact Metrics</span>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
+            <BarChart3 className="w-3.5 h-3.5 text-primary" />
+            <span className="text-xs tracking-[0.12em] uppercase text-primary font-medium font-body">
+              Our Impact
+            </span>
           </span>
-
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-[#0e2f23] leading-tight">
-            Measurable{" "}
-            <span className="bg-gradient-to-r from-[#2f7a60] to-[#6ee7b7] bg-clip-text text-transparent">Impact</span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
+            Driving <span className="text-primary">Measurable</span> Change
           </h2>
-
-          <p className="text-[#5f8572] text-sm md:text-base max-w-xl mx-auto mt-3">
-            Real performance indicators driving India’s clean energy transformation.
+          <p className="text-muted-foreground max-w-xl mx-auto font-body text-sm">
+            Real metrics showcasing our commitment to India's clean energy transformation.
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        {/* Compact stats grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <StatCard
               key={stat.label}
@@ -139,21 +140,10 @@ const ImpactStatsSection = () => {
               icon={stat.icon}
               index={index}
               isInView={isInView}
+              variant={stat.variant}
             />
           ))}
         </div>
-
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 text-center"
-        >
-          <p className="text-xs text-[#6f9485] tracking-wide">
-            Structured growth • Scalable systems • Sustainable engineering
-          </p>
-        </motion.div>
       </div>
     </section>
   );
