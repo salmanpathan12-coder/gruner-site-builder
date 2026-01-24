@@ -215,7 +215,7 @@ const ContactFormSection = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all disabled:opacity-70 font-body"
+                  className="w-full py-3 px-6 rounded-md bg-gradient-to-r from-primary to-accent text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/20 transition-all disabled:opacity-70 font-body"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

@@ -81,7 +81,7 @@ const CTASection = () => {
                 
                 <MagneticButton 
                   href="mailto:contact@grunerrenewable.com"
-                  className="inline-flex items-center justify-center px-8 py-5 bg-transparent border-2 border-background/20 text-background font-medium rounded transition-all duration-200 hover:border-background/40 hover:bg-background/5"
+                  className="inline-flex items-center justify-center px-8 py-5 bg-transparent border-2 border-background/20 text-background font-medium rounded-md transition-all duration-200 hover:border-background/40 hover:bg-background/5"
                 >
                   Contact Us
                 </MagneticButton>

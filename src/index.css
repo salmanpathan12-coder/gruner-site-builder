@@ -242,7 +242,7 @@
 
   /* Button variants */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded transition-all duration-200;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-md transition-all duration-200;
   }
 
   .btn-primary:hover {
@@ -251,7 +251,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/80 text-white font-medium rounded transition-all duration-200;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/80 text-white font-medium rounded-md transition-all duration-200;
   }
 
   .btn-secondary:hover {
@@ -259,7 +259,7 @@
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-primary text-primary font-medium rounded transition-all duration-200;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-primary text-primary font-medium rounded-md transition-all duration-200;
   }
 
   .btn-outline:hover {

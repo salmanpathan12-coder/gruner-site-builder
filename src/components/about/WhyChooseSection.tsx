@@ -162,7 +162,7 @@ const WhyChooseSection = () => {
             duration: 0.5,
             delay: 0.6
           }}>
-              <a href="/contact" className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-medium shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 font-body text-sm text-center rounded bg-primary">
+              <a href="/contact" className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-medium shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 font-body text-sm text-center rounded-md">
                 Start Your Project
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>

@@ -173,11 +173,11 @@ const LeadershipSection = () => {
         delay: 0.5
       }} className="text-center mt-10">
           <div className="inline-flex flex-col sm:flex-row gap-3 items-center">
-            <a href="/careers" className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white hover:border-accent hover:text-accent transition-all duration-300 font-body text-sm rounded">
+            <a href="/careers" className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white hover:border-accent hover:text-accent transition-all duration-300 font-body text-sm rounded-md">
               Join Our Team
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="/contact" className="group inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-accent text-white font-medium shadow-lg shadow-primary/30 transition-all duration-300 font-body text-sm rounded">
+            <a href="/contact" className="group inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-accent text-white font-medium shadow-lg shadow-primary/30 transition-all duration-300 font-body text-sm rounded-md">
               Contact Us
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
