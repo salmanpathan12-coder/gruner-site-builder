@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
+import TechnologyHero from "@/components/technology/TechnologyHero";
 import { 
   Beaker, 
   Thermometer, 
@@ -71,15 +71,7 @@ const Technology = () => {
 
   return (
     <PageLayout>
-      <PageHero
-        title="CSTR Technology"
-        subtitle="Continuous-Flow Stirred Tank Reactor technology - the backbone of efficient biogas production at Gruner Renewable."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Technology", href: "/technology" }
-        ]}
-        image="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/fc3678381a9.png"
-      />
+      <TechnologyHero />
 
       {/* Introduction Section */}
       <section className="section-padding bg-background">
