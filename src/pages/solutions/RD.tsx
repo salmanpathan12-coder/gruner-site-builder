@@ -67,7 +67,7 @@ const RD = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
                 to="/contact"
-                className={`inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+                className={`inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold ${GRADIENT} rounded-md shadow-lg hover:shadow-xl transition-all`}
               >
                 Collaborate With Us
                 <ArrowRight className="w-5 h-5" />
@@ -187,7 +187,7 @@ const RD = () => {
             </p>
             <Link
               to="/contact"
-              className={`inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+              className={`inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold ${GRADIENT} rounded-md shadow-lg hover:shadow-xl transition-all`}
             >
               Contact R&D Team
               <ArrowRight className="w-5 h-5" />

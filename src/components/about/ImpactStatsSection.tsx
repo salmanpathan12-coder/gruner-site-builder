@@ -50,7 +50,7 @@ const CTAButton = ({ label }: { label: string }) => {
         hover:shadow-xl hover:shadow-primary/40
         transition-all duration-300
         text-center
-        rounded-none
+        rounded-md
         border border-white/10
       "
     >
@@ -225,7 +225,7 @@ const ImpactStatsSection = () => {
                 hover:border-primary/60
                 hover:bg-primary/5
                 transition-all duration-300
-                rounded-none
+                rounded-md
               "
             >
               View Projects

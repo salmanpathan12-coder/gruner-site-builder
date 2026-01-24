@@ -129,7 +129,7 @@ const Careers = () => {
             <div className="flex flex-wrap gap-4 pt-4">
               <a
                 href="#openings"
-                className={`inline-flex items-center gap-2 px-7 py-3 text-white font-semibold ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+                className={`inline-flex items-center gap-2 px-7 py-3 text-white font-semibold ${GRADIENT} rounded-md shadow-lg hover:shadow-xl transition-all`}
               >
                 View Open Positions
                 <ArrowRight className="w-4 h-4" />
@@ -310,7 +310,7 @@ const Careers = () => {
                     <p className="text-muted-foreground mb-6">{job.description}</p>
                     <Link
                       to="/contact"
-                      className={`inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
+                      className={`inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white ${GRADIENT} rounded-md shadow-lg hover:shadow-xl transition-all`}
                     >
                       Apply Now
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -334,7 +334,7 @@ const Careers = () => {
             </p>
             <a
               href="mailto:careers@grunerrenewable.com"
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-black bg-white hover:bg-white/90 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-black bg-white hover:bg-white/90 rounded-md transition-all"
             >
               Submit General Application
               <ArrowRight className="w-5 h-5 ml-2" />
