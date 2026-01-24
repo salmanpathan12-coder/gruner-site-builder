@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FlaskConical, CheckCircle2, ArrowRight, Microscope, Lightbulb, BarChart3, Target } from "lucide-react";
 
 const GRADIENT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]";
-const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text text-transparent";
+const GRADIENT_TEXT = "bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent";
 
 const features = [
   "Process optimization research",
@@ -52,7 +52,7 @@ const RD = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT}`}>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold rounded-md ${GRADIENT}`}>
               Research & Development
             </span>
 
@@ -75,7 +75,7 @@ const RD = () => {
 
               <Link
                 to="/technology"
-                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-black border border-black/15 hover:border-black/30 rounded-md transition-all"
               >
                 Explore Technology
               </Link>
@@ -98,7 +98,7 @@ const RD = () => {
 
             <div className="absolute -bottom-10 -left-10 bg-white p-5 border border-black/5 shadow-lg">
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 flex items-center justify-center text-white ${GRADIENT}`}>
+                <div className={`w-10 h-10 flex items-center justify-center text-white rounded-md ${GRADIENT}`}>
                   <FlaskConical className="w-5 h-5" />
                 </div>
                 <div>
@@ -115,7 +115,7 @@ const RD = () => {
       <section className="py-20 bg-gray-50">
         <div className="container-wide">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Our Focus</span>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium rounded-md ${GRADIENT}`}>Our Focus</span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4">
               Research <span className={GRADIENT_TEXT}>Capabilities</span>
             </h2>
@@ -129,7 +129,7 @@ const RD = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 bg-white border border-black/5 hover:shadow-lg transition-all"
+                className="p-6 bg-white border border-black/5 hover:shadow-lg rounded-md transition-all"
               >
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#1f8f7a] flex-shrink-0 mt-0.5" />
@@ -158,9 +158,9 @@ const RD = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="p-6 bg-white border border-black/5 hover:shadow-lg transition-all"
+                className="p-6 bg-white border border-black/5 hover:shadow-lg rounded-md transition-all"
               >
-                <div className={`w-12 h-12 mb-4 flex items-center justify-center text-white ${GRADIENT}`}>
+                <div className={`w-12 h-12 mb-4 flex items-center justify-center text-white rounded-md ${GRADIENT}`}>
                   <item.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>

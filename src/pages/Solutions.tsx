@@ -7,7 +7,7 @@ import { Factory, Settings, Wrench, TrendingUp, Leaf, Zap, Shield, CheckCircle2,
 /* ---------------- CONSTANTS ---------------- */
 
 const GRADIENT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]";
-const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text text-transparent";
+const GRADIENT_TEXT = "bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent";
 
 /* ---------------- DATA ---------------- */
 
@@ -101,7 +101,7 @@ const Solutions = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT}`}>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold rounded-md ${GRADIENT}`}>
               Renewable Energy Solutions
             </span>
 
@@ -125,7 +125,7 @@ const Solutions = () => {
 
               <Link
                 to="/technology"
-                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-black border border-black/15 hover:border-black/30 rounded-md transition-all"
               >
                 Explore Technology
               </Link>
@@ -170,7 +170,7 @@ const Solutions = () => {
             {/* Floating Cards */}
             <div className="absolute -bottom-10 -left-10 bg-white p-5 border border-black/5 shadow-lg">
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 flex items-center justify-center text-white ${GRADIENT}`}>
+                <div className={`w-10 h-10 flex items-center justify-center text-white rounded-md ${GRADIENT}`}>
                   <Leaf className="w-5 h-5" />
                 </div>
                 <div>
@@ -182,7 +182,7 @@ const Solutions = () => {
 
             <div className="absolute -top-10 -right-10 bg-white p-5 border border-black/5 shadow-lg">
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 flex items-center justify-center text-white ${GRADIENT}`}>
+                <div className={`w-10 h-10 flex items-center justify-center text-white rounded-md ${GRADIENT}`}>
                   <Factory className="w-5 h-5" />
                 </div>
                 <div>
@@ -199,7 +199,7 @@ const Solutions = () => {
       <section className="py-24 bg-white">
         <div className="container-wide space-y-28">
           <div className="text-center max-w-3xl mx-auto">
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>What We Offer</span>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium rounded-md ${GRADIENT}`}>What We Offer</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4">
               Integrated <span className={GRADIENT_TEXT}>Bio-CNG Solutions</span>
@@ -221,7 +221,7 @@ const Solutions = () => {
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-12 h-12 flex items-center justify-center text-white ${GRADIENT}`}>
+                  <div className={`w-12 h-12 flex items-center justify-center text-white rounded-md ${GRADIENT}`}>
                     <solution.icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-heading font-bold text-gray-900">{solution.title}</h3>
@@ -265,7 +265,7 @@ const Solutions = () => {
       <section className="py-24 bg-gray-50">
         <div className="container-wide space-y-12">
           <div className="text-center max-w-2xl mx-auto">
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Why Bio-CNG</span>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium rounded-md ${GRADIENT}`}>Why Bio-CNG</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4">
               Benefits of <span className={GRADIENT_TEXT}>Bio-CNG Plants</span>
@@ -280,9 +280,9 @@ const Solutions = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-7 bg-white border border-black/5 hover:shadow-lg transition-all"
+                className="p-7 bg-white border border-black/5 hover:shadow-lg rounded-md transition-all"
               >
-                <div className={`w-10 h-10 mb-3 flex items-center justify-center text-white ${GRADIENT}`}>
+                <div className={`w-10 h-10 mb-3 flex items-center justify-center text-white rounded-md ${GRADIENT}`}>
                   <benefit.icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-gray-900 mb-2">{benefit.title}</h3>
@@ -317,7 +317,7 @@ const Solutions = () => {
 
               <Link
                 to="/technology"
-                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 border border-black/10 hover:border-black/20 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 border border-black/10 hover:border-black/20 rounded-md transition-all"
               >
                 Explore Our Technology
               </Link>
