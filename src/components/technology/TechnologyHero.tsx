@@ -1,329 +1,506 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight, Zap, Cpu, Server, CircuitBoard, Settings, Activity } from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ChevronRight, Zap, Gauge, Activity, Cpu, Wind, Flame } from "lucide-react";
+import { useEffect, useState } from "react";
 
-// Animated floating orb component for background
-const FloatingOrb = ({ 
-  className, 
-  delay = 0,
-  duration = 6 
-}: { 
-  className: string; 
-  delay?: number;
-  duration?: number;
-}) => (
-  <motion.div
-    className={className}
-    animate={{
-      y: [0, -20, 0],
-      scale: [1, 1.05, 1],
-      opacity: [0.5, 0.7, 0.5]
-    }}
-    transition={{
-      duration,
-      delay,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}
-  />
-);
-
-// Tech node component
-const TechNode = ({ 
-  icon: Icon, 
-  label, 
-  delay,
-  className 
-}: { 
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-  delay: number;
-  className?: string;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.6, delay }}
-    className={`flex flex-col items-center gap-2 ${className}`}
-  >
-    <motion.div 
-      className="w-14 h-14 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg"
-      whileHover={{ scale: 1.1, borderColor: "rgba(255,255,255,0.4)" }}
-      animate={{
-        boxShadow: [
-          "0 0 20px rgba(20, 136, 88, 0.2)",
-          "0 0 30px rgba(20, 136, 88, 0.4)",
-          "0 0 20px rgba(20, 136, 88, 0.2)"
-        ]
-      }}
-      transition={{
-        boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-      }}
-    >
-      <Icon className="w-6 h-6 text-accent" />
-    </motion.div>
-    <span className="text-[10px] text-white/60 font-medium uppercase tracking-wider">{label}</span>
-  </motion.div>
-);
-
-// Central animated tech visual
-const TechVisual = () => {
+// Animated counter component
+const AnimatedMetric = ({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    const duration = 2000;
+    const steps = 60;
+    const increment = value / steps;
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+    
+    return () => clearInterval(timer);
+  }, [value]);
+  
   return (
-    <div className="relative w-full h-full min-h-[400px] flex items-center justify-center">
-      {/* Outer rotating ring */}
+    <div className="flex flex-col">
+      <span className="text-2xl md:text-3xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        {count}{suffix}
+      </span>
+      <span className="text-xs text-white/50 uppercase tracking-wider">{label}</span>
+    </div>
+  );
+};
+
+// Pulsing status indicator
+const StatusIndicator = ({ label, active = true }: { label: string; active?: boolean }) => (
+  <div className="flex items-center gap-2">
+    <motion.div
+      animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+      transition={{ duration: 2, repeat: Infinity }}
+      className={`w-2 h-2 rounded-full ${active ? 'bg-primary' : 'bg-white/30'}`}
+    />
+    <span className="text-xs text-white/60 uppercase tracking-wider">{label}</span>
+  </div>
+);
+
+// Energy flow line animation
+const EnergyFlowLine = ({ delay = 0, vertical = false }: { delay?: number; vertical?: boolean }) => (
+  <div className={`relative overflow-hidden ${vertical ? 'w-0.5 h-full' : 'h-0.5 w-full'}`}>
+    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20" />
+    <motion.div
+      animate={vertical 
+        ? { y: ['-100%', '100%'] }
+        : { x: ['-100%', '100%'] }
+      }
+      transition={{ duration: 3, repeat: Infinity, delay, ease: "linear" }}
+      className={`absolute ${vertical ? 'w-full h-8' : 'h-full w-16'} bg-gradient-to-r from-transparent via-primary to-transparent`}
+    />
+  </div>
+);
+
+// Animated bio-gas system visualization
+const BiogasSystemVisual = () => {
+  return (
+    <div className="relative w-full h-full min-h-[400px] md:min-h-[500px]">
+      {/* Central reactor vessel */}
       <motion.div
-        className="absolute w-72 h-72 md:w-80 md:h-80 rounded-full border border-white/10"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-40 md:w-40 md:h-48"
       >
-        <motion.div 
-          className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent"
-          animate={{ scale: [1, 1.3, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
+        {/* Main reactor body */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-accent/20 border-2 border-primary/40 rounded-t-full rounded-b-lg">
+          {/* Internal bubbling animation */}
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{
+                y: [40, -20],
+                opacity: [0, 1, 0],
+                scale: [0.5, 1, 0.3]
+              }}
+              transition={{
+                duration: 2 + Math.random(),
+                repeat: Infinity,
+                delay: i * 0.4
+              }}
+              className="absolute bottom-1/4 rounded-full bg-primary/40"
+              style={{
+                left: `${20 + i * 12}%`,
+                width: `${6 + Math.random() * 8}px`,
+                height: `${6 + Math.random() * 8}px`
+              }}
+            />
+          ))}
+          
+          {/* Reactor level indicators */}
+          <motion.div
+            animate={{ height: ['60%', '70%', '60%'] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-accent/40 to-primary/20 rounded-b-lg"
+          />
+        </div>
+        
+        {/* Reactor cap */}
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 md:w-28 h-4 bg-gradient-to-r from-primary/50 to-accent/50 rounded-full border border-primary/40" />
+        
+        {/* Output pipe */}
+        <motion.div
+          className="absolute -top-8 left-1/2 -translate-x-1/2 w-2 h-8 bg-gradient-to-t from-primary/40 to-accent/60"
+        >
+          <motion.div
+            animate={{ y: [16, -16] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="absolute bottom-0 w-full h-4 bg-gradient-to-t from-transparent via-primary to-accent"
+          />
+        </motion.div>
       </motion.div>
-
-      {/* Middle rotating ring */}
+      
+      {/* Input feedstock conveyor (left) */}
       <motion.div
-        className="absolute w-56 h-56 md:w-64 md:h-64 rounded-full border border-primary/20"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        initial={{ x: -50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2"
       >
-        <motion.div 
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-accent"
-          animate={{ scale: [1, 1.5, 1] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        />
+        <div className="relative w-24 md:w-32 h-8 bg-gradient-to-r from-primary/20 to-primary/40 border border-primary/30">
+          {/* Moving particles on conveyor */}
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{ x: [0, 80] }}
+              transition={{ duration: 2, repeat: Infinity, delay: i * 0.6 }}
+              className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-accent/60 rounded-sm"
+            />
+          ))}
+        </div>
+        <span className="text-[10px] text-white/40 uppercase tracking-wider mt-1 block">Feedstock</span>
       </motion.div>
-
-      {/* Inner pulsing ring */}
+      
+      {/* Connection line left to center */}
+      <div className="absolute left-28 md:left-40 top-1/2 -translate-y-1/2 w-12 md:w-16">
+        <EnergyFlowLine delay={0.2} />
+      </div>
+      
+      {/* Gas storage tank (right) */}
       <motion.div
-        className="absolute w-40 h-40 md:w-48 md:h-48 rounded-full border-2 border-accent/30"
-        animate={{ 
-          scale: [1, 1.05, 1],
-          opacity: [0.3, 0.6, 0.3]
-        }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Central core */}
+        initial={{ x: 50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
+        className="absolute right-4 md:right-8 top-1/3"
+      >
+        <div className="relative w-16 md:w-20 h-24 md:h-28">
+          {/* Tank body */}
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/30 to-primary/20 border-2 border-accent/40 rounded-lg">
+            {/* Gas level animation */}
+            <motion.div
+              animate={{ height: ['40%', '60%', '40%'] }}
+              transition={{ duration: 5, repeat: Infinity }}
+              className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/40 to-accent/30 rounded-b-lg"
+            />
+          </div>
+          {/* Pressure gauge */}
+          <motion.div
+            animate={{ rotate: [-20, 20, -20] }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 border-2 border-accent/40 rounded-full bg-foreground/80 flex items-center justify-center"
+          >
+            <div className="w-0.5 h-3 bg-primary origin-bottom" />
+          </motion.div>
+        </div>
+        <span className="text-[10px] text-white/40 uppercase tracking-wider mt-2 block text-center">Bio-CNG</span>
+      </motion.div>
+      
+      {/* Connection line center to right */}
+      <div className="absolute right-24 md:right-32 top-1/3 translate-y-3 w-10 md:w-14">
+        <EnergyFlowLine delay={0.8} />
+      </div>
+      
+      {/* Compression unit (bottom right) */}
       <motion.div
-        className="relative z-10 w-28 h-28 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-primary/30 to-accent/20 border border-white/20 flex items-center justify-center backdrop-blur-sm"
-        animate={{
-          boxShadow: [
-            "0 0 40px rgba(20, 136, 88, 0.3)",
-            "0 0 60px rgba(137, 177, 46, 0.4)",
-            "0 0 40px rgba(20, 136, 88, 0.3)"
-          ]
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="absolute right-8 md:right-16 bottom-16 md:bottom-20"
       >
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          className="w-12 h-12 md:w-14 md:h-14 border-2 border-primary/40 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"
         >
-          <Cpu className="w-12 h-12 md:w-14 md:h-14 text-white/80" />
+          <div className="w-8 h-8 md:w-10 md:h-10 border border-accent/40 rounded-full flex items-center justify-center">
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+              className="w-2 h-2 bg-primary rounded-full"
+            />
+          </div>
         </motion.div>
+        <span className="text-[10px] text-white/40 uppercase tracking-wider mt-1 block text-center">Compressor</span>
       </motion.div>
-
-      {/* Tech nodes positioned around */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2">
-        <TechNode icon={Server} label="Processing" delay={0.5} />
-      </div>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-        <TechNode icon={Activity} label="Monitoring" delay={0.7} />
-      </div>
-      <div className="absolute left-0 top-1/2 -translate-y-1/2">
-        <TechNode icon={CircuitBoard} label="Control" delay={0.9} />
-      </div>
-      <div className="absolute right-0 top-1/2 -translate-y-1/2">
-        <TechNode icon={Settings} label="Systems" delay={1.1} />
-      </div>
-
-      {/* Floating data particles */}
-      {[...Array(6)].map((_, i) => (
+      
+      {/* Power grid node (top right) */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.9 }}
+        className="absolute right-12 md:right-20 top-8 md:top-12"
+      >
+        <motion.div
+          animate={{ boxShadow: ['0 0 10px rgba(20,136,88,0.3)', '0 0 20px rgba(20,136,88,0.6)', '0 0 10px rgba(20,136,88,0.3)'] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary/30 to-accent/30 border border-primary/50 flex items-center justify-center"
+        >
+          <Zap className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+        </motion.div>
+        <span className="text-[10px] text-white/40 uppercase tracking-wider mt-1 block text-center">Grid</span>
+      </motion.div>
+      
+      {/* Waste processing unit (bottom left) */}
+      <motion.div
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="absolute left-8 md:left-16 bottom-12 md:bottom-16"
+      >
+        <div className="relative">
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            className="w-14 h-14 md:w-16 md:h-16 border-2 border-dashed border-accent/40 rounded-full flex items-center justify-center"
+          >
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-accent/30 to-primary/20 rounded-full flex items-center justify-center">
+              <Wind className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+            </div>
+          </motion.div>
+        </div>
+        <span className="text-[10px] text-white/40 uppercase tracking-wider mt-1 block text-center">Processing</span>
+      </motion.div>
+      
+      {/* Energy flow paths */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
+        {/* Curved path from reactor to storage */}
+        <motion.path
+          d="M200 150 Q 280 150 300 200"
+          fill="none"
+          stroke="url(#energyGradient)"
+          strokeWidth="2"
+          strokeDasharray="8 4"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2, delay: 1 }}
+        />
+        
+        {/* Path from processing to reactor */}
+        <motion.path
+          d="M100 320 Q 150 280 200 250"
+          fill="none"
+          stroke="url(#energyGradient)"
+          strokeWidth="2"
+          strokeDasharray="8 4"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2, delay: 1.2 }}
+        />
+        
+        {/* Path from compressor to grid */}
+        <motion.path
+          d="M320 300 Q 340 250 320 100"
+          fill="none"
+          stroke="url(#energyGradient)"
+          strokeWidth="2"
+          strokeDasharray="8 4"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 2, delay: 1.4 }}
+        />
+        
+        <defs>
+          <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+            <stop offset="50%" stopColor="hsl(var(--accent))" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+          </linearGradient>
+        </defs>
+      </svg>
+      
+      {/* Floating energy particles */}
+      {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 rounded-full bg-accent/60"
-          style={{
-            top: `${20 + Math.random() * 60}%`,
-            left: `${20 + Math.random() * 60}%`,
-          }}
           animate={{
-            y: [0, -30, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-            opacity: [0.3, 0.8, 0.3],
-            scale: [1, 1.5, 1]
+            x: [0, Math.random() * 40 - 20, 0],
+            y: [0, Math.random() * 40 - 20, 0],
+            opacity: [0.3, 0.7, 0.3]
           }}
           transition={{
             duration: 3 + Math.random() * 2,
-            delay: i * 0.3,
             repeat: Infinity,
-            ease: "easeInOut"
+            delay: i * 0.3
+          }}
+          className="absolute w-1.5 h-1.5 rounded-full bg-primary"
+          style={{
+            left: `${15 + Math.random() * 70}%`,
+            top: `${15 + Math.random() * 70}%`
           }}
         />
       ))}
+      
+      {/* System status overlay */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-4 left-4 right-4 flex justify-between items-center px-3 py-2 bg-foreground/50 border border-primary/20 backdrop-blur-sm"
+      >
+        <div className="flex items-center gap-4">
+          <StatusIndicator label="System Active" active />
+          <StatusIndicator label="Digestion" active />
+        </div>
+        <div className="flex items-center gap-2">
+          <Activity className="w-4 h-4 text-primary" />
+          <motion.span
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="text-xs text-primary font-mono"
+          >
+            ONLINE
+          </motion.span>
+        </div>
+      </motion.div>
     </div>
   );
 };
 
 const TechnologyHero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const visualY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-
-  const stats = [
-    { value: "85%", label: "Efficiency" },
-    { value: "24/7", label: "Monitoring" },
-    { value: "60+", label: "Systems" },
-  ];
-
   return (
-    <section ref={containerRef} className="relative overflow-hidden">
-      {/* Multi-color gradient background - matching About Hero */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(200,25%,12%)] via-[hsl(180,20%,15%)] to-[hsl(160,25%,10%)]" />
-        
-        {/* Dynamic floating color orbs */}
-        <FloatingOrb 
-          className="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-primary/30 to-accent/20 rounded-full blur-[120px]"
-          delay={0}
-          duration={8}
-        />
-        <FloatingOrb 
-          className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent/25 to-primary/15 rounded-full blur-[100px]"
-          delay={2}
-          duration={7}
-        />
-        <FloatingOrb 
-          className="absolute top-1/2 right-0 w-[300px] h-[300px] bg-gradient-to-bl from-[hsl(180,60%,40%)]/20 to-transparent rounded-full blur-[80px]"
-          delay={4}
-          duration={6}
-        />
-        
-        {/* Subtle grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]" 
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }} 
-        />
-      </div>
+    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/98 to-primary/10" />
+      
+      {/* Subtle grid pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
+        }}
+      />
+      
+      {/* Gradient orbs */}
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
+        transition={{ duration: 8, repeat: Infinity }}
+        className="absolute top-10 right-0 w-[500px] h-[500px] bg-gradient-to-br from-primary/20 to-accent/10 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{ scale: [1.1, 1, 1.1], opacity: [0.08, 0.12, 0.08] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent/15 to-primary/10 rounded-full blur-3xl"
+      />
 
-      {/* Main content - properly spaced from header */}
-      <div className="container-wide relative z-10 pt-32 pb-20 lg:pt-36 lg:pb-24">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          
-          {/* Left: Content */}
-          <motion.div style={{ y }} className="relative z-10">
-            {/* Badge */}
+      <div className="container-wide relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* LEFT: Content Zone */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="space-y-6"
+          >
+            {/* Breadcrumbs */}
+            <nav className="flex items-center gap-2 text-sm text-white/40">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="text-primary">Technology</span>
+            </nav>
+            
+            {/* Animated badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-6"
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 border border-primary/30"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
-                <Zap className="w-4 h-4 text-accent" />
-                <span className="text-xs tracking-[0.12em] uppercase text-white/90 font-medium font-body">
-                  Advanced Technology
-                </span>
-              </span>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              >
+                <Cpu className="w-3.5 h-3.5 text-primary" />
+              </motion.div>
+              <span className="text-xs text-primary uppercase tracking-wider font-medium">Advanced Engineering</span>
             </motion.div>
-
-            {/* Headline - High contrast and clearly visible */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white leading-[1.1] mb-5"
-            >
-              Engineering
-              <span className="block mt-1">
-                <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
-                  Clean Energy
-                </span>
-              </span>
-              <span className="block mt-1">Systems</span>
-            </motion.h1>
-
-            {/* Description - Readable at all screen sizes */}
+            
+            {/* Gradient heading */}
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight"
+              >
+                <span className="text-white">CSTR </span>
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Technology</span>
+              </motion.h1>
+              
+              {/* Animated divider */}
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: '120px' }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="h-0.5 bg-gradient-to-r from-primary to-accent mt-4"
+              />
+            </div>
+            
+            {/* Tech description */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-base md:text-lg text-white/70 leading-relaxed mb-8 max-w-lg font-body"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-white/60 leading-relaxed max-w-lg"
             >
-              Our proprietary Bio-CNG technology combines advanced engineering with 
-              intelligent automation to maximize efficiency and reliability at every plant.
+              Continuous-Flow Stirred Tank Reactor — the backbone of efficient biogas production. 
+              Engineering clean energy through advanced anaerobic digestion systems.
             </motion.p>
-
-            {/* CTA Buttons */}
+            
+            {/* Tech metrics */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap gap-3 mb-10"
+              transition={{ delay: 0.6 }}
+              className="grid grid-cols-3 gap-4 pt-4"
             >
-              <a 
-                href="/solutions" 
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-medium shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 font-body text-sm text-center rounded"
-              >
-                Explore Solutions
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a 
-                href="/contact" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-medium transition-all duration-300 font-body text-sm backdrop-blur-sm rounded"
-              >
-                Get In Touch
-              </a>
+              <AnimatedMetric value={85} suffix="%" label="Efficiency" />
+              <AnimatedMetric value={60} suffix=" Days" label="Retention" />
+              <AnimatedMetric value={10} suffix="% DS" label="Max Solid" />
             </motion.div>
-
-            {/* Stats - Compact horizontal */}
+            
+            {/* System tags */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap gap-6 md:gap-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="flex flex-wrap gap-2 pt-2"
             >
-              {stats.map((stat, index) => (
-                <div key={stat.label} className="relative">
-                  <div className="text-2xl md:text-3xl font-heading font-bold text-white">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-white/60 font-body uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                  <motion.div 
-                    className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-accent rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: 24 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  />
-                </div>
+              {['Mesophilic', 'Thermophilic', 'Bio-CNG', 'Smart Grid'].map((tag, i) => (
+                <motion.span
+                  key={tag}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + i * 0.1 }}
+                  className="px-3 py-1 text-xs text-white/50 border border-white/10 bg-white/5 uppercase tracking-wider"
+                >
+                  {tag}
+                </motion.span>
               ))}
             </motion.div>
+            
+            {/* Status indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="flex items-center gap-6 pt-4"
+            >
+              <div className="flex items-center gap-2">
+                <Flame className="w-4 h-4 text-accent" />
+                <span className="text-xs text-white/50 uppercase tracking-wider">Biogas Output</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Gauge className="w-4 h-4 text-primary" />
+                <span className="text-xs text-white/50 uppercase tracking-wider">Process Control</span>
+              </div>
+            </motion.div>
           </motion.div>
-
-          {/* Right: Animated tech visual */}
-          <motion.div 
-            style={{ y: visualY }}
-            initial={{ opacity: 0, x: 40, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+          
+          {/* RIGHT: Visual Zone */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <TechVisual />
+            <div className="relative bg-gradient-to-br from-foreground/80 to-primary/5 border border-primary/20 overflow-hidden">
+              <BiogasSystemVisual />
+              
+              {/* Corner accents */}
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/40" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-accent/40" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-accent/40" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/40" />
+            </div>
           </motion.div>
         </div>
       </div>
+      
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
