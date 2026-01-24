@@ -61,10 +61,10 @@ const EnergyFlowLine = ({ delay = 0, vertical = false }: { delay?: number; verti
   </div>
 );
 
-// Animated bio-gas system visualization - Light Theme Version
+// Animated bio-gas system visualization
 const BiogasSystemVisual = () => {
   return (
-    <div className="relative w-full h-full min-h-[400px] md:min-h-[500px] bg-white/80 backdrop-blur-sm border border-gray-200">
+    <div className="relative w-full h-full min-h-[400px] md:min-h-[500px] bg-white/90 backdrop-blur-sm border border-gray-200">
       {/* Central reactor vessel */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -72,9 +72,7 @@ const BiogasSystemVisual = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-40 md:w-40 md:h-48"
       >
-        {/* Main reactor body */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 border-2 border-[#88C444]/60 rounded-t-full rounded-b-lg shadow-xl">
-          {/* Internal bubbling animation */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-gray-200 border-2 border-[#88C444]/60 shadow-xl">
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
@@ -88,16 +86,13 @@ const BiogasSystemVisual = () => {
               }}
             />
           ))}
-          {/* Reactor level fill */}
           <motion.div
             animate={{ height: ["55%", "75%", "60%"] }}
             transition={{ duration: 5, repeat: Infinity }}
             className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#88C444]/40 via-[#88C444]/20 to-transparent rounded-b-lg"
           />
         </div>
-
-        {/* Reactor cap */}
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-28 md:w-32 h-5 bg-gradient-to-r from-[#88C444] to-[#A8E063] rounded-full border-2 border-[#88C444] shadow-lg" />
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-28 md:w-32 h-5 bg-gradient-to-r from-[#88C444] to-[#A8E063] border-2 border-[#88C444] shadow-lg" />
       </motion.div>
 
       {/* Feedstock conveyor */}
@@ -120,7 +115,6 @@ const BiogasSystemVisual = () => {
         <span className="text-[10px] text-gray-600 uppercase tracking-wider mt-2 block">Feedstock</span>
       </motion.div>
 
-      {/* Connections */}
       <div className="absolute left-32 md:left-44 top-1/2 -translate-y-1/2 w-16 md:w-20">
         <EnergyFlowLine delay={0.2} />
       </div>
@@ -136,7 +130,7 @@ const BiogasSystemVisual = () => {
         className="absolute right-4 md:right-8 top-1/3"
       >
         <div className="relative w-16 md:w-20 h-24 md:h-28">
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 border-2 border-[#88C444]/50 rounded-lg shadow-lg">
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-gray-200 border-2 border-[#88C444]/50 shadow-lg">
             <motion.div
               animate={{ height: ["40%", "60%", "40%"] }}
               transition={{ duration: 5, repeat: Infinity }}
@@ -300,10 +294,10 @@ const BiogasSystemVisual = () => {
 const TechnologyHero = () => {
   return (
     <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20 bg-gradient-to-b from-white via-gray-50 to-white">
-      {/* Subtle green overlay as per your request */}
+      {/* Subtle overlay matching the "Partner With Us" button style */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#88C444]/12 via-[#A8E063]/8 to-[#88C444]/12" />
 
-      {/* Soft glow orbs */}
+      {/* Glow orbs */}
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
         transition={{ duration: 12, repeat: Infinity }}
@@ -334,16 +328,17 @@ const TechnologyHero = () => {
               </span>
             </nav>
 
+            {/* "Partner With Us" style badge */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white shadow-lg shadow-[#88C444]/30 hover:shadow-xl hover:shadow-[#88C444]/40 hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white font-medium shadow-lg shadow-[#88C444]/30 hover:shadow-xl hover:shadow-[#88C444]/40 hover:-translate-y-0.5 transition-all duration-300 text-lg"
             >
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
-                <Cpu className="w-5 h-5" />
+                <Cpu className="w-6 h-6" />
               </motion.div>
-              <span className="text-sm uppercase tracking-wider font-bold">Advanced Engineering</span>
+              <span className="uppercase tracking-wider font-bold">Advanced Engineering</span>
             </motion.div>
 
             <div>
@@ -432,7 +427,6 @@ const TechnologyHero = () => {
           >
             <div className="relative bg-white border-4 border-[#88C444]/40 overflow-hidden shadow-2xl shadow-[#88C444]/20">
               <BiogasSystemVisual />
-              {/* Sharp corner accents */}
               <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[#88C444]" />
               <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-[#88C444]" />
               <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-[#88C444]" />
