@@ -7,7 +7,6 @@ import {
   useTransform as useMotionTransform,
   useInView,
 } from "framer-motion";
-
 import { useRef, useEffect } from "react";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
 
@@ -18,17 +17,15 @@ const HologramCounter = ({ value, prefix = "", suffix = "" }: { value: number; p
 
   const motionValue = useMotionValue(0);
   const spring = useSpring(motionValue, {
-    stiffness: 70,
+    stiffness: 60,
     damping: 18,
     mass: 1,
   });
 
-  const display = useTransform(spring, (latest) => `${prefix}${Math.floor(latest).toLocaleString()}${suffix}`);
+  const display = useMotionTransform(spring, (latest) => `${prefix}${Math.floor(latest).toLocaleString()}${suffix}`);
 
   useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
+    if (isInView) motionValue.set(value);
   }, [isInView, value, motionValue]);
 
   return (
@@ -39,16 +36,15 @@ const HologramCounter = ({ value, prefix = "", suffix = "" }: { value: number; p
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
     >
-      {/* ✅ render MotionValue correctly */}
-      <motion.span>{display}</motion.span>
+      {display}
 
-      {/* hologram glow */}
+      {/* soft hologram glow */}
       <motion.span
         className="absolute inset-0 -z-10 blur-xl"
         animate={{ opacity: [0.15, 0.35, 0.15] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         style={{
-          background: "radial-gradient(circle, rgba(150,220,190,0.45), transparent 65%)",
+          background: "radial-gradient(circle, rgba(150, 220, 190, 0.45), transparent 65%)",
         }}
       />
     </motion.span>
