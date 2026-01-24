@@ -109,7 +109,7 @@ const CoreValuesSection = () => {
               What We Stand For
             </span>
           </span>
-          <h2 className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
             Our Core <span className="text-accent">Values</span>
           </h2>
           <p className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
