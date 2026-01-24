@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
 import TechnologyHero from "@/components/technology/TechnologyHero";
 import { Beaker, Thermometer, Clock, Settings, Leaf, Zap, Recycle, ChevronDown } from "lucide-react";
 import cstrProcessVideo from "@/assets/cstr-process-video.mp4";
+import cstrCutawayImage from "@/assets/cstr-cutaway-illustration.jpg";
 
 /* ---------------- CONSTANTS ---------------- */
 
@@ -70,6 +71,26 @@ const advantages = [
 
 const Technology = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const introLeftRef = useRef<HTMLDivElement>(null);
+  const introRightRef = useRef<HTMLDivElement>(null);
+  const processLeftRef = useRef<HTMLDivElement>(null);
+  const processRightRef = useRef<HTMLDivElement>(null);
+  const [introHeight, setIntroHeight] = useState<number | undefined>(undefined);
+  const [processHeight, setProcessHeight] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    const updateHeights = () => {
+      if (introLeftRef.current) {
+        setIntroHeight(introLeftRef.current.offsetHeight);
+      }
+      if (processLeftRef.current) {
+        setProcessHeight(processLeftRef.current.offsetHeight);
+      }
+    };
+    updateHeights();
+    window.addEventListener("resize", updateHeights);
+    return () => window.removeEventListener("resize", updateHeights);
+  }, [activeStep]);
 
   return (
     <PageLayout>
@@ -80,6 +101,7 @@ const Technology = () => {
         <div className="container-wide grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT */}
           <motion.div
+            ref={introLeftRef}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -129,14 +151,16 @@ const Technology = () => {
 
           {/* RIGHT */}
           <motion.div
+            ref={introRightRef}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            style={{ height: introHeight ? `${introHeight}px` : "auto" }}
           >
             <img
-              src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/fc3678381a9.png"
-              alt="CSTR Technology"
+              src={cstrCutawayImage}
+              alt="CSTR Technology Cutaway"
               className="w-full h-full object-cover rounded-md shadow-lg"
             />
           </motion.div>
@@ -148,6 +172,7 @@ const Technology = () => {
         <div className="container-wide grid lg:grid-cols-2 gap-12 items-start">
           {/* LEFT CONTENT */}
           <motion.div
+            ref={processLeftRef}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -219,11 +244,13 @@ const Technology = () => {
 
           {/* RIGHT VISUAL - CSTR Process Video */}
           <motion.div
+            ref={processRightRef}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-md overflow-hidden shadow-md"
+            className="rounded-md overflow-hidden shadow-md flex items-center"
+            style={{ height: processHeight ? `${processHeight}px` : "auto" }}
           >
             <video
               src={cstrProcessVideo}
