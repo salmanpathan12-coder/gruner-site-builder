@@ -8,6 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
 
+/* ---------------- SCHEMA ---------------- */
+
 const contactSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
   companyName: z.string().optional(),
@@ -18,6 +20,8 @@ const contactSchema = z.object({
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
+
+/* ---------------- DATA ---------------- */
 
 const contactInfo = [
   {
@@ -42,6 +46,8 @@ const contactInfo = [
   },
 ];
 
+/* ---------------- COMPONENT ---------------- */
+
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -59,10 +65,7 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
     console.log("Form submitted:", data);
     toast.success("Thank you! We'll be in touch within 3-5 business days.");
     reset();
@@ -80,11 +83,11 @@ const Contact = () => {
         ]}
       />
 
-      {/* Contact Section */}
+      {/* ================= CONTACT ================= */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Contact Form */}
+            {/* FORM */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -92,7 +95,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-3"
             >
-              <div className="bg-card rounded-2xl border border-border p-8 md:p-10">
+              <div className="bg-card rounded-2xl border border-border p-8 md:p-10 shadow-xl">
                 <h2 className="text-2xl font-heading font-semibold mb-2">Request a Quote</h2>
                 <p className="text-muted-foreground mb-8">
                   Receive an accurate quote within 3-5 days when you fill out this form.
@@ -100,7 +103,6 @@ const Contact = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
-                    {/* Full Name */}
                     <div>
                       <label className="block text-sm font-medium mb-2">Full Name *</label>
                       <input
@@ -112,7 +114,6 @@ const Contact = () => {
                       {errors.fullName && <p className="text-destructive text-sm mt-1">{errors.fullName.message}</p>}
                     </div>
 
-                    {/* Company Name */}
                     <div>
                       <label className="block text-sm font-medium mb-2">Company Name</label>
                       <input
@@ -125,7 +126,6 @@ const Contact = () => {
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
-                    {/* Email */}
                     <div>
                       <label className="block text-sm font-medium mb-2">Email *</label>
                       <input
@@ -137,7 +137,6 @@ const Contact = () => {
                       {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
                     </div>
 
-                    {/* Phone */}
                     <div>
                       <label className="block text-sm font-medium mb-2">Phone Number *</label>
                       <input
@@ -150,7 +149,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Message */}
                   <div>
                     <label className="block text-sm font-medium mb-2">Message *</label>
                     <textarea
@@ -162,7 +160,6 @@ const Contact = () => {
                     {errors.message && <p className="text-destructive text-sm mt-1">{errors.message.message}</p>}
                   </div>
 
-                  {/* Preferred Contact Method */}
                   <div>
                     <label className="block text-sm font-medium mb-3">Preferred Contact Method</label>
                     <div className="flex flex-wrap gap-4">
@@ -184,7 +181,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Submit Button */}
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
@@ -199,7 +195,7 @@ const Contact = () => {
                       </>
                     ) : (
                       <>
-                        Submit Request
+                        <span>Submit Request</span>
                         <Send className="w-5 h-5 ml-2" />
                       </>
                     )}
@@ -208,7 +204,7 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            {/* Contact Info Sidebar */}
+            {/* INFO */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -224,7 +220,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-6 bg-card rounded-xl border border-border"
+                    className="p-6 bg-card rounded-xl border border-border shadow-md"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
@@ -242,7 +238,6 @@ const Contact = () => {
                   </motion.div>
                 ))}
 
-                {/* Quick Response Promise */}
                 <div className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl border border-primary/20">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
@@ -255,8 +250,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Social Links */}
-                <div className="p-6 bg-card rounded-xl border border-border">
+                <div className="p-6 bg-card rounded-xl border border-border shadow-md">
                   <h3 className="font-semibold mb-4">Connect With Us</h3>
                   <div className="flex gap-3">
                     {[
@@ -284,13 +278,19 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="h-96 bg-muted relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-            <p className="text-muted-foreground">22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP</p>
-          </div>
+      {/* ================= MAP ================= */}
+      <section className="relative h-[420px]">
+        <iframe
+          title="Gruner Office Location"
+          src="https://www.google.com/maps?q=22nd%20Floor%2C%20Windsor%20Grand%2C%20Plot%201C%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh&output=embed"
+          className="absolute inset-0 w-full h-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur px-6 py-3 shadow-xl flex items-center gap-3">
+          <MapPin className="w-5 h-5 text-primary" />
+          <p className="text-sm font-medium text-black">22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP</p>
         </div>
       </section>
     </PageLayout>
