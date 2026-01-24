@@ -28,7 +28,7 @@ const AnimatedMetric = ({ value, label, suffix = "" }: { value: number; label: s
 
   return (
     <div className="flex flex-col">
-      <span className="text-2xl md:text-3xl font-heading font-bold bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+      <span className="text-2xl md:text-3xl font-heading font-bold bg-gradient-to-r from-[#88C444] via-[#88C444] to-[#88C444] bg-clip-text text-transparent">
         {count}
         {suffix}
       </span>
@@ -43,7 +43,7 @@ const StatusIndicator = ({ label, active = true }: { label: string; active?: boo
     <motion.div
       animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
       transition={{ duration: 2, repeat: Infinity }}
-      className={`w-2 h-2 rounded-full ${active ? "bg-accent" : "bg-white/30"}`}
+      className={`w-2 h-2 rounded-full ${active ? "bg-[#88C444]" : "bg-white/30"}`}
     />
     <span className="text-xs text-white/70 uppercase tracking-wider">{label}</span>
   </div>
@@ -52,11 +52,11 @@ const StatusIndicator = ({ label, active = true }: { label: string; active?: boo
 // Energy flow line animation
 const EnergyFlowLine = ({ delay = 0, vertical = false }: { delay?: number; vertical?: boolean }) => (
   <div className={`relative overflow-hidden ${vertical ? "w-0.5 h-full" : "h-0.5 w-full"}`}>
-    <div className="absolute inset-0 bg-gradient-to-r from-accent/30 via-primary/30 to-accent/30" />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#88C444]/30 via-[#88C444]/30 to-[#88C444]/30" />
     <motion.div
       animate={vertical ? { y: ["-100%", "100%"] } : { x: ["-100%", "100%"] }}
       transition={{ duration: 3, repeat: Infinity, delay, ease: "linear" }}
-      className={`absolute ${vertical ? "w-full h-8" : "h-full w-16"} bg-gradient-to-r from-transparent via-accent to-transparent`}
+      className={`absolute ${vertical ? "w-full h-8" : "h-full w-16"} bg-gradient-to-r from-transparent via-[#88C444] to-transparent`}
     />
   </div>
 );
@@ -73,7 +73,7 @@ const BiogasSystemVisual = () => {
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-40 md:w-40 md:h-48"
       >
         {/* Main reactor body */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 to-accent/30 border-2 border-accent/50 rounded-t-full rounded-b-lg">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#243B2F]/40 to-[#88C444]/30 border-2 border-[#88C444]/50 rounded-t-full rounded-b-lg">
           {/* Internal bubbling animation */}
           {[...Array(5)].map((_, i) => (
             <motion.div
@@ -88,7 +88,7 @@ const BiogasSystemVisual = () => {
                 repeat: Infinity,
                 delay: i * 0.4,
               }}
-              className="absolute bottom-1/4 rounded-full bg-accent/50"
+              className="absolute bottom-1/4 rounded-full bg-[#88C444]/50"
               style={{
                 left: `${20 + i * 12}%`,
                 width: `${6 + Math.random() * 8}px`,
@@ -101,19 +101,19 @@ const BiogasSystemVisual = () => {
           <motion.div
             animate={{ height: ["60%", "70%", "60%"] }}
             transition={{ duration: 4, repeat: Infinity }}
-            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/50 to-accent/40 rounded-b-lg"
+            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#88C444]/50 to-[#243B2F]/40 rounded-b-lg"
           />
         </div>
 
         {/* Reactor cap */}
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 md:w-28 h-4 bg-gradient-to-r from-accent/60 to-primary/60 rounded-full border border-accent/50" />
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 md:w-28 h-4 bg-gradient-to-r from-[#88C444]/60 to-[#243B2F]/60 rounded-full border border-[#88C444]/50" />
 
         {/* Output pipe */}
-        <motion.div className="absolute -top-8 left-1/2 -translate-x-1/2 w-2 h-8 bg-gradient-to-t from-accent/50 to-primary/70">
+        <motion.div className="absolute -top-8 left-1/2 -translate-x-1/2 w-2 h-8 bg-gradient-to-t from-[#88C444]/50 to-[#243B2F]/70">
           <motion.div
             animate={{ y: [16, -16] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="absolute bottom-0 w-full h-4 bg-gradient-to-t from-transparent via-accent to-primary"
+            className="absolute bottom-0 w-full h-4 bg-gradient-to-t from-transparent via-[#88C444] to-[#243B2F]"
           />
         </motion.div>
       </motion.div>
@@ -125,14 +125,14 @@ const BiogasSystemVisual = () => {
         transition={{ duration: 0.6, delay: 0.5 }}
         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2"
       >
-        <div className="relative w-24 md:w-32 h-8 bg-gradient-to-r from-accent/30 to-primary/50 border border-accent/40">
+        <div className="relative w-24 md:w-32 h-8 bg-gradient-to-r from-[#88C444]/30 to-[#243B2F]/50 border border-[#88C444]/40">
           {/* Moving particles on conveyor */}
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={i}
               animate={{ x: [0, 80] }}
               transition={{ duration: 2, repeat: Infinity, delay: i * 0.6 }}
-              className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-primary/70 rounded-sm"
+              className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-[#243B2F]/70 rounded-sm"
             />
           ))}
         </div>
@@ -153,21 +153,21 @@ const BiogasSystemVisual = () => {
       >
         <div className="relative w-16 md:w-20 h-24 md:h-28">
           {/* Tank body */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 to-accent/30 border-2 border-primary/50 rounded-lg">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#243B2F]/40 to-[#88C444]/30 border-2 border-[#243B2F]/50 rounded-lg">
             {/* Gas level animation */}
             <motion.div
               animate={{ height: ["40%", "60%", "40%"] }}
               transition={{ duration: 5, repeat: Infinity }}
-              className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-accent/50 to-primary/40 rounded-b-lg"
+              className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#88C444]/50 to-[#243B2F]/40 rounded-b-lg"
             />
           </div>
           {/* Pressure gauge */}
           <motion.div
             animate={{ rotate: [-20, 20, -20] }}
             transition={{ duration: 3, repeat: Infinity }}
-            className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 border-2 border-primary/50 rounded-full bg-foreground/90 flex items-center justify-center"
+            className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 border-2 border-[#243B2F]/50 rounded-full bg-[#1B2B23]/90 flex items-center justify-center"
           >
-            <div className="w-0.5 h-3 bg-accent origin-bottom" />
+            <div className="w-0.5 h-3 bg-[#88C444] origin-bottom" />
           </motion.div>
         </div>
         <span className="text-[10px] text-white/50 uppercase tracking-wider mt-2 block text-center">Bio-CNG</span>
@@ -188,13 +188,13 @@ const BiogasSystemVisual = () => {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="w-12 h-12 md:w-14 md:h-14 border-2 border-accent/50 rounded-full bg-gradient-to-br from-accent/30 to-primary/30 flex items-center justify-center"
+          className="w-12 h-12 md:w-14 md:h-14 border-2 border-[#88C444]/50 rounded-full bg-gradient-to-br from-[#88C444]/30 to-[#243B2F]/30 flex items-center justify-center"
         >
-          <div className="w-8 h-8 md:w-10 md:h-10 border border-primary/50 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 md:w-10 md:h-10 border border-[#243B2F]/50 rounded-full flex items-center justify-center">
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
-              className="w-2 h-2 bg-accent rounded-full"
+              className="w-2 h-2 bg-[#88C444] rounded-full"
             />
           </div>
         </motion.div>
@@ -210,12 +210,16 @@ const BiogasSystemVisual = () => {
       >
         <motion.div
           animate={{
-            boxShadow: ["0 0 10px rgba(20,136,88,0.4)", "0 0 25px rgba(20,136,88,0.8)", "0 0 10px rgba(20,136,88,0.4)"],
+            boxShadow: [
+              "0 0 10px rgba(136,196,68,0.4)",
+              "0 0 25px rgba(136,196,68,0.8)",
+              "0 0 10px rgba(136,196,68,0.4)",
+            ],
           }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-accent/40 to-primary/40 border border-accent/60 flex items-center justify-center"
+          className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#88C444]/40 to-[#243B2F]/40 border border-[#88C444]/60 flex items-center justify-center"
         >
-          <Zap className="w-5 h-5 md:w-6 md:h-6 text-accent" />
+          <Zap className="w-5 h-5 md:w-6 md:h-6 text-[#88C444]" />
         </motion.div>
         <span className="text-[10px] text-white/50 uppercase tracking-wider mt-1 block text-center">Grid</span>
       </motion.div>
@@ -231,10 +235,10 @@ const BiogasSystemVisual = () => {
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            className="w-14 h-14 md:w-16 md:h-16 border-2 border-dashed border-primary/50 rounded-full flex items-center justify-center"
+            className="w-14 h-14 md:w-16 md:h-16 border-2 border-dashed border-[#243B2F]/50 rounded-full flex items-center justify-center"
           >
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-primary/40 to-accent/30 rounded-full flex items-center justify-center">
-              <Wind className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#243B2F]/40 to-[#88C444]/30 rounded-full flex items-center justify-center">
+              <Wind className="w-4 h-4 md:w-5 md:h-5 text-[#243B2F]" />
             </div>
           </motion.div>
         </div>
@@ -243,7 +247,6 @@ const BiogasSystemVisual = () => {
 
       {/* Energy flow paths */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
-        {/* Curved path from reactor to storage */}
         <motion.path
           d="M200 150 Q 280 150 300 200"
           fill="none"
@@ -254,8 +257,6 @@ const BiogasSystemVisual = () => {
           animate={{ pathLength: 1 }}
           transition={{ duration: 2, delay: 1 }}
         />
-
-        {/* Path from processing to reactor */}
         <motion.path
           d="M100 320 Q 150 280 200 250"
           fill="none"
@@ -266,8 +267,6 @@ const BiogasSystemVisual = () => {
           animate={{ pathLength: 1 }}
           transition={{ duration: 2, delay: 1.2 }}
         />
-
-        {/* Path from compressor to grid */}
         <motion.path
           d="M320 300 Q 340 250 320 100"
           fill="none"
@@ -278,12 +277,11 @@ const BiogasSystemVisual = () => {
           animate={{ pathLength: 1 }}
           transition={{ duration: 2, delay: 1.4 }}
         />
-
         <defs>
           <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.7" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.7" />
+            <stop offset="0%" stopColor="#88C444" stopOpacity="0.7" />
+            <stop offset="50%" stopColor="#88C444" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#88C444" stopOpacity="0.7" />
           </linearGradient>
         </defs>
       </svg>
@@ -302,7 +300,7 @@ const BiogasSystemVisual = () => {
             repeat: Infinity,
             delay: i * 0.3,
           }}
-          className="absolute w-2 h-2 rounded-full bg-accent"
+          className="absolute w-2 h-2 rounded-full bg-[#88C444]"
           style={{
             left: `${10 + Math.random() * 80}%`,
             top: `${10 + Math.random() * 80}%`,
@@ -315,18 +313,18 @@ const BiogasSystemVisual = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-4 left-4 right-4 flex justify-between items-center px-4 py-3 bg-foreground/70 border border-accent/30 backdrop-blur-md rounded-lg"
+        className="absolute bottom-4 left-4 right-4 flex justify-between items-center px-4 py-3 bg-[#1B2B23]/70 border border-[#88C444]/30 backdrop-blur-md rounded-lg"
       >
         <div className="flex items-center gap-6">
           <StatusIndicator label="System Active" active />
           <StatusIndicator label="Digestion" active />
         </div>
         <div className="flex items-center gap-3">
-          <Activity className="w-5 h-5 text-accent" />
+          <Activity className="w-5 h-5 text-[#88C444]" />
           <motion.span
             animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-sm text-accent font-mono font-bold"
+            className="text-sm text-[#88C444] font-mono font-bold"
           >
             ONLINE
           </motion.span>
@@ -338,20 +336,27 @@ const BiogasSystemVisual = () => {
 
 const TechnologyHero = () => {
   return (
-    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20 bg-gradient-to-br from-foreground to-background">
-      {/* Pure background only - removed extra overlays for cleaner look */}
-      <div className="absolute inset-0 bg-gradient-to-br from-foreground via-background to-foreground/90" />
+    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20">
+      {/* Exact hero background matching the reference image */}
+      <div className="absolute inset-0 bg-[#1B2B23]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(circle at top left, #243B2F 0%, #1B2B23 50%)",
+          opacity: 0.8,
+        }}
+      />
 
-      {/* Enhanced gradient orbs for subtle depth */}
+      {/* Subtle vibrant glow orbs for depth */}
       <motion.div
         animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}
         transition={{ duration: 10, repeat: Infinity }}
-        className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-accent/25 to-primary/15 rounded-full blur-3xl"
+        className="absolute top-0 left-10 w-[600px] h-[600px] bg-[#88C444]/10 rounded-full blur-3xl"
       />
       <motion.div
         animate={{ scale: [1.15, 1, 1.15], opacity: [0.12, 0.2, 0.12] }}
         transition={{ duration: 12, repeat: Infinity }}
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-primary/20 to-accent/15 rounded-full blur-3xl"
+        className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-[#88C444]/8 rounded-full blur-3xl"
       />
 
       <div className="container-wide relative z-10">
@@ -369,9 +374,7 @@ const TechnologyHero = () => {
                 Home
               </Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent font-medium">
-                Technology
-              </span>
+              <span className="text-[#88C444] font-medium">Technology</span>
             </nav>
 
             {/* Animated badge */}
@@ -379,12 +382,12 @@ const TechnologyHero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/20 to-accent/20 border border-accent/40 rounded-full group"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#88C444]/20 border border-[#88C444]/40"
             >
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
-                <Cpu className="w-4 h-4 text-accent" />
+                <Cpu className="w-4 h-4 text-[#88C444]" />
               </motion.div>
-              <span className="text-sm text-accent uppercase tracking-wider font-medium">Advanced Engineering</span>
+              <span className="text-sm text-[#88C444] uppercase tracking-wider font-medium">Advanced Engineering</span>
             </motion.div>
 
             {/* Gradient heading */}
@@ -396,9 +399,7 @@ const TechnologyHero = () => {
                 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight"
               >
                 <span className="text-white">CSTR </span>
-                <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
-                  Technology
-                </span>
+                <span className="text-[#88C444]">Technology</span>
               </motion.h1>
 
               {/* Animated divider */}
@@ -406,7 +407,7 @@ const TechnologyHero = () => {
                 initial={{ width: 0 }}
                 animate={{ width: "160px" }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="h-1 bg-gradient-to-r from-accent via-primary to-accent mt-6 rounded-full"
+                className="h-1 bg-[#88C444] mt-6"
               />
             </div>
 
@@ -446,7 +447,7 @@ const TechnologyHero = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8 + i * 0.1 }}
-                  className="px-4 py-2 text-sm text-white/70 border border-white/20 bg-white/10 uppercase tracking-wider rounded-full"
+                  className="px-4 py-2 text-sm text-white/70 border border-white/20 bg-white/10 uppercase tracking-wider"
                 >
                   {tag}
                 </motion.span>
@@ -461,11 +462,11 @@ const TechnologyHero = () => {
               className="flex items-center gap-8 pt-6"
             >
               <div className="flex items-center gap-3">
-                <Flame className="w-5 h-5 text-primary" />
+                <Flame className="w-5 h-5 text-[#88C444]" />
                 <span className="text-sm text-white/60 uppercase tracking-wider">Biogas Output</span>
               </div>
               <div className="flex items-center gap-3">
-                <Gauge className="w-5 h-5 text-accent" />
+                <Gauge className="w-5 h-5 text-[#88C444]" />
                 <span className="text-sm text-white/60 uppercase tracking-wider">Process Control</span>
               </div>
             </motion.div>
@@ -478,21 +479,21 @@ const TechnologyHero = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-foreground/90 to-background/80 border-2 border-accent/30 overflow-hidden rounded-2xl shadow-2xl shadow-accent/20">
+            <div className="relative bg-[#1B2B23]/90 border-2 border-[#88C444]/30 overflow-hidden shadow-2xl shadow-[#88C444]/20">
               <BiogasSystemVisual />
 
-              {/* Enhanced corner accents */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-accent/60 rounded-tl-xl" />
-              <div className="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-primary/60 rounded-tr-xl" />
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-primary/60 rounded-bl-xl" />
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-accent/60 rounded-br-xl" />
+              {/* Corner accents - sharp, no radius */}
+              <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-[#88C444]/60" />
+              <div className="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-[#88C444]/60" />
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-[#88C444]/60" />
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-[#88C444]/60" />
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Cleaner bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent" />
+      {/* Clean bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1B2B23] to-transparent" />
     </section>
   );
 };
