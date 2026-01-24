@@ -14,14 +14,14 @@ const AboutHero = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 40]);
   return <section ref={containerRef} className="relative min-h-[70vh] flex items-center overflow-hidden">
-      {/* Light gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
+      {/* White background */}
+      <div className="absolute inset-0 bg-white" />
 
       {/* HEADER SAFE ZONE */}
       <div className="absolute top-0 left-0 right-0 h-[96px] md:h-[120px] z-20 pointer-events-none" />
 
       {/* TOP GRADIENT BUFFER */}
-      <div className="absolute top-0 left-0 right-0 h-[140px] bg-gradient-to-b from-[hsl(45,30%,96%)] via-[hsl(45,30%,96%)]/95 to-transparent z-10" />
+      <div className="absolute top-0 left-0 right-0 h-[140px] bg-gradient-to-b from-white via-white/95 to-transparent z-10" />
 
       {/* CONTENT */}
       <div className="container-wide relative z-20 pt-[96px] md:pt-[120px] pb-20 lg:pb-24">
