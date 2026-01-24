@@ -71,8 +71,8 @@ const WhyChooseSection = () => {
     margin: "-50px"
   });
   return <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* Purple-blue gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(250,25%,95%)] via-[hsl(230,20%,96%)] to-[hsl(210,25%,94%)]" />
+      {/* Light gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
       
       {/* Accent orbs */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[hsl(250,50%,65%)]/10 to-transparent rounded-full blur-[100px]" />
