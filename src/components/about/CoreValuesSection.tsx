@@ -28,20 +28,20 @@ const ValueCard = ({
     duration: 0.5,
     delay: 0.05 + index * 0.08
   }} className="group">
-      <div className="relative h-full bg-white p-5 shadow-md shadow-foreground/5 border border-foreground/5 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 rounded">
+      <div className="relative h-full bg-white p-5 shadow-md shadow-primary/5 border border-primary/10 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 hover:border-primary/20 rounded-md">
         {/* Hover gradient overlay */}
-        <div className={`absolute inset-0 ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
-        {/* Icon */}
-        <div className={`relative w-10 h-10 rounded-lg ${gradient.replace('/5', '')} flex items-center justify-center mb-4`}>
+        {/* Icon with gradient */}
+        <div className="relative w-10 h-10 rounded-md bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
           <Icon className="w-5 h-5 text-white" />
         </div>
 
         {/* Content */}
-        <h3 className="relative text-base font-heading font-bold text-foreground mb-2">
+        <h3 className="relative text-base font-heading font-bold mb-2 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
           {title}
         </h3>
-        <p className="relative text-muted-foreground text-sm leading-relaxed font-body">
+        <p className="relative text-muted-foreground text-sm leading-relaxed font-body group-hover:text-foreground/70 transition-colors duration-300">
           {description}
         </p>
       </div>

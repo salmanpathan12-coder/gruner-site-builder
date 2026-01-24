@@ -95,28 +95,28 @@ const VisionMissionSection = () => {
           duration: 0.7,
           delay: 0.2
         }} className="group">
-            <div className="relative h-full bg-gradient-to-br from-[hsl(200,25%,15%)] to-[hsl(180,20%,12%)] p-6 md:p-7 shadow-xl overflow-hidden rounded">
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/30 to-transparent rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/20 to-transparent rounded-full" />
+            <div className="relative h-full bg-gradient-to-br from-[hsl(120,25%,92%)] to-[hsl(140,20%,88%)] p-6 md:p-7 shadow-lg shadow-primary/5 border border-primary/10 overflow-hidden rounded">
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/15 to-transparent rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/10 to-transparent rounded-full" />
               
               <div className="relative">
                 <div className="flex items-center justify-between mb-5">
                   <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary flex items-center justify-center shadow-lg rounded">
                     <Target className="w-5 h-5 text-white" />
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                  <ArrowUpRight className="w-5 h-5 text-primary/30 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                 </div>
 
                 <h3 className="text-xl font-heading font-bold mb-3 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
                   Our Mission
                 </h3>
-                <p className="text-white/70 text-sm leading-relaxed font-body mb-5">
+                <p className="text-foreground/70 text-sm leading-relaxed font-body mb-5">
                   Delivering world-class Bio-CNG infrastructure through innovative technology, 
                   operational excellence, and environmental stewardship.
                 </p>
 
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                  {["Innovation", "Sustainability", "Excellence"].map(pillar => <span key={pillar} className="px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-xs font-body border border-white/10">
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-primary/15">
+                  {["Innovation", "Sustainability", "Excellence"].map(pillar => <span key={pillar} className="px-3 py-1.5 rounded-full bg-primary/10 text-foreground/80 text-xs font-body border border-primary/15">
                       {pillar}
                     </span>)}
                 </div>
