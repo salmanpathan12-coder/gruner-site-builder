@@ -134,7 +134,7 @@ const Technology = () => {
                       </div>
                       <span className="text-xs text-gray-500 uppercase tracking-wider font-bold">{spec.label}</span>
                     </div>
-                    <p className="text-2xl font-bold bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
+                    <p className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
                       {spec.value}
                     </p>
                   </motion.div>)}
@@ -220,7 +220,7 @@ const Technology = () => {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-bold bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
                           Step {step.step}
                         </span>
                         <ChevronDown className={`w-6 h-6 text-[#88C444] transition-transform duration-300 ${activeStep === index ? "rotate-180" : ""}`} />
@@ -474,7 +474,7 @@ const Technology = () => {
                   <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  <div className="text-5xl font-heading font-bold bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-500">
+                  <div className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
                     {item.value}
                   </div>
                   <div className="text-gray-900 font-bold text-xl mb-2">{item.label}</div>
