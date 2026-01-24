@@ -6,56 +6,42 @@ import { Beaker, Thermometer, Clock, Settings, ArrowRight, Leaf, Zap, Recycle, C
 
 const specifications = [
   { label: "Dry Substance", value: "5% < DS < 10%", icon: Beaker },
-  { label: "Thermal Regime", value: "Mesophilic or Thermophilic", icon: Thermometer },
-  { label: "Retention Time", value: "20 < days < 60", icon: Clock },
-  { label: "Mixing System", value: "Mechanical (slow & fast mixers)", icon: Settings },
+  { label: "Thermal Regime", value: "Mesophilic / Thermophilic", icon: Thermometer },
+  { label: "Retention Time", value: "20 – 60 Days", icon: Clock },
+  { label: "Mixing System", value: "Dual Mechanical Mixing", icon: Settings },
 ];
 
 const processSteps = [
   {
     step: "01",
     title: "Biomass Loading",
-    description:
-      "Solid and liquid biomasses are loaded through a pre-tank or loader into digesters made of concrete or steel.",
+    description: "Automated intake of solid & liquid biomass into sealed digesters.",
     icon: Recycle,
   },
   {
     step: "02",
     title: "Mixing & Digestion",
-    description:
-      "Digesters equipped with slow and fast mixers ensure thorough homogenization, preventing crust and sediment formation.",
+    description: "Continuous homogenization with intelligent mixer systems.",
     icon: Settings,
   },
   {
     step: "03",
     title: "Biogas Production",
-    description: "Under controlled temperatures, anaerobic digestion produces biogas with high methane content.",
+    description: "Anaerobic digestion under controlled thermal regimes.",
     icon: Zap,
   },
   {
     step: "04",
     title: "Gas Storage",
-    description: "Digesters are covered with a gasometer to efficiently store the biogas produced.",
+    description: "Secure high-pressure gas storage with membrane domes.",
     icon: Beaker,
   },
 ];
 
 const advantages = [
-  {
-    title: "Complex Biomass Handling",
-    description: "Suitable for feeding the plant with biomass with a complex digestion process.",
-    icon: Recycle,
-  },
-  {
-    title: "Co-Digestion Capability",
-    description: "Provides the possibility to implement co-digestion with a varied recipe of biomass inputs.",
-    icon: Leaf,
-  },
-  {
-    title: "pH Buffering Capacity",
-    description: "High buffering capacity for pH variation, ensuring stable and consistent operations.",
-    icon: Beaker,
-  },
+  { title: "Complex Biomass Handling", description: "Supports multi-feedstock digestion systems.", icon: Recycle },
+  { title: "Co-Digestion Capability", description: "Flexible input recipes for optimized yield.", icon: Leaf },
+  { title: "pH Buffer Stability", description: "High buffering ensures process reliability.", icon: Beaker },
 ];
 
 const Technology = () => {
@@ -65,390 +51,153 @@ const Technology = () => {
     <PageLayout>
       <TechnologyHero />
 
-      {/* Introduction Section - Premium Light Theme */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* Gradient System Background Wrapper */}
+      <div className="relative overflow-hidden bg-[radial-gradient(circle_at_top,#ecfdf5,#ffffff,#f0fdf4)]">
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(136,196,68,0.08),rgba(168,224,99,0.08),rgba(136,196,68,0.05))]" />
+
+        {/* Intro Section */}
+        <section className="relative py-28">
+          <div className="container-wide grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
+              transition={{ duration: 1 }}
             >
-              <div>
-                <span className="inline-block px-5 py-3 bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white text-xs font-bold uppercase tracking-wider shadow-xl shadow-[#88C444]/40">
-                  Our Technology
+              <h2 className="text-5xl font-heading font-bold text-gray-900 leading-tight">
+                Continuous Stirred Tank Reactor
+                <span className="block bg-gradient-to-r from-[#88C444] to-[#A8E063] bg-clip-text text-transparent">
+                  CSTR Technology
                 </span>
-                <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
-                  Introduction to{" "}
-                  <span className="bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
-                    CSTR Technology
-                  </span>
-                </h2>
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "240px" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="h-1.5 bg-gradient-to-r from-[#88C444] to-[#A8E063] shadow-xl shadow-[#88C444]/40 rounded-full"
-                />
-              </div>
+              </h2>
+              <p className="mt-8 text-lg text-gray-700 max-w-xl leading-relaxed">
+                Advanced biogas engineering delivering high-efficiency renewable energy through intelligent digestion
+                systems.
+              </p>
 
-              <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
-                <p>
-                  Ever wondered what makes CSTR (Continuous-Flow Stirred Tank Reactor) technology a key player in biogas
-                  production? CSTRs ensure perfect homogenization of biomass with continuous mixing.
-                </p>
-                <p>
-                  Ideal for dry matter contents below 10%, they operate at controlled temperatures, providing flexible
-                  and efficient biogas production. This makes them suitable for diverse biomass types, contributing
-                  significantly to renewable energy generation.
-                </p>
-              </div>
-
-              {/* Specs Grid - Elite Cards */}
-              <div className="grid grid-cols-2 gap-8">
-                {specifications.map((spec, index) => (
+              <div className="mt-14 grid grid-cols-2 gap-8">
+                {specifications.map((s, i) => (
                   <motion.div
-                    key={spec.label}
+                    key={i}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                    className="relative p-8 bg-white/80 backdrop-blur-sm border-2 border-gray-100 hover:border-[#88C444] hover:shadow-2xl hover:shadow-[#88C444]/30 hover:-translate-y-2 transition-all duration-500 group overflow-hidden"
+                    transition={{ delay: i * 0.1 }}
+                    className="relative p-7 rounded-2xl bg-white/80 backdrop-blur-xl border border-[#88C444]/20 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
                   >
-                    {/* Corner accents */}
-                    <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="flex items-center gap-5 mb-5">
-                      <div className="w-14 h-14 inline-flex items-center justify-center bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white shadow-2xl shadow-[#88C444]/50 group-hover:scale-110 transition-transform duration-400">
-                        <spec.icon className="w-7 h-7" />
-                      </div>
-                      <span className="text-xs text-gray-500 uppercase tracking-wider font-bold">{spec.label}</span>
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#88C444] to-[#A8E063] flex items-center justify-center text-white shadow-lg">
+                      <s.icon className="w-6 h-6" />
                     </div>
-                    <p className="text-2xl font-bold bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
-                      {spec.value}
-                    </p>
+                    <div className="mt-4 text-sm uppercase tracking-wide text-gray-500 font-semibold">{s.label}</div>
+                    <div className="text-xl font-bold bg-gradient-to-r from-[#88C444] to-[#A8E063] bg-clip-text text-transparent">
+                      {s.value}
+                    </div>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
               className="relative"
             >
-              <div className="relative overflow-hidden border-4 border-[#88C444]/50 shadow-3xl shadow-[#88C444]/30 hover:shadow-[#88C444]/50 transition-shadow duration-700">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#88C444]/30">
                 <img
                   src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/fc3678381a9.png"
-                  alt="CSTR Technology"
                   className="w-full h-full object-cover"
                 />
-                {/* Strong corner accents */}
-                <div className="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-[#88C444]" />
-                <div className="absolute top-0 right-0 w-24 h-24 border-t-4 border-r-4 border-[#88C444]" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-4 border-l-4 border-[#88C444]" />
-                <div className="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-[#88C444]" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#88C444]/20 via-transparent to-[#A8E063]/20" />
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Interactive Process Flow - Premium Light */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block px-5 py-3 bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white text-xs font-bold uppercase tracking-wider shadow-xl shadow-[#88C444]/40">
-              The Process
-            </span>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
-              How CSTR Transforms{" "}
-              <span className="bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
-                Biomass into Energy
-              </span>
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-              A step-by-step look at our advanced biogas production process
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Steps List */}
+        {/* Process Flow */}
+        <section className="relative py-32">
+          <div className="container-wide grid lg:grid-cols-2 gap-20">
             <div className="space-y-8">
-              {processSteps.map((step, index) => (
+              {processSteps.map((step, i) => (
                 <motion.div
-                  key={step.step}
-                  initial={{ opacity: 0, x: -50 }}
+                  key={i}
+                  onClick={() => setActiveStep(i)}
+                  initial={{ opacity: 0, x: -40 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: index * 0.15 }}
-                  onClick={() => setActiveStep(index)}
-                  className={`relative cursor-pointer p-10 bg-white/90 backdrop-blur border-2 transition-all duration-600 group overflow-hidden ${
-                    activeStep === index
-                      ? "border-[#88C444] shadow-3xl shadow-[#88C444]/30"
-                      : "border-gray-100 hover:border-[#88C444]/60 hover:shadow-2xl"
-                  } hover:-translate-y-2`}
+                  transition={{ delay: i * 0.1 }}
+                  className={`cursor-pointer p-8 rounded-2xl backdrop-blur-xl border transition-all ${activeStep === i ? "bg-white/90 border-[#88C444] shadow-2xl" : "bg-white/60 border-[#88C444]/20 hover:border-[#88C444]/50"}`}
                 >
-                  {/* Corner accents on active/hover */}
-                  <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 w-20 h-20 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="flex items-start gap-7">
+                  <div className="flex items-start gap-6">
                     <div
-                      className={`w-20 h-20 flex-shrink-0 inline-flex items-center justify-center transition-all duration-500 ${
-                        activeStep === index
-                          ? "bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white shadow-2xl shadow-[#88C444]/60"
-                          : "bg-gradient-to-br from-gray-100 to-gray-200 text-[#88C444] group-hover:shadow-xl"
-                      }`}
+                      className={`w-16 h-16 rounded-xl flex items-center justify-center ${activeStep === i ? "bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white" : "bg-[#ecfdf5] text-[#88C444]"}`}
                     >
-                      <step.icon className="w-10 h-10" />
+                      <step.icon className="w-8 h-8" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-bold bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
-                          Step {step.step}
-                        </span>
-                        <ChevronDown
-                          className={`w-6 h-6 text-[#88C444] transition-transform duration-300 ${
-                            activeStep === index ? "rotate-180" : ""
-                          }`}
-                        />
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+                        <ChevronDown className={`transition-transform ${activeStep === i ? "rotate-180" : ""}`} />
                       </div>
-                      <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">{step.title}</h3>
-                      <motion.p
-                        initial={false}
-                        animate={{ height: activeStep === index ? "auto" : 0, opacity: activeStep === index ? 1 : 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="text-gray-700 text-base leading-relaxed overflow-hidden"
-                      >
-                        {step.description}
-                      </motion.p>
+                      {activeStep === i && <p className="mt-3 text-gray-700">{step.description}</p>}
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Visual Diagram */}
+            {/* Animated Core */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="sticky top-32"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="relative flex items-center justify-center"
             >
-              <div className="relative p-12 bg-white/90 backdrop-blur border-4 border-[#88C444]/40 shadow-3xl shadow-[#88C444]/30">
-                <div className="absolute top-0 left-0 w-28 h-28 border-t-4 border-l-4 border-[#88C444]" />
-                <div className="absolute top-0 right-0 w-28 h-28 border-t-4 border-r-4 border-[#88C444]" />
-                <div className="absolute bottom-0 left-0 w-28 h-28 border-b-4 border-l-4 border-[#88C444]" />
-                <div className="absolute bottom-0 right-0 w-28 h-28 border-b-4 border-r-4 border-[#88C444]" />
-
-                <div className="relative aspect-square max-w-lg mx-auto">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-8 border-4 border-dashed border-[#88C444]/40 rounded-full"
-                  />
-                  <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-20 bg-gradient-to-br from-[#88C444]/10 to-[#A8E063]/10 border-4 border-[#88C444]/30 rounded-full"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                      animate={{ scale: [1, 1.15, 1] }}
-                      transition={{ duration: 4, repeat: Infinity }}
-                      className="w-32 h-32 bg-gradient-to-br from-[#88C444] to-[#A8E063] rounded-full flex items-center justify-center shadow-3xl shadow-[#88C444]/50"
-                    >
-                      <Settings className="w-16 h-16 text-white" />
-                    </motion.div>
-                  </div>
-
-                  {[...Array(10)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      animate={{
-                        x: [0, Math.random() * 60 - 30, 0],
-                        y: [0, Math.random() * 60 - 30, 0],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{ duration: 5 + Math.random() * 3, repeat: Infinity, delay: i * 0.4 }}
-                      className="absolute w-5 h-5 rounded-full bg-gradient-to-r from-[#88C444] to-[#A8E063] shadow-xl shadow-[#88C444]/50 blur-sm"
-                      style={{ top: `${10 + Math.random() * 80}%`, left: `${10 + Math.random() * 80}%` }}
-                    />
-                  ))}
-
-                  <motion.div
-                    animate={{ x: [0, 15, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full flex items-center gap-4"
-                  >
-                    <span className="text-base font-bold text-gray-800 uppercase">Input</span>
-                    <ArrowRight className="w-10 h-10 text-[#88C444]" />
-                  </motion.div>
-                  <motion.div
-                    animate={{ x: [0, -15, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.8 }}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full flex items-center gap-4 flex-row-reverse"
-                  >
-                    <span className="text-base font-bold text-gray-800 uppercase">Biogas</span>
-                    <ArrowRight className="w-10 h-10 text-[#A8E063]" />
-                  </motion.div>
+              <div className="relative w-[420px] h-[420px] rounded-full bg-gradient-to-br from-[#88C444]/10 to-[#A8E063]/10 flex items-center justify-center">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
+                  className="absolute inset-6 border border-dashed border-[#88C444]/40 rounded-full"
+                />
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+                  className="absolute inset-16 border border-[#A8E063]/40 rounded-full"
+                />
+                <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#88C444] to-[#A8E063] flex items-center justify-center shadow-2xl">
+                  <Settings className="w-12 h-12 text-white" />
+                </div>
+                <div className="absolute left-[-120px] flex items-center gap-3">
+                  <span className="font-semibold text-gray-700">Input</span>
+                  <ArrowRight className="text-[#88C444]" />
+                </div>
+                <div className="absolute right-[-140px] flex items-center gap-3">
+                  <ArrowRight className="text-[#A8E063]" />
+                  <span className="font-semibold text-gray-700">Biogas</span>
                 </div>
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Advantages Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block px-5 py-3 bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white text-xs font-bold uppercase tracking-wider shadow-xl shadow-[#88C444]/40">
-              Benefits
-            </span>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
-              Technology{" "}
-              <span className="bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
-                Advantages
-              </span>
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-              From an engineering and process engineering point of view, CSTR technology offers numerous advantages
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-12">
-            {advantages.map((advantage, index) => (
+        {/* Advantages */}
+        <section className="relative py-32">
+          <div className="container-wide grid md:grid-cols-3 gap-10">
+            {advantages.map((a, i) => (
               <motion.div
-                key={advantage.title}
-                initial={{ opacity: 0, y: 50 }}
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.2 }}
-                className="group relative p-12 bg-white/90 backdrop-blur border-2 border-gray-100 hover:border-[#88C444] hover:shadow-3xl hover:shadow-[#88C444]/30 hover:-translate-y-3 transition-all duration-700 overflow-hidden"
+                transition={{ delay: i * 0.15 }}
+                className="p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-[#88C444]/20 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all"
               >
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="w-24 h-24 inline-flex items-center justify-center bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white mb-10 group-hover:scale-110 group-hover:shadow-3xl group-hover:shadow-[#88C444]/60 transition-all duration-600 shadow-2xl shadow-[#88C444]/50">
-                  <advantage.icon className="w-12 h-12" />
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#88C444] to-[#A8E063] flex items-center justify-center text-white shadow-xl">
+                  <a.icon className="w-10 h-10" />
                 </div>
-                <h3 className="text-2xl font-heading font-bold text-gray-900 mb-5">{advantage.title}</h3>
-                <p className="text-gray-700 leading-relaxed text-lg">{advantage.description}</p>
+                <h3 className="mt-6 text-xl font-bold text-gray-900">{a.title}</h3>
+                <p className="mt-3 text-gray-700">{a.description}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Environmental Impact */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              <div>
-                <span className="inline-block px-5 py-3 bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white text-xs font-bold uppercase tracking-wider shadow-xl shadow-[#88C444]/40">
-                  Sustainability
-                </span>
-                <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
-                  CSTRs and{" "}
-                  <span className="bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent">
-                    Environmental Impact
-                  </span>
-                </h2>
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "260px" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="h-1.5 bg-gradient-to-r from-[#88C444] to-[#A8E063] shadow-xl shadow-[#88C444]/40 rounded-full"
-                />
-              </div>
-
-              <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
-                <p>
-                  How do CSTRs contribute to environmental sustainability? CSTRs enable the conversion of diverse
-                  biomasses into renewable energy, reducing reliance on fossil fuels and lowering greenhouse gas
-                  emissions.
-                </p>
-                <p>
-                  Their efficient digestion process minimizes waste and emissions, contributing to a cleaner and greener
-                  environment. This technology is at the heart of our commitment to sustainable energy solutions.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-2 gap-10"
-            >
-              {[
-                { label: "CO₂ Reduction", value: "40%+", desc: "Lower emissions vs fossil fuels" },
-                { label: "Waste Diverted", value: "100%", desc: "Zero waste to landfill" },
-                { label: "Energy Efficiency", value: "85%+", desc: "Conversion rate achieved" },
-                { label: "Carbon Credits", value: "Yes", desc: "Eligible for certification" },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.15 }}
-                  className="relative p-10 bg-white/90 backdrop-blur border-2 border-gray-100 text-center hover:border-[#88C444] hover:shadow-3xl hover:shadow-[#88C444]/30 hover:-translate-y-2 transition-all duration-600 group overflow-hidden"
-                >
-                  {/* Corner accents */}
-                  <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="text-5xl font-heading font-bold bg-gradient-to-r from-[#88C444] via-[#A8E063] to-[#88C444] bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-500">
-                    {item.value}
-                  </div>
-                  <div className="text-gray-900 font-bold text-xl mb-2">{item.label}</div>
-                  <div className="text-gray-600 text-sm">{item.desc}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </PageLayout>
   );
 };
