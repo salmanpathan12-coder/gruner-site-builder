@@ -16,6 +16,13 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+/* ---------------- CONSTANTS ---------------- */
+
+const GRADIENT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]";
+const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text text-transparent";
+
+/* ---------------- DATA ---------------- */
+
 const jobOpenings = [
   {
     id: 1,
@@ -90,6 +97,8 @@ const benefits = [
   },
 ];
 
+/* ---------------- COMPONENT ---------------- */
+
 const Careers = () => {
   const [expandedJob, setExpandedJob] = useState<number | null>(null);
 
@@ -106,7 +115,7 @@ const Careers = () => {
         <div className="flex flex-col sm:flex-row gap-4">
           <a
             href="#openings"
-            className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+            className={`inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white ${GRADIENT} hover:shadow-lg hover:shadow-primary/30 transition-all duration-300`}
           >
             View Open Positions
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -114,80 +123,56 @@ const Careers = () => {
         </div>
       </PageHero>
 
-      {/* Company Culture */}
+      {/* ================= CULTURE ================= */}
       <section className="section-padding bg-background">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="text-primary text-sm font-medium uppercase tracking-wider">Why Gruner</span>
-              <h2 className="text-3xl md:text-4xl font-heading font-semibold mt-3 mb-6">
-                Build Your Career in Clean Energy
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                At Gruner Renewable, we're not just building Bio-CNG plants – we're building the future of sustainable
-                energy in India. Join a team of passionate professionals working on cutting-edge technology.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Our team of 250+ experts comes from diverse backgrounds, united by a shared commitment to innovation and
-                environmental responsibility. We offer a collaborative environment where your contributions matter.
-              </p>
+        <div className="container-wide grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-primary text-sm font-medium uppercase tracking-wider">Why Gruner</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold mt-3 mb-6">
+              Build Your Career in Clean Energy
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+              At Gruner Renewable, we're not just building Bio-CNG plants – we're building the future of sustainable
+              energy in India. Join a team of passionate professionals working on cutting-edge technology.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Our team of 250+ experts comes from diverse backgrounds, united by a shared commitment to innovation and
+              environmental responsibility. We offer a collaborative environment where your contributions matter.
+            </p>
+          </motion.div>
 
-              <div className="flex items-center gap-8">
-                <div>
-                  <div className="text-4xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    250+
-                  </div>
-                  <div className="text-muted-foreground text-sm">Team Members</div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-2 gap-5"
+          >
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="p-6 bg-white border border-black/5 shadow-md hover:shadow-lg transition-all"
+              >
+                <div className={`w-12 h-12 mb-4 flex items-center justify-center text-white ${GRADIENT}`}>
+                  <benefit.icon className="w-6 h-6" />
                 </div>
-                <div>
-                  <div className="text-4xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    63+
-                  </div>
-                  <div className="text-muted-foreground text-sm">Projects</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-heading font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Pan India
-                  </div>
-                  <div className="text-muted-foreground text-sm">Presence</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 bg-card rounded-xl border border-border hover:border-primary/20 transition-colors"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-                    <benefit.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+                <h3 className="font-semibold mb-2">{benefit.title}</h3>
+                <p className="text-muted-foreground text-sm">{benefit.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* Job Openings */}
       {/* ================= JOB OPENINGS (CREATIVE STRUCTURE) ================= */}
       <section id="openings" className="section-padding bg-muted/30">
         <div className="container-wide grid lg:grid-cols-3 gap-14 items-start">
@@ -198,9 +183,7 @@ const Careers = () => {
             viewport={{ once: true }}
             className="lg:sticky lg:top-32 space-y-6"
           >
-            <span className="inline-flex px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]">
-              Opportunities
-            </span>
+            <span className={`inline-flex px-4 py-2 text-sm font-semibold text-white ${GRADIENT}`}>Opportunities</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-black leading-tight">
               Open <span className={GRADIENT_TEXT}>Positions</span>
@@ -210,7 +193,6 @@ const Careers = () => {
               Find the best available position for you and become part of India’s clean energy transformation journey.
             </p>
 
-            {/* Decorative stat bar */}
             <div className="pt-6 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-[#1f8f7a]" />
@@ -227,7 +209,7 @@ const Careers = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT JOB LIST */}
+          {/* RIGHT LIST */}
           <div className="lg:col-span-2 space-y-4">
             {jobOpenings.map((job, index) => (
               <motion.div
@@ -271,10 +253,7 @@ const Careers = () => {
 
                 <motion.div
                   initial={false}
-                  animate={{
-                    height: expandedJob === job.id ? "auto" : 0,
-                    opacity: expandedJob === job.id ? 1 : 0,
-                  }}
+                  animate={{ height: expandedJob === job.id ? "auto" : 0, opacity: expandedJob === job.id ? 1 : 0 }}
                   className="overflow-hidden"
                 >
                   <div className="px-6 pb-6 pt-2 border-t border-black/5">
@@ -298,9 +277,8 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ================= GENERAL CTA (CREATIVE DESIGN) ================= */}
+      {/* ================= CREATIVE GENERAL CTA ================= */}
       <section className="relative section-padding overflow-hidden">
-        {/* Background Layer */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] opacity-95" />
 
         <div className="relative container-wide">
@@ -310,19 +288,15 @@ const Careers = () => {
             viewport={{ once: true }}
             className="grid lg:grid-cols-2 gap-16 items-center bg-white/10 backdrop-blur-md p-12 border border-white/20"
           >
-            {/* LEFT */}
             <div>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Don't See Your Role?</h2>
               <p className="text-white/80 text-lg leading-relaxed max-w-xl">
                 We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future
                 opportunities.
               </p>
-
-              {/* decorative line */}
               <div className="mt-6 h-[2px] w-24 bg-white/40" />
             </div>
 
-            {/* RIGHT */}
             <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
               <a
                 href="mailto:careers@grunerrenewable.com"
