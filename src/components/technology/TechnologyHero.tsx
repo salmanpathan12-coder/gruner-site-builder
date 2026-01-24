@@ -422,18 +422,20 @@ const TechnologyHero = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative bg-foreground/80 backdrop-blur-md border-4 border-accent/40 overflow-hidden shadow-2xl shadow-primary/40">
+            <div className="relative bg-[#0a1a0f]/90 border-2 border-[#88C444]/30 overflow-hidden shadow-2xl shadow-[#88C444]/30">
               <BiogasSystemVisual />
-              <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-accent" />
-              <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-primary" />
-              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-primary" />
-              <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-accent" />
+              {/* Corner accents matching screenshot */}
+              <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-[#88C444]/60" />
+              <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-[#88C444]/60" />
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-[#88C444]/60" />
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-[#88C444]/60" />
             </div>
           </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a1a0f] to-transparent" />
     </section>
   );
 };
