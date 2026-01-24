@@ -247,7 +247,7 @@ const Technology = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Steps List */}
             <div className="space-y-8">
               {processSteps.map((step, index) => (
@@ -314,13 +314,23 @@ const Technology = () => {
 
             {/* Visual Diagram */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="sticky top-32 h-full flex"
+              initial={{
+                opacity: 0,
+                scale: 0.95,
+              }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              className="sticky top-32"
             >
-              <div className="relative p-12 bg-white/90 backdrop-blur border-4 border-[#88C444]/40 shadow-3xl shadow-[#88C444]/30 h-full flex flex-col justify-center">
+              <div className="relative p-12 bg-white/90 backdrop-blur border-4 border-[#88C444]/40 shadow-3xl shadow-[#88C444]/30">
                 <div className="absolute top-0 left-0 w-28 h-28 border-t-4 border-l-4 border-[#88C444]" />
                 <div className="absolute top-0 right-0 w-28 h-28 border-t-4 border-r-4 border-[#88C444]" />
                 <div className="absolute bottom-0 left-0 w-28 h-28 border-b-4 border-l-4 border-[#88C444]" />
