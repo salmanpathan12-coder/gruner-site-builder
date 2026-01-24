@@ -389,8 +389,7 @@ const TechnologyHero = () => {
             }} transition={{
               delay: 0.3
             }} className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-black">
-                <span>CSTR </span>
-                <span className="bg-gradient-to-r from-accent via-primary to-accent\nbg-clip-text\ntext-transparent\n">Technology</span>
+                <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">CSTR Technology</span>
               </motion.h1>
 
               <motion.div initial={{

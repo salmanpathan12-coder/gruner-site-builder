@@ -111,7 +111,7 @@ const Technology = () => {
             <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Our Technology</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 leading-tight">
-              Introduction to <span className={GRADIENT_TEXT}>CSTR Technology</span>
+              Introduction to <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">CSTR Technology</span>
             </h2>
 
             <div className="space-y-4 text-gray-600 text-base leading-relaxed">
@@ -182,7 +182,7 @@ const Technology = () => {
             <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>The Process</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-              How CSTR Transforms <span className={GRADIENT_TEXT}>Biomass into Energy</span>
+              How CSTR Transforms <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Biomass into Energy</span>
             </h2>
 
             {/* Animated Timeline */}
@@ -271,7 +271,7 @@ const Technology = () => {
             <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Benefits</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-              Technology <span className={GRADIENT_TEXT}>Advantages</span>
+              Technology <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Advantages</span>
             </h2>
           </div>
 
@@ -310,7 +310,7 @@ const Technology = () => {
             <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Sustainability</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-              CSTRs and <span className={GRADIENT_TEXT}>Environmental Impact</span>
+              CSTRs and <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Environmental Impact</span>
             </h2>
 
             <div className="space-y-4 text-gray-600 text-base leading-relaxed">
