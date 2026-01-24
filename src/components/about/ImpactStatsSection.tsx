@@ -35,16 +35,11 @@ const AnimatedCounter = ({ value, suffix = "", prefix = "", isInView }: Animated
    CTA Button
 ================================ */
 
-interface CTAButtonProps {
-  label: string;
-  onClick?: () => void;
-  icon?: boolean;
-}
-
-const CTAButton = ({ label, onClick, icon = true }: CTAButtonProps) => {
+const CTAButton = ({ label }: { label: string }) => {
   return (
-    <button
-      onClick={onClick}
+    <motion.button
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       className="
         inline-flex items-center gap-2
         px-6 py-3
@@ -53,16 +48,15 @@ const CTAButton = ({ label, onClick, icon = true }: CTAButtonProps) => {
         font-medium font-body text-sm
         shadow-lg shadow-primary/25
         hover:shadow-xl hover:shadow-primary/40
-        hover:-translate-y-[1px]
         transition-all duration-300
         text-center
         rounded-none
         border border-white/10
       "
     >
-      <span>{label}</span>
-      {icon && <ArrowRight className="w-4 h-4" />}
-    </button>
+      {label}
+      <ArrowRight className="w-4 h-4" />
+    </motion.button>
   );
 };
 
@@ -91,15 +85,12 @@ const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, v
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{
-        duration: 0.5,
-        delay: 0.05 + index * 0.08,
-      }}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      whileHover={{ y: -6, scale: 1.01 }}
+      className="group"
     >
-      <div
-        className={`relative h-full p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${variants[variant]}`}
-      >
-        {/* Soft accents */}
+      <div className={`relative h-full p-5 overflow-hidden transition-all duration-300 ${variants[variant]}`}>
+        {/* Eco accent shapes */}
         {variant === "primary" && (
           <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 -translate-y-1/2 translate-x-1/2 rounded-full" />
         )}
@@ -163,23 +154,37 @@ const ImpactStatsSection = () => {
 
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* ===== PROFESSIONAL THEME BACKGROUND ===== */}
+      {/* ===== THEME ENERGY BACKGROUND ===== */}
       <div className="absolute inset-0">
-        {/* Base neutral layer */}
-        <div className="absolute inset-0 bg-[hsl(160,30%,97%)]" />
+        {/* Base eco-neutral */}
+        <div className="absolute inset-0 bg-[hsl(160,35%,96%)]" />
 
         {/* Theme gradient wash */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-accent/8 to-primary/12" />
 
-        {/* Energy flow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent" />
+        {/* Energy flow animation */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent"
+          animate={{ x: ["-100%", "100%"] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
       </div>
 
-      {/* Theme glow orbs */}
-      <div className="absolute top-0 left-[15%] w-[420px] h-[420px] bg-primary/15 blur-[120px] rounded-full" />
-      <div className="absolute bottom-0 right-[15%] w-[360px] h-[360px] bg-accent/15 blur-[110px] rounded-full" />
+      {/* Floating eco orbs */}
+      <motion.div
+        className="absolute top-0 left-[12%] w-[420px] h-[420px] bg-primary/15 blur-[120px] rounded-full"
+        animate={{ y: [0, 25, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      <div className="container-wide relative z-10">
+      <motion.div
+        className="absolute bottom-0 right-[12%] w-[360px] h-[360px] bg-accent/15 blur-[110px] rounded-full"
+        animate={{ y: [0, -25, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* ===== CONTENT CONTAINER (REDUCED GAP) ===== */}
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-8 lg:px-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -189,7 +194,9 @@ const ImpactStatsSection = () => {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 mb-4">
             <BarChart3 className="w-3.5 h-3.5 text-primary" />
-            <span className="text-xs tracking-[0.12em] uppercase text-primary font-medium font-body">Our Impact</span>
+            <span className="text-xs tracking qb-[0.12em] uppercase text-primary font-medium font-body">
+              Our Impact
+            </span>
           </span>
 
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
