@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
+import contactHeroImage from "@/assets/contact-hero.jpg";
 
 const contactSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
@@ -78,11 +79,31 @@ const Contact = () => {
           { label: "Home", href: "/" },
           { label: "Contact", href: "/contact" },
         ]}
+        image={contactHeroImage}
       />
 
       {/* Contact Section */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-gradient-to-b from-background to-muted/30">
         <div className="container-wide">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+              Contact Us
+            </span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+              Let's Start a <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Conversation</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Partner with us to transform organic waste into clean energy. Our team is ready to discuss your project needs.
+            </p>
+          </motion.div>
+
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
             {/* Contact Form */}
             <motion.div
@@ -92,17 +113,24 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-3"
             >
-              <div className="bg-card rounded-2xl border border-border p-8 md:p-10">
-                <h2 className="text-2xl font-heading font-semibold mb-2">Request a Quote</h2>
-                <p className="text-muted-foreground mb-8">
-                  Receive an accurate quote within 3-5 days when you fill out this form.
-                </p>
+              <div className="bg-card rounded-2xl border border-border shadow-lg shadow-primary/5 p-8 md:p-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                    <Send className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-heading font-semibold text-foreground">Request a Quote</h2>
+                    <p className="text-muted-foreground text-sm">
+                      Receive an accurate quote within 3-5 days when you fill out this form.
+                    </p>
+                  </div>
+                </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div>
-                      <label className="block text-sm font-medium mb-2">Full Name *</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">Full Name *</label>
                       <input
                         {...register("fullName")}
                         type="text"
@@ -114,7 +142,7 @@ const Contact = () => {
 
                     {/* Company Name */}
                     <div>
-                      <label className="block text-sm font-medium mb-2">Company Name</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">Company Name</label>
                       <input
                         {...register("companyName")}
                         type="text"
@@ -127,7 +155,7 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Email */}
                     <div>
-                      <label className="block text-sm font-medium mb-2">Email *</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">Email *</label>
                       <input
                         {...register("email")}
                         type="email"
@@ -139,7 +167,7 @@ const Contact = () => {
 
                     {/* Phone */}
                     <div>
-                      <label className="block text-sm font-medium mb-2">Phone Number *</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">Phone Number *</label>
                       <input
                         {...register("phone")}
                         type="tel"
@@ -152,7 +180,7 @@ const Contact = () => {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-sm font-medium mb-2">Message *</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">Message *</label>
                     <textarea
                       {...register("message")}
                       rows={5}
@@ -164,21 +192,21 @@ const Contact = () => {
 
                   {/* Preferred Contact Method */}
                   <div>
-                    <label className="block text-sm font-medium mb-3">Preferred Contact Method</label>
+                    <label className="block text-sm font-medium text-foreground mb-3">Preferred Contact Method</label>
                     <div className="flex flex-wrap gap-4">
                       {[
                         { value: "all", label: "Any" },
                         { value: "phone", label: "Phone" },
                         { value: "email", label: "Email" },
                       ].map((option) => (
-                        <label key={option.value} className="flex items-center gap-2 cursor-pointer">
+                        <label key={option.value} className="flex items-center gap-2 cursor-pointer group">
                           <input
                             {...register("contactMethod")}
                             type="radio"
                             value={option.value}
                             className="w-4 h-4 text-primary border-border focus:ring-primary"
                           />
-                          <span className="text-sm">{option.label}</span>
+                          <span className="text-sm text-foreground group-hover:text-primary transition-colors">{option.label}</span>
                         </label>
                       ))}
                     </div>
@@ -190,7 +218,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-lg bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -224,14 +252,14 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-6 bg-card rounded-xl border border-border"
+                    className="p-6 bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
                         <info.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-2">{info.title}</h3>
+                        <h3 className="font-semibold text-foreground mb-2">{info.title}</h3>
                         {info.details.map((detail, i) => (
                           <p key={i} className="text-muted-foreground text-sm">
                             {detail}
@@ -243,21 +271,33 @@ const Contact = () => {
                 ))}
 
                 {/* Quick Response Promise */}
-                <div className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl border border-primary/20">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl border border-primary/20"
+                >
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold mb-1">Quick Response Promise</h4>
+                      <h4 className="font-semibold text-foreground mb-1">Quick Response Promise</h4>
                       <p className="text-muted-foreground text-sm">
                         Our team responds to all inquiries within 24-48 business hours.
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Social Links */}
-                <div className="p-6 bg-card rounded-xl border border-border">
-                  <h3 className="font-semibold mb-4">Connect With Us</h3>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="p-6 bg-card rounded-xl border border-border shadow-sm"
+                >
+                  <h3 className="font-semibold text-foreground mb-4">Connect With Us</h3>
                   <div className="flex gap-3">
                     {[
                       { name: "Facebook", url: "https://www.facebook.com/GrunerRenewables/" },
@@ -270,14 +310,14 @@ const Contact = () => {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-white flex items-center justify-center transition-colors"
+                        className="w-10 h-10 rounded-lg bg-muted hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-white flex items-center justify-center transition-all duration-300"
                         aria-label={social.name}
                       >
                         <span className="text-xs font-medium">{social.name[0]}</span>
                       </a>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -285,12 +325,42 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="h-96 bg-muted relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-            <p className="text-muted-foreground">22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP</p>
-          </div>
+      <section className="bg-background">
+        <div className="container-wide py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-2xl font-heading font-semibold text-foreground mb-2">
+              Visit Our Office
+            </h3>
+            <p className="text-muted-foreground">
+              22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="rounded-2xl overflow-hidden border border-border shadow-lg shadow-primary/5"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.4847985837387!2d77.39193!3d28.579793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef0c2c9f2d5f%3A0x4e43b8e8f3f34e4b!2sWindsor%20Grand%2C%20Plot%201C%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Gruner Renewable Energy Office Location"
+              className="w-full"
+            />
+          </motion.div>
         </div>
       </section>
     </PageLayout>
