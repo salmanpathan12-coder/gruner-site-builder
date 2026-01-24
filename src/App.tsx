@@ -12,6 +12,14 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+// Solution subpages
+import ProjectDevelopment from "./pages/solutions/ProjectDevelopment";
+import EngineeringConstruction from "./pages/solutions/EngineeringConstruction";
+import RD from "./pages/solutions/RD";
+import CNGRetail from "./pages/solutions/CNGRetail";
+import BioGas from "./pages/solutions/BioGas";
+import OM from "./pages/solutions/OM";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -25,6 +33,12 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/solutions" element={<Solutions />} />
+          <Route path="/solutions/project-development" element={<ProjectDevelopment />} />
+          <Route path="/solutions/engineering-construction" element={<EngineeringConstruction />} />
+          <Route path="/solutions/rd" element={<RD />} />
+          <Route path="/solutions/cng-retail" element={<CNGRetail />} />
+          <Route path="/solutions/bio-gas" element={<BioGas />} />
+          <Route path="/solutions/om" element={<OM />} />
           <Route path="/media" element={<Media />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
