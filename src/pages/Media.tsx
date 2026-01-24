@@ -2,6 +2,10 @@ import { motion, useInView, useMotionValue, useTransform, animate } from "framer
 import { useEffect, useRef } from "react";
 import PageLayout from "@/components/PageLayout";
 import { ExternalLink, Calendar, ArrowRight } from "lucide-react";
+import mediaHeroImage from "@/assets/media-hero.jpg";
+import mediaArticle1 from "@/assets/media-article-1.jpg";
+import mediaArticle2 from "@/assets/media-article-2.jpg";
+import mediaArticle3 from "@/assets/media-article-3.jpg";
 
 /* ---------------- CONSTANTS ---------------- */
 
@@ -10,61 +14,67 @@ const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text
 
 /* ---------------- DATA ---------------- */
 
+// Helper to cycle through article images
+const getArticleImage = (index: number) => {
+  const images = [mediaArticle1, mediaArticle2, mediaArticle3];
+  return images[index % images.length];
+};
+
 const mediaArticles = [
   {
     title: "Gruner Renewable Energy secures $60 million to expand CBG projects",
     source: "The Hindu Business Line",
     date: "Jul 28, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/1efe4048fa1.jpeg",
+    image: getArticleImage(0),
     link: "https://www.thehindubusinessline.com/companies/gruner-renewable-energy-secures-60-million-to-expand-cbg-projects/article68460239.ece",
   },
   {
     title: "Gruner Renewable Energy Bags $60 Mn To Expand CBG Projects In India",
     source: "BW Disrupt",
     date: "Jul 28, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/873015d8f04.jpeg",
+    image: getArticleImage(1),
     link: "https://bwdisrupt.com/article/gruner-renewable-energy-bags-60-mn-to-expand-cbg-projects-in-india-527590",
   },
   {
     title: "Gruner Renewable Energy Raises $60M for Sustainable Biogas Solutions",
     source: "YourStory",
     date: "Jul 28, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/026c6cb8455.jpeg",
+    image: getArticleImage(2),
     link: "https://yourstory.com/2024/07/gruner-renewable-energy-raises-60m-sustainable-biogas-solutions",
   },
   {
     title: "Gruner Renewable Energy receives USD 60Mn Funding",
     source: "Economic Times Energy",
     date: "Jul 28, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/18aa68569d5.jpeg",
+    image: getArticleImage(0),
     link: "https://energy.economictimes.indiatimes.com/news/renewable/gruner-renewable-energy-receives-usd-60-mn-funding/112101344",
   },
   {
     title: "Gruner Renewable Energy to set up compressed biogas plant in Gujarat at Rs 220-cr investment",
     source: "PTI News",
     date: "Jun 16, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/f66104c6968.jpeg",
+    image: getArticleImage(1),
     link: "https://www.ptinews.com/story/business/gruner-renewable-energy-to-set-up-compressed-biogas-plant-in-gujarat-at-rs-220-cr-investment/1589043",
   },
   {
     title: "Gruner to set up compressed biogas plant in Gujarat at Rs 220-cr investment",
     source: "Business Standard",
     date: "Jun 16, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/211cf1429b1.jpeg",
+    image: getArticleImage(2),
     link: "https://www.business-standard.com/companies/news/gruner-to-set-up-compressed-biogas-plant-in-gujarat-at-rs-220cr-investment-124061700378_1.html",
   },
   {
     title: "Gruner Renewable Energy to setup compressed biogas plant in Gujarat at Rs 220 cr. investment",
     source: "Economic Times",
     date: "Jun 16, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/0d9246c1b72.jpeg",
+    image: getArticleImage(0),
     link: "https://economictimes.indiatimes.com/industry/renewables/gruner-renewable-energy-to-set-up-compressed-biogas-plant-in-gujarat-at-rs-220-cr-investment/articleshow/111056160.cms",
   },
   {
     title: "Gruner Renewable Energy to setup compressed biogas plant in Gujarat",
     source: "ET Energy World",
     date: "Jun 6, 2024",
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/12735de8b1d.jpeg",
+    image: getArticleImage(1),
     link: "https://energy.economictimes.indiatimes.com/news/oil-and-gas/gruner-renewable-energy-to-set-up-compressed-biogas-plant-in-gujarat-at-rs-220-cr-investment/111057079",
   },
 ];
@@ -110,7 +120,7 @@ const Media = () => {
             <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT} rounded-md`}>Media Coverage</span>
 
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
-              Gruner Renewable Energy in the <span className={GRADIENT_TEXT}>News</span>
+              Gruner Renewable Energy in the <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">News</span>
             </h1>
 
             <p className="text-gray-700 text-lg max-w-xl">
@@ -158,7 +168,7 @@ const Media = () => {
           >
             <div className="bg-white border border-black/5 shadow-2xl overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                src={mediaHeroImage}
                 alt="Media Coverage"
                 className="w-full h-full object-cover"
               />
