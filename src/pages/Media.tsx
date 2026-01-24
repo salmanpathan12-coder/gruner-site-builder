@@ -53,6 +53,13 @@ const mediaArticles = [
     image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/0d9246c1b72.jpeg",
     link: "https://economictimes.indiatimes.com/industry/renewables/gruner-renewable-energy-to-set-up-compressed-biogas-plant-in-gujarat-at-rs-220-cr-investment/articleshow/111056160.cms",
   },
+  {
+    title: "Gruner Renewable Energy to setup compressed biogas plant in Gujarat",
+    source: "ET Energy World",
+    date: "Jun 6, 2024",
+    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/12735de8b1d.jpeg",
+    link: "https://energy.economictimes.indiatimes.com/news/oil-and-gas/gruner-renewable-energy-to-set-up-compressed-biogas-plant-in-gujarat-at-rs-220-cr-investment/111057079",
+  },
 ];
 
 const pressHighlights = [
