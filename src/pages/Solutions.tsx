@@ -22,7 +22,7 @@ const solutions = [
       "Regulatory compliance support",
       "Site assessment & feasibility",
     ],
-    image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=2000&q=80",
+    image: "https://images.pexels.com/photos/433308/pexels-photo-433308.jpeg?auto=compress&cs=tinysrgb&w=2000",
   },
   {
     icon: Settings,
@@ -35,7 +35,7 @@ const solutions = [
       "SCADA & automation",
       "Remote monitoring systems",
     ],
-    image: "https://images.unsplash.com/photo-1584270354949-1c5b4b3be0f7?auto=format&fit=crop&w=2000&q=80",
+    image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=2000",
   },
   {
     icon: Wrench,
@@ -48,7 +48,8 @@ const solutions = [
       "Spare parts management",
       "Training & capacity building",
     ],
-    image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2000&q=80",
+    image:
+      "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=2000",
   },
   {
     icon: TrendingUp,
@@ -61,7 +62,7 @@ const solutions = [
       "Carbon credit registration",
       "ROI optimization",
     ],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80",
+    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=2000",
   },
 ];
 
@@ -150,7 +151,7 @@ const Solutions = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT - VIDEO */}
+          {/* RIGHT — VIDEO HERO */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
@@ -159,7 +160,7 @@ const Solutions = () => {
           >
             <div className="relative bg-white border border-black/5 shadow-2xl overflow-hidden">
               <video
-                src="https://cdn.coverr.co/videos/coverr-wind-turbines-and-solar-panels-3365/1080p.mp4"
+                src="https://cdn.coverr.co/videos/coverr-solar-panels-at-sunset-4996/1080p.mp4"
                 autoPlay
                 loop
                 muted
