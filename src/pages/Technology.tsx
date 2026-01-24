@@ -76,7 +76,8 @@ const Technology = () => {
 
       {/* ================= INTRO ================= */}
       <section className="py-16 bg-white">
-        <div className="container-wide grid lg:grid-cols-2 gap-10 items-center">
+        <div className="container-wide grid lg:grid-cols-2 gap-12 items-center">
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -125,6 +126,7 @@ const Technology = () => {
             </div>
           </motion.div>
 
+          {/* RIGHT */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -142,79 +144,123 @@ const Technology = () => {
 
       {/* ================= PROCESS ================= */}
       <section className="py-16 bg-gray-50">
-        <div className="container-wide">
-          <div className="text-center mb-12">
+        <div className="container-wide grid lg:grid-cols-2 gap-12 items-start">
+          {/* LEFT CONTENT */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
             <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>The Process</span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mt-4 text-gray-900">
+
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               How CSTR Transforms <span className={GRADIENT_TEXT}>Biomass into Energy</span>
             </h2>
-          </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            <div className="space-y-3">
+            {/* Animated Timeline */}
+            <div className="relative pl-6 space-y-4">
+              {/* vertical animated line */}
+              <motion.div
+                animate={{ height: ["0%", "100%"] }}
+                transition={{ duration: 1.2 }}
+                className={`absolute left-1 top-0 w-[3px] ${GRADIENT}`}
+              />
+
               {processSteps.map((step, i) => (
                 <motion.div
                   key={step.step}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  transition={{ duration: 0.4, delay: i * 0.15 }}
                   onClick={() => setActiveStep(i)}
-                  className={`p-4 bg-white border border-black/5 cursor-pointer transition-all ${
-                    activeStep === i ? "shadow-md" : "hover:shadow-sm"
-                  }`}
+                  className="relative cursor-pointer"
                 >
-                  <div className="flex gap-3 items-start">
-                    <div className={`w-9 h-9 flex items-center justify-center text-white ${GRADIENT}`}>
-                      <step.icon className="w-4 h-4" />
-                    </div>
+                  {/* node */}
+                  <motion.div
+                    animate={{
+                      scale: activeStep === i ? [1, 1.2, 1] : 1,
+                    }}
+                    transition={{ duration: 0.6, repeat: Infinity }}
+                    className={`absolute -left-[22px] top-2 w-4 h-4 rounded-full ${GRADIENT}`}
+                  />
 
-                    <div className="flex-1">
-                      <div className="flex justify-between items-center">
-                        <div className="text-sm font-bold text-gray-900">{step.title}</div>
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform ${activeStep === i ? "rotate-180" : ""}`}
-                        />
+                  <div
+                    className={`p-4 bg-white border border-black/5 transition-all ${
+                      activeStep === i ? "shadow-md" : "hover:shadow-sm"
+                    }`}
+                  >
+                    <div className="flex gap-3 items-start">
+                      <div className={`w-9 h-9 flex items-center justify-center text-white ${GRADIENT}`}>
+                        <step.icon className="w-4 h-4" />
                       </div>
 
-                      {activeStep === i && (
-                        <p className="text-sm text-gray-600 mt-2 leading-relaxed">{step.description}</p>
-                      )}
+                      <div className="flex-1">
+                        <div className="flex justify-between items-center">
+                          <div className="text-sm font-bold text-gray-900">{step.title}</div>
+                          <ChevronDown
+                            className={`w-4 h-4 transition-transform ${activeStep === i ? "rotate-180" : ""}`}
+                          />
+                        </div>
+
+                        {activeStep === i && (
+                          <p className="text-sm text-gray-600 mt-2 leading-relaxed">{step.description}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
+          </motion.div>
 
-            {/* Compact Visual */}
-            <div className="p-6 bg-white border border-black/5 shadow-md flex items-center justify-center">
-              <div className="text-center space-y-3">
-                <div className={`w-16 h-16 mx-auto flex items-center justify-center text-white ${GRADIENT}`}>
-                  <Settings className="w-8 h-8" />
-                </div>
-                <div className="text-base font-bold text-gray-900">CSTR Reactor Core</div>
-                <div className="flex items-center justify-center gap-3 text-sm font-semibold text-gray-600">
-                  <span>Input</span>
-                  <ArrowRight className="w-4 h-4" />
-                  <span>Biogas</span>
-                </div>
-              </div>
+          {/* RIGHT VISUAL */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="p-8 bg-white border border-black/5 shadow-md flex items-center justify-center"
+          >
+            <div className="text-center space-y-4">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className={`w-20 h-20 mx-auto flex items-center justify-center text-white rounded-full ${GRADIENT}`}
+              >
+                <Settings className="w-10 h-10" />
+              </motion.div>
+
+              <div className="text-base font-bold text-gray-900">CSTR Reactor Core</div>
+
+              <motion.div
+                animate={{ x: [0, 10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="flex items-center justify-center gap-3 text-sm font-semibold text-gray-600"
+              >
+                <span>Input</span>
+                <ArrowRight className="w-4 h-4" />
+                <span>Biogas</span>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ================= ADVANTAGES ================= */}
+      {/* ================= BENEFITS ================= */}
       <section className="py-16 bg-white">
-        <div className="container-wide">
-          <div className="text-center mb-12">
+        <div className="container-wide space-y-10">
+          <div className="space-y-4">
             <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Benefits</span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mt-4 text-gray-900">
+
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               Technology <span className={GRADIENT_TEXT}>Advantages</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-6">
             {advantages.map((adv, i) => (
               <motion.div
                 key={adv.title}
@@ -235,9 +281,10 @@ const Technology = () => {
         </div>
       </section>
 
-      {/* ================= ENVIRONMENT ================= */}
+      {/* ================= SUSTAINABILITY ================= */}
       <section className="py-16 bg-gray-50">
-        <div className="container-wide grid lg:grid-cols-2 gap-10 items-center">
+        <div className="container-wide grid lg:grid-cols-2 gap-12 items-center">
+          {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -247,7 +294,7 @@ const Technology = () => {
           >
             <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Sustainability</span>
 
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               CSTRs and <span className={GRADIENT_TEXT}>Environmental Impact</span>
             </h2>
 
@@ -264,6 +311,7 @@ const Technology = () => {
             </div>
           </motion.div>
 
+          {/* RIGHT METRICS */}
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: "CO₂ Reduction", value: "40%+", desc: "Lower emissions vs fossil fuels" },
