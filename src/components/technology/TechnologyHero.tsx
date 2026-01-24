@@ -289,23 +289,9 @@ const BiogasSystemVisual = () => {
 
 const TechnologyHero = () => {
   return (
-    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20">
-      {/* Multi-color dark gradient background from AboutHero */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(200,25%,12%)] via-[hsl(180,20%,15%)] to-[hsl(160,25%,10%)]" />
-
-      {/* Dynamic color orbs from AboutHero */}
-      <div className="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-primary/30 to-accent/20 rounded-full blur-[120px] opacity-60" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent/25 to-primary/15 rounded-full blur-[100px] opacity-50" />
-      <div className="absolute top-1/2 right-0 w-[300px] h-[300px] bg-gradient-to-bl from-[hsl(180,60%,40%)]/20 to-transparent rounded-full blur-[80px]" />
-
-      {/* Subtle grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
+    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20 bg-white">
+      {/* WHITE BACKGROUND */}
+      <div className="absolute inset-0 bg-white" />
 
       <div className="container-wide relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -316,58 +302,60 @@ const TechnologyHero = () => {
             transition={{ duration: 0.7 }}
             className="space-y-7"
           >
-            <nav className="flex items-center gap-2 text-sm text-white/60">
-              <Link to="/" className="hover:text-white transition-colors">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-sm text-black/60">
+              <Link to="/" className="hover:text-black transition-colors">
                 Home
               </Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent font-semibold">
-                Technology
-              </span>
+              <span className="font-semibold text-black">Technology</span>
             </nav>
 
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 px-5 py-3 bg-white/10 border border-white/20 backdrop-blur-sm"
+              className="inline-flex items-center gap-3 px-5 py-3 bg-white border border-black/15"
             >
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
-                <Cpu className="w-5 h-5 text-accent" />
+                <Cpu className="w-5 h-5 text-green-600" />
               </motion.div>
-              <span className="text-sm uppercase tracking-wider font-bold text-white/90">Advanced Engineering</span>
+              <span className="text-sm uppercase tracking-wider font-bold text-black">Advanced Engineering</span>
             </motion.div>
 
+            {/* Title */}
             <div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-white"
+                className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-black"
               >
                 <span>CSTR </span>
-                <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
-                  Technology
-                </span>
+                <span className="text-green-600">Technology</span>
               </motion.h1>
+
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "200px" }}
                 transition={{ delay: 0.5, duration: 0.9 }}
-                className="h-1.5 bg-gradient-to-r from-primary to-accent mt-8 shadow-lg shadow-primary/30"
+                className="h-1.5 bg-green-600 mt-8"
               />
             </div>
 
+            {/* Description */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-white/70 text-lg leading-relaxed max-w-xl"
+              className="text-black/70 text-lg leading-relaxed max-w-xl"
             >
               Continuous-Flow Stirred Tank Reactor — the backbone of efficient biogas production. Engineering clean
               energy through advanced anaerobic digestion systems.
             </motion.p>
 
+            {/* Metrics */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -379,6 +367,7 @@ const TechnologyHero = () => {
               <AnimatedMetric value={10} suffix="% DS" label="Max Solid" />
             </motion.div>
 
+            {/* Tags */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -391,13 +380,14 @@ const TechnologyHero = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8 + i * 0.1 }}
-                  className="px-5 py-2.5 text-sm text-white/70 bg-white/10 border border-white/20 backdrop-blur-sm uppercase tracking-wider hover:bg-white/15 transition-colors"
+                  className="px-5 py-2.5 text-sm text-black border border-black/15 uppercase tracking-wider hover:bg-black/5 transition-colors"
                 >
                   {tag}
                 </motion.span>
               ))}
             </motion.div>
 
+            {/* Indicators */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -405,17 +395,17 @@ const TechnologyHero = () => {
               className="flex items-center gap-10 pt-8"
             >
               <div className="flex items-center gap-3">
-                <Flame className="w-6 h-6 text-accent" />
-                <span className="text-sm text-white/70 uppercase tracking-wider">Biogas Output</span>
+                <Flame className="w-6 h-6 text-green-600" />
+                <span className="text-sm text-black/70 uppercase tracking-wider">Biogas Output</span>
               </div>
               <div className="flex items-center gap-3">
-                <Gauge className="w-6 h-6 text-primary" />
-                <span className="text-sm text-white/70 uppercase tracking-wider">Process Control</span>
+                <Gauge className="w-6 h-6 text-green-700" />
+                <span className="text-sm text-black/70 uppercase tracking-wider">Process Control</span>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* RIGHT: Visual */}
+          {/* RIGHT: Visual (UNCHANGED GREEN SYSTEM) */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -424,7 +414,8 @@ const TechnologyHero = () => {
           >
             <div className="relative bg-[#0a1a0f]/90 border-2 border-[#88C444]/30 overflow-hidden shadow-2xl shadow-[#88C444]/30">
               <BiogasSystemVisual />
-              {/* Corner accents matching screenshot */}
+
+              {/* Corner accents */}
               <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-[#88C444]/60" />
               <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-[#88C444]/60" />
               <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-[#88C444]/60" />
@@ -433,9 +424,6 @@ const TechnologyHero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a1a0f] to-transparent" />
     </section>
   );
 };
