@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -72,18 +71,45 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      <PageHero
-        title="Get in Touch"
-        subtitle="Ready to start your Bio-CNG project? Contact us for a customized quote and consultation."
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Contact", href: "/contact" },
-        ]}
-        image={contactHeroImage}
-      />
+      {/* Contact Hero Section - White Background */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <nav className="flex items-center gap-2 text-sm mb-6">
+                <a href="/" className="text-black/60 hover:text-primary transition-colors">Home</a>
+                <span className="text-black/40">/</span>
+                <span className="text-primary font-medium">Contact</span>
+              </nav>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-black mb-6">
+                Get in Touch
+              </h1>
+              <p className="text-lg text-black/70 max-w-lg">
+                Ready to start your Bio-CNG project? Contact us for a customized quote and consultation.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <img 
+                src={contactHeroImage} 
+                alt="Contact Gruner Renewable Energy" 
+                className="w-full h-auto rounded-2xl shadow-lg"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-      {/* Contact Section */}
-      <section className="section-padding bg-gradient-to-b from-background to-muted/30">
+      {/* Contact Section - Creamy White Background */}
+      <section className="section-padding" style={{ backgroundColor: '#FAF7F2' }}>
         <div className="container-wide">
           {/* Section Header */}
           <motion.div
@@ -96,10 +122,10 @@ const Contact = () => {
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               Contact Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-black mb-4">
               Let's Start a <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Conversation</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-black/70 max-w-2xl mx-auto">
               Partner with us to transform organic waste into clean energy. Our team is ready to discuss your project needs.
             </p>
           </motion.div>
@@ -113,14 +139,14 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-3"
             >
-              <div className="bg-card rounded-2xl border border-border shadow-lg shadow-primary/5 p-8 md:p-10">
+              <div className="bg-white rounded-2xl border border-border shadow-lg shadow-primary/5 p-8 md:p-10">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                     <Send className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-heading font-semibold text-foreground">Request a Quote</h2>
-                    <p className="text-muted-foreground text-sm">
+                    <h2 className="text-2xl font-heading font-semibold text-black">Request a Quote</h2>
+                    <p className="text-black/60 text-sm">
                       Receive an accurate quote within 3-5 days when you fill out this form.
                     </p>
                   </div>
@@ -130,7 +156,7 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Full Name *</label>
+                      <label className="block text-sm font-medium text-black mb-2">Full Name *</label>
                       <input
                         {...register("fullName")}
                         type="text"
@@ -142,7 +168,7 @@ const Contact = () => {
 
                     {/* Company Name */}
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Company Name</label>
+                      <label className="block text-sm font-medium text-black mb-2">Company Name</label>
                       <input
                         {...register("companyName")}
                         type="text"
@@ -155,7 +181,7 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Email */}
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Email *</label>
+                      <label className="block text-sm font-medium text-black mb-2">Email *</label>
                       <input
                         {...register("email")}
                         type="email"
@@ -167,7 +193,7 @@ const Contact = () => {
 
                     {/* Phone */}
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Phone Number *</label>
+                      <label className="block text-sm font-medium text-black mb-2">Phone Number *</label>
                       <input
                         {...register("phone")}
                         type="tel"
@@ -180,7 +206,7 @@ const Contact = () => {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Message *</label>
+                    <label className="block text-sm font-medium text-black mb-2">Message *</label>
                     <textarea
                       {...register("message")}
                       rows={5}
@@ -192,7 +218,7 @@ const Contact = () => {
 
                   {/* Preferred Contact Method */}
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-3">Preferred Contact Method</label>
+                    <label className="block text-sm font-medium text-black mb-3">Preferred Contact Method</label>
                     <div className="flex flex-wrap gap-4">
                       {[
                         { value: "all", label: "Any" },
@@ -206,7 +232,7 @@ const Contact = () => {
                             value={option.value}
                             className="w-4 h-4 text-primary border-border focus:ring-primary"
                           />
-                          <span className="text-sm text-foreground group-hover:text-primary transition-colors">{option.label}</span>
+                          <span className="text-sm text-black group-hover:text-primary transition-colors">{option.label}</span>
                         </label>
                       ))}
                     </div>
@@ -252,16 +278,16 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-6 bg-card rounded-xl border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300"
+                    className="p-6 bg-white rounded-xl border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300"
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
                         <info.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-foreground mb-2">{info.title}</h3>
+                        <h3 className="font-semibold text-black mb-2">{info.title}</h3>
                         {info.details.map((detail, i) => (
-                          <p key={i} className="text-muted-foreground text-sm">
+                          <p key={i} className="text-black/60 text-sm">
                             {detail}
                           </p>
                         ))}
@@ -281,8 +307,8 @@ const Contact = () => {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Quick Response Promise</h4>
-                      <p className="text-muted-foreground text-sm">
+                      <h4 className="font-semibold text-black mb-1">Quick Response Promise</h4>
+                      <p className="text-black/60 text-sm">
                         Our team responds to all inquiries within 24-48 business hours.
                       </p>
                     </div>
@@ -295,9 +321,9 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="p-6 bg-card rounded-xl border border-border shadow-sm"
+                  className="p-6 bg-white rounded-xl border border-border shadow-sm"
                 >
-                  <h3 className="font-semibold text-foreground mb-4">Connect With Us</h3>
+                  <h3 className="font-semibold text-black mb-4">Connect With Us</h3>
                   <div className="flex gap-3">
                     {[
                       { name: "Facebook", url: "https://www.facebook.com/GrunerRenewables/" },
@@ -325,7 +351,7 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="bg-background">
+      <section className="bg-white">
         <div className="container-wide py-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -334,10 +360,10 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8"
           >
-            <h3 className="text-2xl font-heading font-semibold text-foreground mb-2">
+            <h3 className="text-2xl font-heading font-semibold text-black mb-2">
               Visit Our Office
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-black/70">
               22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP
             </p>
           </motion.div>
