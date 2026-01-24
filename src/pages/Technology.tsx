@@ -3,21 +3,28 @@ import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import TechnologyHero from "@/components/technology/TechnologyHero";
 import { Beaker, Thermometer, Clock, Settings, ArrowRight, Leaf, Zap, Recycle, ChevronDown } from "lucide-react";
-
-/* ---------------- CONSTANTS ---------------- */
-
-const GRADIENT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]";
-const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text text-transparent";
-
-/* ---------------- DATA ---------------- */
-
 const specifications = [
-  { label: "Dry Substance", value: "5% < DS < 10%", icon: Beaker },
-  { label: "Thermal Regime", value: "Mesophilic or Thermophilic", icon: Thermometer },
-  { label: "Retention Time", value: "20 < days < 60", icon: Clock },
-  { label: "Mixing System", value: "Mechanical (slow & fast mixers)", icon: Settings },
+  {
+    label: "Dry Substance",
+    value: "5% < DS < 10%",
+    icon: Beaker,
+  },
+  {
+    label: "Thermal Regime",
+    value: "Mesophilic or Thermophilic",
+    icon: Thermometer,
+  },
+  {
+    label: "Retention Time",
+    value: "20 < days < 60",
+    icon: Clock,
+  },
+  {
+    label: "Mixing System",
+    value: "Mechanical (slow & fast mixers)",
+    icon: Settings,
+  },
 ];
-
 const processSteps = [
   {
     step: "01",
@@ -46,7 +53,6 @@ const processSteps = [
     icon: Beaker,
   },
 ];
-
 const advantages = [
   {
     title: "Complex Biomass Handling",
@@ -64,279 +70,553 @@ const advantages = [
     icon: Beaker,
   },
 ];
-
-/* ---------------- COMPONENT ---------------- */
-
 const Technology = () => {
   const [activeStep, setActiveStep] = useState(0);
-
   return (
     <PageLayout>
       <TechnologyHero />
 
-      {/* ================= INTRO ================= */}
-      <section className="py-16 bg-white">
-        <div className="container-wide grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Our Technology</span>
-
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 leading-tight">
-              Introduction to <span className={GRADIENT_TEXT}>CSTR Technology</span>
-            </h2>
-
-            <div className="space-y-4 text-gray-600 text-base leading-relaxed">
-              <p>
-                Ever wondered what makes CSTR (Continuous-Flow Stirred Tank Reactor) technology a key player in biogas
-                production? CSTRs ensure perfect homogenization of biomass with continuous mixing.
-              </p>
-              <p>
-                Ideal for dry matter contents below 10%, they operate at controlled temperatures, providing flexible and
-                efficient biogas production. This makes them suitable for diverse biomass types, contributing
-                significantly to renewable energy generation.
-              </p>
-            </div>
-
-            {/* Specs */}
-            <div className="grid grid-cols-2 gap-4">
-              {specifications.map((spec, i) => (
+      {/* Introduction Section - Premium Light Theme */}
+      <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: -40,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              className="space-y-8"
+            >
+              <div>
+                <span className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25 transition-all duration-300">
+                  Our Technology
+                </span>
+                <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
+                  Introduction to{" "}
+                  <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                    CSTR Technology
+                  </span>
+                </h2>
                 <motion.div
-                  key={spec.label}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="p-4 bg-white border border-black/5 hover:shadow-md transition-all"
-                >
-                  <div className="flex items-center gap-3 mb-1">
-                    <div className={`w-8 h-8 flex items-center justify-center text-white ${GRADIENT}`}>
-                      <spec.icon className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">{spec.label}</span>
-                  </div>
-                  <div className="font-semibold text-gray-900 text-sm">{spec.value}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                  initial={{
+                    width: 0,
+                  }}
+                  whileInView={{
+                    width: "240px",
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: 0.5,
+                  }}
+                  className="h-1.5 bg-gradient-to-r from-[#88C444] to-[#A8E063] shadow-xl shadow-[#88C444]/40 rounded-full"
+                />
+              </div>
 
-          {/* RIGHT */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <img
-              src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/fc3678381a9.png"
-              alt="CSTR Technology"
-              className="w-full h-full object-cover shadow-lg"
-            />
-          </motion.div>
+              <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+                <p>
+                  Ever wondered what makes CSTR (Continuous-Flow Stirred Tank Reactor) technology a key player in biogas
+                  production? CSTRs ensure perfect homogenization of biomass with continuous mixing.
+                </p>
+                <p>
+                  Ideal for dry matter contents below 10%, they operate at controlled temperatures, providing flexible
+                  and efficient biogas production. This makes them suitable for diverse biomass types, contributing
+                  significantly to renewable energy generation.
+                </p>
+              </div>
+
+              {/* Specs Grid - Elite Cards */}
+              <div className="grid grid-cols-2 gap-8">
+                {specifications.map((spec, index) => (
+                  <motion.div
+                    key={spec.label}
+                    initial={{
+                      opacity: 0,
+                      y: 30,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.15,
+                    }}
+                    className="relative p-8 bg-white/80 backdrop-blur-sm border-2 border-gray-100 hover:border-[#88C444] hover:shadow-2xl hover:shadow-[#88C444]/30 hover:-translate-y-2 transition-all duration-500 group overflow-hidden"
+                  >
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <div className="flex items-center gap-5 mb-5">
+                      <div className="w-14 h-14 inline-flex items-center justify-center bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white shadow-2xl shadow-[#88C444]/50 group-hover:scale-110 transition-transform duration-400">
+                        <spec.icon className="w-7 h-7" />
+                      </div>
+                      <span className="text-xs text-gray-500 uppercase tracking-wider font-bold">{spec.label}</span>
+                    </div>
+                    <p className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                      {spec.value}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              className="relative"
+            >
+              <div className="relative overflow-hidden border-4 border-[#88C444]/50 shadow-3xl shadow-[#88C444]/30 hover:shadow-[#88C444]/50 transition-shadow duration-700">
+                <img
+                  src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/fc3678381a9.png"
+                  alt="CSTR Technology"
+                  className="w-full h-full object-cover"
+                />
+                {/* Strong corner accents */}
+                <div className="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-[#88C444]" />
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-4 border-r-4 border-[#88C444]" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-4 border-l-4 border-[#88C444]" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-[#88C444]" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ================= PROCESS ================= */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-wide grid lg:grid-cols-2 gap-12 items-start">
-          {/* LEFT CONTENT */}
+      {/* Interactive Process Flow - Premium Light */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container-wide">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="text-center mb-20"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>The Process</span>
-
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-              How CSTR Transforms <span className={GRADIENT_TEXT}>Biomass into Energy</span>
+            <span className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25 transition-all duration-300">
+              The Process
+            </span>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
+              How CSTR Transforms{" "}
+              <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                Biomass into Energy
+              </span>
             </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+              A step-by-step look at our advanced biogas production process
+            </p>
+          </motion.div>
 
-            {/* Animated Timeline */}
-            <div className="relative pl-6 space-y-4">
-              {/* vertical animated line */}
-              <motion.div
-                animate={{ height: ["0%", "100%"] }}
-                transition={{ duration: 1.2 }}
-                className={`absolute left-1 top-0 w-[3px] ${GRADIENT}`}
-              />
-
-              {processSteps.map((step, i) => (
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Steps List */}
+            <div className="space-y-8">
+              {processSteps.map((step, index) => (
                 <motion.div
                   key={step.step}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.15 }}
-                  onClick={() => setActiveStep(i)}
-                  className="relative cursor-pointer"
+                  initial={{
+                    opacity: 0,
+                    x: -50,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.7,
+                    delay: index * 0.15,
+                  }}
+                  onClick={() => setActiveStep(index)}
+                  className={`relative cursor-pointer p-10 bg-white/90 backdrop-blur border-2 transition-all duration-600 group overflow-hidden ${activeStep === index ? "border-[#88C444] shadow-3xl shadow-[#88C444]/30" : "border-gray-100 hover:border-[#88C444]/60 hover:shadow-2xl"} hover:-translate-y-2`}
                 >
-                  {/* node */}
-                  <motion.div
-                    animate={{
-                      scale: activeStep === i ? [1, 1.2, 1] : 1,
-                    }}
-                    transition={{ duration: 0.6, repeat: Infinity }}
-                    className={`absolute -left-[22px] top-2 w-4 h-4 rounded-full ${GRADIENT}`}
-                  />
+                  {/* Corner accents on active/hover */}
+                  <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 w-20 h-20 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  <div
-                    className={`p-4 bg-white border border-black/5 transition-all ${
-                      activeStep === i ? "shadow-md" : "hover:shadow-sm"
-                    }`}
-                  >
-                    <div className="flex gap-3 items-start">
-                      <div className={`w-9 h-9 flex items-center justify-center text-white ${GRADIENT}`}>
-                        <step.icon className="w-4 h-4" />
+                  <div className="flex items-start gap-7">
+                    <div
+                      className={`w-20 h-20 flex-shrink-0 inline-flex items-center justify-center transition-all duration-500 ${activeStep === index ? "bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white shadow-2xl shadow-[#88C444]/60" : "bg-gradient-to-br from-gray-100 to-gray-200 text-[#88C444] group-hover:shadow-xl"}`}
+                    >
+                      <step.icon className="w-10 h-10" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                          Step {step.step}
+                        </span>
+                        <ChevronDown
+                          className={`w-6 h-6 text-[#88C444] transition-transform duration-300 ${activeStep === index ? "rotate-180" : ""}`}
+                        />
                       </div>
-
-                      <div className="flex-1">
-                        <div className="flex justify-between items-center">
-                          <div className="text-sm font-bold text-gray-900">{step.title}</div>
-                          <ChevronDown
-                            className={`w-4 h-4 transition-transform ${activeStep === i ? "rotate-180" : ""}`}
-                          />
-                        </div>
-
-                        {activeStep === i && (
-                          <p className="text-sm text-gray-600 mt-2 leading-relaxed">{step.description}</p>
-                        )}
-                      </div>
+                      <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">{step.title}</h3>
+                      <motion.p
+                        initial={false}
+                        animate={{
+                          height: activeStep === index ? "auto" : 0,
+                          opacity: activeStep === index ? 1 : 0,
+                        }}
+                        transition={{
+                          duration: 0.4,
+                        }}
+                        className="text-gray-700 text-base leading-relaxed overflow-hidden"
+                      >
+                        {step.description}
+                      </motion.p>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
 
-          {/* RIGHT VISUAL */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="p-8 bg-white border border-black/5 shadow-md flex items-center justify-center"
-          >
-            <div className="text-center space-y-4">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className={`w-20 h-20 mx-auto flex items-center justify-center text-white rounded-full ${GRADIENT}`}
-              >
-                <Settings className="w-10 h-10" />
-              </motion.div>
+            {/* Visual Diagram */}
+            {/* RIGHT VISUAL */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="h-full"
+            >
+              <div className="h-full w-full p-8 bg-white border border-black/5 shadow-md flex flex-col items-center justify-center gap-6 relative overflow-hidden">
+                {/* Animated background gradient glow */}
+                <motion.div
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 6, repeat: Infinity }}
+                  className={`absolute inset-0 ${GRADIENT} opacity-10`}
+                />
 
-              <div className="text-base font-bold text-gray-900">CSTR Reactor Core</div>
+                {/* WINDMILL FIELD */}
+                <div className="relative w-full h-[260px] flex items-end justify-center gap-10 z-10">
+                  {/* Windmill 1 */}
+                  <div className="relative flex flex-col items-center">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                      className="w-16 h-16"
+                    >
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png"
+                        alt="windmill"
+                        className="w-full h-full"
+                      />
+                    </motion.div>
+                    <div className="w-1 h-24 bg-gray-300" />
+                  </div>
 
-              <motion.div
-                animate={{ x: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="flex items-center justify-center gap-3 text-sm font-semibold text-gray-600"
-              >
-                <span>Input</span>
-                <ArrowRight className="w-4 h-4" />
-                <span>Biogas</span>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+                  {/* Windmill 2 */}
+                  <div className="relative flex flex-col items-center scale-110">
+                    <motion.div
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                      className="w-20 h-20"
+                    >
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png"
+                        alt="windmill"
+                        className="w-full h-full"
+                      />
+                    </motion.div>
+                    <div className="w-1 h-28 bg-gray-300" />
+                  </div>
 
-      {/* ================= BENEFITS ================= */}
-      <section className="py-16 bg-white">
-        <div className="container-wide space-y-10">
-          <div className="space-y-4">
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Benefits</span>
-
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-              Technology <span className={GRADIENT_TEXT}>Advantages</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {advantages.map((adv, i) => (
-              <motion.div
-                key={adv.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="p-5 bg-white border border-black/5 hover:shadow-md hover:-translate-y-1 transition-all"
-              >
-                <div className={`w-9 h-9 mb-2 flex items-center justify-center text-white ${GRADIENT}`}>
-                  <adv.icon className="w-4 h-4" />
+                  {/* Windmill 3 */}
+                  <div className="relative flex flex-col items-center">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+                      className="w-14 h-14"
+                    >
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png"
+                        alt="windmill"
+                        className="w-full h-full"
+                      />
+                    </motion.div>
+                    <div className="w-1 h-20 bg-gray-300" />
+                  </div>
                 </div>
-                <h3 className="text-sm font-bold text-gray-900 mb-1">{adv.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{adv.description}</p>
+
+                {/* Reactor Core */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className={`w-24 h-24 flex items-center justify-center text-white rounded-full ${GRADIENT} z-10 shadow-lg`}
+                >
+                  <Settings className="w-12 h-12" />
+                </motion.div>
+
+                <div className="text-lg font-bold text-gray-900 z-10">CSTR Reactor Core</div>
+
+                {/* Flow animation */}
+                <motion.div
+                  animate={{ x: [0, 14, 0] }}
+                  transition={{ duration: 1.8, repeat: Infinity }}
+                  className="flex items-center justify-center gap-3 text-sm font-semibold text-gray-600 z-10"
+                >
+                  <span>Input</span>
+                  <ArrowRight className="w-4 h-4" />
+                  <span>Biogas</span>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Advantages Section */}
+      <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container-wide">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="text-center mb-20"
+          >
+            <span className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25 transition-all duration-300">
+              Benefits
+            </span>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
+              Technology{" "}
+              <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                Advantages
+              </span>
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+              From an engineering and process engineering point of view, CSTR technology offers numerous advantages
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {advantages.map((advantage, index) => (
+              <motion.div
+                key={advantage.title}
+                initial={{
+                  opacity: 0,
+                  y: 50,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.2,
+                }}
+                className="group relative p-12 bg-white/90 backdrop-blur border-2 border-gray-100 hover:border-[#88C444] hover:shadow-3xl hover:shadow-[#88C444]/30 hover:-translate-y-3 transition-all duration-700 overflow-hidden"
+              >
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 w-20 h-20 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="w-24 h-24 inline-flex items-center justify-center bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white mb-10 group-hover:scale-110 group-hover:shadow-3xl group-hover:shadow-[#88C444]/60 transition-all duration-600 shadow-2xl shadow-[#88C444]/50">
+                  <advantage.icon className="w-12 h-12" />
+                </div>
+                <h3 className="text-2xl font-heading font-bold text-gray-900 mb-5">{advantage.title}</h3>
+                <p className="text-gray-700 leading-relaxed text-lg">{advantage.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= SUSTAINABILITY ================= */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-wide grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Sustainability</span>
+      {/* Environmental Impact */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: -50,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              className="space-y-8"
+            >
+              <div>
+                <span className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white rounded-md bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25 transition-all duration-300">
+                  Sustainability
+                </span>
+                <h2 className="text-4xl md:text-5xl font-heading font-bold mt-6 mb-6 text-gray-900">
+                  CSTRs and{" "}
+                  <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                    Environmental Impact
+                  </span>
+                </h2>
+                <motion.div
+                  initial={{
+                    width: 0,
+                  }}
+                  whileInView={{
+                    width: "260px",
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: 0.5,
+                  }}
+                  className="h-1.5 bg-gradient-to-r from-[#88C444] to-[#A8E063] shadow-xl shadow-[#88C444]/40 rounded-full"
+                />
+              </div>
 
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
-              CSTRs and <span className={GRADIENT_TEXT}>Environmental Impact</span>
-            </h2>
+              <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+                <p>
+                  How do CSTRs contribute to environmental sustainability? CSTRs enable the conversion of diverse
+                  biomasses into renewable energy, reducing reliance on fossil fuels and lowering greenhouse gas
+                  emissions.
+                </p>
+                <p>
+                  Their efficient digestion process minimizes waste and emissions, contributing to a cleaner and greener
+                  environment. This technology is at the heart of our commitment to sustainable energy solutions.
+                </p>
+              </div>
+            </motion.div>
 
-            <div className="space-y-4 text-gray-600 text-base leading-relaxed">
-              <p>
-                How do CSTRs contribute to environmental sustainability? CSTRs enable the conversion of diverse
-                biomasses into renewable energy, reducing reliance on fossil fuels and lowering greenhouse gas
-                emissions.
-              </p>
-              <p>
-                Their efficient digestion process minimizes waste and emissions, contributing to a cleaner and greener
-                environment. This technology is at the heart of our commitment to sustainable energy solutions.
-              </p>
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              className="grid grid-cols-2 gap-10"
+            >
+              {[
+                {
+                  label: "CO₂ Reduction",
+                  value: "40%+",
+                  desc: "Lower emissions vs fossil fuels",
+                },
+                {
+                  label: "Waste Diverted",
+                  value: "100%",
+                  desc: "Zero waste to landfill",
+                },
+                {
+                  label: "Energy Efficiency",
+                  value: "85%+",
+                  desc: "Conversion rate achieved",
+                },
+                {
+                  label: "Carbon Credits",
+                  value: "Yes",
+                  desc: "Eligible for certification",
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.9,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    delay: i * 0.15,
+                  }}
+                  className="relative p-10 bg-white/90 backdrop-blur border-2 border-gray-100 text-center hover:border-[#88C444] hover:shadow-3xl hover:shadow-[#88C444]/30 hover:-translate-y-2 transition-all duration-600 group overflow-hidden"
+                >
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-[#88C444] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          {/* RIGHT METRICS */}
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { label: "CO₂ Reduction", value: "40%+", desc: "Lower emissions vs fossil fuels" },
-              { label: "Waste Diverted", value: "100%", desc: "Zero waste to landfill" },
-              { label: "Energy Efficiency", value: "85%+", desc: "Conversion rate achieved" },
-              { label: "Carbon Credits", value: "Yes", desc: "Eligible for certification" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="p-4 bg-white border border-black/5 text-center hover:shadow-md transition-all"
-              >
-                <div className={`text-lg font-bold ${GRADIENT_TEXT}`}>{item.value}</div>
-                <div className="text-sm font-semibold text-gray-900">{item.label}</div>
-                <div className="text-xs text-gray-600">{item.desc}</div>
-              </motion.div>
-            ))}
+                  <div className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                    {item.value}
+                  </div>
+                  <div className="text-gray-900 font-bold text-xl mb-2">{item.label}</div>
+                  <div className="text-gray-600 text-sm">{item.desc}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
     </PageLayout>
   );
 };
-
 export default Technology;
