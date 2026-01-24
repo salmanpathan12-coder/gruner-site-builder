@@ -32,7 +32,7 @@ const AnimatedCounter = ({ value, suffix = "", prefix = "", isInView }: Animated
 };
 
 /* ================================
-   CTA Button (Enterprise Standard)
+   CTA Button
 ================================ */
 
 interface CTAButtonProps {
@@ -78,14 +78,13 @@ interface StatCardProps {
   icon: LucideIcon;
   index: number;
   isInView: boolean;
-  variant: "primary" | "dark" | "light";
+  variant: "primary" | "light";
 }
 
 const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, variant }: StatCardProps) => {
   const variants = {
-    primary: "bg-gradient-to-br from-primary to-primary/90 text-white",
-    dark: "bg-gradient-to-br from-[hsl(200,25%,15%)] to-[hsl(180,20%,12%)] text-white",
-    light: "bg-white text-foreground shadow-lg shadow-foreground/5 border border-foreground/5",
+    primary: "bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/20",
+    light: "bg-white text-foreground shadow-lg shadow-primary/5 border border-primary/10",
   };
 
   return (
@@ -101,12 +100,13 @@ const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, v
       <div
         className={`relative h-full p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${variants[variant]}`}
       >
-        {/* Decorative accents */}
+        {/* Decorative accent */}
         {variant === "primary" && (
-          <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 -translate-y-1/2 translate-x-1/2 rounded-full" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 -translate-y-1/2 translate-x-1/2 rounded-full" />
         )}
-        {variant === "dark" && (
-          <div className="absolute bottom-0 left-0 w-16 h-16 bg-accent/20 translate-y-1/2 -translate-x-1/2 rounded-full" />
+
+        {variant === "light" && (
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 translate-y-1/2 -translate-x-1/2 rounded-full" />
         )}
 
         <div className="relative flex items-start gap-4">
@@ -127,7 +127,7 @@ const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, v
               <AnimatedCounter value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
             </div>
 
-            <div className={`text-xs font-body ${variant === "light" ? "text-muted-foreground" : "text-white/70"}`}>
+            <div className={`text-xs font-body ${variant === "light" ? "text-muted-foreground" : "text-white/80"}`}>
               {label}
             </div>
           </div>
@@ -162,7 +162,7 @@ const stats = [
     suffix: "+",
     label: "Indian States",
     icon: MapPin,
-    variant: "dark" as const,
+    variant: "primary" as const,
   },
   {
     value: 250,
@@ -202,12 +202,12 @@ const ImpactStatsSection = () => {
 
   return (
     <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(180,25%,92%)] via-[hsl(190,20%,95%)] to-[hsl(200,25%,93%)]" />
+      {/* Soft theme background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10" />
 
-      {/* Accent orbs */}
-      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-primary/10 to-transparent blur-[100px] rounded-full" />
-      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-gradient-to-tl from-accent/10 to-transparent blur-[80px] rounded-full" />
+      {/* Theme orbs */}
+      <div className="absolute top-0 left-1/4 w-[420px] h-[420px] bg-gradient-to-br from-primary/15 to-transparent blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 right-1/4 w-[320px] h-[320px] bg-gradient-to-tl from-accent/15 to-transparent blur-[100px] rounded-full" />
 
       <div className="container-wide relative z-10">
         {/* Header */}
@@ -224,7 +224,7 @@ const ImpactStatsSection = () => {
 
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
             Driving{" "}
-            <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
               Measurable
             </span>{" "}
             Change
