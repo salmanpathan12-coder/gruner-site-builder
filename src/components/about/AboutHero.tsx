@@ -46,7 +46,7 @@ const AboutHero = () => {
           }} transition={{
             duration: 0.6,
             delay: 0.1
-          }} className="mb-6">
+          }} className="mb-6 shadow-none rounded-none">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                 <Zap className="w-4 h-4 text-accent" />
                 <span className="text-xs tracking-[0.12em] uppercase text-white/90 font-medium font-body">
@@ -187,7 +187,7 @@ const AboutHero = () => {
               duration: 0.6,
               delay: 0.8
             }} className="absolute -bottom-4 -left-4 md:left-4 z-10">
-                <div className="bg-white/95 backdrop-blur-lg rounded-xl p-4 shadow-xl border border-white/50">
+                <div className="bg-white/95 backdrop-blur-lg p-4 shadow-xl border border-white/50 rounded">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                       <CheckCircle className="w-5 h-5 text-white" />
@@ -211,7 +211,7 @@ const AboutHero = () => {
               duration: 0.6,
               delay: 1
             }} className="absolute -top-3 right-4 z-10">
-                <div className="bg-gradient-to-r from-accent to-primary px-4 py-2 rounded-full shadow-lg">
+                <div className="bg-gradient-to-r from-accent to-primary px-4 py-2 shadow-lg rounded">
                   <span className="text-xs font-medium text-white font-body">Since 2018</span>
                 </div>
               </motion.div>
