@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { CheckCircle2, ArrowRight, Cpu, Leaf, Settings, Award, Zap, Shield } from "lucide-react";
+import { ArrowRight, Cpu, Leaf, Settings, Award, Zap, Shield } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 interface FeatureItemProps {
   icon: LucideIcon;
@@ -115,7 +115,7 @@ const WhyChooseSection = () => {
                 <div className="bg-white rounded-xl p-4 shadow-lg border border-foreground/5">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/25">
-                      <CheckCircle2 className="w-5 h-5 text-white" />
+                      
                     </div>
                     <div>
                       <div className="text-xl font-heading font-bold text-foreground">100%</div>
