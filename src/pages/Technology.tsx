@@ -1,8 +1,23 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
 import TechnologyHero from "@/components/technology/TechnologyHero";
-import { Beaker, Thermometer, Clock, Settings, ArrowRight, Leaf, Zap, Recycle, ChevronDown } from "lucide-react";
+import {
+  Beaker,
+  Thermometer,
+  Clock,
+  Settings,
+  ArrowRight,
+  Leaf,
+  Zap,
+  Recycle,
+  ChevronDown,
+  Factory,
+  TrendingUp,
+  MapPin,
+  Users,
+  DollarSign,
+} from "lucide-react";
 
 const specifications = [
   { label: "Dry Substance", value: "5% < DS < 10%", icon: Beaker },
@@ -58,6 +73,46 @@ const advantages = [
   },
 ];
 
+const metrics = [
+  { value: 63, suffix: "+", label: "Bio-CNG Plants", icon: Factory },
+  { value: 1500, suffix: "+", label: "Crore Value", icon: TrendingUp },
+  { value: 8, suffix: "+", label: "Indian States", icon: MapPin },
+  { value: 250, suffix: "+", label: "Team Members", icon: Users },
+  { value: 60, prefix: "$", suffix: "M", label: "Funding", icon: DollarSign },
+  { value: 9000, suffix: "+", label: "Eng. Hours", icon: Clock },
+];
+
+const AnimatedCounter = ({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const duration = 2200;
+    const steps = 60;
+    const increment = value / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(timer);
+  }, [value]);
+
+  return (
+    <span className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  );
+};
+
 const Technology = () => {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -65,7 +120,101 @@ const Technology = () => {
     <PageLayout>
       <TechnologyHero />
 
-      {/* Introduction Section - Light Theme */}
+      {/* Impact Section - Exactly matching your screenshot */}
+      <section className="py-20 md:py-32 relative overflow-hidden bg-gray-50">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#88C444]/12 via-[#A8E063]/8 to-[#88C444]/12" />
+
+        <div className="container-wide relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-6 py-2 border border-[#88C444]/50 text-[#88C444] text-xs font-bold uppercase tracking-wider">
+              OUR IMPACT
+            </span>
+            <h2 className="text-4xl md:text-6xl font-heading font-bold mt-10 mb-6 text-gray-900">
+              Driving Measurable Change
+            </h2>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+              Real metrics showcasing our commitment to India's clean energy transformation.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white font-medium shadow-lg shadow-[#88C444]/30 hover:shadow-xl hover:shadow-[#88C444]/40 hover:-translate-y-0.5 transition-all duration-300 text-lg"
+              >
+                Explore Our Impact
+                <ArrowRight className="w-5 h-5" />
+              </motion.a>
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 px-8 py-4 border-2 border-[#88C444]/50 text-[#88C444] font-medium hover:bg-[#88C444]/5 transition-all duration-300 text-lg"
+              >
+                View Projects
+              </motion.a>
+            </div>
+          </motion.div>
+
+          {/* Metrics Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {metrics.map((metric, index) => (
+              <motion.div
+                key={metric.label}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: index * 0.1 }}
+                className={`relative p-10 overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-xl ${
+                  index % 2 === 0 || index === 4 || index === 5
+                    ? "bg-gradient-to-br from-[#88C444] to-[#A8E063] text-white"
+                    : "bg-white text-gray-900 border border-gray-200"
+                }`}
+              >
+                {/* Subtle glow blobs for green cards */}
+                {(index % 2 === 0 || index === 4 || index === 5) && (
+                  <div className="absolute inset-0 opacity-30">
+                    <div className="absolute -top-20 -right-20 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+                    <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
+                  </div>
+                )}
+
+                <div className="relative z-10 flex items-start gap-6">
+                  <div
+                    className={`w-16 h-16 inline-flex items-center justify-center shadow-lg ${
+                      index % 2 === 0 || index === 4 || index === 5
+                        ? "bg-white/20"
+                        : "bg-gradient-to-r from-[#88C444] to-[#A8E063] text-white"
+                    }`}
+                  >
+                    <metric.icon className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <div className={index % 2 === 0 || index === 4 || index === 5 ? "text-white" : "text-gray-900"}>
+                      <AnimatedCounter value={metric.value} suffix={metric.suffix} prefix={metric.prefix} />
+                    </div>
+                    <p
+                      className={`text-lg font-medium mt-2 ${index % 2 === 0 || index === 4 || index === 5 ? "text-white/90" : "text-gray-700"}`}
+                    >
+                      {metric.label}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Introduction Section */}
       <section className="py-20 md:py-32 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -107,7 +256,6 @@ const Technology = () => {
                 </p>
               </div>
 
-              {/* Specs Grid - Sharp cards with gradient accents */}
               <div className="grid grid-cols-2 gap-6">
                 {specifications.map((spec, index) => (
                   <motion.div
@@ -145,7 +293,6 @@ const Technology = () => {
                   alt="CSTR Technology"
                   className="w-full h-full object-cover"
                 />
-                {/* Sharp green corner accents */}
                 <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-[#88C444]" />
                 <div className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-[#88C444]" />
                 <div className="absolute bottom-0 left-0 w-20 h-20 border-b-4 border-l-4 border-[#88C444]" />
@@ -155,7 +302,6 @@ const Technology = () => {
           </div>
         </div>
       </section>
-
       {/* Interactive Process Flow - Light Theme */}
       <section className="py-20 md:py-32 bg-gray-50">
         <div className="container-wide">
