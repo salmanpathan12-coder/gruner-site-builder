@@ -156,10 +156,10 @@ const Header = () => {
               );
             })}
             
-            {/* Gradient CTA Button - Sharp edges, matching reference */}
+            {/* Gradient CTA Button - Medium radius */}
             <Link to="/contact">
               <motion.span 
-                className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+                className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent rounded-md hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -239,7 +239,7 @@ const Header = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: navLinks.length * 0.1 }}
-                    className="mt-4 inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gradient-to-r from-primary to-accent"
+                    className="mt-4 inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-gradient-to-r from-primary to-accent rounded-md"
                   >
                     Partner With Us
                   </motion.a>
