@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
+import solutionsHeroImage from "@/assets/solutions-hero.jpg";
 import { Factory, Settings, Wrench, TrendingUp, Leaf, Zap, Shield, CheckCircle2, ArrowRight } from "lucide-react";
 
 /* ---------------- CONSTANTS ---------------- */
@@ -105,7 +106,7 @@ const Solutions = () => {
             </span>
 
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
-              Engineering the Future of <span className={GRADIENT_TEXT}>Bio-CNG & Renewable Energy</span>
+              Engineering the Future of <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Bio-CNG & Renewable Energy</span>
             </h1>
 
             <p className="text-gray-700 text-lg leading-relaxed max-w-xl">
@@ -159,12 +160,9 @@ const Solutions = () => {
             className="relative"
           >
             <div className="relative bg-white border border-black/5 shadow-2xl overflow-hidden">
-              <video
-                src="https://cdn.coverr.co/videos/coverr-solar-panels-at-sunset-4996/1080p.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
+              <img
+                src={solutionsHeroImage}
+                alt="Bio-CNG and Renewable Energy Infrastructure"
                 className="w-full h-full object-cover"
               />
             </div>
