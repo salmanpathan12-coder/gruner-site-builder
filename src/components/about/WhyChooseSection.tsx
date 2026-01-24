@@ -112,17 +112,7 @@ const WhyChooseSection = () => {
               duration: 0.5,
               delay: 0.4
             }} className="absolute -bottom-4 -right-4 md:right-4">
-                <div className="bg-white rounded-xl p-4 shadow-lg border border-foreground/5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md shadow-primary/25">
-                      
-                    </div>
-                    <div>
-                      <div className="text-xl font-heading font-bold text-foreground">100%</div>
-                      <div className="text-xs text-muted-foreground font-body">Success Rate</div>
-                    </div>
-                  </div>
-                </div>
+                
               </motion.div>
             </div>
           </motion.div>
@@ -148,7 +138,7 @@ const WhyChooseSection = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4 leading-tight">
               Why Choose
               <br />
-              <span className="text-primary">Gruner Renewable</span>
+              <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Gruner Renewable</span>
             </h2>
             
             <p className="text-muted-foreground text-sm leading-relaxed mb-6 font-body">
