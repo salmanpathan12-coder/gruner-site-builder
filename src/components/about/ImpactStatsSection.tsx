@@ -77,8 +77,8 @@ interface StatCardProps {
 
 const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, variant }: StatCardProps) => {
   const variants = {
-    primary: "bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/20",
-    light: "bg-white text-foreground shadow-lg shadow-primary/5 border border-primary/10",
+    primary: "bg-gradient-to-br from-primary to-accent text-white shadow-xl shadow-primary/25 border border-white/10",
+    light: "bg-white text-foreground shadow-xl shadow-primary/10 border border-primary/15 hover:border-primary/30",
   };
 
   return (
@@ -86,38 +86,48 @@ const StatCard = ({ value, suffix, prefix, label, icon: Icon, index, isInView, v
       initial={{ opacity: 0, y: 30, scale: 0.95 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.08 }}
-      whileHover={{ y: -6, scale: 1.01 }}
+      whileHover={{ y: -6, scale: 1.02 }}
       className="group"
     >
-      <div className={`relative h-full p-5 overflow-hidden transition-all duration-300 ${variants[variant]}`}>
+      <div className={`relative h-full p-6 overflow-hidden transition-all duration-300 rounded-md ${variants[variant]}`}>
         {/* Eco accent shapes */}
         {variant === "primary" && (
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 -translate-y-1/2 translate-x-1/2 rounded-full" />
+          <>
+            <div className="absolute top-0 right-0 w-28 h-28 bg-white/10 -translate-y-1/2 translate-x-1/2 rounded-full" />
+            <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/5 translate-y-1/2 -translate-x-1/2 rounded-full" />
+          </>
         )}
 
         {variant === "light" && (
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 translate-y-1/2 -translate-x-1/2 rounded-full" />
+          <>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/8 to-transparent translate-y-1/2 -translate-x-1/2 rounded-full" />
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-accent/8 to-transparent -translate-y-1/2 translate-x-1/2 rounded-full" />
+          </>
         )}
 
         <div className="relative flex items-start gap-4">
           <div
-            className={`w-10 h-10 flex items-center justify-center flex-shrink-0 ${
-              variant === "light" ? "bg-gradient-to-br from-primary/10 to-accent/10" : "bg-white/15"
+            className={`w-12 h-12 flex items-center justify-center flex-shrink-0 rounded-md transition-all duration-300 ${
+              variant === "light" 
+                ? "bg-gradient-to-br from-accent to-primary group-hover:shadow-lg group-hover:shadow-primary/20" 
+                : "bg-white/20 group-hover:bg-white/25"
             }`}
           >
-            <Icon className={`w-5 h-5 ${variant === "light" ? "text-primary" : "text-white"}`} />
+            <Icon className={`w-5 h-5 ${variant === "light" ? "text-white" : "text-white"}`} />
           </div>
 
           <div>
             <div
               className={`font-heading font-bold text-2xl md:text-3xl mb-1 ${
-                variant === "light" ? "text-foreground" : "text-white"
+                variant === "light" 
+                  ? "bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent" 
+                  : "text-white"
               }`}
             >
               <AnimatedCounter value={value} suffix={suffix} prefix={prefix} isInView={isInView} />
             </div>
 
-            <div className={`text-xs font-body ${variant === "light" ? "text-muted-foreground" : "text-white/80"}`}>
+            <div className={`text-xs font-body font-medium tracking-wide uppercase ${variant === "light" ? "text-muted-foreground" : "text-white/85"}`}>
               {label}
             </div>
           </div>
