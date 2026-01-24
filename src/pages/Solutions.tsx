@@ -1,12 +1,23 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
-import { Factory, Settings, Wrench, TrendingUp, Leaf, Zap, Shield, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  Factory,
+  Settings,
+  Wrench,
+  TrendingUp,
+  Leaf,
+  Zap,
+  Shield,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
 
 /* ---------------- CONSTANTS ---------------- */
 
 const GRADIENT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]";
-const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text text-transparent";
+const GRADIENT_TEXT =
+  "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text text-transparent";
 
 /* ---------------- DATA ---------------- */
 
@@ -14,7 +25,8 @@ const solutions = [
   {
     icon: Factory,
     title: "Bio-CNG Plant Development",
-    description: "End-to-end development of state-of-the-art Bio-CNG plants using advanced CSTR technology.",
+    description:
+      "End-to-end development of state-of-the-art Bio-CNG plants using advanced CSTR technology.",
     features: [
       "Complete turnkey solutions",
       "Capacity from 2 TPD to 100+ TPD",
@@ -22,12 +34,14 @@ const solutions = [
       "Regulatory compliance support",
       "Site assessment & feasibility",
     ],
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/db934269a9b.png",
+    image:
+      "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=2000&q=80", // 4K renewable plant
   },
   {
     icon: Settings,
     title: "Technology Integration",
-    description: "Integration of cutting-edge CSTR technology for maximum biogas yield and operational efficiency.",
+    description:
+      "Integration of cutting-edge CSTR technology for maximum biogas yield and operational efficiency.",
     features: [
       "CSTR reactor systems",
       "Biogas upgrading solutions",
@@ -35,12 +49,14 @@ const solutions = [
       "SCADA & automation",
       "Remote monitoring systems",
     ],
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/fc3678381a9.png",
+    image:
+      "https://images.unsplash.com/photo-1584270354949-1c5b4b3be0f7?auto=format&fit=crop&w=2000&q=80", // industrial tech plant
   },
   {
     icon: Wrench,
     title: "Operations & Maintenance",
-    description: "Comprehensive O&M services to ensure optimal plant performance and longevity.",
+    description:
+      "Comprehensive O&M services to ensure optimal plant performance and longevity.",
     features: [
       "24/7 plant monitoring",
       "Preventive maintenance",
@@ -48,12 +64,14 @@ const solutions = [
       "Spare parts management",
       "Training & capacity building",
     ],
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/7e6baf576c4.png",
+    image:
+      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2000&q=80", // industrial maintenance 4K
   },
   {
     icon: TrendingUp,
     title: "Project Financing",
-    description: "Financial structuring and investment support for Bio-CNG projects.",
+    description:
+      "Financial structuring and investment support for Bio-CNG projects.",
     features: [
       "Financial modeling",
       "Investment facilitation",
@@ -61,7 +79,8 @@ const solutions = [
       "Carbon credit registration",
       "ROI optimization",
     ],
-    image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/e96f0a488ac.png",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80", // finance/business 4K
   },
 ];
 
@@ -75,12 +94,14 @@ const benefits = [
   {
     icon: Zap,
     title: "Cost Effective",
-    description: "Convert organic waste into revenue while reducing waste disposal and fuel procurement costs.",
+    description:
+      "Convert organic waste into revenue while reducing waste disposal and fuel procurement costs.",
   },
   {
     icon: Shield,
     title: "Customizable",
-    description: "Tailor-made Bio-CNG solutions designed for specific industry and operational needs.",
+    description:
+      "Tailor-made Bio-CNG solutions designed for specific industry and operational needs.",
   },
 ];
 
@@ -89,9 +110,12 @@ const benefits = [
 const Solutions = () => {
   return (
     <PageLayout>
+
       {/* ================= HERO ================= */}
-      <section className="relative bg-white overflow-hidden">
-        <div className="container-wide grid lg:grid-cols-2 min-h-[85vh] items-center gap-12">
+      {/* padding-top prevents header collapse */}
+      <section className="relative bg-white overflow-hidden pt-28">
+        <div className="container-wide grid lg:grid-cols-2 min-h-[85vh] items-center gap-16">
+
           {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
@@ -104,7 +128,8 @@ const Solutions = () => {
             </span>
 
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
-              Engineering the Future of <span className={GRADIENT_TEXT}>Bio-CNG & Renewable Energy</span>
+              Engineering the Future of{" "}
+              <span className={GRADIENT_TEXT}>Bio-CNG & Renewable Energy</span>
             </h1>
 
             <p className="text-gray-700 text-lg leading-relaxed max-w-xl">
@@ -123,14 +148,14 @@ const Solutions = () => {
 
               <Link
                 to="/technology"
-                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"}
               >
                 Explore Technology
               </Link>
             </div>
 
             {/* STATS */}
-            <div className="grid grid-cols-3 gap-6 pt-8 max-w-xl">
+            <div className="grid grid-cols-3 gap-6 pt-10 max-w-xl">
               {[
                 { value: "100+", label: "Projects Designed" },
                 { value: "25+", label: "Cities Impacted" },
@@ -150,32 +175,26 @@ const Solutions = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT */}
+          {/* RIGHT — VIDEO HERO */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative"
           >
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.4 }}
-              className="relative bg-white border border-black/5 shadow-2xl"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1581092160607-ee67c8a4f1e3?q=80&w=1600&auto=format&fit=crop"
-                alt="Renewable Energy Infrastructure"
+            <div className="relative bg-white border border-black/5 shadow-2xl overflow-hidden">
+              <video
+                src="https://cdn.coverr.co/videos/coverr-wind-turbines-and-solar-panels-3365/1080p.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover"
               />
-            </motion.div>
+            </div>
 
             {/* Floating Cards */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="absolute -bottom-10 -left-10 bg-white p-5 border border-black/5 shadow-lg"
-            >
+            <div className="absolute -bottom-10 -left-10 bg-white p-5 border border-black/5 shadow-lg">
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 flex items-center justify-center text-white ${GRADIENT}`}>
                   <Leaf className="w-5 h-5" />
@@ -185,14 +204,9 @@ const Solutions = () => {
                   <div className="text-xs text-gray-600">Low carbon systems</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="absolute -top-10 -right-10 bg-white p-5 border border-black/5 shadow-lg"
-            >
+            <div className="absolute -top-10 -right-10 bg-white p-5 border border-black/5 shadow-lg">
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 flex items-center justify-center text-white ${GRADIENT}`}>
                   <Factory className="w-5 h-5" />
@@ -202,16 +216,20 @@ const Solutions = () => {
                   <div className="text-xs text-gray-600">Utility-grade plants</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
+
         </div>
       </section>
 
       {/* ================= SOLUTIONS ================= */}
-      <section className="py-20 bg-white">
-        <div className="container-wide space-y-24">
+      <section className="py-24 bg-white">
+        <div className="container-wide space-y-28">
+
           <div className="text-center max-w-3xl mx-auto">
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>What We Offer</span>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>
+              What We Offer
+            </span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4">
               Integrated <span className={GRADIENT_TEXT}>Bio-CNG Solutions</span>
@@ -225,21 +243,25 @@ const Solutions = () => {
           {solutions.map((solution, index) => (
             <motion.div
               key={solution.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid lg:grid-cols-2 gap-14 items-center"
+              transition={{ duration: 0.7 }}
+              className="grid lg:grid-cols-2 gap-16 items-center"
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className={`w-12 h-12 flex items-center justify-center text-white ${GRADIENT}`}>
                     <solution.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-heading font-bold text-gray-900">{solution.title}</h3>
+                  <h3 className="text-2xl font-heading font-bold text-gray-900">
+                    {solution.title}
+                  </h3>
                 </div>
 
-                <p className="text-gray-600 text-base leading-relaxed mb-6">{solution.description}</p>
+                <p className="text-gray-600 text-base leading-relaxed mb-6">
+                  {solution.description}
+                </p>
 
                 <div className="grid sm:grid-cols-2 gap-3 mb-6">
                   {solution.features.map((feature, i) => (
@@ -263,9 +285,13 @@ const Solutions = () => {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white border border-black/5 shadow-lg"
+                  className="bg-white border border-black/5 shadow-xl overflow-hidden"
                 >
-                  <img src={solution.image} alt={solution.title} className="w-full h-auto object-cover" />
+                  <img
+                    src={solution.image}
+                    alt={solution.title}
+                    className="w-full h-auto object-cover"
+                  />
                 </motion.div>
               </div>
             </motion.div>
@@ -274,31 +300,38 @@ const Solutions = () => {
       </section>
 
       {/* ================= BENEFITS ================= */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="container-wide space-y-12">
+
           <div className="text-center max-w-2xl mx-auto">
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>Why Bio-CNG</span>
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-medium ${GRADIENT}`}>
+              Why Bio-CNG
+            </span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mt-4">
               Benefits of <span className={GRADIENT_TEXT}>Bio-CNG Plants</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="p-6 bg-white border border-black/5 hover:shadow-md transition-all"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="p-7 bg-white border border-black/5 hover:shadow-lg transition-all"
               >
                 <div className={`w-10 h-10 mb-3 flex items-center justify-center text-white ${GRADIENT}`}>
                   <benefit.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-2">{benefit.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{benefit.description}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-2">
+                  {benefit.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {benefit.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -306,14 +339,19 @@ const Solutions = () => {
       </section>
 
       {/* ================= CTA ================= */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="container-wide text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-              Ready to Start Your <span className={GRADIENT_TEXT}>Bio-CNG Project?</span>
+              Ready to Start Your{" "}
+              <span className={GRADIENT_TEXT}>Bio-CNG Project?</span>
             </h2>
 
-            <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+            <p className="text-gray-600 max-w-2xl mx-auto mb-10">
               Partner with us to build future-ready renewable energy infrastructure with world-class engineering and
               technology.
             </p>
@@ -337,6 +375,7 @@ const Solutions = () => {
           </motion.div>
         </div>
       </section>
+
     </PageLayout>
   );
 };
