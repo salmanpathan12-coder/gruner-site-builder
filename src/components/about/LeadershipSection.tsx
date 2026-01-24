@@ -149,7 +149,7 @@ const LeadershipSection = () => {
             </span>
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-white mb-3">
-            Our <span className="text-accent">Leadership</span>
+            Our <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Leadership</span>
           </h2>
           <p className="text-white/60 max-w-xl mx-auto font-body text-sm">
             Seasoned industry veterans guiding Gruner Renewable with deep expertise.
