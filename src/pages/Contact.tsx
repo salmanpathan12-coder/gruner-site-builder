@@ -1,18 +1,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Loader2, ArrowRight } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-
-/* ---------------- CONSTANTS ---------------- */
-
-const GRADIENT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]";
-const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text text-transparent";
-
-/* ---------------- VALIDATION ---------------- */
 
 const contactSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
@@ -24,8 +18,6 @@ const contactSchema = z.object({
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
-
-/* ---------------- DATA ---------------- */
 
 const contactInfo = [
   {
@@ -50,8 +42,6 @@ const contactInfo = [
   },
 ];
 
-/* ---------------- COMPONENT ---------------- */
-
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -69,7 +59,10 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
+
+    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
+
     console.log("Form submitted:", data);
     toast.success("Thank you! We'll be in touch within 3-5 business days.");
     reset();
@@ -78,88 +71,220 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      {/* ================= HERO (ELITE SPLIT) ================= */}
-      <section className="relative bg-white pt-28 pb-24 overflow-hidden">
-        <div className="container-wide grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-          {/* LEFT */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT}`}>Contact Us</span>
+      <PageHero
+        title="Get in Touch"
+        subtitle="Ready to start your Bio-CNG project? Contact us for a customized quote and consultation."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Contact", href: "/contact" },
+        ]}
+      />
 
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
-              Get in Touch for <span className={GRADIENT_TEXT}>Bio-CNG Solutions</span>
-            </h1>
+      {/* Contact Section */}
+      <section className="section-padding bg-background">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-3"
+            >
+              <div className="bg-card rounded-2xl border border-border p-8 md:p-10">
+                <h2 className="text-2xl font-heading font-semibold mb-2">Request a Quote</h2>
+                <p className="text-muted-foreground mb-8">
+                  Receive an accurate quote within 3-5 days when you fill out this form.
+                </p>
 
-            <p className="text-gray-700 text-lg max-w-xl leading-relaxed">
-              Ready to start your Bio-CNG project? Contact us for a customized quote and consultation.
-            </p>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Full Name */}
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Full Name *</label>
+                      <input
+                        {...register("fullName")}
+                        type="text"
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        placeholder="Your name"
+                      />
+                      {errors.fullName && <p className="text-destructive text-sm mt-1">{errors.fullName.message}</p>}
+                    </div>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a
-                href="#form"
-                className={`inline-flex items-center gap-2 px-7 py-3 text-white font-semibold ${GRADIENT} shadow-lg hover:shadow-xl transition-all`}
-              >
-                Request a Quote
-                <ArrowRight className="w-4 h-4" />
-              </a>
+                    {/* Company Name */}
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Company Name</label>
+                      <input
+                        {...register("companyName")}
+                        type="text"
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        placeholder="Your company"
+                      />
+                    </div>
+                  </div>
 
-              <a
-                href="mailto:info@grunerrenewable.com"
-                className="inline-flex items-center gap-2 px-7 py-3 font-semibold text-black border border-black/15 hover:border-black/30 transition-all"
-              >
-                Email Us
-              </a>
-            </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Email */}
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Email *</label>
+                      <input
+                        {...register("email")}
+                        type="email"
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        placeholder="you@company.com"
+                      />
+                      {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
+                    </div>
 
-            {/* STATS */}
-            <div className="grid grid-cols-3 gap-6 pt-8 max-w-xl">
-              {[
-                { value: "24-48h", label: "Response Time" },
-                { value: "Pan India", label: "Operations" },
-                { value: "100+", label: "Projects" },
-              ].map((item) => (
-                <div key={item.label} className="border-l-2 border-[#1f8f7a] pl-4">
-                  <div className={`text-xl font-bold ${GRADIENT_TEXT}`}>{item.value}</div>
-                  <div className="text-xs text-gray-600 font-medium">{item.label}</div>
+                    {/* Phone */}
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Phone Number *</label>
+                      <input
+                        {...register("phone")}
+                        type="tel"
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                        placeholder="+91 12345 67890"
+                      />
+                      {errors.phone && <p className="text-destructive text-sm mt-1">{errors.phone.message}</p>}
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Message *</label>
+                    <textarea
+                      {...register("message")}
+                      rows={5}
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none"
+                      placeholder="Tell us about your project requirements..."
+                    />
+                    {errors.message && <p className="text-destructive text-sm mt-1">{errors.message.message}</p>}
+                  </div>
+
+                  {/* Preferred Contact Method */}
+                  <div>
+                    <label className="block text-sm font-medium mb-3">Preferred Contact Method</label>
+                    <div className="flex flex-wrap gap-4">
+                      {[
+                        { value: "all", label: "Any" },
+                        { value: "phone", label: "Phone" },
+                        { value: "email", label: "Email" },
+                      ].map((option) => (
+                        <label key={option.value} className="flex items-center gap-2 cursor-pointer">
+                          <input
+                            {...register("contactMethod")}
+                            type="radio"
+                            value={option.value}
+                            className="w-4 h-4 text-primary border-border focus:ring-primary"
+                          />
+                          <span className="text-sm">{option.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-lg bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Submit Request
+                        <Send className="w-5 h-5 ml-2" />
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              </div>
+            </motion.div>
+
+            {/* Contact Info Sidebar */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-2"
+            >
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={info.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="p-6 bg-card rounded-xl border border-border"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                        <info.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold mb-2">{info.title}</h3>
+                        {info.details.map((detail, i) => (
+                          <p key={i} className="text-muted-foreground text-sm">
+                            {detail}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* Quick Response Promise */}
+                <div className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl border border-primary/20">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold mb-1">Quick Response Promise</h4>
+                      <p className="text-muted-foreground text-sm">
+                        Our team responds to all inquiries within 24-48 business hours.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </motion.div>
 
-          {/* RIGHT */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="bg-white border border-black/5 shadow-2xl overflow-hidden">
-              <img
-                src="https://images.pexels.com/photos/433308/pexels-photo-433308.jpeg?auto=compress&cs=tinysrgb&w=2000"
-                alt="Contact Gruner"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="absolute -bottom-8 -left-8 bg-white p-5 border border-black/5 shadow-lg">
-              <div className="text-sm font-bold text-black">Trusted Partner</div>
-              <div className="text-xs text-gray-600">Clean energy solutions</div>
-            </div>
-
-            <div className="absolute -top-8 -right-8 bg-white p-5 border border-black/5 shadow-lg">
-              <div className="text-sm font-bold text-black">Fast Response</div>
-              <div className="text-xs text-gray-600">24-48 hours</div>
-            </div>
-          </motion.div>
+                {/* Social Links */}
+                <div className="p-6 bg-card rounded-xl border border-border">
+                  <h3 className="font-semibold mb-4">Connect With Us</h3>
+                  <div className="flex gap-3">
+                    {[
+                      { name: "Facebook", url: "https://www.facebook.com/GrunerRenewables/" },
+                      { name: "Instagram", url: "https://www.instagram.com/gruner_renewable/" },
+                      { name: "LinkedIn", url: "https://www.linkedin.com/company/gruner-renewable-energy/" },
+                      { name: "Twitter", url: "https://x.com/Gruner_energy" },
+                    ].map((social) => (
+                      <a
+                        key={social.name}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-white flex items-center justify-center transition-colors"
+                        aria-label={social.name}
+                      >
+                        <span className="text-xs font-medium">{social.name[0]}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
-      {/* ================= CONTACT FORM ================= */}
-      /* FORM + SIDEBAR CONTENT REMAINS SAME STRUCTURE & DATA */
-      {/* ================= MAP ================= */}
+
+      {/* Map Section */}
       <section className="h-96 bg-muted relative">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
