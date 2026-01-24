@@ -313,94 +313,116 @@ const Technology = () => {
             </div>
 
             {/* Visual Diagram */}
-            {/* RIGHT VISUAL */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="h-full"
+              initial={{
+                opacity: 0,
+                scale: 0.95,
+              }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              className="sticky top-32"
             >
-              <div className="h-full w-full p-8 bg-white border border-black/5 shadow-md flex flex-col items-center justify-center gap-6 relative overflow-hidden">
-                {/* Animated background gradient glow */}
-                <motion.div
-                  animate={{ opacity: [0.3, 0.6, 0.3] }}
-                  transition={{ duration: 6, repeat: Infinity }}
-                  className={`absolute inset-0 ${GRADIENT} opacity-10`}
-                />
+              <div className="relative p-12 bg-white/90 backdrop-blur border-4 border-[#88C444]/40 shadow-3xl shadow-[#88C444]/30">
+                <div className="absolute top-0 left-0 w-28 h-28 border-t-4 border-l-4 border-[#88C444]" />
+                <div className="absolute top-0 right-0 w-28 h-28 border-t-4 border-r-4 border-[#88C444]" />
+                <div className="absolute bottom-0 left-0 w-28 h-28 border-b-4 border-l-4 border-[#88C444]" />
+                <div className="absolute bottom-0 right-0 w-28 h-28 border-b-4 border-r-4 border-[#88C444]" />
 
-                {/* WINDMILL FIELD */}
-                <div className="relative w-full h-[260px] flex items-end justify-center gap-10 z-10">
-                  {/* Windmill 1 */}
-                  <div className="relative flex flex-col items-center">
+                <div className="relative aspect-square max-w-lg mx-auto">
+                  <motion.div
+                    animate={{
+                      rotate: 360,
+                    }}
+                    transition={{
+                      duration: 80,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-8 border-4 border-dashed border-[#88C444]/40 rounded-full"
+                  />
+                  <motion.div
+                    animate={{
+                      rotate: -360,
+                    }}
+                    transition={{
+                      duration: 30,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-20 bg-gradient-to-br from-[#88C444]/10 to-[#A8E063]/10 border-4 border-[#88C444]/30 rounded-full"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
                     <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                      className="w-16 h-16"
+                      animate={{
+                        scale: [1, 1.15, 1],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                      }}
+                      className="w-32 h-32 bg-gradient-to-br from-[#88C444] to-[#A8E063] rounded-full flex items-center justify-center shadow-3xl shadow-[#88C444]/50"
                     >
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png"
-                        alt="windmill"
-                        className="w-full h-full"
-                      />
+                      <Settings className="w-16 h-16 text-white" />
                     </motion.div>
-                    <div className="w-1 h-24 bg-gray-300" />
                   </div>
 
-                  {/* Windmill 2 */}
-                  <div className="relative flex flex-col items-center scale-110">
+                  {[...Array(10)].map((_, i) => (
                     <motion.div
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                      className="w-20 h-20"
-                    >
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png"
-                        alt="windmill"
-                        className="w-full h-full"
-                      />
-                    </motion.div>
-                    <div className="w-1 h-28 bg-gray-300" />
-                  </div>
+                      key={i}
+                      animate={{
+                        x: [0, Math.random() * 60 - 30, 0],
+                        y: [0, Math.random() * 60 - 30, 0],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 5 + Math.random() * 3,
+                        repeat: Infinity,
+                        delay: i * 0.4,
+                      }}
+                      className="absolute w-5 h-5 rounded-full bg-gradient-to-r from-[#88C444] to-[#A8E063] shadow-xl shadow-[#88C444]/50 blur-sm"
+                      style={{
+                        top: `${10 + Math.random() * 80}%`,
+                        left: `${10 + Math.random() * 80}%`,
+                      }}
+                    />
+                  ))}
 
-                  {/* Windmill 3 */}
-                  <div className="relative flex flex-col items-center">
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-                      className="w-14 h-14"
-                    >
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png"
-                        alt="windmill"
-                        className="w-full h-full"
-                      />
-                    </motion.div>
-                    <div className="w-1 h-20 bg-gray-300" />
-                  </div>
+                  <motion.div
+                    animate={{
+                      x: [0, 15, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                    }}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full flex items-center gap-4"
+                  >
+                    <span className="text-base font-bold text-gray-800 uppercase">Input</span>
+                    <ArrowRight className="w-10 h-10 text-[#88C444]" />
+                  </motion.div>
+                  <motion.div
+                    animate={{
+                      x: [0, -15, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: 0.8,
+                    }}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full flex items-center gap-4 flex-row-reverse"
+                  >
+                    <span className="text-base font-bold text-gray-800 uppercase">Biogas</span>
+                    <ArrowRight className="w-10 h-10 text-[#A8E063]" />
+                  </motion.div>
                 </div>
-
-                {/* Reactor Core */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className={`w-24 h-24 flex items-center justify-center text-white rounded-full ${GRADIENT} z-10 shadow-lg`}
-                >
-                  <Settings className="w-12 h-12" />
-                </motion.div>
-
-                <div className="text-lg font-bold text-gray-900 z-10">CSTR Reactor Core</div>
-
-                {/* Flow animation */}
-                <motion.div
-                  animate={{ x: [0, 14, 0] }}
-                  transition={{ duration: 1.8, repeat: Infinity }}
-                  className="flex items-center justify-center gap-3 text-sm font-semibold text-gray-600 z-10"
-                >
-                  <span>Input</span>
-                  <ArrowRight className="w-4 h-4" />
-                  <span>Biogas</span>
-                </motion.div>
               </div>
             </motion.div>
           </div>
