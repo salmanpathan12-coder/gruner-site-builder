@@ -82,7 +82,7 @@ const LeaderCard = ({
           }} transition={{
             duration: 0.3,
             delay: 0.05
-          }} className="p-4">
+          }} className="p-4 rounded">
               <p className="text-white/90 text-xs leading-relaxed font-body mb-3">
                 {leader.bio}
               </p>

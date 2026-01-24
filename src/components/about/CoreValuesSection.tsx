@@ -28,7 +28,7 @@ const ValueCard = ({
     duration: 0.5,
     delay: 0.05 + index * 0.08
   }} className="group">
-      <div className="relative h-full bg-white rounded-xl p-5 shadow-md shadow-foreground/5 border border-foreground/5 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+      <div className="relative h-full bg-white p-5 shadow-md shadow-foreground/5 border border-foreground/5 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 rounded">
         {/* Hover gradient overlay */}
         <div className={`absolute inset-0 ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
         
@@ -133,7 +133,7 @@ const CoreValuesSection = () => {
         duration: 0.6,
         delay: 0.4
       }} className="mt-10 max-w-3xl mx-auto">
-          <div className="relative bg-gradient-to-r from-primary via-primary/90 to-accent rounded-xl p-6 text-center overflow-hidden">
+          <div className="relative bg-gradient-to-r from-primary via-primary/90 to-accent p-6 text-center overflow-hidden rounded">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
             

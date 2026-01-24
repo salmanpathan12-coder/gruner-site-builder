@@ -49,7 +49,7 @@ const VisionMissionSection = () => {
           duration: 0.7,
           delay: 0.1
         }} className="group">
-            <div className="relative h-full bg-white rounded-2xl p-6 md:p-7 shadow-lg shadow-foreground/5 border border-foreground/5 overflow-hidden hover:shadow-xl transition-all duration-500">
+            <div className="relative h-full bg-white p-6 md:p-7 shadow-lg shadow-foreground/5 border border-foreground/5 overflow-hidden hover:shadow-xl transition-all duration-500 rounded">
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
               
               <div className="relative">
@@ -95,7 +95,7 @@ const VisionMissionSection = () => {
           duration: 0.7,
           delay: 0.2
         }} className="group">
-            <div className="relative h-full bg-gradient-to-br from-[hsl(200,25%,15%)] to-[hsl(180,20%,12%)] rounded-2xl p-6 md:p-7 shadow-xl overflow-hidden">
+            <div className="relative h-full bg-gradient-to-br from-[hsl(200,25%,15%)] to-[hsl(180,20%,12%)] p-6 md:p-7 shadow-xl overflow-hidden rounded">
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/30 to-transparent rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/20 to-transparent rounded-full" />
               
@@ -136,10 +136,10 @@ const VisionMissionSection = () => {
         duration: 0.6,
         delay: 0.4
       }} className="mt-8 max-w-4xl mx-auto">
-          <div className="relative rounded-xl overflow-hidden">
+          <div className="relative overflow-hidden rounded">
             <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=2070&auto=format&fit=crop" alt="Sustainable Energy" className="w-full h-40 md:h-48 object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/60 to-transparent" />
-            <div className="absolute inset-0 flex items-center px-6 md:px-10">
+            <div className="absolute inset-0 flex items-center px-6 md:px-10 rounded">
               <p className="text-base md:text-lg font-heading font-medium text-white leading-relaxed max-w-md">
                 "Building a circular economy where waste becomes wealth and energy becomes sustainable."
               </p>

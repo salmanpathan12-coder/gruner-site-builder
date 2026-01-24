@@ -62,7 +62,7 @@ const StatCard = ({
   } : {}} transition={{
     duration: 0.5,
     delay: 0.05 + index * 0.08
-  }} className="group">
+  }} className="group rounded">
       <div className={`relative h-full rounded-xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${variants[variant]}`}>
         {/* Decorative accent */}
         {variant === 'primary' && <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />}
@@ -138,7 +138,7 @@ const ImpactStatsSection = () => {
       <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-[100px]" />
       <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-gradient-to-tl from-accent/10 to-transparent rounded-full blur-[80px]" />
 
-      <div className="container-wide relative z-10">
+      <div className="container-wide relative z-10 rounded">
         {/* Compact header */}
         <motion.div initial={{
         opacity: 0,
@@ -164,7 +164,7 @@ const ImpactStatsSection = () => {
         </motion.div>
 
         {/* Compact stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto rounded">
           {stats.map((stat, index) => <StatCard key={stat.label} value={stat.value} suffix={stat.suffix} prefix={stat.prefix} label={stat.label} icon={stat.icon} index={index} isInView={isInView} variant={stat.variant} />)}
         </div>
       </div>
