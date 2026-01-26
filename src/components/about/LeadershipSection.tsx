@@ -1,6 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Linkedin, Mail, Users, ArrowRight } from "lucide-react";
+
+const founder = {
+  name: "Mr. Utkarsh Gupta",
+  role: "Founder and CEO",
+  bio: "Visionary leader driving India's clean energy revolution through innovative Bio-CNG solutions and sustainable infrastructure development.",
+  image: "https://s3.us-west-1.amazonaws.com/appsinvo-staging-ys/Gruner/1b7dd6b268d.jpeg"
+};
+
 const leadership = [{
   name: "Mr. Anil Kumar Tyagi",
   role: "Chief Consultant",
@@ -156,7 +164,51 @@ const LeadershipSection = () => {
           </p>
         </motion.div>
 
-        {/* Compact leadership grid */}
+        {/* Founder Featured Block */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-10"
+        >
+          <div className="relative bg-gradient-to-br from-white/10 to-white/5 rounded-xl overflow-hidden border border-white/10 shadow-xl">
+            <div className="flex flex-col md:flex-row items-center gap-6 p-6 md:p-8">
+              {/* Founder Image */}
+              <div className="relative w-40 h-40 md:w-52 md:h-52 flex-shrink-0 rounded-xl overflow-hidden border-2 border-accent/30 shadow-lg">
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+              </div>
+              
+              {/* Founder Info */}
+              <div className="text-center md:text-left flex-1">
+                <span className="inline-block px-3 py-1 rounded-md bg-accent/20 text-accent text-xs font-medium font-body mb-3">
+                  Founder & Visionary
+                </span>
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-1">
+                  {founder.name}
+                </h3>
+                <p className="text-accent font-medium font-body mb-3">{founder.role}</p>
+                <p className="text-white/70 text-sm font-body max-w-lg leading-relaxed">
+                  {founder.bio}
+                </p>
+                <div className="flex gap-2 mt-4 justify-center md:justify-start">
+                  <button className="w-8 h-8 rounded-md bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <Linkedin className="w-4 h-4 text-white" />
+                  </button>
+                  <button className="w-8 h-8 rounded-md bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                    <Mail className="w-4 h-4 text-white" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Leadership Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {leadership.map((leader, index) => <LeaderCard key={leader.name} leader={leader} index={index} isInView={isInView} />)}
         </div>
