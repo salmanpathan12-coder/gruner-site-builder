@@ -40,7 +40,7 @@ const AboutHero = () => {
             duration: 0.6,
             delay: 0.1
           }} className="mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-2 border border-black/15 bg-white rounded-md\n">
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-black/15 bg-white rounded-md">
                 <Zap className="w-4 h-4 text-green-600" />
                 <span className="text-xs tracking-[0.12em] uppercase text-black font-medium">
                   India's Clean Energy Pioneer
@@ -58,9 +58,9 @@ const AboutHero = () => {
           }} transition={{
             duration: 0.8,
             delay: 0.2
-          }} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-black leading-[1.1] mb-5">
+            }} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-black leading-[1.15] mb-5">
               Transforming
-              <span className="block mt-1 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent leading-normal\n">Agricultural Waste</span>
+              <span className="block mt-1 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent leading-[1.3] pb-1">Agricultural Waste</span>
               <span className="block mt-1">Into Clean Energy</span>
             </motion.h1>
 
