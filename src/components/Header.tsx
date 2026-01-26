@@ -24,6 +24,7 @@ const Header = () => {
 
   // Enhanced navigation structure for multi-page site
   const navLinks = [
+    { label: "Home", href: "/" },
     {
       label: "About",
       href: "/about",
@@ -58,12 +59,12 @@ const Header = () => {
         className="absolute inset-0 bg-background/95 backdrop-blur-md shadow-sm"
       />
 
-      {/* Subtle always-visible backdrop for light backgrounds */}
+      {/* Always-visible backdrop for proper visibility */}
       <div
         className={`absolute inset-0 transition-all duration-300 ${
           isScrolled
             ? "bg-transparent"
-            : "bg-gradient-to-b from-black/20 via-black/10 to-transparent backdrop-blur-[2px]"
+            : "bg-gradient-to-b from-black/40 via-black/20 to-transparent backdrop-blur-sm"
         }`}
       />
 

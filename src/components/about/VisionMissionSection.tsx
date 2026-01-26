@@ -7,7 +7,7 @@ const VisionMissionSection = () => {
     once: true,
     margin: "-50px"
   });
-  return <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
+  return <section ref={ref} className="relative overflow-hidden py-12 md:py-14">
       {/* Multi-color gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
       
@@ -25,7 +25,7 @@ const VisionMissionSection = () => {
         y: 0
       } : {}} transition={{
         duration: 0.6
-      }} className="text-center mb-10">
+      }} className="text-center mb-8">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs tracking-[0.12em] uppercase font-medium font-body mb-4 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
             Our Direction
           </span>
@@ -35,7 +35,7 @@ const VisionMissionSection = () => {
         </motion.div>
 
         {/* Compact two-column cards */}
-        <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           {/* Vision Card */}
           <motion.div initial={{
           opacity: 0,
@@ -135,7 +135,7 @@ const VisionMissionSection = () => {
       } : {}} transition={{
         duration: 0.6,
         delay: 0.4
-      }} className="mt-8 max-w-4xl mx-auto">
+      }} className="mt-6 max-w-4xl mx-auto">
           <div className="relative overflow-hidden rounded">
             <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=2070&auto=format&fit=crop" alt="Sustainable Energy" className="w-full h-40 md:h-48 object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/60 to-transparent" />

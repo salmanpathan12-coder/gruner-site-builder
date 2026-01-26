@@ -84,7 +84,7 @@ const CoreValuesSection = () => {
     once: true,
     margin: "-50px"
   });
-  return <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
+  return <section ref={ref} className="relative overflow-hidden py-12 md:py-14">
       {/* Light gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
       
@@ -102,7 +102,7 @@ const CoreValuesSection = () => {
         y: 0
       } : {}} transition={{
         duration: 0.6
-      }} className="text-center mb-10">
+      }} className="text-center mb-8">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <Heart className="w-3.5 h-3.5 text-primary" />
             <span className="text-xs tracking-[0.12em] uppercase text-primary font-medium font-body">
@@ -118,7 +118,7 @@ const CoreValuesSection = () => {
         </motion.div>
 
         {/* Compact values grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mx-auto">
           {coreValues.map((value, index) => <ValueCard key={value.title} icon={value.icon} title={value.title} description={value.description} index={index} isInView={isInView} gradient={value.gradient} />)}
         </div>
 
@@ -132,7 +132,7 @@ const CoreValuesSection = () => {
       } : {}} transition={{
         duration: 0.6,
         delay: 0.4
-      }} className="mt-10 max-w-3xl mx-auto">
+      }} className="mt-8 max-w-3xl mx-auto">
           <div className="relative bg-gradient-to-r from-primary via-primary/90 to-accent p-6 text-center overflow-hidden rounded">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
