@@ -2,11 +2,20 @@ import { motion, useInView, useMotionValue, useTransform, animate } from "framer
 import { useEffect, useRef } from "react";
 import PageLayout from "@/components/PageLayout";
 import { ExternalLink, Calendar, ArrowRight } from "lucide-react";
-// External image URLs from grunerrenewable.com
-const mediaHeroImage = "https://www.grunerrenewable.com/assets/images/media-hero.webp";
-const mediaArticle1 = "https://www.grunerrenewable.com/assets/images/news-1.webp";
-const mediaArticle2 = "https://www.grunerrenewable.com/assets/images/news-2.webp";
-const mediaArticle3 = "https://www.grunerrenewable.com/assets/images/news-3.webp";
+
+// Provided image URLs
+const mediaImages = [
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/1efe4048fa1.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/873015d8f04.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/026c6cb8455.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/18aa68569d5.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/f66104c6968.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/211cf1429b1.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/0d9246c1b72.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/12735de8b1d.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/1eef61e7e4f.jpeg",
+  "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/caf22855ec4.jpeg",
+];
 
 /* ---------------- CONSTANTS ---------------- */
 
@@ -17,8 +26,7 @@ const GRADIENT_TEXT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e] bg-clip-text
 
 // Helper to cycle through article images
 const getArticleImage = (index: number) => {
-  const images = [mediaArticle1, mediaArticle2, mediaArticle3];
-  return images[index % images.length];
+  return mediaImages[index % mediaImages.length];
 };
 
 const mediaArticles = [
@@ -160,28 +168,68 @@ const Media = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT */}
+          {/* RIGHT - COLLAGE */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="bg-white border border-black/5 shadow-2xl overflow-hidden">
-              <img
-                src={mediaHeroImage}
-                alt="Media Coverage"
-                className="w-full h-full object-cover"
-              />
+            <div className="grid grid-cols-3 grid-rows-3 gap-2 h-[400px] md:h-[480px]">
+              {/* Large image - spans 2 cols and 2 rows */}
+              <div className="col-span-2 row-span-2 overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={mediaImages[0]}
+                  alt="Media Coverage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Right column images */}
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={mediaImages[1]}
+                  alt="Media Coverage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={mediaImages[2]}
+                  alt="Media Coverage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Bottom row images */}
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={mediaImages[3]}
+                  alt="Media Coverage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={mediaImages[4]}
+                  alt="Media Coverage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={mediaImages[5]}
+                  alt="Media Coverage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
 
             {/* Floating Cards */}
-            <div className="absolute -bottom-8 -left-8 bg-white p-5 border border-black/5 shadow-lg">
+            <div className="absolute -bottom-8 -left-8 bg-white p-5 border border-black/5 shadow-lg z-10">
               <div className="text-sm font-bold text-black">Global Media</div>
               <div className="text-xs text-gray-600">National & international coverage</div>
             </div>
 
-            <div className="absolute -top-8 -right-8 bg-white p-5 border border-black/5 shadow-lg">
+            <div className="absolute -top-8 -right-8 bg-white p-5 border border-black/5 shadow-lg z-10">
               <div className="text-sm font-bold text-black">Investor Trust</div>
               <div className="text-xs text-gray-600">Institutional recognition</div>
             </div>
