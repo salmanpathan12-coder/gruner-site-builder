@@ -79,7 +79,7 @@ const WhyChooseSection = () => {
       <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-gradient-to-tl from-primary/10 to-transparent rounded-full blur-[80px]" />
 
       <div className="container-wide relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl">
+        <div className="grid lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
           
           {/* Left: Image composition */}
           <motion.div initial={{
@@ -128,7 +128,7 @@ const WhyChooseSection = () => {
           duration: 0.8,
           delay: 0.1
         }} className="order-1 lg:order-2">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-primary/10 border border-primary/20 mb-4\n">
               <Award className="w-3.5 h-3.5 text-primary" />
               <span className="text-xs tracking-[0.12em] uppercase text-primary font-medium font-body">
                 Why Partner With Us

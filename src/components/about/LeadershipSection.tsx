@@ -132,7 +132,7 @@ const LeadershipSection = () => {
       <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] bg-gradient-to-tr from-accent/15 to-transparent rounded-full blur-[100px]" />
 
       <div className="container-wide relative z-10">
-        {/* Compact header - Left aligned */}
+        {/* Compact header */}
         <motion.div initial={{
         opacity: 0,
         y: 20
@@ -141,8 +141,8 @@ const LeadershipSection = () => {
         y: 0
       } : {}} transition={{
         duration: 0.6
-      }} className="text-left mb-10">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 mb-4">
+      }} className="text-center mb-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-white/10 border border-white/20 mb-4\n">
             <Users className="w-3.5 h-3.5 text-accent" />
             <span className="text-xs tracking-[0.12em] uppercase text-white/90 font-medium font-body">
               Meet The Team
@@ -151,13 +151,13 @@ const LeadershipSection = () => {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-white mb-3">
             Our <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Leadership</span>
           </h2>
-          <p className="text-white/60 max-w-xl font-body text-sm">
+          <p className="text-white/60 max-w-xl mx-auto font-body text-sm">
             Seasoned industry veterans guiding Gruner Renewable with deep expertise.
           </p>
         </motion.div>
 
         {/* Compact leadership grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
           {leadership.map((leader, index) => <LeaderCard key={leader.name} leader={leader} index={index} isInView={isInView} />)}
         </div>
 

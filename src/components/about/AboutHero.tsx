@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Zap, CheckCircle } from "lucide-react";
 import aboutHeroVideo from "@/assets/about-hero-video.mp4";
-
 const AboutHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const {
@@ -41,7 +40,7 @@ const AboutHero = () => {
             duration: 0.6,
             delay: 0.1
           }} className="mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-2 border border-black/15 bg-white">
+              <span className="inline-flex items-center gap-2 px-4 py-2 border border-black/15 bg-white rounded-md\n">
                 <Zap className="w-4 h-4 text-green-600" />
                 <span className="text-xs tracking-[0.12em] uppercase text-black font-medium">
                   India's Clean Energy Pioneer
@@ -91,12 +90,12 @@ const AboutHero = () => {
             duration: 0.6,
             delay: 0.5
           }} className="flex flex-wrap gap-3 mb-10">
-              <motion.a 
-                href="/contact" 
-                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent rounded-md hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <motion.a href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent rounded-md hover:shadow-lg hover:shadow-primary/25 transition-all duration-300" whileHover={{
+              scale: 1.02,
+              y: -1
+            }} whileTap={{
+              scale: 0.98
+            }}>
                 Start Your Project
                 <ArrowRight className="w-4 h-4" />
               </motion.a>
@@ -162,14 +161,7 @@ const AboutHero = () => {
 
               {/* Main video */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
-                <video
-                  src={aboutHeroVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full aspect-[4/3] object-cover"
-                />
+                <video src={aboutHeroVideo} autoPlay loop muted playsInline className="w-full aspect-[4/3] object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 
