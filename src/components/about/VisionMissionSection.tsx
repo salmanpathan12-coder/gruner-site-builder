@@ -35,7 +35,7 @@ const VisionMissionSection = () => {
         </motion.div>
 
         {/* Compact two-column cards */}
-        <div className="grid md:grid-cols-2 gap-5 max-w-4xl">
+        <div className="grid md:grid-cols-2 gap-5 w-full">
           {/* Vision Card */}
           <motion.div initial={{
           opacity: 0,
