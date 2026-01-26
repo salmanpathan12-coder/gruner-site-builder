@@ -25,12 +25,12 @@ const VisionMissionSection = () => {
         y: 0
       } : {}} transition={{
         duration: 0.6
-      }} className="text-center mb-10">
-          <span className="inline-block px-4 py-1.5 rounded-md bg-primary/10 border border-primary/20 text-xs tracking-[0.12em] uppercase font-medium font-body mb-4 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent\n">
+      }} className="text-left mb-10">
+          <span className="inline-block px-4 py-1.5 rounded-md bg-primary/10 border border-primary/20 text-xs tracking-[0.12em] uppercase font-medium font-body mb-4 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
             Our Direction
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
-            Driving India's <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent ">Clean Energy</span> Future
+            Driving India's <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Clean Energy</span> Future
           </h2>
         </motion.div>
 

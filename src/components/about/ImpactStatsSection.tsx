@@ -216,7 +216,7 @@ const ImpactStatsSection = () => {
     }} />
 
       {/* ===== CONTENT CONTAINER (REDUCED GAP) ===== */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-8 lg:px-10">
+      <div className="container-wide relative z-10">
         {/* Header */}
         <motion.div initial={{
         opacity: 0,
@@ -226,10 +226,10 @@ const ImpactStatsSection = () => {
         y: 0
       } : {}} transition={{
         duration: 0.6
-      }} className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 mb-4 rounded-md\n">
+      }} className="text-left mb-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 mb-4 rounded-md">
             <BarChart3 className="w-3.5 h-3.5 text-primary" />
-            <span className="text-xs tracking qb-[0.12em] uppercase text-primary font-medium font-body">
+            <span className="text-xs tracking-[0.12em] uppercase text-primary font-medium font-body">
               Our Impact
             </span>
           </span>
@@ -242,12 +242,12 @@ const ImpactStatsSection = () => {
             Change
           </h2>
 
-          <p className="text-muted-foreground max-w-xl mx-auto font-body text-sm mt-2">
+          <p className="text-muted-foreground max-w-xl font-body text-sm mt-2">
             Real metrics showcasing our commitment to India's clean energy transformation.
           </p>
 
           {/* CTA */}
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-6 flex justify-start gap-4">
             <CTAButton label="Explore Our Impact" />
             <button className="
                 inline-flex items-center gap-2

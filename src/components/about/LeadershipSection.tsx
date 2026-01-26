@@ -141,8 +141,8 @@ const LeadershipSection = () => {
         y: 0
       } : {}} transition={{
         duration: 0.6
-      }} className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-white/10 border border-white/20 mb-4\n">
+      }} className="text-left mb-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-white/10 border border-white/20 mb-4">
             <Users className="w-3.5 h-3.5 text-accent" />
             <span className="text-xs tracking-[0.12em] uppercase text-white/90 font-medium font-body">
               Meet The Team
@@ -151,7 +151,7 @@ const LeadershipSection = () => {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-white mb-3">
             Our <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Leadership</span>
           </h2>
-          <p className="text-white/60 max-w-xl mx-auto font-body text-sm">
+          <p className="text-white/60 max-w-xl font-body text-sm">
             Seasoned industry veterans guiding Gruner Renewable with deep expertise.
           </p>
         </motion.div>
