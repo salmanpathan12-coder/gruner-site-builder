@@ -2,32 +2,22 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
 
+// Import local logo assets
+import tetLogo from "@/assets/logos/tet.png";
+import tblLogo from "@/assets/logos/tbl.png";
+import bsLogo from "@/assets/logos/bs.png";
+import bwLogo from "@/assets/logos/bw.png";
+import ewLogo from "@/assets/logos/ew.png";
+import eneLogo from "@/assets/logos/ene.png";
+
 // Media logos with their official styling
 const mediaLogos = [
-  { 
-    name: "The Economic Times",
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/tet.png" alt="The Economic Times" className="h-6 md:h-8 w-auto" />
-  },
-  { 
-    name: "The Business Line",
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/tbl.png" alt="The Business Line" className="h-6 md:h-8 w-auto" />
-  },
-  { 
-    name: "Business Standard",
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/bs.png" alt="Business Standard" className="h-6 md:h-8 w-auto" />
-  },
-  { 
-    name: "Business World",
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/bw.png" alt="Business World" className="h-6 md:h-8 w-auto" />
-  },
-  { 
-    name: "Energy World",
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/ew.png" alt="Energy World" className="h-6 md:h-8 w-auto" />
-  },
-  { 
-    name: "Energetica India",
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/ene.png" alt="Energetica India" className="h-6 md:h-8 w-auto" />
-  },
+  { name: "The Economic Times", logo: tetLogo },
+  { name: "The Business Line", logo: tblLogo },
+  { name: "Business Standard", logo: bsLogo },
+  { name: "Business World", logo: bwLogo },
+  { name: "Energy World", logo: ewLogo },
+  { name: "Energetica India", logo: eneLogo },
 ];
 
 const MediaMentionsSection = () => {
@@ -60,7 +50,11 @@ const MediaMentionsSection = () => {
               className="group cursor-pointer grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
               title={media.name}
             >
-              {media.logo}
+              <img 
+                src={media.logo} 
+                alt={media.name} 
+                className="h-10 md:h-12 w-auto"
+              />
             </motion.div>
           ))}
         </div>
