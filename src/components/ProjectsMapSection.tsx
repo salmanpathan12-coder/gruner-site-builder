@@ -143,8 +143,8 @@ const ProjectsMapSection = () => {
                 <img 
                   src={indiaMap} 
                   alt="India Map" 
-                  className="w-full h-auto opacity-70"
-                  style={{ filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.1))" }}
+                  className="w-full h-auto"
+                  style={{ filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.1)) brightness(1.3)" }}
                 />
                 
                 {/* State markers overlay */}
