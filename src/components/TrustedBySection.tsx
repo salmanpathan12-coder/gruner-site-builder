@@ -11,30 +11,12 @@ import relianceLogo from "@/assets/logos/reliance.png";
 
 // Partner logos with their official brand colors
 const partners = [
-  { 
-    name: "Indian Oil", 
-    logo: <img src={ioLogo} alt="Indian Oil" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "Bharat Petroleum", 
-    logo: <img src={bpclLogo} alt="BPCL" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "Indraprastha Gas", 
-    logo: <img src={iglLogo} alt="IGL" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "Adani Group", 
-    logo: <img src={adaniLogo} alt="ADANI" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "GAIL India", 
-    logo: <img src={gailLogo} alt="GAIL" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "Reliance Industries", 
-    logo: <img src={relianceLogo} alt="Reliance" className="h-8 md:h-10 w-auto" />
-  },
+  { name: "Indian Oil", logo: ioLogo },
+  { name: "Bharat Petroleum", logo: bpclLogo },
+  { name: "Indraprastha Gas", logo: iglLogo },
+  { name: "Adani Group", logo: adaniLogo },
+  { name: "GAIL India", logo: gailLogo },
+  { name: "Reliance Industries", logo: relianceLogo },
 ];
 
 const TrustedBySection = () => {
@@ -62,10 +44,21 @@ const TrustedBySection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+              className="group relative transition-all duration-300"
               title={partner.name}
+              style={{
+                filter: "drop-shadow(0 2px 8px rgba(34, 197, 94, 0.15))",
+              }}
+              whileHover={{
+                filter: "drop-shadow(0 4px 16px rgba(34, 197, 94, 0.35))",
+                scale: 1.05,
+              }}
             >
-              {partner.logo}
+              <img 
+                src={partner.logo} 
+                alt={partner.name} 
+                className="h-10 md:h-12 w-auto"
+              />
             </motion.div>
           ))}
         </div>
