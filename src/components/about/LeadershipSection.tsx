@@ -5,32 +5,32 @@ const leadership = [{
   name: "Mr. Anil Kumar Tyagi",
   role: "Chief Consultant",
   bio: "Strategic advisor with decades of experience in renewable energy infrastructure.",
-  image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
+  image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/9c778952225.png"
 }, {
   name: "Mr. Asit Chaterjee",
   role: "Group President",
   bio: "Veteran leader driving organizational excellence and strategic partnerships.",
-  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
+  image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/21eff9bca03.jpeg"
 }, {
   name: "Mr. Anil Dhussa",
   role: "Chief Advisor",
   bio: "Industry pioneer with expertise in biogas technology and sustainable solutions.",
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+  image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/60737fd0ffe.png"
 }, {
   name: "Mr. Rajesh Gupta",
   role: "EVP - Engineering",
   bio: "Engineering excellence leader ensuring highest quality standards.",
-  image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop"
+  image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/457decaf8d4.jpeg"
 }, {
   name: "Ajmal Singh Kathat",
   role: "EVP - Projects",
   bio: "Project management expert overseeing multi-state operations.",
-  image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop"
+  image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/36a83cac955.jpeg"
 }, {
   name: "Mr. Sanjay Nandre",
   role: "EVP - Design",
   bio: "Innovative design leader creating cutting-edge Bio-CNG architectures.",
-  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
+  image: "https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/c6b23a5abd9.jpeg"
 }];
 interface LeaderCardProps {
   leader: typeof leadership[0];
