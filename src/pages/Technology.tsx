@@ -99,10 +99,26 @@ const Technology = () => {
       {/* ================= INTRO ================= */}
       <section className="py-16 bg-white">
         <div className="container-wide grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT */}
+          {/* LEFT - Image */}
+          <motion.div
+            ref={introRightRef}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ height: introHeight ? `${introHeight}px` : "auto" }}
+          >
+            <img
+              src={cstrCutawayImage}
+              alt="CSTR Technology Cutaway"
+              className="w-full h-full object-cover rounded-md shadow-lg"
+            />
+          </motion.div>
+
+          {/* RIGHT - Content */}
           <motion.div
             ref={introLeftRef}
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -147,22 +163,6 @@ const Technology = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-
-          {/* RIGHT */}
-          <motion.div
-            ref={introRightRef}
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            style={{ height: introHeight ? `${introHeight}px` : "auto" }}
-          >
-            <img
-              src={cstrCutawayImage}
-              alt="CSTR Technology Cutaway"
-              className="w-full h-full object-cover rounded-md shadow-lg"
-            />
           </motion.div>
         </div>
       </section>
