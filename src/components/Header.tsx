@@ -9,7 +9,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
-  
+
   const { scrollY } = useScroll();
   const headerOpacity = useTransform(scrollY, [0, 100], [0, 1]);
 
@@ -17,33 +17,33 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Enhanced navigation structure for multi-page site
   const navLinks = [
-    { 
-      label: "About", 
+    {
+      label: "About",
       href: "/about",
       dropdown: [
         { label: "Our Story", href: "/about" },
         { label: "Leadership", href: "/about#leadership" },
-      ]
+      ],
     },
     { label: "Technology", href: "/technology" },
-    { 
-      label: "Solutions", 
+    {
+      label: "Solutions",
       href: "/solutions",
       dropdown: [
-        { label: "Project Development", href: "/solutions/project-development", icon: FolderKanban },
-        { label: "Engineering & Construction", href: "/solutions/engineering-construction", icon: HardHat },
-        { label: "R&D", href: "/solutions/rd", icon: FlaskConical },
-        { label: "CNG Retail Outlets", href: "/solutions/cng-retail", icon: Fuel },
-        { label: "Bio-Gas", href: "/solutions/bio-gas", icon: Leaf },
-        { label: "O&M", href: "/solutions/om", icon: Wrench },
-      ]
+        { label: "Project Development", href: "/solutions/project-development" },
+        { label: "Engineering & Construction", href: "/solutions/engineering-construction" },
+        { label: "R&D", href: "/solutions/rd" },
+        { label: "CNG Retail Outlets", href: "/solutions/cng-retail" },
+        { label: "Bio-Gas", href: "/solutions/bio-gas" },
+        { label: "O&M", href: "/solutions/om" },
+      ],
     },
     { label: "Media", href: "/media" },
     { label: "Careers", href: "/careers" },
@@ -53,25 +53,24 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Background with animated opacity - enhanced for light hero visibility */}
-      <motion.div 
+      <motion.div
         style={{ opacity: headerOpacity }}
         className="absolute inset-0 bg-background/95 backdrop-blur-md shadow-sm"
       />
-      
+
       {/* Subtle always-visible backdrop for light backgrounds */}
-      <div className={`absolute inset-0 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-transparent" 
-          : "bg-gradient-to-b from-black/20 via-black/10 to-transparent backdrop-blur-[2px]"
-      }`} />
-      
+      <div
+        className={`absolute inset-0 transition-all duration-300 ${
+          isScrolled
+            ? "bg-transparent"
+            : "bg-gradient-to-b from-black/20 via-black/10 to-transparent backdrop-blur-[2px]"
+        }`}
+      />
+
       <div className={`relative transition-all duration-500 ${isScrolled ? "py-3" : "py-5"}`}>
         <div className="container-wide flex items-center justify-between">
           <Link to="/" className="relative z-50">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <img
                 src={logo}
                 alt="Gruner Renewable Energy"
@@ -86,7 +85,7 @@ const Header = () => {
               const isActive = location.pathname === link.href || location.pathname.startsWith(link.href + "/");
               const hasDropdown = link.dropdown && link.dropdown.length > 0;
               const isSolutionsDropdown = link.label === "Solutions";
-              
+
               return (
                 <div
                   key={link.label}
@@ -106,20 +105,20 @@ const Header = () => {
                           : "text-white/90 hover:text-white hover:bg-white/10"
                     }`}
                     style={{
-                      textShadow: !isScrolled ? "0 1px 2px rgba(0,0,0,0.3)" : "none"
+                      textShadow: !isScrolled ? "0 1px 2px rgba(0,0,0,0.3)" : "none",
                     }}
                   >
                     {link.label}
                     {hasDropdown && (
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        openDropdown === link.label ? "rotate-180" : ""
-                      }`} />
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          openDropdown === link.label ? "rotate-180" : ""
+                        }`}
+                      />
                     )}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full" />
-                    )}
+                    {isActive && <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full" />}
                   </Link>
-                  
+
                   {/* Dropdown Menu */}
                   <AnimatePresence>
                     {hasDropdown && openDropdown === link.label && (
@@ -133,7 +132,7 @@ const Header = () => {
                         }`}
                       >
                         {link.dropdown.map((item) => {
-                          const IconComponent = 'icon' in item ? item.icon : null;
+                          const IconComponent = "icon" in item ? item.icon : null;
                           return (
                             <Link
                               key={item.label}
@@ -155,10 +154,10 @@ const Header = () => {
                 </div>
               );
             })}
-            
+
             {/* Gradient CTA Button - Medium radius */}
             <Link to="/contact">
-              <motion.span 
+              <motion.span
                 className="ml-4 inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-primary to-accent rounded-md hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
@@ -172,16 +171,16 @@ const Header = () => {
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden relative z-50 p-2 rounded-lg transition-colors ${
-              isMobileMenuOpen 
-                ? "text-foreground bg-muted" 
-                : isScrolled 
-                  ? "text-foreground hover:bg-muted" 
+              isMobileMenuOpen
+                ? "text-foreground bg-muted"
+                : isScrolled
+                  ? "text-foreground hover:bg-muted"
                   : "text-white hover:bg-white/10"
             }`}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.9 }}
             style={{
-              textShadow: !isScrolled && !isMobileMenuOpen ? "0 1px 2px rgba(0,0,0,0.3)" : "none"
+              textShadow: !isScrolled && !isMobileMenuOpen ? "0 1px 2px rgba(0,0,0,0.3)" : "none",
             }}
           >
             <AnimatePresence mode="wait">
@@ -220,19 +219,26 @@ const Header = () => {
                 className="fixed inset-0 bg-background z-40 lg:hidden"
               >
                 <nav className="flex flex-col items-center justify-center h-full gap-6">
-                  {navLinks.filter(link => !link.dropdown || link.dropdown.length === 0 || ['About', 'Solutions', 'Projects'].includes(link.label)).map((link, index) => (
-                    <motion.a
-                      key={link.label}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="text-2xl font-heading font-medium text-foreground hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </motion.a>
-                  ))}
+                  {navLinks
+                    .filter(
+                      (link) =>
+                        !link.dropdown ||
+                        link.dropdown.length === 0 ||
+                        ["About", "Solutions", "Projects"].includes(link.label),
+                    )
+                    .map((link, index) => (
+                      <motion.a
+                        key={link.label}
+                        href={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="text-2xl font-heading font-medium text-foreground hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </motion.a>
+                    ))}
                   <motion.a
                     href="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
