@@ -39,14 +39,14 @@ const MediaMentionsSection = () => {
           </span>
         </motion.div>
 
-        <div className="flex flex-nowrap items-center justify-center gap-8 md:gap-12 lg:gap-16 overflow-x-auto">
+        <div className="flex items-center justify-center gap-6 md:gap-10 lg:gap-14">
           {mediaLogos.map((media, index) => (
             <motion.div
               key={media.name}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="group cursor-pointer transition-all duration-300 flex-shrink-0"
+              className="group cursor-pointer transition-all duration-300"
               title={media.name}
               style={{
                 filter: "drop-shadow(0 2px 8px rgba(34, 197, 94, 0.15))",
@@ -59,7 +59,7 @@ const MediaMentionsSection = () => {
               <img 
                 src={media.logo} 
                 alt={media.name} 
-                className="h-10 md:h-12 w-auto"
+                className="h-6 md:h-8 w-auto"
               />
             </motion.div>
           ))}
