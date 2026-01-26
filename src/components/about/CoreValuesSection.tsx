@@ -102,8 +102,8 @@ const CoreValuesSection = () => {
         y: 0
       } : {}} transition={{
         duration: 0.6
-      }} className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-primary/10 border border-primary/20 mb-4\n">
+      }} className="text-left mb-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-primary/10 border border-primary/20 mb-4">
             <Heart className="w-3.5 h-3.5 text-primary" />
             <span className="text-xs tracking-[0.12em] uppercase text-primary font-medium font-body">
               What We Stand For
