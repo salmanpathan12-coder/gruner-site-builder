@@ -118,7 +118,7 @@ const CoreValuesSection = () => {
         </motion.div>
 
         {/* Compact values grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full">
           {coreValues.map((value, index) => <ValueCard key={value.title} icon={value.icon} title={value.title} description={value.description} index={index} isInView={isInView} gradient={value.gradient} />)}
         </div>
 
@@ -133,7 +133,7 @@ const CoreValuesSection = () => {
         duration: 0.6,
         delay: 0.4
       }} className="mt-10 w-full">
-          <div className="relative bg-gradient-to-r from-primary via-primary/90 to-accent p-6 text-center overflow-hidden rounded max-w-3xl">
+          <div className="relative bg-gradient-to-r from-primary via-primary/90 to-accent p-6 text-center overflow-hidden rounded w-full">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
             
