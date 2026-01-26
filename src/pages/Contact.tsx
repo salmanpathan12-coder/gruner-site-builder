@@ -376,14 +376,14 @@ const Contact = () => {
             className="rounded-2xl overflow-hidden border border-border shadow-lg shadow-primary/5"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.4847985837387!2d77.39193!3d28.579793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef0c2c9f2d5f%3A0x4e43b8e8f3f34e4b!2sWindsor%20Grand%2C%20Plot%201C%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.0089647654387!2d77.3893!3d28.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce9c7a7aaacab%3A0x8c8c8c8c8c8c8c8c!2sWindsor%20Grand%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh%20201303!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin&markers=color:red%7C28.5425,77.3893"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Gruner Renewable Energy Office Location"
+              title="Gruner Renewable Energy Office Location - 22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida"
               className="w-full"
             />
           </motion.div>
