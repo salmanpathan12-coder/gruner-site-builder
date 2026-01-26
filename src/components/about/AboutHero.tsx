@@ -60,7 +60,7 @@ const AboutHero = () => {
             delay: 0.2
           }} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-black leading-[1.1] mb-5">
               Transforming
-              <span className="block mt-1 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Agricultural Waste</span>
+              <span className="block mt-1 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent leading-normal\n">Agricultural Waste</span>
               <span className="block mt-1">Into Clean Energy</span>
             </motion.h1>
 
