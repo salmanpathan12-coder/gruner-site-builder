@@ -123,7 +123,7 @@ const LeadershipSection = () => {
     once: true,
     margin: "-50px"
   });
-  return <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
+  return <section id="leadership" ref={ref} className="relative overflow-hidden py-16 md:py-20">
       {/* Dark gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(200,25%,12%)] via-[hsl(190,20%,15%)] to-[hsl(180,25%,10%)]" />
       

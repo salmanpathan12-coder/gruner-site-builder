@@ -8,12 +8,22 @@ interface PageLayoutProps {
 }
 
 const PageLayout = ({ children }: PageLayoutProps) => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
-  // Scroll to top on route change
+  // Handle scroll on route change - scroll to hash if present, otherwise to top
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (hash) {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
 
   return (
     <div className="min-h-screen bg-background">
