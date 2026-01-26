@@ -5,54 +5,27 @@ import { useRef } from "react";
 const partners = [
   { 
     name: "Indian Oil", 
-    logo: (
-      <svg viewBox="0 0 200 60" className="h-8 md:h-10 w-auto">
-        <text x="10" y="40" fontFamily="Arial Black, sans-serif" fontSize="32" fontWeight="900" fill="currentColor">
-          <tspan fill="#E21836">Indian</tspan>
-          <tspan fill="#F7941D">Oil</tspan>
-        </text>
-      </svg>
-    )
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/io.png" alt="Indian Oil" className="h-8 md:h-10 w-auto" />
   },
   { 
     name: "Bharat Petroleum", 
-    logo: (
-      <svg viewBox="0 0 120 50" className="h-8 md:h-10 w-auto">
-        <text x="5" y="35" fontFamily="Arial Black, sans-serif" fontSize="24" fontWeight="900" fill="#1B4F8E">BPCL</text>
-      </svg>
-    )
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/bpcl.png" alt="BPCL" className="h-8 md:h-10 w-auto" />
   },
   { 
     name: "Hindustan Petroleum", 
-    logo: (
-      <svg viewBox="0 0 120 50" className="h-8 md:h-10 w-auto">
-        <text x="5" y="35" fontFamily="Arial Black, sans-serif" fontSize="24" fontWeight="900" fill="#00529B">HPCL</text>
-      </svg>
-    )
-  },
-  { 
-    name: "GAIL India", 
-    logo: (
-      <svg viewBox="0 0 120 50" className="h-8 md:h-10 w-auto">
-        <text x="5" y="35" fontFamily="Arial Black, sans-serif" fontSize="24" fontWeight="900" fill="#005DAA">GAIL</text>
-      </svg>
-    )
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/igl.png" alt="HPCL" className="h-8 md:h-10 w-auto" />
   },
   { 
     name: "Adani Group", 
-    logo: (
-      <svg viewBox="0 0 140 50" className="h-8 md:h-10 w-auto">
-        <text x="5" y="35" fontFamily="Arial, sans-serif" fontSize="24" fontWeight="700" fill="#002B5C" letterSpacing="2">ADANI</text>
-      </svg>
-    )
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/adani.png" alt="ADANI" className="h-8 md:h-10 w-auto" />
+  },
+  { 
+    name: "GAIL India", 
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/gail.png" alt="GAIL" className="h-8 md:h-10 w-auto" />
   },
   { 
     name: "Indraprastha Gas", 
-    logo: (
-      <svg viewBox="0 0 100 50" className="h-8 md:h-10 w-auto">
-        <text x="5" y="35" fontFamily="Arial Black, sans-serif" fontSize="28" fontWeight="900" fill="#E31937">IGL</text>
-      </svg>
-    )
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/reliance.png" alt="IGL" className="h-8 md:h-10 w-auto" />
   },
 ];
 

@@ -5,55 +5,28 @@ import { ExternalLink } from "lucide-react";
 // Media logos with their official styling
 const mediaLogos = [
   { 
-    name: "Economic Times",
-    logo: (
-      <svg viewBox="0 0 180 40" className="h-6 md:h-8 w-auto">
-        <text x="5" y="28" fontFamily="Georgia, serif" fontSize="20" fontWeight="700" fontStyle="italic" fill="#1A1A1A">
-          <tspan fill="#E42313">The</tspan>
-          <tspan> Economic Times</tspan>
-        </text>
-      </svg>
-    )
+    name: "The Economic Times",
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/tet.png" alt="The Economic Times" className="h-6 md:h-8 w-auto" />
   },
   { 
-    name: "The Hindu",
-    logo: (
-      <svg viewBox="0 0 140 40" className="h-6 md:h-8 w-auto">
-        <text x="5" y="28" fontFamily="Times New Roman, serif" fontSize="22" fontWeight="700" fill="#1A1A1A">The Hindu</text>
-      </svg>
-    )
+    name: "The Business Line",
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/tbl.png" alt="The Business Line" className="h-6 md:h-8 w-auto" />
   },
   { 
     name: "Business Standard",
-    logo: (
-      <svg viewBox="0 0 200 40" className="h-6 md:h-8 w-auto">
-        <text x="5" y="26" fontFamily="Georgia, serif" fontSize="16" fontWeight="700" fill="#C00000">Business Standard</text>
-      </svg>
-    )
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/bs.png" alt="Business Standard" className="h-6 md:h-8 w-auto" />
   },
   { 
-    name: "Financial Express",
-    logo: (
-      <svg viewBox="0 0 200 40" className="h-6 md:h-8 w-auto">
-        <text x="5" y="26" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="700" fill="#E31837">Financial Express</text>
-      </svg>
-    )
+    name: "Business World",
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/bw.png" alt="Business World" className="h-6 md:h-8 w-auto" />
   },
   { 
-    name: "Mint",
-    logo: (
-      <svg viewBox="0 0 100 40" className="h-6 md:h-8 w-auto">
-        <text x="5" y="30" fontFamily="Arial, sans-serif" fontSize="28" fontWeight="300" fill="#2AA87B">mint</text>
-      </svg>
-    )
+    name: "Energy World",
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/ew.png" alt="Energy World" className="h-6 md:h-8 w-auto" />
   },
   { 
     name: "Energetica India",
-    logo: (
-      <svg viewBox="0 0 160 40" className="h-6 md:h-8 w-auto">
-        <text x="5" y="26" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="600" fill="#0066CC">Energetica India</text>
-      </svg>
-    )
+    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/ene.png" alt="Energetica India" className="h-6 md:h-8 w-auto" />
   },
 ];
 
