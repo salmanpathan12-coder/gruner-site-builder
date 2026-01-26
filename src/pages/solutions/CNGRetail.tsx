@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
 import { Fuel, CheckCircle2, ArrowRight, MapPin, Truck, Clock, Shield } from "lucide-react";
+import cngRetailHero from "@/assets/cng-retail-hero.jpg";
 
 const GRADIENT = "bg-gradient-to-r from-[#1f8f7a] to-[#7fbf2e]";
 const GRADIENT_TEXT = "bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent";
@@ -90,7 +91,7 @@ const CNGRetail = () => {
           >
             <div className="relative bg-white border border-black/5 shadow-2xl overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/3651313/pexels-photo-3651313.jpeg?auto=compress&cs=tinysrgb&w=2000"
+                src={cngRetailHero}
                 alt="CNG Retail Station"
                 className="w-full h-auto object-cover"
               />
