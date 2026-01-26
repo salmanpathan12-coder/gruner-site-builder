@@ -144,7 +144,7 @@ const ProjectsMapSection = () => {
                   src={indiaMap} 
                   alt="India Map" 
                   className="w-full h-auto"
-                  style={{ filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.1)) brightness(1.8) contrast(1.1)" }}
+                  style={{ filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.1)) brightness(1.8) contrast(1.1) invert(1)" }}
                 />
                 
                 {/* State markers overlay */}
