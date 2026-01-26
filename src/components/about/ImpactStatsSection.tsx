@@ -207,7 +207,7 @@ const ImpactStatsSection = () => {
             Change
           </h2>
 
-          <p className="text-muted-foreground max-w-xl mx-auto font-body text-sm mt-2">
+          <p className="text-muted-foreground max-w-xl font-body text-sm mt-2">
             Real metrics showcasing our commitment to India's clean energy transformation.
           </p>
 
@@ -234,7 +234,7 @@ const ImpactStatsSection = () => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-5xl">
           {stats.map((stat, index) => (
             <StatCard
               key={stat.label}

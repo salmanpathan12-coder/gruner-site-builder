@@ -118,11 +118,11 @@ const CoreValuesSection = () => {
         </motion.div>
 
         {/* Compact values grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 w-full max-w-5xl">
           {coreValues.map((value, index) => <ValueCard key={value.title} icon={value.icon} title={value.title} description={value.description} index={index} isInView={isInView} gradient={value.gradient} />)}
         </div>
 
-        {/* Compact promise banner */}
+        {/* Compact promise banner - Centered */}
         <motion.div initial={{
         opacity: 0,
         y: 20
@@ -132,7 +132,7 @@ const CoreValuesSection = () => {
       } : {}} transition={{
         duration: 0.6,
         delay: 0.4
-      }} className="mt-8 max-w-3xl">
+      }} className="mt-8 w-full flex justify-center">
           <div className="relative bg-gradient-to-r from-primary via-primary/90 to-accent p-6 text-center overflow-hidden rounded">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
