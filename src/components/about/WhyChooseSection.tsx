@@ -79,7 +79,7 @@ const WhyChooseSection = () => {
       <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-gradient-to-tl from-primary/10 to-transparent rounded-full blur-[80px]" />
 
       <div className="container-wide relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl">
           
           {/* Left: Image composition */}
           <motion.div initial={{
