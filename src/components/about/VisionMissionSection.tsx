@@ -35,7 +35,7 @@ const VisionMissionSection = () => {
         </motion.div>
 
         {/* Compact two-column cards */}
-        <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
+        <div className="grid md:grid-cols-2 gap-4 w-full max-w-5xl">
           {/* Vision Card */}
           <motion.div initial={{
           opacity: 0,
@@ -125,7 +125,7 @@ const VisionMissionSection = () => {
           </motion.div>
         </div>
 
-        {/* Compact quote banner */}
+        {/* Compact quote banner - Centered */}
         <motion.div initial={{
         opacity: 0,
         y: 20
@@ -135,12 +135,12 @@ const VisionMissionSection = () => {
       } : {}} transition={{
         duration: 0.6,
         delay: 0.4
-      }} className="mt-6 max-w-4xl">
+      }} className="mt-6 w-full">
           <div className="relative overflow-hidden rounded">
             <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=2070&auto=format&fit=crop" alt="Sustainable Energy" className="w-full h-40 md:h-48 object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/60 to-transparent" />
-            <div className="absolute inset-0 flex items-center px-6 md:px-10 rounded">
-              <p className="text-base md:text-lg font-heading font-medium text-white leading-relaxed max-w-md">
+            <div className="absolute inset-0 flex items-center justify-center px-6 md:px-10 rounded">
+              <p className="text-base md:text-lg font-heading font-medium text-white leading-relaxed max-w-lg text-center">
                 "Building a circular economy where waste becomes wealth and energy becomes sustainable."
               </p>
             </div>
