@@ -132,7 +132,7 @@ const Header = () => {
                         }`}
                       >
                         {link.dropdown.map((item) => {
-                          const IconComponent = "icon" in item ? item.icon : null;
+                          const IconComponent = "icon" in item ? (item as { icon: React.ComponentType<{ className?: string }> }).icon : null;
                           return (
                             <Link
                               key={item.label}
