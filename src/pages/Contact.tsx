@@ -376,7 +376,7 @@ const Contact = () => {
             className="rounded-2xl overflow-hidden border border-border shadow-lg shadow-primary/5"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.0089647654387!2d77.3893!3d28.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce9c7a7aaacab%3A0x8c8c8c8c8c8c8c8c!2sWindsor%20Grand%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh%20201303!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin&markers=color:red%7C28.5425,77.3893"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1751.5!2d77.3956!3d28.5448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef95555555555%3A0x1234567890abcdef!2sWindsor%20Grand%2C%20Plot%201C%2C%20Raipur%20Khadar%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh%20201313!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin&markers=color:red%7C28.5448,77.3956"
               width="100%"
               height="400"
               style={{ border: 0 }}
