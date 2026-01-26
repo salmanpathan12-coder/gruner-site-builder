@@ -365,7 +365,7 @@ const TechnologyHero = () => {
             y: 0
           }} transition={{
             delay: 0.2
-          }} className="inline-flex items-center gap-3 px-5 py-3 bg-white border border-black/15">
+          }} className="inline-flex items-center gap-3 px-5 py-3 bg-white border border-black/15 rounded">
               <motion.div animate={{
               rotate: 360
             }} transition={{
