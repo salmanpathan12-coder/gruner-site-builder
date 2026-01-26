@@ -64,7 +64,7 @@ const Header = () => {
         className={`absolute inset-0 transition-all duration-300 ${
           isScrolled
             ? "bg-transparent"
-            : "bg-gradient-to-b from-black/40 via-black/20 to-transparent backdrop-blur-sm"
+            : "bg-white/80 backdrop-blur-sm"
         }`}
       />
 
@@ -102,11 +102,11 @@ const Header = () => {
                           ? "text-primary"
                           : "text-foreground/70 hover:text-foreground hover:bg-muted"
                         : isActive
-                          ? "text-white"
-                          : "text-white/90 hover:text-white hover:bg-white/10"
+                          ? "text-foreground"
+                          : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
                     }`}
                     style={{
-                      textShadow: !isScrolled ? "0 1px 2px rgba(0,0,0,0.3)" : "none",
+                      textShadow: "none",
                     }}
                   >
                     {link.label}
@@ -176,12 +176,12 @@ const Header = () => {
                 ? "text-foreground bg-muted"
                 : isScrolled
                   ? "text-foreground hover:bg-muted"
-                  : "text-white hover:bg-white/10"
+                  : "text-foreground hover:bg-foreground/5"
             }`}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.9 }}
             style={{
-              textShadow: !isScrolled && !isMobileMenuOpen ? "0 1px 2px rgba(0,0,0,0.3)" : "none",
+              textShadow: "none",
             }}
           >
             <AnimatePresence mode="wait">

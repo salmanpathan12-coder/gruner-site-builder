@@ -190,7 +190,7 @@ const ImpactStatsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-left mb-8"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 mb-4">
             <BarChart3 className="w-3.5 h-3.5 text-primary" />
@@ -212,7 +212,7 @@ const ImpactStatsSection = () => {
           </p>
 
           {/* CTA */}
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-6 flex justify-start gap-4">
             <CTAButton label="Explore Our Impact" />
             <button
               className="
@@ -234,7 +234,7 @@ const ImpactStatsSection = () => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
           {stats.map((stat, index) => (
             <StatCard
               key={stat.label}
