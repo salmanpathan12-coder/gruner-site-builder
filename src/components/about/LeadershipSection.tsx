@@ -157,7 +157,7 @@ const LeadershipSection = () => {
         </motion.div>
 
         {/* Compact leadership grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {leadership.map((leader, index) => <LeaderCard key={leader.name} leader={leader} index={index} isInView={isInView} />)}
         </div>
 
@@ -171,8 +171,8 @@ const LeadershipSection = () => {
       } : {}} transition={{
         duration: 0.6,
         delay: 0.5
-      }} className="text-center mt-10">
-          <div className="inline-flex flex-col sm:flex-row gap-3 items-center">
+      }} className="text-left mt-10">
+          <div className="flex flex-col sm:flex-row gap-3 items-start">
             <a href="/careers" className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white hover:border-accent hover:text-accent transition-all duration-300 font-body text-sm rounded-md">
               Join Our Team
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

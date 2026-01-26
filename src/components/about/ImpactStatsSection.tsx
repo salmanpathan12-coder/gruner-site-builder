@@ -267,7 +267,7 @@ const ImpactStatsSection = () => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
           {stats.map((stat, index) => <StatCard key={stat.label} value={stat.value} suffix={stat.suffix} prefix={stat.prefix} label={stat.label} icon={stat.icon} index={index} isInView={isInView} variant={stat.variant} />)}
         </div>
       </div>
