@@ -39,16 +39,22 @@ const MediaMentionsSection = () => {
           </span>
         </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+        <div className="flex flex-nowrap items-center justify-center gap-8 md:gap-12 lg:gap-16 overflow-x-auto">
           {mediaLogos.map((media, index) => (
             <motion.div
               key={media.name}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              whileHover={{ scale: 1.05 }}
-              className="group cursor-pointer grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300"
+              className="group cursor-pointer transition-all duration-300 flex-shrink-0"
               title={media.name}
+              style={{
+                filter: "drop-shadow(0 2px 8px rgba(34, 197, 94, 0.15))",
+              }}
+              whileHover={{
+                filter: "drop-shadow(0 4px 16px rgba(34, 197, 94, 0.35))",
+                scale: 1.05,
+              }}
             >
               <img 
                 src={media.logo} 
