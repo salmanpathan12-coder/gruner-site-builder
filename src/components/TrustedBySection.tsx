@@ -1,31 +1,39 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+// Import local logo assets
+import ioLogo from "@/assets/logos/io.png";
+import bpclLogo from "@/assets/logos/bpcl.png";
+import iglLogo from "@/assets/logos/igl.png";
+import adaniLogo from "@/assets/logos/adani.png";
+import gailLogo from "@/assets/logos/gail.png";
+import relianceLogo from "@/assets/logos/reliance.png";
+
 // Partner logos with their official brand colors
 const partners = [
   { 
     name: "Indian Oil", 
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/io.png" alt="Indian Oil" className="h-8 md:h-10 w-auto" />
+    logo: <img src={ioLogo} alt="Indian Oil" className="h-8 md:h-10 w-auto" />
   },
   { 
     name: "Bharat Petroleum", 
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/bpcl.png" alt="BPCL" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "Hindustan Petroleum", 
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/igl.png" alt="HPCL" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "Adani Group", 
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/adani.png" alt="ADANI" className="h-8 md:h-10 w-auto" />
-  },
-  { 
-    name: "GAIL India", 
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/gail.png" alt="GAIL" className="h-8 md:h-10 w-auto" />
+    logo: <img src={bpclLogo} alt="BPCL" className="h-8 md:h-10 w-auto" />
   },
   { 
     name: "Indraprastha Gas", 
-    logo: <img src="http://13.233.180.71/gre-new2/assets/logos/reliance.png" alt="IGL" className="h-8 md:h-10 w-auto" />
+    logo: <img src={iglLogo} alt="IGL" className="h-8 md:h-10 w-auto" />
+  },
+  { 
+    name: "Adani Group", 
+    logo: <img src={adaniLogo} alt="ADANI" className="h-8 md:h-10 w-auto" />
+  },
+  { 
+    name: "GAIL India", 
+    logo: <img src={gailLogo} alt="GAIL" className="h-8 md:h-10 w-auto" />
+  },
+  { 
+    name: "Reliance Industries", 
+    logo: <img src={relianceLogo} alt="Reliance" className="h-8 md:h-10 w-auto" />
   },
 ];
 
