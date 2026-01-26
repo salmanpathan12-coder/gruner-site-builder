@@ -2,10 +2,11 @@ import { motion, useInView, useMotionValue, useTransform, animate } from "framer
 import { useEffect, useRef } from "react";
 import PageLayout from "@/components/PageLayout";
 import { ExternalLink, Calendar, ArrowRight } from "lucide-react";
-import mediaHeroImage from "@/assets/media-hero.jpg";
-import mediaArticle1 from "@/assets/media-article-1.jpg";
-import mediaArticle2 from "@/assets/media-article-2.jpg";
-import mediaArticle3 from "@/assets/media-article-3.jpg";
+// External image URLs from grunerrenewable.com
+const mediaHeroImage = "https://www.grunerrenewable.com/assets/images/media-hero.webp";
+const mediaArticle1 = "https://www.grunerrenewable.com/assets/images/news-1.webp";
+const mediaArticle2 = "https://www.grunerrenewable.com/assets/images/news-2.webp";
+const mediaArticle3 = "https://www.grunerrenewable.com/assets/images/news-3.webp";
 
 /* ---------------- CONSTANTS ---------------- */
 
