@@ -163,7 +163,7 @@ const ImpactStatsSection = () => {
   });
 
   return (
-    <section ref={ref} className="relative overflow-hidden py-16 md:py-20">
+    <section ref={ref} className="relative overflow-hidden py-12 md:py-14">
       {/* ===== LIGHT GRADIENT BACKGROUND ===== */}
       <div className="absolute inset-0 bg-gradient-to-br from-[hsl(45,30%,96%)] via-[hsl(40,25%,94%)] to-[hsl(35,20%,92%)]" />
 
@@ -184,13 +184,13 @@ const ImpactStatsSection = () => {
       />
 
       {/* ===== CONTENT CONTAINER (REDUCED GAP) ===== */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-8 lg:px-10">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-8"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 mb-4">
             <BarChart3 className="w-3.5 h-3.5 text-primary" />

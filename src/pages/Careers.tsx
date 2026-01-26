@@ -130,7 +130,7 @@ const Careers = () => {
   return (
     <PageLayout>
       {/* ================= HERO (ELITE SPLIT) ================= */}
-      <section className="relative bg-white pt-28 pb-24 overflow-hidden">
+      <section className="relative bg-white pt-24 pb-16 overflow-hidden">
         <div className="container-wide grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
           {/* LEFT */}
           <motion.div
@@ -214,7 +214,7 @@ const Careers = () => {
       </section>
 
       {/* ================= CULTURE ================= */}
-      <section className="section-padding bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container-wide grid lg:grid-cols-2 gap-16 items-center">
           {/* TEXT */}
           <motion.div
@@ -266,7 +266,7 @@ const Careers = () => {
       </section>
 
       {/* ================= JOB OPENINGS - MODERN GRID LAYOUT ================= */}
-      <section id="openings" className="section-padding bg-muted/30">
+      <section id="openings" className="py-12 md:py-16 bg-muted/30">
         <div className="container-wide">
           {/* Header */}
           <motion.div
@@ -382,7 +382,7 @@ const Careers = () => {
       </section>
 
       {/* ================= GENERAL CTA - WHITE BACKGROUND ================= */}
-      <section className="section-padding bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container-narrow">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 

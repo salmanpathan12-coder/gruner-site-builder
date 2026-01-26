@@ -72,7 +72,7 @@ const Contact = () => {
   return (
     <PageLayout>
       {/* Contact Hero Section - White Background */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-white py-16 md:py-20">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -109,7 +109,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Section - Creamy White Background */}
-      <section className="section-padding" style={{ backgroundColor: '#FAF7F2' }}>
+      <section className="py-12 md:py-16" style={{ backgroundColor: '#FAF7F2' }}>
         <div className="container-wide">
           {/* Section Header */}
           <motion.div
@@ -130,7 +130,7 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -352,7 +352,7 @@ const Contact = () => {
 
       {/* Map Section */}
       <section className="bg-white">
-        <div className="container-wide py-12">
+        <div className="container-wide py-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
