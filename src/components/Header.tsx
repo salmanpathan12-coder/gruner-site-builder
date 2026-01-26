@@ -68,7 +68,7 @@ const Header = () => {
         }`}
       />
 
-      <div className={`relative transition-all duration-500 ${isScrolled ? "py-3" : "py-5"}`}>
+      <div className={`relative transition-all duration-500 ${isScrolled ? "py-2" : "py-3"}`}>
         <div className="container-wide flex items-center justify-between">
           <Link to="/" className="relative z-50">
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
