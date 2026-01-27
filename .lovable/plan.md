@@ -1,296 +1,209 @@
 
-# Solution Subpages - Complete Implementation Plan
 
-## Overview
+# Fix Standalone HTML Version - Complete CSS/HTML Alignment
 
-Building the 6 remaining solution subpages in the standalone HTML version. All pages follow the same template structure and use consistent styling from the existing CSS files.
+## Problem Identified
 
----
-
-## Pages to Create
-
-| File | Title | Icon | Hero Image | Stat Badge |
-|------|-------|------|------------|------------|
-| `solutions/project-development.html` | End-to-End Project Development | FolderKanban | Pexels (3184465) | 100+ Projects |
-| `solutions/engineering-construction.html` | World-Class EPC Services | HardHat | Pexels (159306) | 63+ Plants |
-| `solutions/rd.html` | Innovation-Driven R&D Excellence | FlaskConical | Pexels (256381) | 20+ Patents |
-| `solutions/cng-retail.html` | Modern CNG Retail Network | Fuel | Local (cng-retail-hero.jpg) | 25+ Stations |
-| `solutions/bio-gas.html` | Sustainable Bio-Gas Technology | Leaf | Pexels (433308) | 1M+ Tons |
-| `solutions/om.html` | Expert O&M Services | Wrench | Pexels (159306) | 99.5% Uptime |
+There is a **critical CSS class naming mismatch** between the HTML files and CSS files. The HTML uses BEM-style naming (`hero__video`, `header__nav`) while the CSS uses flat naming (`hero-video`, `nav`).
 
 ---
 
-## Common Template Structure
+## Affected Files
 
-Each subpage follows this identical structure:
+### HTML Files with BEM Classes (need updating)
+All 13 HTML pages use BEM-style classes that don't match the CSS:
 
-### Section 1: Hero
-- White background with `pt-28 pb-20` padding
-- Two-column grid (text left, image right)
-- Gradient badge with page category
-- Large heading with gradient text accent
-- Description paragraph
-- Two CTA buttons (primary gradient + secondary outline)
-- Hero image with shadow
-- Floating stat card positioned bottom-left
+| HTML Class | CSS Class (Expected) |
+|------------|---------------------|
+| `header__bg` | `header-backdrop` |
+| `header__container` | `header-content` |
+| `header__logo` | `header-logo` |
+| `header__nav` | `nav` |
+| `header__link` | `nav-link` |
+| `header__dropdown` | `nav-item` |
+| `header__dropdown-menu` | `nav-dropdown` |
+| `header__dropdown-link` | `nav-dropdown-link` |
+| `header__cta` | `nav-cta` |
+| `header__mobile-toggle` | `mobile-menu-btn` |
+| `header__mobile-menu` | `mobile-menu` |
+| `header__mobile-link` | `mobile-menu-link` |
+| `hero__video` | `hero-video` |
+| `hero__overlay` | `hero-overlay` |
+| `hero__content` | `hero-content` |
+| `hero__title` | `hero-title` |
+| `hero__metrics` | `hero-metrics` |
+| `trusted-by` | `trusted-section` |
+| `trusted-by__logos` | `trusted-logos` |
+| `trusted-by__logo` | `trusted-logo` |
+| `context__grid` | `context-grid` |
+| `context__left` | `context-left` |
+| `context__right` | `context-right` |
+| (and 50+ more mismatches) |
 
-### Section 2: Features Grid
-- Gray background (`bg-gray-50`)
-- Section badge with "Our Capabilities/Services/Solutions"
-- Heading with gradient text accent
-- 4-column grid of feature items
-- Each item: CheckCircle icon + feature text
-- Scroll-triggered fade-up animation
+### JavaScript Files
+The JS files also reference wrong selectors:
 
-### Section 3: Process/Applications/Services
-- White background
-- Centered heading with gradient text accent
-- 4-column grid of cards
-- Each card: gradient icon box + title + description
-- Hover shadow effect
-
-### Section 4: CTA
-- Gray background (`bg-gray-50`)
-- Centered heading with gradient text
-- Description paragraph
-- Single primary CTA button
+| JS File | Looking For | Should Be |
+|---------|-------------|-----------|
+| `header.js` | `.mobile-menu-btn` | `#mobileMenuToggle` or `.header__mobile-toggle` |
+| `header.js` | `.mobile-menu` | `#mobileMenu` or `.header__mobile-menu` |
 
 ---
 
-## File Structure Adjustments
+## Solution Options
 
-Since the subpages are in a `solutions/` subfolder, paths need adjustment:
+### Option A: Update All HTML Classes (Recommended)
+Update all 13 HTML files to use the CSS naming convention (flat names without BEM `__` syntax).
 
+**Pros:** CSS files are already correct and comprehensive
+**Cons:** Requires updating all HTML files
+
+### Option B: Add BEM-Style CSS
+Add new CSS rules that match the BEM classes used in HTML.
+
+**Pros:** HTML stays unchanged
+**Cons:** Creates duplicate CSS rules, harder to maintain
+
+---
+
+## Recommended Implementation: Option A
+
+### Phase 1: Update Header Structure (All 13 Files)
+
+Change header classes in all HTML files:
+
+**Before:**
 ```html
-<!-- CSS paths (from solutions/ folder) -->
-<link rel="stylesheet" href="../css/variables.css">
-<link rel="stylesheet" href="../css/base.css">
-<!-- etc. -->
-
-<!-- Asset paths -->
-<img src="../assets/images/cng-retail-hero.jpg">
-<img src="../assets/logos/gruner-logo.png">
-
-<!-- JS paths -->
-<script src="../js/utils.js"></script>
-<!-- etc. -->
-
-<!-- Navigation links -->
-<a href="../index.html">Home</a>
-<a href="../about.html">About</a>
+<header class="header" id="header">
+  <div class="header__bg"></div>
+  <div class="header__container container-wide">
+    <a href="index.html" class="header__logo">
+    <nav class="header__nav">
+      <a class="header__link">
+      <div class="header__dropdown">
+        <div class="header__dropdown-menu">
+          <a class="header__dropdown-link">
 ```
 
----
+**After:**
+```html
+<header class="header" id="header">
+  <div class="header-backdrop"></div>
+  <div class="header-content container-wide">
+    <a href="index.html" class="header-logo-link">
+      <img class="header-logo">
+    <nav class="nav">
+      <a class="nav-link">
+      <div class="nav-item">
+        <div class="nav-dropdown">
+          <a class="nav-dropdown-link">
+```
 
-## SVG Icons to Inline
+### Phase 2: Update Hero Section (index.html)
 
-Each page uses Lucide icons converted to inline SVG:
+Change hero classes:
 
-| Icon Name | Used In |
-|-----------|---------|
-| FolderKanban | Project Development |
-| FileText | Project Development (Feasibility) |
-| MapPin | Project Development (Site Selection) |
-| Users | Project Development (Stakeholder) |
-| TrendingUp | Project Development (Execution) |
-| HardHat | Engineering & Construction |
-| Settings | Engineering & Construction (Design) |
-| Wrench | Engineering & Construction, O&M |
-| Shield | Engineering & Construction, O&M |
-| Zap | Engineering & Construction, Bio-Gas |
-| FlaskConical | R&D |
-| Microscope | R&D |
-| Lightbulb | R&D |
-| BarChart3 | R&D |
-| Target | R&D |
-| Fuel | CNG Retail |
-| MapPin | CNG Retail |
-| Truck | CNG Retail |
-| Clock | CNG Retail, O&M |
-| Leaf | Bio-Gas |
-| Recycle | Bio-Gas |
-| Factory | Bio-Gas |
-| TreePine | Bio-Gas |
-| Activity | O&M |
-| CheckCircle2 | All pages (feature lists) |
-| ArrowRight | All pages (CTA buttons) |
+**Before:**
+```html
+<section class="hero" id="hero">
+  <div class="hero__video-container">
+    <video class="hero__video">
+  <div class="hero__overlay"></div>
+  <div class="hero__content container-wide">
+    <h1 class="hero__title">
+    <div class="hero__metrics">
+```
 
----
+**After:**
+```html
+<section class="hero" id="hero">
+  <video class="hero-video">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container-wide">
+    <h1 class="hero-title">
+    <div class="hero-metrics">
+```
 
-## Page-Specific Content
+### Phase 3: Update Section Classes (All Pages)
 
-### 1. Project Development (project-development.html)
+| Section | From | To |
+|---------|------|-----|
+| Trusted By | `trusted-by`, `trusted-by__*` | `trusted-section`, `trusted-*` |
+| Context | `context__*` | `context-*` |
+| About | `about-gruner__*` | `about-gruner-*` |
+| Solutions | `solutions__*` | Align with `pages/home.css` |
+| Process | `process__*` | Align with CSS |
+| Map | `map__*` | Align with CSS |
+| Team | `team__*` | Align with CSS |
+| Contact Form | `contact__*` | Align with CSS |
+| Footer | `footer__*` | `footer-*` |
 
-**Features:**
-- Comprehensive feasibility studies
-- Site selection and assessment
-- Environmental impact analysis
-- Regulatory compliance support
-- Financial modeling and ROI projections
-- Stakeholder engagement
-- Project timeline planning
-- Risk assessment and mitigation
+### Phase 4: Update JavaScript Selectors
 
-**Process Steps:**
-- Feasibility Analysis (FileText)
-- Site Selection (MapPin)
-- Stakeholder Alignment (Users)
-- Project Execution (TrendingUp)
+**header.js** - Update selectors:
+```javascript
+// Change from:
+mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+mobileMenu = document.querySelector('.mobile-menu');
 
----
+// To:
+mobileMenuBtn = document.getElementById('mobileMenuToggle');
+mobileMenu = document.getElementById('mobileMenu');
+```
 
-### 2. Engineering & Construction (engineering-construction.html)
+### Phase 5: Fix Missing Page-Specific CSS
 
-**Features:**
-- Turnkey EPC solutions
-- Civil and structural engineering
-- Mechanical system integration
-- Electrical and instrumentation
-- Quality assurance protocols
-- Safety management systems
-- Project commissioning
-- Performance testing
+The `pages/home.css` ends with a comment "Additional section styles to be added..." indicating it's incomplete. The following sections need CSS added:
 
-**Capabilities:**
-- Design Engineering (Settings)
-- Construction Management (HardHat)
-- Quality Control (Shield)
-- Commissioning (Zap)
-
----
-
-### 3. Research & Development (rd.html)
-
-**Features:**
-- Process optimization research
-- Feedstock characterization
-- Microbial culture development
-- Biogas yield enhancement
-- Technology innovation
-- Pilot plant testing
-- Performance benchmarking
-- Knowledge transfer programs
-
-**Research Areas:**
-- Microbiology Research (Microscope)
-- Process Innovation (Lightbulb)
-- Data Analytics (BarChart3)
-- Performance Optimization (Target)
+- Solutions Section (`.solutions-section`, `.solutions-grid`, `.solution-card`)
+- Process Section (`.process-section`, `.process-timeline`, `.process-step`)
+- Projects Map Section (`.map-section`, `.india-map`, `.map-marker`)
+- Media Mentions Section (`.media-section`, `.media-logos`)
+- Team Section (`.team-section`, `.team-grid`, `.team-card`)
+- Awards Section (`.awards-section`, `.awards-grid`)
+- CTA Section (`.cta-section`)
 
 ---
 
-### 4. CNG Retail (cng-retail.html)
+## Files to Update
 
-**Features:**
-- Retail outlet development
-- Dispensing equipment supply
-- Safety compliance systems
-- 24/7 operations support
-- Payment systems integration
-- Customer management
-- Inventory management
-- Quality certification
-
-**Benefits:**
-- Strategic Locations (MapPin)
-- Fleet Solutions (Truck)
-- 24/7 Operations (Clock)
-- Safety Standards (Shield)
+| File | Changes Required |
+|------|------------------|
+| `static-html/index.html` | Update all section class names |
+| `static-html/about.html` | Update header/footer + section classes |
+| `static-html/technology.html` | Update header/footer + section classes |
+| `static-html/solutions.html` | Update header/footer + section classes |
+| `static-html/media.html` | Update header/footer + section classes |
+| `static-html/careers.html` | Update header/footer + section classes |
+| `static-html/contact.html` | Update header/footer + section classes |
+| `static-html/solutions/*.html` (6 files) | Update header/footer classes |
+| `static-html/js/header.js` | Update DOM selectors |
+| `static-html/css/pages/home.css` | Add missing section styles |
 
 ---
 
-### 5. Bio-Gas (bio-gas.html)
+## Testing After Fix
 
-**Features:**
-- Agricultural waste processing
-- Municipal solid waste treatment
-- Industrial organic waste
-- Biogas purification systems
-- Digestate management
-- Carbon credit generation
-- Grid injection capability
-- Energy self-sufficiency
+Once updated, the static HTML can be tested by:
 
-**Applications:**
-- Waste to Energy (Recycle)
-- Industrial Applications (Factory)
-- Power Generation (Zap)
-- Carbon Neutrality (TreePine)
+1. **Local HTTP Server:**
+   ```bash
+   cd static-html
+   npx serve .
+   # or
+   python -m http.server 8000
+   ```
+
+2. **Direct File Opening:** Open `static-html/index.html` in browser
+
+3. **Deploy to Static Host:** Push to GitHub and deploy via Netlify/Vercel/GitHub Pages
 
 ---
 
-### 6. O&M (om.html)
+## Summary
 
-**Features:**
-- 24/7 plant monitoring
-- Preventive maintenance programs
-- Performance optimization
-- Spare parts management
-- Emergency response services
-- Operator training
-- Compliance management
-- Performance reporting
+- **Root Cause:** BEM-style class names in HTML don't match flat class names in CSS
+- **Solution:** Align all HTML files to use the existing CSS class naming
+- **Scope:** 13 HTML files + 1 JS file + potentially extend home.css
+- **Estimated Changes:** ~100+ class name updates across all files
 
-**Services:**
-- Real-Time Monitoring (Activity)
-- Preventive Maintenance (Clock)
-- Safety Compliance (Shield)
-- Performance Optimization (Settings)
-
-**Additional: Stats bar in hero**
-- 99.5% Plant Uptime
-- 24/7 Monitoring
-- 63+ Plants Managed
-
----
-
-## Implementation Order
-
-1. Create `static-html/solutions/` directory structure
-2. Build `project-development.html`
-3. Build `engineering-construction.html`
-4. Build `rd.html`
-5. Build `cng-retail.html`
-6. Build `bio-gas.html`
-7. Build `om.html`
-
----
-
-## Technical Notes
-
-### Path Prefix for Subpages
-
-All paths in solution subpages use `../` prefix:
-- CSS: `../css/variables.css`
-- JS: `../js/utils.js`
-- Images: `../assets/images/`
-- Logos: `../assets/logos/`
-- Navigation: `../index.html`, `../about.html`, etc.
-
-### Scroll Animations
-
-All pages include the standard animation classes:
-- `.scroll-fade-up` on feature cards (with staggered delays)
-- `.scroll-fade-up` on process/benefit cards
-- `.in-view` class added by IntersectionObserver
-
-### Responsive Behavior
-
-- Hero: 2-column on desktop, stacked on mobile
-- Feature grid: 4-col desktop, 2-col tablet, 1-col mobile
-- Process cards: 4-col desktop, 2-col tablet, 1-col mobile
-
----
-
-## Deliverables
-
-| File | Status |
-|------|--------|
-| `solutions/project-development.html` | To create |
-| `solutions/engineering-construction.html` | To create |
-| `solutions/rd.html` | To create |
-| `solutions/cng-retail.html` | To create |
-| `solutions/bio-gas.html` | To create |
-| `solutions/om.html` | To create |
-
-Total: 6 new HTML files completing the standalone version
