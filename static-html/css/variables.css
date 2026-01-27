@@ -1,0 +1,115 @@
+/* ============================================
+   GRUNER RENEWABLE - CSS DESIGN TOKENS
+   Enterprise-grade, infrastructure-focused design system
+   ============================================ */
+
+:root {
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Base neutrals */
+  --background: #ffffff;
+  --foreground: #1e2329;
+  --foreground-rgb: 30, 35, 41;
+
+  /* Surface colors */
+  --card: #faf9f7;
+  --card-foreground: #1e2329;
+  --off-white: #faf9f7;
+  --light-grey: #f7f6f4;
+
+  /* Primary - Teal Green */
+  --primary: #1f8f7a;
+  --primary-hsl: 168, 65%, 34%;
+  --primary-foreground: #ffffff;
+
+  /* Accent - Lime Green */
+  --accent: #7fbf2e;
+  --accent-hsl: 85, 62%, 46%;
+  --accent-foreground: #ffffff;
+
+  /* Secondary - Warm Grey */
+  --secondary: #f5f4f2;
+  --secondary-foreground: #2c3038;
+
+  /* Muted */
+  --muted: #edece9;
+  --muted-foreground: #6b7280;
+
+  /* Borders */
+  --border: #e5e4e1;
+  --border-light: rgba(0, 0, 0, 0.05);
+
+  /* Destructive */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  /* Radius */
+  --radius: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-primary: 0 10px 25px -5px rgba(31, 143, 122, 0.25);
+  --shadow-primary-lg: 0 15px 35px -5px rgba(31, 143, 122, 0.3);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #1f8f7a 0%, #7fbf2e 100%);
+  --gradient-primary-reverse: linear-gradient(135deg, #7fbf2e 0%, #1f8f7a 100%);
+  --gradient-radial: radial-gradient(circle, #1f8f7a 0%, #7fbf2e 100%);
+  --gradient-dark-teal: linear-gradient(135deg, #1a1f24 0%, #1a2f2a 50%, #181c20 100%);
+  --gradient-light: linear-gradient(135deg, #faf8f5 0%, #f5f3ef 50%, #f0ece6 100%);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Container widths */
+  --container-narrow: 896px;
+  --container-wide: 1280px;
+  --container-full: 1400px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+  --transition-slower: 500ms ease;
+
+  /* Z-index layers */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-loader: 1000;
+}
+
+/* Dark mode variables (for future use) */
+.dark {
+  --background: #181c20;
+  --foreground: #f5f4f2;
+  --card: #1e2329;
+  --card-foreground: #f5f4f2;
+  --primary: #2ba88f;
+  --accent: #8fcc44;
+  --secondary: #242930;
+  --muted: #2a3038;
+  --muted-foreground: #9ca3af;
+  --border: #2e353e;
+}
