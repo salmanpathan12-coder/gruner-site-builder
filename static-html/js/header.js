@@ -19,9 +19,14 @@
   // Initialize header
   function init() {
     header = document.querySelector('.header');
-    mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    mobileMenu = document.querySelector('.mobile-menu');
-    navItems = document.querySelectorAll('.nav-item');
+    // Support both flat and BEM class names, plus IDs
+    mobileMenuBtn = document.querySelector('.mobile-menu-btn') || 
+                    document.querySelector('.header__mobile-toggle') || 
+                    document.getElementById('mobileMenuToggle');
+    mobileMenu = document.querySelector('.mobile-menu') || 
+                 document.querySelector('.header__mobile-menu') || 
+                 document.getElementById('mobileMenu');
+    navItems = document.querySelectorAll('.nav-item, .header__dropdown');
 
     if (!header) return;
 
