@@ -98,6 +98,14 @@
   --z-popover: 600;
   --z-tooltip: 700;
   --z-loader: 1000;
+
+  /* Alpha color variations */
+  --primary-alpha-10: rgba(31, 143, 122, 0.1);
+  --primary-alpha-20: rgba(31, 143, 122, 0.2);
+  --primary-alpha-30: rgba(31, 143, 122, 0.3);
+  --accent-alpha-10: rgba(127, 191, 46, 0.1);
+  --accent-alpha-20: rgba(127, 191, 46, 0.2);
+  --accent-alpha-30: rgba(127, 191, 46, 0.3);
 }
 
 /* Dark mode variables (for future use) */
