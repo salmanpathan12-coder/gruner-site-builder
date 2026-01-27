@@ -106,6 +106,10 @@
   --accent-alpha-10: rgba(127, 191, 46, 0.1);
   --accent-alpha-20: rgba(127, 191, 46, 0.2);
   --accent-alpha-30: rgba(127, 191, 46, 0.3);
+  
+  /* Section padding */
+  --section-padding-y: 6rem;
+  --section-padding-y-sm: 4rem;
 }
 
 /* Dark mode variables (for future use) */
