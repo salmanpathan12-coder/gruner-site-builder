@@ -1,209 +1,155 @@
 
+# Fix Standalone HTML Version - Complete CSS Alignment
 
-# Fix Standalone HTML Version - Complete CSS/HTML Alignment
+## Problem Summary
 
-## Problem Identified
+After thorough analysis of the standalone HTML version at `http://13.233.180.71/gre-web-new/`, I have identified the root cause of the styling issues: **Multiple BEM-style CSS classes in the HTML have no corresponding CSS definitions**.
 
-There is a **critical CSS class naming mismatch** between the HTML files and CSS files. The HTML uses BEM-style naming (`hero__video`, `header__nav`) while the CSS uses flat naming (`hero-video`, `nav`).
-
----
-
-## Affected Files
-
-### HTML Files with BEM Classes (need updating)
-All 13 HTML pages use BEM-style classes that don't match the CSS:
-
-| HTML Class | CSS Class (Expected) |
-|------------|---------------------|
-| `header__bg` | `header-backdrop` |
-| `header__container` | `header-content` |
-| `header__logo` | `header-logo` |
-| `header__nav` | `nav` |
-| `header__link` | `nav-link` |
-| `header__dropdown` | `nav-item` |
-| `header__dropdown-menu` | `nav-dropdown` |
-| `header__dropdown-link` | `nav-dropdown-link` |
-| `header__cta` | `nav-cta` |
-| `header__mobile-toggle` | `mobile-menu-btn` |
-| `header__mobile-menu` | `mobile-menu` |
-| `header__mobile-link` | `mobile-menu-link` |
-| `hero__video` | `hero-video` |
-| `hero__overlay` | `hero-overlay` |
-| `hero__content` | `hero-content` |
-| `hero__title` | `hero-title` |
-| `hero__metrics` | `hero-metrics` |
-| `trusted-by` | `trusted-section` |
-| `trusted-by__logos` | `trusted-logos` |
-| `trusted-by__logo` | `trusted-logo` |
-| `context__grid` | `context-grid` |
-| `context__left` | `context-left` |
-| `context__right` | `context-right` |
-| (and 50+ more mismatches) |
-
-### JavaScript Files
-The JS files also reference wrong selectors:
-
-| JS File | Looking For | Should Be |
-|---------|-------------|-----------|
-| `header.js` | `.mobile-menu-btn` | `#mobileMenuToggle` or `.header__mobile-toggle` |
-| `header.js` | `.mobile-menu` | `#mobileMenu` or `.header__mobile-menu` |
+The `bem-compat.css` file was created to bridge the gap between BEM-style HTML classes and flat CSS, but it is incomplete. Many critical section styles are missing entirely.
 
 ---
 
-## Solution Options
+## Missing CSS Classes (Critical)
 
-### Option A: Update All HTML Classes (Recommended)
-Update all 13 HTML files to use the CSS naming convention (flat names without BEM `__` syntax).
+The following BEM-style classes used in `index.html` have **NO CSS definitions**:
 
-**Pros:** CSS files are already correct and comprehensive
-**Cons:** Requires updating all HTML files
-
-### Option B: Add BEM-Style CSS
-Add new CSS rules that match the BEM classes used in HTML.
-
-**Pros:** HTML stays unchanged
-**Cons:** Creates duplicate CSS rules, harder to maintain
-
----
-
-## Recommended Implementation: Option A
-
-### Phase 1: Update Header Structure (All 13 Files)
-
-Change header classes in all HTML files:
-
-**Before:**
-```html
-<header class="header" id="header">
-  <div class="header__bg"></div>
-  <div class="header__container container-wide">
-    <a href="index.html" class="header__logo">
-    <nav class="header__nav">
-      <a class="header__link">
-      <div class="header__dropdown">
-        <div class="header__dropdown-menu">
-          <a class="header__dropdown-link">
-```
-
-**After:**
-```html
-<header class="header" id="header">
-  <div class="header-backdrop"></div>
-  <div class="header-content container-wide">
-    <a href="index.html" class="header-logo-link">
-      <img class="header-logo">
-    <nav class="nav">
-      <a class="nav-link">
-      <div class="nav-item">
-        <div class="nav-dropdown">
-          <a class="nav-dropdown-link">
-```
-
-### Phase 2: Update Hero Section (index.html)
-
-Change hero classes:
-
-**Before:**
-```html
-<section class="hero" id="hero">
-  <div class="hero__video-container">
-    <video class="hero__video">
-  <div class="hero__overlay"></div>
-  <div class="hero__content container-wide">
-    <h1 class="hero__title">
-    <div class="hero__metrics">
-```
-
-**After:**
-```html
-<section class="hero" id="hero">
-  <video class="hero-video">
-  <div class="hero-overlay"></div>
-  <div class="hero-content container-wide">
-    <h1 class="hero-title">
-    <div class="hero-metrics">
-```
-
-### Phase 3: Update Section Classes (All Pages)
-
-| Section | From | To |
-|---------|------|-----|
-| Trusted By | `trusted-by`, `trusted-by__*` | `trusted-section`, `trusted-*` |
-| Context | `context__*` | `context-*` |
-| About | `about-gruner__*` | `about-gruner-*` |
-| Solutions | `solutions__*` | Align with `pages/home.css` |
-| Process | `process__*` | Align with CSS |
-| Map | `map__*` | Align with CSS |
-| Team | `team__*` | Align with CSS |
-| Contact Form | `contact__*` | Align with CSS |
-| Footer | `footer__*` | `footer-*` |
-
-### Phase 4: Update JavaScript Selectors
-
-**header.js** - Update selectors:
-```javascript
-// Change from:
-mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-mobileMenu = document.querySelector('.mobile-menu');
-
-// To:
-mobileMenuBtn = document.getElementById('mobileMenuToggle');
-mobileMenu = document.getElementById('mobileMenu');
-```
-
-### Phase 5: Fix Missing Page-Specific CSS
-
-The `pages/home.css` ends with a comment "Additional section styles to be added..." indicating it's incomplete. The following sections need CSS added:
-
-- Solutions Section (`.solutions-section`, `.solutions-grid`, `.solution-card`)
-- Process Section (`.process-section`, `.process-timeline`, `.process-step`)
-- Projects Map Section (`.map-section`, `.india-map`, `.map-marker`)
-- Media Mentions Section (`.media-section`, `.media-logos`)
-- Team Section (`.team-section`, `.team-grid`, `.team-card`)
-- Awards Section (`.awards-section`, `.awards-grid`)
-- CTA Section (`.cta-section`)
+| Section | Missing Classes | Impact |
+|---------|-----------------|--------|
+| **Solutions** | `.solutions__card`, `.solutions__card-header`, `.solutions__card-icon`, `.solutions__card-stat`, `.solutions__card-stat-value`, `.solutions__card-stat-label`, `.solutions__card-title`, `.solutions__card-description`, `.solutions__card-features`, `.solutions__card-feature` | Cards appear unstyled |
+| **Process** | `.process`, `.process__timeline`, `.process__line`, `.process__line-fill`, `.process__steps`, `.process__step`, `.process__step-node`, `.process__step-number`, `.process__step-title`, `.process__step-description` | Timeline unstyled |
+| **Media Mentions** | `.media-mentions`, `.media-mentions__label`, `.media-mentions__logos`, `.media-mentions__logo` | Logo section broken |
+| **Projects Map** | `.projects-map`, `.projects-map__grid`, `.projects-map__list`, `.projects-map__states`, `.projects-map__state`, `.projects-map__state-count`, `.projects-map__state-name`, `.projects-map__state-status`, `.projects-map__state--active`, `.projects-map__state-status--active`, `.projects-map__summary`, `.projects-map__summary-stat`, `.projects-map__summary-value`, `.projects-map__summary-label`, `.projects-map__visual`, `.projects-map__glow`, `.projects-map__image`, `.projects-map__legend`, `.projects-map__legend-item`, `.projects-map__legend-dot`, `.projects-map__legend-divider` | Map section broken |
+| **Team** | `.team`, `.team__grid`, `.team__founder`, `.team__founder-image`, `.team__founder-info`, `.team__founder-badge`, `.team__founder-name`, `.team__founder-role`, `.team__founder-bio`, `.team__founder-social`, `.team__social-btn`, `.team__leaders`, `.team__leader`, `.team__leader-image`, `.team__leader-info`, `.team__leader-name`, `.team__leader-role`, `.team__leader-bio` | Team section broken |
+| **Awards** | `.awards`, `.awards__grid`, `.awards__item`, `.awards__icon`, `.awards__label`, `.awards__description` | Awards unstyled |
+| **Contact** | `.contact`, `.contact__grid`, `.contact__form-wrapper`, `.contact__form`, `.contact__form-group`, `.contact__form-group--full`, `.contact__label`, `.contact__input`, `.contact__textarea`, `.contact__submit`, `.contact__info`, `.contact__info-card`, `.contact__info-title`, `.contact__info-items`, `.contact__info-item`, `.contact__info-icon`, `.contact__info-label`, `.contact__info-value`, `.contact__info-text`, `.contact__partnership-link` | Form completely broken |
 
 ---
 
-## Files to Update
+## Solution
 
-| File | Changes Required |
-|------|------------------|
-| `static-html/index.html` | Update all section class names |
-| `static-html/about.html` | Update header/footer + section classes |
-| `static-html/technology.html` | Update header/footer + section classes |
-| `static-html/solutions.html` | Update header/footer + section classes |
-| `static-html/media.html` | Update header/footer + section classes |
-| `static-html/careers.html` | Update header/footer + section classes |
-| `static-html/contact.html` | Update header/footer + section classes |
-| `static-html/solutions/*.html` (6 files) | Update header/footer classes |
-| `static-html/js/header.js` | Update DOM selectors |
-| `static-html/css/pages/home.css` | Add missing section styles |
+Add comprehensive CSS for all missing BEM-style classes to `bem-compat.css`.
 
 ---
 
-## Testing After Fix
+## Implementation Details
 
-Once updated, the static HTML can be tested by:
+### 1. Solutions Section Styles (~120 lines)
 
-1. **Local HTTP Server:**
-   ```bash
-   cd static-html
-   npx serve .
-   # or
-   python -m http.server 8000
-   ```
+Add styles for the dark-themed solution cards with:
+- Card layout with header, icon, stats, title, description, features
+- Hover effects with gradient border glow
+- Feature tags styling
+- Responsive grid behavior
 
-2. **Direct File Opening:** Open `static-html/index.html` in browser
+### 2. Process Section Styles (~100 lines)
 
-3. **Deploy to Static Host:** Push to GitHub and deploy via Netlify/Vercel/GitHub Pages
+Add styles for the horizontal timeline with:
+- Timeline connector line with gradient fill
+- Step nodes with icons and numbers
+- Step titles and descriptions
+- Responsive vertical layout on mobile
+
+### 3. Media Mentions Section Styles (~40 lines)
+
+Add styles for:
+- Section label with icon
+- Logo grid layout
+- Logo hover effects with brightness filter
+
+### 4. Projects Map Section Styles (~150 lines)
+
+Add styles for:
+- Two-column grid (list + map)
+- State list items with count, name, status badges
+- Active state highlighting
+- Summary statistics bar
+- Map container with glow effect
+- Legend styling
+
+### 5. Team Section Styles (~120 lines)
+
+Add styles for:
+- Founder card (large, featured)
+- Leader cards (smaller grid)
+- Image containers with object-fit
+- Role badges and social buttons
+- Bio text styling
+
+### 6. Awards Section Styles (~60 lines)
+
+Add styles for:
+- Six-column grid (responsive)
+- Icon boxes with gradient background
+- Label and description text
+- Hover lift effect
+
+### 7. Contact Section Styles (~120 lines)
+
+Add styles for:
+- Dark background theme
+- Two-column grid (form + info)
+- Form inputs, labels, textarea
+- Info cards with icon items
+- Partnership link styling
+- Form validation states
 
 ---
 
-## Summary
+## Files to Modify
 
-- **Root Cause:** BEM-style class names in HTML don't match flat class names in CSS
-- **Solution:** Align all HTML files to use the existing CSS class naming
-- **Scope:** 13 HTML files + 1 JS file + potentially extend home.css
-- **Estimated Changes:** ~100+ class name updates across all files
+| File | Changes |
+|------|---------|
+| `static-html/css/bem-compat.css` | Add ~700 lines of CSS for missing sections |
 
+---
+
+## Technical Notes
+
+All new CSS will:
+- Use existing CSS variables from `variables.css`
+- Follow the established design patterns
+- Include responsive breakpoints (768px, 1024px)
+- Include hover/focus states
+- Support scroll animations with `.scroll-fade-up` and `.in-view` classes
+
+---
+
+## Additional Fixes Identified
+
+### 1. Section Header Light Variant
+The `.section-header--light` class for dark backgrounds may need color adjustments.
+
+### 2. Button Outline Light Variant
+The `.btn-outline-light` class used in hero section needs definition.
+
+### 3. CSS Variable Dependencies
+Some styles may reference undefined alpha variables like `--primary-alpha-10`. These will be added to `variables.css`.
+
+---
+
+## Implementation Order
+
+1. Add missing CSS variables to `variables.css` (alpha colors)
+2. Add Solutions section CSS to `bem-compat.css`
+3. Add Process section CSS
+4. Add Media Mentions section CSS
+5. Add Projects Map section CSS
+6. Add Team section CSS
+7. Add Awards section CSS
+8. Add Contact section CSS
+9. Add utility/variant classes
+
+---
+
+## Expected Outcome
+
+After implementing these fixes, all 13 HTML pages will render correctly with:
+- Properly styled hero, header, footer
+- Working solutions cards with hover effects
+- Visible process timeline
+- Media logos section
+- Interactive projects map
+- Team member cards
+- Awards grid
+- Functional contact form
+- All scroll animations working
