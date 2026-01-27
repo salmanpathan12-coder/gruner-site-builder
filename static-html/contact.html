@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Gruner Renewable Energy</title>
+  <meta name="description" content="Get in touch with Gruner Renewable Energy for Bio-CNG partnerships, project inquiries, and business collaborations.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/gruner-logo.png">
+  
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/pages/contact.css">
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <div class="page-loader__content">
+      <img src="assets/images/gruner-logo.png" alt="Gruner" class="page-loader__logo">
+      <div class="page-loader__bar"><div class="page-loader__progress"></div></div>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__bg"></div>
+    <div class="header__container container-wide">
+      <a href="index.html" class="header__logo"><img src="assets/images/gruner-logo.png" alt="Gruner Renewable Energy"></a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__link">Home</a>
+        <div class="header__dropdown">
+          <a href="about.html" class="header__link">About<svg class="header__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="header__dropdown-menu">
+            <a href="about.html" class="header__dropdown-link">Our Story</a>
+            <a href="about.html#leadership" class="header__dropdown-link">Leadership</a>
+          </div>
+        </div>
+        <a href="technology.html" class="header__link">Technology</a>
+        <div class="header__dropdown">
+          <a href="solutions.html" class="header__link">Solutions<svg class="header__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="header__dropdown-menu header__dropdown-menu--wide">
+            <a href="solutions/project-development.html" class="header__dropdown-link">Project Development</a>
+            <a href="solutions/engineering-construction.html" class="header__dropdown-link">Engineering & Construction</a>
+            <a href="solutions/rd.html" class="header__dropdown-link">R&D</a>
+            <a href="solutions/cng-retail.html" class="header__dropdown-link">CNG Retail Outlets</a>
+            <a href="solutions/bio-gas.html" class="header__dropdown-link">Bio-Gas</a>
+            <a href="solutions/om.html" class="header__dropdown-link">O&M</a>
+          </div>
+        </div>
+        <a href="media.html" class="header__link">Media</a>
+        <a href="careers.html" class="header__link">Careers</a>
+        <a href="contact.html" class="header__link header__link--active">Contact</a>
+      </nav>
+      <a href="contact.html" class="header__cta btn btn-primary">Partner With Us</a>
+      <button class="header__mobile-toggle" id="mobileMenuToggle" aria-label="Toggle menu"><span class="header__hamburger"></span></button>
+    </div>
+    <div class="header__mobile-menu" id="mobileMenu">
+      <nav class="header__mobile-nav">
+        <a href="index.html" class="header__mobile-link">Home</a>
+        <a href="about.html" class="header__mobile-link">About</a>
+        <a href="technology.html" class="header__mobile-link">Technology</a>
+        <a href="solutions.html" class="header__mobile-link">Solutions</a>
+        <a href="media.html" class="header__mobile-link">Media</a>
+        <a href="careers.html" class="header__mobile-link">Careers</a>
+        <a href="contact.html" class="header__mobile-link">Contact</a>
+        <a href="contact.html" class="btn btn-primary">Partner With Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+      <div class="container-wide contact-hero__container">
+        <div class="contact-hero__content scroll-fade-up">
+          <div class="contact-hero__breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Contact</span>
+          </div>
+          <h1 class="contact-hero__title">Let's Start a Conversation</h1>
+          <p class="contact-hero__description">Whether you're interested in partnering with us, have questions about our Bio-CNG solutions, or want to explore investment opportunities — we'd love to hear from you.</p>
+        </div>
+        <div class="contact-hero__image scroll-fade-up">
+          <img src="assets/images/contact-hero.jpg" alt="Gruner Office">
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+      <div class="container-wide">
+        <div class="contact-form-section__grid">
+          <div class="contact-form scroll-fade-up" id="contactFormContainer">
+            <h2 class="contact-form__title">Send Us a Message</h2>
+            <p class="contact-form__subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
+            
+            <form class="contact-form__grid" id="contactForm" data-contact-form>
+              <div class="contact-form__group">
+                <label for="name" class="contact-form__label">Full Name <span>*</span></label>
+                <input type="text" id="name" name="name" class="contact-form__input" placeholder="Your name" data-validate="required">
+              </div>
+              
+              <div class="contact-form__group">
+                <label for="email" class="contact-form__label">Email <span>*</span></label>
+                <input type="email" id="email" name="email" class="contact-form__input" placeholder="your@email.com" data-validate="required email">
+              </div>
+              
+              <div class="contact-form__group">
+                <label for="phone" class="contact-form__label">Phone</label>
+                <input type="tel" id="phone" name="phone" class="contact-form__input" placeholder="+91 XXXXX XXXXX">
+              </div>
+              
+              <div class="contact-form__group">
+                <label for="company" class="contact-form__label">Company</label>
+                <input type="text" id="company" name="company" class="contact-form__input" placeholder="Your company">
+              </div>
+              
+              <div class="contact-form__group contact-form__group--full">
+                <label class="contact-form__label">I'm interested in <span>*</span></label>
+                <div class="contact-form__radio-group">
+                  <label class="contact-form__radio-label active">
+                    <input type="radio" name="interest" value="partnership" class="contact-form__radio-input" checked>
+                    <span class="contact-form__radio-custom"></span>
+                    Partnership
+                  </label>
+                  <label class="contact-form__radio-label">
+                    <input type="radio" name="interest" value="investment" class="contact-form__radio-input">
+                    <span class="contact-form__radio-custom"></span>
+                    Investment
+                  </label>
+                  <label class="contact-form__radio-label">
+                    <input type="radio" name="interest" value="careers" class="contact-form__radio-input">
+                    <span class="contact-form__radio-custom"></span>
+                    Careers
+                  </label>
+                  <label class="contact-form__radio-label">
+                    <input type="radio" name="interest" value="other" class="contact-form__radio-input">
+                    <span class="contact-form__radio-custom"></span>
+                    Other
+                  </label>
+                </div>
+              </div>
+              
+              <div class="contact-form__group contact-form__group--full">
+                <label for="message" class="contact-form__label">Message <span>*</span></label>
+                <textarea id="message" name="message" class="contact-form__textarea" placeholder="Tell us about your project or inquiry..." data-validate="required"></textarea>
+              </div>
+              
+              <div class="contact-form__group contact-form__group--full">
+                <button type="submit" class="btn btn-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+          
+          <div class="contact-info scroll-fade-up">
+            <div class="contact-info__card">
+              <div class="contact-info__card-header">
+                <div class="contact-info__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <span class="contact-info__label">Office Address</span>
+                </div>
+              </div>
+              <p class="contact-info__value">22nd Floor, Windsor Grand<br>Plot 1C, Sector 126<br>Noida, UP 201303, India</p>
+            </div>
+            
+            <div class="contact-info__card">
+              <div class="contact-info__card-header">
+                <div class="contact-info__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <span class="contact-info__label">Email</span>
+                </div>
+              </div>
+              <p class="contact-info__value"><a href="mailto:info@grunerrenewable.com">info@grunerrenewable.com</a></p>
+            </div>
+            
+            <div class="contact-info__card">
+              <div class="contact-info__card-header">
+                <div class="contact-info__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <span class="contact-info__label">Phone</span>
+                </div>
+              </div>
+              <p class="contact-info__value"><a href="tel:+911204567890">+91 120 456 7890</a></p>
+            </div>
+            
+            <div class="contact-info__card">
+              <div class="contact-info__card-header">
+                <div class="contact-info__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div>
+                  <span class="contact-info__label">Business Hours</span>
+                </div>
+              </div>
+              <div class="contact-info__hours">
+                <div class="contact-info__hours-list">
+                  <div class="contact-info__hours-item">
+                    <span class="contact-info__hours-day">Monday - Friday</span>
+                    <span class="contact-info__hours-time">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <div class="contact-info__hours-item">
+                    <span class="contact-info__hours-day">Saturday</span>
+                    <span class="contact-info__hours-time">10:00 AM - 2:00 PM</span>
+                  </div>
+                  <div class="contact-info__hours-item">
+                    <span class="contact-info__hours-day">Sunday</span>
+                    <span class="contact-info__hours-time">Closed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Map -->
+    <section class="contact-map">
+      <div class="container-wide contact-map__container">
+        <div class="contact-map__header scroll-fade-up">
+          <h3 class="contact-map__title">Visit Our Office</h3>
+          <p class="contact-map__address">22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP 201303</p>
+        </div>
+        <div class="contact-map__frame scroll-fade-up">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.0!2d77.3956!3d28.5448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDMyJzQxLjMiTiA3N8KwMjMnNDQuMiJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__main container-wide">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo"><img src="assets/images/gruner-logo.png" alt="Gruner Renewable Energy"></a>
+        <p class="footer__description">India's leading Bio-CNG infrastructure company, transforming agricultural waste into clean, reliable fuel for a sustainable future.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__column">
+          <h4 class="footer__heading">Company</h4>
+          <ul class="footer__list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html#leadership">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="media.html">News & Media</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__heading">Solutions</h4>
+          <ul class="footer__list">
+            <li><a href="solutions.html">EPC Services</a></li>
+            <li><a href="solutions/om.html">O&M Services</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__heading">Resources</h4>
+          <ul class="footer__list">
+            <li><a href="about.html">Investor Relations</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="index.html#awards">Certifications</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container-wide footer__bottom-inner">
+        <p class="footer__copyright">© 2024 Gruner Renewable Energy Pvt. Ltd. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          <a href="#" class="footer__social-link" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+        </div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/page-loader.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/form.js"></script>
+  <script>
+    // Radio button interactivity
+    document.querySelectorAll('.contact-form__radio-label').forEach(label => {
+      label.addEventListener('click', () => {
+        document.querySelectorAll('.contact-form__radio-label').forEach(l => l.classList.remove('active'));
+        label.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

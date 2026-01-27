@@ -1,0 +1,463 @@
+/**
+ * GRUNER RENEWABLE - CAREERS PAGE STYLES
+ * Specific styles for Careers page sections
+ */
+
+/* ============================================
+   CAREERS HERO
+   ============================================ */
+.careers-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background: var(--background);
+  overflow: hidden;
+  padding-top: 6rem;
+}
+
+.careers-hero__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .careers-hero__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.careers-hero__content {
+  max-width: 600px;
+}
+
+.careers-hero__badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--primary-alpha-10), var(--accent-alpha-10));
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.careers-hero__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.careers-hero__title span {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.careers-hero__description {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.careers-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.careers-hero__image {
+  position: relative;
+}
+
+.careers-hero__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-xl);
+}
+
+/* Floating info cards */
+.careers-hero__floating {
+  position: absolute;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .careers-hero__floating {
+    display: block;
+  }
+}
+
+.careers-hero__floating-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.careers-hero__floating-card--top {
+  position: absolute;
+  top: 1rem;
+  right: -1rem;
+}
+
+.careers-hero__floating-card--bottom {
+  position: absolute;
+  bottom: 2rem;
+  left: -1.5rem;
+}
+
+.careers-hero__floating-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.careers-hero__floating-label {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* ============================================
+   CULTURE BENEFITS
+   ============================================ */
+.culture-benefits {
+  padding: var(--section-padding-y) 0;
+  background: var(--off-white);
+}
+
+.culture-benefits__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .culture-benefits__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.culture-benefits__content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.culture-benefits__content h3 span {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.culture-benefits__text {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+.culture-benefits__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.benefit-card {
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-alpha-30);
+}
+
+.benefit-card__icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-md);
+}
+
+.benefit-card__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+
+.benefit-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.benefit-card__text {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+
+/* ============================================
+   JOB OPENINGS
+   ============================================ */
+.job-openings {
+  padding: var(--section-padding-y) 0;
+  background: var(--background);
+}
+
+.job-openings__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.job-category-pill {
+  padding: 0.5rem 1rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.job-category-pill:hover,
+.job-category-pill.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+}
+
+.job-openings__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .job-openings__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.job-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.job-card:hover {
+  border-color: var(--primary-alpha-30);
+  box-shadow: var(--shadow-md);
+}
+
+.job-card.active {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.job-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.job-card__header:hover {
+  background: var(--muted);
+}
+
+.job-card__info {
+  flex: 1;
+}
+
+.job-card__category {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+
+.job-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.job-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.job-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.job-card__meta-item svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.job-card__chevron {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--muted-foreground);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.job-card.active .job-card__chevron {
+  transform: rotate(180deg);
+}
+
+.job-card__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.job-card.active .job-card__content {
+  max-height: 400px;
+  padding: 0 1.25rem 1.25rem;
+}
+
+.job-card__description {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.job-card__requirements {
+  margin-bottom: 1.5rem;
+}
+
+.job-card__requirements-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+}
+
+.job-card__requirements-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.job-card__requirement {
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, var(--primary-alpha-10), var(--accent-alpha-10));
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  color: var(--primary);
+}
+
+/* ============================================
+   GENERAL APPLICATION CTA
+   ============================================ */
+.general-application {
+  padding: var(--section-padding-y) 0;
+  background: var(--background);
+}
+
+.general-application__card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-xl);
+  text-align: center;
+}
+
+.general-application__icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.5rem;
+  border-radius: 1rem;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.general-application__icon svg {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.general-application__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.general-application__text {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.general-application__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.general-application__email:hover {
+  text-decoration: underline;
+}
+
+.general-application__email svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
