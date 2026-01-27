@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Gruner Renewable Energy</title>
+  <meta name="description" content="Learn about Gruner Renewable Energy - India's leading Bio-CNG infrastructure company pioneering the clean energy revolution.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/gruner-logo.png">
+  
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+</head>
+<body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="page-loader__content">
+      <img src="assets/images/gruner-logo.png" alt="Gruner" class="page-loader__logo">
+      <div class="page-loader__bar"><div class="page-loader__progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header__bg"></div>
+    <div class="header__container container-wide">
+      <a href="index.html" class="header__logo">
+        <img src="assets/images/gruner-logo.png" alt="Gruner Renewable Energy">
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__link">Home</a>
+        <div class="header__dropdown">
+          <a href="about.html" class="header__link header__link--active">About<svg class="header__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="header__dropdown-menu">
+            <a href="about.html" class="header__dropdown-link">Our Story</a>
+            <a href="about.html#leadership" class="header__dropdown-link">Leadership</a>
+          </div>
+        </div>
+        <a href="technology.html" class="header__link">Technology</a>
+        <div class="header__dropdown">
+          <a href="solutions.html" class="header__link">Solutions<svg class="header__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+          <div class="header__dropdown-menu header__dropdown-menu--wide">
+            <a href="solutions/project-development.html" class="header__dropdown-link">Project Development</a>
+            <a href="solutions/engineering-construction.html" class="header__dropdown-link">Engineering & Construction</a>
+            <a href="solutions/rd.html" class="header__dropdown-link">R&D</a>
+            <a href="solutions/cng-retail.html" class="header__dropdown-link">CNG Retail Outlets</a>
+            <a href="solutions/bio-gas.html" class="header__dropdown-link">Bio-Gas</a>
+            <a href="solutions/om.html" class="header__dropdown-link">O&M</a>
+          </div>
+        </div>
+        <a href="media.html" class="header__link">Media</a>
+        <a href="careers.html" class="header__link">Careers</a>
+        <a href="contact.html" class="header__link">Contact</a>
+      </nav>
+      <a href="contact.html" class="header__cta btn btn-primary">Partner With Us</a>
+      <button class="header__mobile-toggle" id="mobileMenuToggle" aria-label="Toggle menu"><span class="header__hamburger"></span></button>
+    </div>
+    <div class="header__mobile-menu" id="mobileMenu">
+      <nav class="header__mobile-nav">
+        <a href="index.html" class="header__mobile-link">Home</a>
+        <a href="about.html" class="header__mobile-link">About</a>
+        <a href="technology.html" class="header__mobile-link">Technology</a>
+        <a href="solutions.html" class="header__mobile-link">Solutions</a>
+        <a href="media.html" class="header__mobile-link">Media</a>
+        <a href="careers.html" class="header__mobile-link">Careers</a>
+        <a href="contact.html" class="header__mobile-link">Contact</a>
+        <a href="contact.html" class="btn btn-primary">Partner With Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- About Hero -->
+    <section class="about-hero section-padding">
+      <div class="container-wide about-hero__container">
+        <div class="about-hero__content scroll-fade-up">
+          <span class="about-hero__badge">About Gruner</span>
+          <h1 class="about-hero__title">Transforming <span>Agricultural Waste</span> Into Clean Energy</h1>
+          <p class="about-hero__description">Gruner Renewable Energy is pioneering India's Bio-CNG revolution, converting agricultural residue into sustainable transportation fuel while empowering rural communities and reducing fossil fuel dependency.</p>
+          <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+          
+          <div class="about-hero__stats">
+            <div class="about-hero__stat">
+              <span class="about-hero__stat-value" data-counter="1500">0</span><span>Cr+</span>
+              <span class="about-hero__stat-label">Project Orders</span>
+            </div>
+            <div class="about-hero__stat">
+              <span class="about-hero__stat-value">$60M</span>
+              <span class="about-hero__stat-label">Funding Secured</span>
+            </div>
+            <div class="about-hero__stat">
+              <span class="about-hero__stat-value">50+</span>
+              <span class="about-hero__stat-label">Plants Planned</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-hero__video scroll-fade-up">
+          <video autoplay loop muted playsinline>
+            <source src="assets/images/about-hero-video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision Mission -->
+    <section class="vision-mission section-padding">
+      <div class="container-wide">
+        <div class="section-header section-header--center scroll-fade-up">
+          <div class="divider-accent"></div>
+          <h2>Our Direction</h2>
+        </div>
+        <div class="vision-mission__grid">
+          <div class="vision-mission__card vision-mission__card--vision scroll-fade-up">
+            <div class="vision-mission__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <h3 class="vision-mission__title">Our Direction</h3>
+            <p class="vision-mission__text">To lead India's transition to a sustainable energy future by becoming the nation's largest Bio-CNG infrastructure company, setting global standards for clean fuel production from agricultural waste.</p>
+          </div>
+          <div class="vision-mission__card vision-mission__card--mission scroll-fade-up">
+            <div class="vision-mission__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+            </div>
+            <h3 class="vision-mission__title">Our Mission</h3>
+            <p class="vision-mission__text">To accelerate India's clean energy adoption by designing, building, and operating world-class Bio-CNG plants that convert agricultural residue into sustainable fuel, creating rural employment while reducing carbon emissions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact-stats section-padding">
+      <div class="container-wide">
+        <div class="section-header section-header--center scroll-fade-up">
+          <div class="divider-accent"></div>
+          <h2>Our Impact</h2>
+          <p>Measurable progress towards a sustainable future</p>
+        </div>
+        <div class="impact-stats__grid">
+          <div class="impact-stats__card scroll-fade-up" style="--delay: 0.1s">
+            <div class="impact-stats__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
+            <span class="impact-stats__value" data-counter="1500">0</span><span>Cr+</span>
+            <span class="impact-stats__label">Project Value</span>
+          </div>
+          <div class="impact-stats__card scroll-fade-up" style="--delay: 0.15s">
+            <div class="impact-stats__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path></svg></div>
+            <span class="impact-stats__value">50+</span>
+            <span class="impact-stats__label">Plants Planned</span>
+          </div>
+          <div class="impact-stats__card scroll-fade-up" style="--delay: 0.2s">
+            <div class="impact-stats__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+            <span class="impact-stats__value">8+</span>
+            <span class="impact-stats__label">States</span>
+          </div>
+          <div class="impact-stats__card scroll-fade-up" style="--delay: 0.25s">
+            <div class="impact-stats__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path></svg></div>
+            <span class="impact-stats__value" data-counter="88">0</span><span>K+</span>
+            <span class="impact-stats__label">TPY Capacity</span>
+          </div>
+          <div class="impact-stats__card scroll-fade-up" style="--delay: 0.3s">
+            <div class="impact-stats__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+            <span class="impact-stats__value">1000+</span>
+            <span class="impact-stats__label">Jobs Created</span>
+          </div>
+          <div class="impact-stats__card scroll-fade-up" style="--delay: 0.35s">
+            <div class="impact-stats__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <span class="impact-stats__value">100%</span>
+            <span class="impact-stats__label">Compliant</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="core-values section-padding">
+      <div class="container-wide">
+        <div class="section-header section-header--center scroll-fade-up">
+          <div class="divider-accent"></div>
+          <h2>What We Stand For</h2>
+          <p>The principles that guide everything we do</p>
+        </div>
+        <div class="core-values__grid">
+          <div class="core-values__card scroll-fade-up" style="--delay: 0.1s">
+            <div class="core-values__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path></svg></div>
+            <h4 class="core-values__title">Sustainability</h4>
+            <p class="core-values__description">Environmental responsibility is at the core of every decision we make.</p>
+          </div>
+          <div class="core-values__card scroll-fade-up" style="--delay: 0.15s">
+            <div class="core-values__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+            <h4 class="core-values__title">Innovation</h4>
+            <p class="core-values__description">Continuously pushing boundaries with cutting-edge German technology.</p>
+          </div>
+          <div class="core-values__card scroll-fade-up" style="--delay: 0.2s">
+            <div class="core-values__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+            <h4 class="core-values__title">Community</h4>
+            <p class="core-values__description">Empowering rural communities through employment and farmer partnerships.</p>
+          </div>
+          <div class="core-values__card scroll-fade-up" style="--delay: 0.25s">
+            <div class="core-values__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg></div>
+            <h4 class="core-values__title">Excellence</h4>
+            <p class="core-values__description">Delivering world-class quality in every project we undertake.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="leadership section-padding" id="leadership">
+      <div class="container-wide">
+        <div class="section-header section-header--center section-header--light scroll-fade-up">
+          <div class="divider-accent"></div>
+          <h2>Meet The Team</h2>
+          <p>Experienced leadership driving India's bioenergy transformation</p>
+        </div>
+        <div class="leadership__grid">
+          <div class="leadership__founder scroll-fade-up">
+            <div class="leadership__founder-inner">
+              <div class="leadership__founder-image">
+                <img src="https://s3.us-west-1.amazonaws.com/appsinvo-staging-ys/Gruner/1b7dd6b268d.jpeg" alt="Mr. Utkarsh Gupta">
+              </div>
+              <div class="leadership__founder-info">
+                <span class="leadership__founder-badge">Founder & Visionary</span>
+                <h3 class="leadership__founder-name">Mr. Utkarsh Gupta</h3>
+                <p class="leadership__founder-role">Founder and CEO</p>
+                <p class="leadership__founder-bio">Visionary leader driving India's clean energy revolution through innovative Bio-CNG solutions and sustainable infrastructure development.</p>
+                <div class="leadership__founder-social">
+                  <a href="#" class="leadership__social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                  <a href="#" class="leadership__social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="leadership__leaders">
+            <div class="leadership__leader-card scroll-fade-up" style="--delay: 0.1s">
+              <div class="leadership__leader-image">
+                <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/60737fd0ffe.png" alt="Mr. Anil Dhussa">
+              </div>
+              <div class="leadership__leader-info">
+                <h4 class="leadership__leader-name">Mr. Anil Dhussa</h4>
+                <p class="leadership__leader-role">Chief Advisor</p>
+                <p class="leadership__leader-bio">Industry pioneer with expertise in biogas technology and sustainable solutions.</p>
+              </div>
+            </div>
+            <div class="leadership__leader-card scroll-fade-up" style="--delay: 0.2s">
+              <div class="leadership__leader-image">
+                <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/9c778952225.png" alt="Mr. Anil Kumar Tyagi">
+              </div>
+              <div class="leadership__leader-info">
+                <h4 class="leadership__leader-name">Mr. Anil Kumar Tyagi</h4>
+                <p class="leadership__leader-role">Chief Consultant</p>
+                <p class="leadership__leader-bio">Strategic advisor with decades of experience in renewable energy infrastructure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__main container-wide">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo"><img src="assets/images/gruner-logo.png" alt="Gruner Renewable Energy"></a>
+        <p class="footer__description">India's leading Bio-CNG infrastructure company, transforming agricultural waste into clean, reliable fuel for a sustainable future.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__column">
+          <h4 class="footer__heading">Company</h4>
+          <ul class="footer__list">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html#leadership">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="media.html">News & Media</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__heading">Solutions</h4>
+          <ul class="footer__list">
+            <li><a href="solutions.html">EPC Services</a></li>
+            <li><a href="solutions/om.html">O&M Services</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <h4 class="footer__heading">Resources</h4>
+          <ul class="footer__list">
+            <li><a href="about.html">Investor Relations</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="index.html#awards">Certifications</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container-wide footer__bottom-inner">
+        <p class="footer__copyright">© 2024 Gruner Renewable Energy Pvt. Ltd. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          <a href="#" class="footer__social-link" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+        </div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/page-loader.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/counter.js"></script>
+</body>
+</html>
