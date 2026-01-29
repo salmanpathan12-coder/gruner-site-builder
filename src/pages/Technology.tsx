@@ -146,7 +146,7 @@ const Technology = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Our Technology</span>
+            <span className={`inline-flex items-center px-5 py-2.5 rounded-md text-sm text-white font-semibold tracking-wide shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 ${GRADIENT}`}>Our Technology</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 leading-tight">
               Introduction to <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">CSTR Technology</span>
@@ -201,7 +201,7 @@ const Technology = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>The Process</span>
+            <span className={`inline-flex items-center px-5 py-2.5 rounded-md text-sm text-white font-semibold tracking-wide shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 ${GRADIENT}`}>The Process</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               How CSTR Transforms <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Biomass into Energy</span>
@@ -301,7 +301,7 @@ const Technology = () => {
       <section className="py-16 bg-white">
         <div className="container-wide space-y-10">
           <div className="space-y-4">
-            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Benefits</span>
+            <span className={`inline-flex items-center px-5 py-2.5 rounded-md text-sm text-white font-semibold tracking-wide shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 ${GRADIENT}`}>Benefits</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               Technology <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Advantages</span>
@@ -340,7 +340,7 @@ const Technology = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <span className={`inline-flex px-4 py-2 rounded-md text-sm text-white font-medium ${GRADIENT}`}>Sustainability</span>
+            <span className={`inline-flex items-center px-5 py-2.5 rounded-md text-sm text-white font-semibold tracking-wide shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 ${GRADIENT}`}>Sustainability</span>
 
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">
               CSTRs and <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Environmental Impact</span>

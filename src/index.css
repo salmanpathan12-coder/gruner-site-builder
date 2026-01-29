@@ -189,13 +189,22 @@
     font-family: var(--font-body);
   }
 
-  /* Increased font size for non-home pages */
+  /* Increased font size for non-home pages - Enhanced readability */
   .page-content-text {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-base md:text-lg leading-[1.8];
   }
 
   .page-content-text-lg {
-    @apply text-lg md:text-xl leading-relaxed;
+    @apply text-lg md:text-xl leading-[1.8];
+  }
+
+  /* Enhanced body text for improved readability */
+  .text-readable {
+    @apply text-base md:text-lg leading-[1.75] tracking-[0.01em];
+  }
+
+  .text-readable-lg {
+    @apply text-lg md:text-xl leading-[1.75] tracking-[0.01em];
   }
 
   /* Divider with green accent */
