@@ -422,9 +422,6 @@ const Contact = () => {
             {/* Gruner Branding Overlay */}
             <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-3 z-10">
               <img src={grunerLogo} alt="Gruner Renewable Energy" className="h-10 w-auto" />
-              <div className="border-l border-border pl-3">
-                <div className="text-sm font-bold text-primary">Gruner Renewable Energy</div>
-              </div>
             </div>
           </motion.div>
         </div>
