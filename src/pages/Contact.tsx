@@ -398,11 +398,11 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden"
+            className="rounded-2xl overflow-hidden shadow-lg border border-border"
           >
-            {/* Clean Map - No card, no overlay UI */}
+            {/* Clean Map - Red pin only, no popup overlays */}
             <iframe
-              src="https://www.google.com/maps?q=Plot%20number,%20Windsor%20Grand,%201-%20C,%20Raipur%20Khadar,%20Sector%20126,%20Noida,%20Uttar%20Pradesh%20201313&z=18&output=embed"
+              src="https://www.google.com/maps?q=Plot+1C,+Windsor+Grand,+Raipur+Khadar,+Sector+126,+Noida,+Uttar+Pradesh+201313&z=17&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
@@ -412,35 +412,6 @@ const Contact = () => {
               title="Gruner Renewable Energy Office Location"
               className="w-full"
             />
-            
-            {/* Overlay to cover default Google Maps info card at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-white via-white to-transparent pointer-events-none z-10" />
-            
-            {/* Gruner Branding Label - Top Left */}
-            <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-3 z-10">
-              <img 
-                src={grunerLogo} 
-                alt="Gruner Renewable Energy"
-                className="h-10 w-auto"
-              />
-              <div className="border-l border-border pl-3">
-                <div className="text-sm font-bold text-primary">Gruner Renewable Energy</div>
-              </div>
-            </div>
-            
-            {/* Custom Map Pin Label - Center of map */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full z-10 pointer-events-none">
-              <div className="bg-white rounded-lg shadow-xl p-3 flex items-center gap-2 border-2 border-primary">
-                <img 
-                  src={grunerLogo} 
-                  alt="Gruner Renewable Energy"
-                  className="h-8 w-auto"
-                />
-                <span className="text-sm font-bold text-primary whitespace-nowrap">Gruner Renewable Energy</span>
-              </div>
-              {/* Pin pointer */}
-              <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-primary mx-auto" />
-            </div>
           </motion.div>
         </div>
       </section>
