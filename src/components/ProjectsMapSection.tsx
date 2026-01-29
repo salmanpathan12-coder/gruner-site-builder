@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { MapPin, Factory } from "lucide-react";
 import indiaMap from "@/assets/india-map.svg";
+import grunerLogo from "@/assets/gruner-logo.png";
 
 // Real project data based on Gruner's expansion
 const projects = [
@@ -273,21 +274,29 @@ const ProjectsMapSection = () => {
               )}
             </div>
 
-            {/* Map legend */}
+            {/* Map legend with brand label */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex justify-center items-center gap-4 mt-4"
+              className="flex flex-col items-center gap-3 mt-4"
             >
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent" />
-                <span className="text-xs text-white/60 font-body">Project Sites</span>
+              {/* Brand Label */}
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg border border-white/20">
+                <img src={grunerLogo} alt="Gruner Renewable Energy" className="h-5 w-auto brightness-0 invert" />
+                <span className="text-sm font-medium text-white">Gruner Renewable Energy</span>
               </div>
-              <div className="h-3 w-px bg-white/20" />
-              <div className="text-xs font-body">
-                <span className="font-semibold text-primary">{totalPlants}</span>
-                <span className="text-white/60"> Total Plants</span>
+              
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent" />
+                  <span className="text-xs text-white/60 font-body">Project Sites</span>
+                </div>
+                <div className="h-3 w-px bg-white/20" />
+                <div className="text-xs font-body">
+                  <span className="font-semibold text-primary">{totalPlants}</span>
+                  <span className="text-white/60"> Total Plants</span>
+                </div>
               </div>
             </motion.div>
           </motion.div>

@@ -179,14 +179,23 @@
   }
 
   .body-large {
-    @apply text-lg md:text-xl leading-relaxed;
+    @apply text-lg md:text-xl lg:text-2xl leading-relaxed;
     font-family: var(--font-body);
     color: hsl(var(--muted-foreground));
   }
 
   .body-standard {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-base md:text-lg lg:text-xl leading-relaxed;
     font-family: var(--font-body);
+  }
+
+  /* Increased font size for non-home pages */
+  .page-content-text {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+
+  .page-content-text-lg {
+    @apply text-lg md:text-xl leading-relaxed;
   }
 
   /* Divider with green accent */

@@ -9,14 +9,14 @@ import adaniLogo from "@/assets/logos/adani.png";
 import gailLogo from "@/assets/logos/gail.png";
 import relianceLogo from "@/assets/logos/reliance.png";
 
-// Partner logos with their official brand colors
+// Partner logos ordered by business relevance/priority
 const partners = [
+  { name: "GAIL India", logo: gailLogo },
   { name: "Indian Oil", logo: ioLogo },
   { name: "Bharat Petroleum", logo: bpclLogo },
-  { name: "Indraprastha Gas", logo: iglLogo },
-  { name: "Adani Group", logo: adaniLogo },
-  { name: "GAIL India", logo: gailLogo },
   { name: "Reliance Industries", logo: relianceLogo },
+  { name: "Adani Group", logo: adaniLogo },
+  { name: "Indraprastha Gas", logo: iglLogo },
 ];
 
 const TrustedBySection = () => {

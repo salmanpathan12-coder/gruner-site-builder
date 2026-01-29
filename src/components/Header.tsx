@@ -46,8 +46,16 @@ const Header = () => {
         { label: "O&M", href: "/solutions/om" },
       ],
     },
-    { label: "Media", href: "/media" },
-    { label: "Careers", href: "/careers" },
+    {
+      label: "Media",
+      href: "/media",
+      dropdown: [
+        { label: "Media", href: "/media" },
+        { label: "Gallery", href: "/media#gallery" },
+        { label: "News", href: "/media#coverage" },
+      ],
+    },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ];
 
