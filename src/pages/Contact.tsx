@@ -81,19 +81,15 @@ const Contact = () => {
       <section className="bg-white py-16 md:py-20">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
               <nav className="flex items-center gap-2 text-sm mb-6">
-                <a href="/" className="text-black/60 hover:text-primary transition-colors">Home</a>
+                <a href="/" className="text-black/60 hover:text-primary transition-colors">
+                  Home
+                </a>
                 <span className="text-black/40">/</span>
                 <span className="text-primary font-medium">Contact</span>
               </nav>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-black mb-6">
-                Get in Touch
-              </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-black mb-6">Get in Touch</h1>
               <p className="text-lg text-black/70 max-w-lg">
                 Ready to start your Bio-CNG project? Contact us for a customized quote and consultation.
               </p>
@@ -104,9 +100,9 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <img 
-                src={contactHeroImage} 
-                alt="Contact Gruner Renewable Energy" 
+              <img
+                src={contactHeroImage}
+                alt="Contact Gruner Renewable Energy"
                 className="w-full h-auto rounded-2xl shadow-lg"
               />
             </motion.div>
@@ -115,7 +111,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Section - Creamy White Background */}
-      <section className="py-12 md:py-16" style={{ backgroundColor: '#FAF7F2' }}>
+      <section className="py-12 md:py-16" style={{ backgroundColor: "#FAF7F2" }}>
         <div className="container-wide">
           {/* Section Header */}
           <motion.div
@@ -129,10 +125,14 @@ const Contact = () => {
               Contact Us
             </span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-black mb-4">
-              Let's Start a <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Conversation</span>
+              Let's Start a{" "}
+              <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+                Conversation
+              </span>
             </h2>
             <p className="text-black/70 max-w-2xl mx-auto">
-              Partner with us to transform organic waste into clean energy. Our team is ready to discuss your project needs.
+              Partner with us to transform organic waste into clean energy. Our team is ready to discuss your project
+              needs.
             </p>
           </motion.div>
 
@@ -238,7 +238,9 @@ const Contact = () => {
                             value={option.value}
                             className="w-4 h-4 text-primary border-border focus:ring-primary"
                           />
-                          <span className="text-sm text-black group-hover:text-primary transition-colors">{option.label}</span>
+                          <span className="text-sm text-black group-hover:text-primary transition-colors">
+                            {option.label}
+                          </span>
                         </label>
                       ))}
                     </div>
@@ -338,7 +340,9 @@ const Contact = () => {
                       className="w-10 h-10 rounded-lg bg-muted hover:bg-[#1877F2] hover:text-white flex items-center justify-center transition-all duration-300"
                       aria-label="Facebook"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                      </svg>
                     </a>
                     <a
                       href="https://www.instagram.com/gruner_renewable/"
@@ -347,7 +351,9 @@ const Contact = () => {
                       className="w-10 h-10 rounded-lg bg-muted hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white flex items-center justify-center transition-all duration-300"
                       aria-label="Instagram"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
                     </a>
                     <a
                       href="https://www.linkedin.com/company/gruner-renewable-energy/"
@@ -356,7 +362,9 @@ const Contact = () => {
                       className="w-10 h-10 rounded-lg bg-muted hover:bg-[#0A66C2] hover:text-white flex items-center justify-center transition-all duration-300"
                       aria-label="LinkedIn"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
                     </a>
                     <a
                       href="https://x.com/Gruner_energy"
@@ -365,7 +373,9 @@ const Contact = () => {
                       className="w-10 h-10 rounded-lg bg-muted hover:bg-black hover:text-white flex items-center justify-center transition-all duration-300"
                       aria-label="Twitter"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
                     </a>
                   </div>
                 </motion.div>
@@ -385,14 +395,10 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8"
           >
-            <h3 className="text-2xl font-heading font-semibold text-black mb-2">
-              Visit Our Office
-            </h3>
-            <p className="text-black/70">
-              22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP
-            </p>
+            <h3 className="text-2xl font-heading font-semibold text-black mb-2">Visit Our Office</h3>
+            <p className="text-black/70">22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida, UP</p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -412,32 +418,20 @@ const Contact = () => {
               title="Gruner Renewable Energy Office Location"
               className="w-full"
             />
-            
+
             {/* Overlay to cover default Google Maps info card at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-white via-white to-transparent pointer-events-none z-10" />
-            
+
             {/* Gruner Branding Label - Top Left */}
             <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-3 z-10">
-              <img 
-                src={grunerLogo} 
-                alt="Gruner Renewable Energy"
-                className="h-10 w-auto"
-              />
+              <img src={grunerLogo} alt="Gruner Renewable Energy" className="h-10 w-auto" />
               <div className="border-l border-border pl-3">
                 <div className="text-sm font-bold text-primary">Gruner Renewable Energy</div>
               </div>
             </div>
-            
+
             {/* Custom Map Pin Label - Center of map */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full z-10 pointer-events-none">
-              <div className="bg-white rounded-lg shadow-xl p-3 flex items-center gap-2 border-2 border-primary">
-                <img 
-                  src={grunerLogo} 
-                  alt="Gruner Renewable Energy"
-                  className="h-8 w-auto"
-                />
-                <span className="text-sm font-bold text-primary whitespace-nowrap">Gruner Renewable Energy</span>
-              </div>
               {/* Pin pointer */}
               <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-primary mx-auto" />
             </div>
