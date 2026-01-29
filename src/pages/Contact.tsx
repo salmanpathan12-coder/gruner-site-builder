@@ -402,7 +402,7 @@ const Contact = () => {
           >
             {/* Clean Map - No card, no overlay UI */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1751.5!2d77.3956!3d28.5448!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDMyJzQxLjMiTiA3N8KwMjMnNDQuMiJF!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin&output=embed&disableDefaultUI=1"
+              src="https://www.google.com/maps?q=Plot%20number,%20Windsor%20Grand,%201-%20C,%20Raipur%20Khadar,%20Sector%20126,%20Noida,%20Uttar%20Pradesh%20201313&z=18&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
