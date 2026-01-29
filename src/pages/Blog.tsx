@@ -50,7 +50,7 @@ const Blog = () => {
               <span className="text-primary font-medium">Blog</span>
             </nav>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-black mb-6">
-              Insights & Updates
+              Blog
             </h1>
             <p className="text-lg md:text-xl text-black/70">
               Stay updated with the latest news, insights, and developments in the renewable energy sector.

@@ -11,56 +11,93 @@ import relianceLogo from "@/assets/logos/reliance.png";
 
 // Partner logos ordered by business relevance/priority
 const partners = [
-  { name: "GAIL India", logo: gailLogo },
-  { name: "Indian Oil", logo: ioLogo },
-  { name: "Bharat Petroleum", logo: bpclLogo },
-  { name: "Reliance Industries", logo: relianceLogo },
-  { name: "Adani Group", logo: adaniLogo },
-  { name: "Indraprastha Gas", logo: iglLogo },
+  { name: "GAIL India", logo: gailLogo, featured: false },
+  { name: "Indian Oil", logo: ioLogo, featured: false },
+  { name: "Bharat Petroleum", logo: bpclLogo, featured: false },
+  { name: "Reliance Industries", logo: relianceLogo, featured: true },
+  { name: "Adani Group", logo: adaniLogo, featured: false },
+  { name: "Indraprastha Gas", logo: iglLogo, featured: false },
 ];
 
 const TrustedBySection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
+  // Double the array for seamless infinite loop
+  const duplicatedPartners = [...partners, ...partners];
+
   return (
-    <section ref={ref} className="py-12 md:py-16 bg-muted/30 border-y border-border/50">
-      <div className="container-wide">
+    <section ref={ref} className="py-12 md:py-16 bg-muted/30 border-y border-border/50 overflow-hidden">
+      {/* Full width container */}
+      <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-center mb-8 px-6"
         >
           <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">
             Trusted by Industry Leaders
           </span>
         </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-10 md:gap-14 lg:gap-20">
-          {partners.map((partner, index) => (
+        {/* Infinite scroll container - full width */}
+        <div className="relative w-full">
+          {/* Gradient fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-muted/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-muted/80 to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling logos container */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5 }}
+            className="flex"
+          >
             <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative transition-all duration-300"
-              title={partner.name}
-              style={{
-                filter: "drop-shadow(0 2px 8px rgba(34, 197, 94, 0.15))",
+              className="flex items-center gap-16 md:gap-24 lg:gap-32"
+              animate={{
+                x: ["0%", "-50%"],
               }}
-              whileHover={{
-                filter: "drop-shadow(0 4px 16px rgba(34, 197, 94, 0.35))",
-                scale: 1.05,
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 25,
+                  ease: "linear",
+                },
               }}
             >
-              <img 
-                src={partner.logo} 
-                alt={partner.name} 
-                className="h-10 md:h-12 w-auto"
-              />
+              {duplicatedPartners.map((partner, index) => (
+                <div
+                  key={`${partner.name}-${index}`}
+                  className={`flex-shrink-0 relative transition-all duration-300 group ${
+                    partner.featured ? "px-4 py-2" : ""
+                  }`}
+                  title={partner.name}
+                  style={{
+                    filter: partner.featured
+                      ? "drop-shadow(0 4px 20px rgba(34, 197, 94, 0.4))"
+                      : "drop-shadow(0 2px 8px rgba(34, 197, 94, 0.15))",
+                  }}
+                >
+                  {/* Featured highlight ring for Reliance */}
+                  {partner.featured && (
+                    <div className="absolute -inset-3 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 blur-sm" />
+                  )}
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className={`relative ${
+                      partner.featured
+                        ? "h-14 md:h-16 w-auto"
+                        : "h-10 md:h-12 w-auto"
+                    } transition-transform duration-300 group-hover:scale-110`}
+                  />
+                </div>
+              ))}
             </motion.div>
-          ))}
+          </motion.div>
         </div>
       </div>
     </section>

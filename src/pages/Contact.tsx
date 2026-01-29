@@ -419,9 +419,10 @@ const Contact = () => {
               className="w-full"
             />
 
-            {/* Gruner Branding Overlay */}
-            <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-3 z-10">
+            {/* Gruner Branding Overlay - Right Side */}
+            <div className="absolute top-4 right-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-3 z-10">
               <img src={grunerLogo} alt="Gruner Renewable Energy" className="h-10 w-auto" />
+              <span className="text-sm font-semibold text-foreground hidden sm:block">Gruner Renewable Energy</span>
             </div>
           </motion.div>
         </div>
