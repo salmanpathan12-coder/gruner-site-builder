@@ -404,29 +404,27 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden"
+            className="relative rounded-2xl overflow-hidden border border-border shadow-lg shadow-primary/5"
           >
-            {/* Clean Map - No card, no overlay UI */}
+            {/* Map iframe */}
             <iframe
-              src="https://www.google.com/maps?q=Plot%20number,%20Windsor%20Grand,%201-%20C,%20Raipur%20Khadar,%20Sector%20126,%20Noida,%20Uttar%20Pradesh%20201313&z=18&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1751.5!2d77.3956!3d28.5448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef95555555555%3A0x1234567890abcdef!2sWindsor%20Grand%2C%20Plot%201C%2C%20Raipur%20Khadar%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh%20201313!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin&markers=color:red%7C28.5448,77.3956"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Gruner Renewable Energy Office Location"
+              title="Gruner Renewable Energy Office Location - 22nd Floor, Windsor Grand, Plot 1C, Sector 126, Noida"
               className="w-full"
             />
 
-            {/* Overlay to cover default Google Maps info card at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-white via-white to-transparent pointer-events-none z-10" />
-
-            {/* Gruner Branding Label - Top Left */}
+            {/* Gruner Branding Overlay */}
             <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-3 z-10">
               <img src={grunerLogo} alt="Gruner Renewable Energy" className="h-10 w-auto" />
               <div className="border-l border-border pl-3">
                 <div className="text-sm font-bold text-primary">Gruner Renewable Energy</div>
+                <div className="text-xs text-muted-foreground">Corporate Headquarters</div>
               </div>
             </div>
           </motion.div>
