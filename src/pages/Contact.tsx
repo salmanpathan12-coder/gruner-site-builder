@@ -323,16 +323,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-black mb-1">Quick Response Promise</h4>
-                  <p className="text-black/70">
-                    Our team responds to all inquiries within 24-48 business hours.
-                  </p>
+                  <p className="text-black/70">Our team responds to all inquiries within 24-48 business hours.</p>
                 </div>
               </div>
             </div>
 
             {/* Connect With Us Card - Full Width, Directly Below */}
             <div className="bg-white rounded-xl border border-border shadow-sm p-6 md:p-8">
-              <h3 className="font-semibold text-black text-lg mb-5">Connect With Us</h3>
+              <h3 className="font-semibold text-black text-lg mb-5 text-center">Connect With Us</h3>
               <div className="flex justify-center gap-4">
                 <a
                   href="https://www.facebook.com/GrunerRenewables/"
