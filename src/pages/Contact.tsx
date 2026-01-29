@@ -398,11 +398,11 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden border border-border shadow-lg shadow-primary/5"
+            className="relative rounded-2xl overflow-hidden"
           >
-            {/* Map iframe */}
+            {/* Clean Map - No card, no overlay UI */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1751.5!2d77.3956!3d28.5448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef95555555555%3A0x1234567890abcdef!2sWindsor%20Grand%2C%20Plot%201C%2C%20Raipur%20Khadar%2C%20Sector%20126%2C%20Noida%2C%20Uttar%20Pradesh%20201313!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin&markers=color:red%7C28.5448,77.3956"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1751.5!2d77.3956!3d28.5448!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDMyJzQxLjMiTiA3N8KwMjMnNDQuMiJF!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin"
               width="100%"
               height="400"
               style={{ border: 0 }}
@@ -413,7 +413,7 @@ const Contact = () => {
               className="w-full"
             />
             
-            {/* Gruner Branding Overlay */}
+            {/* Gruner Branding Label - Top Left */}
             <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-3 z-10">
               <img 
                 src={grunerLogo} 
