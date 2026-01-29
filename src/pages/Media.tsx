@@ -117,114 +117,76 @@ const Media = () => {
   return (
     <PageLayout>
       {/* ================= HERO (ELITE SPLIT) ================= */}
-      <section className="relative bg-white pt-28 pb-24 overflow-hidden">
-        <div className="container-wide grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-          {/* LEFT */}
+      <section className="relative bg-white pt-28 pb-16 overflow-hidden">
+        <div className="container-wide">
+          {/* Header */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
           >
-            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT} rounded-md`}>Media Coverage</span>
-
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight">
+            <span className={`inline-flex px-4 py-2 text-sm text-white font-semibold ${GRADIENT} rounded-md mb-4`}>Media Coverage</span>
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-heading font-bold text-black leading-tight mb-4">
               Gruner Renewable Energy in the <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">News</span>
             </h1>
-
-            <p className="text-gray-700 text-lg md:text-xl max-w-xl">
-              Read about our latest milestones, investments, growth journey and industry impact across leading
-              publications.
+            <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto">
+              Read about our latest milestones, investments, growth journey and industry impact across leading publications.
             </p>
-
-            {/* CTA */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a
-                href="#coverage"
-                className={`inline-flex items-center gap-2 px-7 py-3 text-white font-semibold ${GRADIENT} rounded-md shadow-lg hover:shadow-xl transition-all`}
-              >
-                Explore Coverage
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href="mailto:info@grunerrenewable.com"
-                className="inline-flex items-center gap-2 px-7 py-3 font-semibold text-black border border-black/15 rounded-md hover:border-black/30 transition-all"
-              >
-                Press Contact
-              </a>
-            </div>
-
-            {/* STATS */}
-            <div className="grid grid-cols-3 gap-6 pt-8 max-w-xl">
-              {pressHighlights.map((item) => (
-                <div key={item.label} className="border-l-2 border-[#1f8f7a] pl-4">
-                  <div className={`text-xl font-bold ${GRADIENT_TEXT}`}>
-                    <AnimatedCounter value={item.stat} />
-                    {item.suffix}
-                  </div>
-                  <div className="text-xs text-gray-600 font-medium">{item.label}</div>
-                </div>
-              ))}
-            </div>
           </motion.div>
 
-          {/* RIGHT - GALLERY GRID */}
+          {/* Stats Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12"
+          >
+            {pressHighlights.map((item) => (
+              <div key={item.label} className="text-center p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <div className={`text-2xl md:text-3xl font-bold ${GRADIENT_TEXT}`}>
+                  <AnimatedCounter value={item.stat} />
+                  {item.suffix}
+                </div>
+                <div className="text-xs text-gray-600 font-medium mt-1">{item.label}</div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Gallery Section */}
           <motion.div
             id="gallery"
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="mb-4">
-              <h3 className="text-lg font-heading font-semibold text-black">Gallery</h3>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-heading font-semibold text-black">Gallery</h2>
+              <span className="text-sm text-gray-500">{mediaImages.length} Photos</span>
             </div>
-            <div className="grid grid-cols-3 grid-rows-3 gap-2 h-[400px] md:h-[480px]">
-              {/* Large image - spans 2 cols and 2 rows */}
-              <div className="col-span-2 row-span-2 overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={mediaImages[0]}
-                  alt="Media Coverage"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              {/* Right column images */}
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={mediaImages[1]}
-                  alt="Media Coverage"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={mediaImages[2]}
-                  alt="Media Coverage"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              {/* Bottom row images */}
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={mediaImages[3]}
-                  alt="Media Coverage"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={mediaImages[4]}
-                  alt="Media Coverage"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={mediaImages[5]}
-                  alt="Media Coverage"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+            
+            {/* Structured Gallery Grid - 2 rows */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+              {mediaImages.map((img, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className={`relative overflow-hidden rounded-lg shadow-md group cursor-pointer ${
+                    index === 0 ? 'col-span-2 row-span-2' : ''
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt={`Media Coverage ${index + 1}`}
+                    className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 ${
+                      index === 0 ? 'h-full min-h-[280px]' : 'h-32 md:h-40'
+                    }`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
