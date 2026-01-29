@@ -280,28 +280,28 @@ const LeadershipSection = () => {
 
         {/* Team Carousel */}
         <div className="relative">
-          {/* Navigation buttons */}
-          <div className="absolute -top-16 right-0 flex gap-2 z-10">
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={!canScrollPrev}
-              aria-label="Previous"
-            >
-              <ChevronLeft className="w-5 h-5 text-white" />
-            </button>
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={!canScrollNext}
-              aria-label="Next"
-            >
-              <ChevronRight className="w-5 h-5 text-white" />
-            </button>
-          </div>
+          {/* Left Arrow - Positioned outside carousel */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-5 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/15 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-all duration-300 shadow-lg backdrop-blur-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            disabled={!canScrollPrev}
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+          </button>
+
+          {/* Right Arrow - Positioned outside carousel */}
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-5 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/15 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-all duration-300 shadow-lg backdrop-blur-sm disabled:opacity-40 disabled:cursor-not-allowed"
+            disabled={!canScrollNext}
+            aria-label="Next"
+          >
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+          </button>
 
           {/* Carousel */}
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div className="overflow-hidden px-6 md:px-10" ref={emblaRef}>
             <div className="flex -ml-4">
               {leadership.map((leader, index) => (
                 <div
