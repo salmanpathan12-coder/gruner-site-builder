@@ -424,7 +424,6 @@ const Contact = () => {
               <img src={grunerLogo} alt="Gruner Renewable Energy" className="h-10 w-auto" />
               <div className="border-l border-border pl-3">
                 <div className="text-sm font-bold text-primary">Gruner Renewable Energy</div>
-                <div className="text-xs text-muted-foreground">Corporate Headquarters</div>
               </div>
             </div>
           </motion.div>
