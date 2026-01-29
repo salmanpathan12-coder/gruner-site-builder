@@ -7,22 +7,22 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { label: "About Us", href: "#about" },
-      { label: "Leadership", href: "#team" },
-      { label: "Careers", href: "#contact" },
-      { label: "News & Media", href: "#" },
+      { label: "About Us", href: "/about" },
+      { label: "Leadership", href: "/about#leadership" },
+      { label: "Careers", href: "/careers" },
+      { label: "News & Media", href: "/media" },
     ],
     solutions: [
-      { label: "EPC Services", href: "#solutions" },
-      { label: "O&M Services", href: "#solutions" },
-      { label: "Technology", href: "#solutions" },
-      { label: "Projects", href: "#projects" },
+      { label: "EPC Services", href: "/solutions" },
+      { label: "O&M Services", href: "/solutions/om" },
+      { label: "Technology", href: "/technology" },
+      { label: "Projects", href: "/#projects" },
     ],
     resources: [
-      { label: "Investor Relations", href: "#about" },
-      { label: "Sustainability", href: "#" },
-      { label: "Certifications", href: "#awards" },
-      { label: "Contact", href: "#contact" },
+      { label: "Investor Relations", href: "/about" },
+      { label: "Sustainability", href: "/technology" },
+      { label: "Certifications", href: "/#awards" },
+      { label: "Contact", href: "/contact" },
     ],
   };
 

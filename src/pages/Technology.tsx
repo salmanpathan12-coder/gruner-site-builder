@@ -94,6 +94,29 @@ const Technology = () => {
 
   return (
     <PageLayout>
+      {/* GRE Watermark Overlay - Anti-copy protection */}
+      <div className="fixed inset-0 pointer-events-none z-[9999] select-none" aria-hidden="true">
+        <div 
+          className="w-full h-full opacity-[0.03]"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 100px,
+              rgba(31, 143, 122, 0.15) 100px,
+              rgba(31, 143, 122, 0.15) 101px
+            )`,
+            backgroundSize: '200px 200px',
+          }}
+        />
+        <div 
+          className="absolute inset-0 flex items-center justify-center opacity-[0.02]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='100'%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='14' fill='%231f8f7a' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 150 50)'%3EGRUNER RENEWABLE ENERGY%3C/text%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+          }}
+        />
+      </div>
       <TechnologyHero />
 
       {/* ================= INTRO ================= */}
@@ -130,7 +153,7 @@ const Technology = () => {
               Introduction to <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">CSTR Technology</span>
             </h2>
 
-            <div className="space-y-4 text-gray-600 text-base leading-relaxed">
+            <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
               <p>
                 Ever wondered what makes CSTR (Continuous-Flow Stirred Tank Reactor) technology a key player in biogas
                 production? CSTRs ensure perfect homogenization of biomass with continuous mixing.
@@ -232,7 +255,7 @@ const Technology = () => {
                         </div>
 
                         {activeStep === i && (
-                          <p className="text-sm text-gray-600 mt-2 leading-relaxed">{step.description}</p>
+                          <p className="text-base text-gray-600 mt-2 leading-relaxed">{step.description}</p>
                         )}
                       </div>
                     </div>
@@ -288,8 +311,8 @@ const Technology = () => {
                 <div className={`w-9 h-9 rounded-md mb-2 flex items-center justify-center text-white ${GRADIENT}`}>
                   <adv.icon className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-bold text-gray-900 mb-1">{adv.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{adv.description}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-1">{adv.title}</h3>
+                <p className="text-base text-gray-600 leading-relaxed">{adv.description}</p>
               </motion.div>
             ))}
           </div>
@@ -313,7 +336,7 @@ const Technology = () => {
               CSTRs and <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">Environmental Impact</span>
             </h2>
 
-            <div className="space-y-4 text-gray-600 text-base leading-relaxed">
+            <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
               <p>
                 How do CSTRs contribute to environmental sustainability? CSTRs enable the conversion of diverse
                 biomasses into renewable energy, reducing reliance on fossil fuels and lowering greenhouse gas

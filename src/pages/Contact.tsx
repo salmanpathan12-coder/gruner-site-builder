@@ -27,8 +27,13 @@ const contactInfo = [
   },
   {
     icon: Phone,
-    title: "Phone",
+    title: "Sales Inquiries",
     details: ["1800 890 5180", "(Toll Free)"],
+  },
+  {
+    icon: Phone,
+    title: "General Inquiries",
+    details: ["+91 120 4567890", "(Support Line)"],
   },
   {
     icon: Mail,

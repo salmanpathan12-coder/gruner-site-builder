@@ -132,7 +132,7 @@ const Media = () => {
               Gruner Renewable Energy in the <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">News</span>
             </h1>
 
-            <p className="text-gray-700 text-lg max-w-xl">
+            <p className="text-gray-700 text-lg md:text-xl max-w-xl">
               Read about our latest milestones, investments, growth journey and industry impact across leading
               publications.
             </p>
@@ -168,20 +168,24 @@ const Media = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT - COLLAGE */}
+          {/* RIGHT - GALLERY GRID */}
           <motion.div
+            id="gallery"
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
+            <div className="mb-4">
+              <h3 className="text-lg font-heading font-semibold text-black">Gallery</h3>
+            </div>
             <div className="grid grid-cols-3 grid-rows-3 gap-2 h-[400px] md:h-[480px]">
               {/* Large image - spans 2 cols and 2 rows */}
               <div className="col-span-2 row-span-2 overflow-hidden rounded-lg shadow-lg">
                 <img
                   src={mediaImages[0]}
                   alt="Media Coverage"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               {/* Right column images */}
@@ -189,14 +193,14 @@ const Media = () => {
                 <img
                   src={mediaImages[1]}
                   alt="Media Coverage"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="overflow-hidden rounded-lg shadow-lg">
                 <img
                   src={mediaImages[2]}
                   alt="Media Coverage"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               {/* Bottom row images */}
@@ -204,34 +208,23 @@ const Media = () => {
                 <img
                   src={mediaImages[3]}
                   alt="Media Coverage"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="overflow-hidden rounded-lg shadow-lg">
                 <img
                   src={mediaImages[4]}
                   alt="Media Coverage"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="overflow-hidden rounded-lg shadow-lg">
                 <img
                   src={mediaImages[5]}
                   alt="Media Coverage"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
-            </div>
-
-            {/* Floating Cards */}
-            <div className="absolute -bottom-8 -left-8 bg-white p-5 border border-black/5 shadow-lg z-10">
-              <div className="text-sm font-bold text-black">Global Media</div>
-              <div className="text-xs text-gray-600">National & international coverage</div>
-            </div>
-
-            <div className="absolute -top-8 -right-8 bg-white p-5 border border-black/5 shadow-lg z-10">
-              <div className="text-sm font-bold text-black">Investor Trust</div>
-              <div className="text-xs text-gray-600">Institutional recognition</div>
             </div>
           </motion.div>
         </div>
@@ -304,7 +297,7 @@ const Media = () => {
                 <h3 className="text-2xl md:text-3xl font-heading font-semibold mb-4 group-hover:text-primary transition-colors">
                   {mediaArticles[0].title}
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground text-base md:text-lg mb-6">
                   Gruner Renewable Energy has secured $60 million in funding to expand its compressed biogas (CBG)
                   projects across India, marking a significant milestone in the company's growth trajectory.
                 </p>
@@ -376,7 +369,7 @@ const Media = () => {
         <div className="container-narrow text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-2xl md:text-3xl font-heading font-semibold mb-4">Press Inquiries</h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-muted-foreground text-base md:text-lg mb-8">
               For media inquiries, interviews, or press releases, please contact our communications team.
             </p>
             <a
