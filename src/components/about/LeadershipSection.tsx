@@ -140,7 +140,19 @@ const LeaderCard = ({
               <h3 className="text-base font-heading font-semibold text-white mb-0.5 leading-tight">
                 {leader.name}
               </h3>
-              <p className="text-white/80 text-sm font-body">{leader.role}</p>
+              <p className="text-white/80 text-sm font-body mb-2">{leader.role}</p>
+              {/* LinkedIn link below name */}
+              <a 
+                href={leader.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-[#0077b5] hover:text-white transition-colors"
+                aria-label={`${leader.name} LinkedIn`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                <span className="font-medium">LinkedIn</span>
+              </a>
             </motion.div>
           </div>
         </div>
