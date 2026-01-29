@@ -94,25 +94,26 @@ const Technology = () => {
 
   return (
     <PageLayout>
-      {/* GRE Watermark Overlay - Anti-copy protection */}
+      {/* GRE Watermark Overlay - Anti-copy protection - Visible diagonal repeating pattern */}
       <div className="fixed inset-0 pointer-events-none z-[9999] select-none" aria-hidden="true">
+        {/* Diagonal line pattern */}
         <div 
-          className="w-full h-full opacity-[0.03]"
+          className="w-full h-full"
           style={{
             backgroundImage: `repeating-linear-gradient(
               -45deg,
               transparent,
-              transparent 100px,
-              rgba(31, 143, 122, 0.15) 100px,
-              rgba(31, 143, 122, 0.15) 101px
+              transparent 80px,
+              rgba(31, 143, 122, 0.06) 80px,
+              rgba(31, 143, 122, 0.06) 82px
             )`,
-            backgroundSize: '200px 200px',
           }}
         />
+        {/* GRE Text watermark - repeating pattern */}
         <div 
-          className="absolute inset-0 flex items-center justify-center opacity-[0.02]"
+          className="absolute inset-0"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='100'%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='14' fill='%231f8f7a' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 150 50)'%3EGRUNER RENEWABLE ENERGY%3C/text%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='150'%3E%3Ctext x='50%25' y='50%25' font-family='Arial,sans-serif' font-size='20' font-weight='bold' fill='%231f8f7a' fill-opacity='0.08' text-anchor='middle' dominant-baseline='middle' transform='rotate(-35 125 75)'%3EGRE%3C/text%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat',
           }}
         />
