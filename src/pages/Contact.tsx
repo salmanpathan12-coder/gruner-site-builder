@@ -429,12 +429,6 @@ const Contact = () => {
                 <div className="text-sm font-bold text-primary">Gruner Renewable Energy</div>
               </div>
             </div>
-
-            {/* Custom Map Pin Label - Center of map */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full z-10 pointer-events-none">
-              {/* Pin pointer */}
-              <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-primary mx-auto" />
-            </div>
           </motion.div>
         </div>
       </section>
