@@ -92,38 +92,25 @@ const Technology = () => {
     return () => window.removeEventListener("resize", updateHeights);
   }, [activeStep]);
 
+  // Disable right-click and drag on technology media
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    return false;
+  };
+
+  const handleDragStart = (e: React.DragEvent) => {
+    e.preventDefault();
+    return false;
+  };
+
   return (
     <PageLayout>
-      {/* GRE Watermark Overlay - Anti-copy protection - Visible diagonal repeating pattern */}
-      <div className="fixed inset-0 pointer-events-none z-[9999] select-none" aria-hidden="true">
-        {/* Diagonal line pattern */}
-        <div 
-          className="w-full h-full"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              -45deg,
-              transparent,
-              transparent 80px,
-              rgba(31, 143, 122, 0.06) 80px,
-              rgba(31, 143, 122, 0.06) 82px
-            )`,
-          }}
-        />
-        {/* GRE Text watermark - repeating pattern */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='150'%3E%3Ctext x='50%25' y='50%25' font-family='Arial,sans-serif' font-size='20' font-weight='bold' fill='%231f8f7a' fill-opacity='0.08' text-anchor='middle' dominant-baseline='middle' transform='rotate(-35 125 75)'%3EGRE%3C/text%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat',
-          }}
-        />
-      </div>
       <TechnologyHero />
 
       {/* ================= INTRO ================= */}
       <section className="py-16 bg-white">
         <div className="container-wide grid lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT - Image */}
+          {/* LEFT - Image with Protection */}
           <motion.div
             ref={introRightRef}
             initial={{ opacity: 0, x: -30 }}
@@ -131,11 +118,22 @@ const Technology = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{ height: introHeight ? `${introHeight}px` : "auto" }}
+            className="relative select-none"
+            onContextMenu={handleContextMenu}
           >
             <img
               src={cstrCutawayImage}
               alt="CSTR Technology Cutaway"
-              className="w-full h-full object-cover rounded-md shadow-lg"
+              className="w-full h-full object-cover rounded-md shadow-lg pointer-events-none"
+              draggable={false}
+            />
+            {/* GRE Watermark Overlay */}
+            <div 
+              className="absolute inset-0 pointer-events-none rounded-md"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120'%3E%3Ctext x='50%25' y='50%25' font-family='Arial,sans-serif' font-size='24' font-weight='bold' fill='%231f8f7a' fill-opacity='0.12' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 90 60)'%3EGRE%3C/text%3E%3C/svg%3E")`,
+                backgroundRepeat: 'repeat',
+              }}
             />
           </motion.div>
 
@@ -266,23 +264,34 @@ const Technology = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT VISUAL - CSTR Process Video */}
+          {/* RIGHT VISUAL - CSTR Process Video with Protection */}
           <motion.div
             ref={processRightRef}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-md overflow-hidden shadow-md flex items-center"
+            className="rounded-md overflow-hidden shadow-md flex items-center relative select-none"
             style={{ height: processHeight ? `${processHeight}px` : "auto" }}
+            onContextMenu={handleContextMenu}
           >
             <video
+              controlsList="nodownload"
+              disablePictureInPicture
               src={cstrProcessVideo}
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover pointer-events-none"
+            />
+            {/* GRE Watermark Overlay on Video */}
+            <div 
+              className="absolute inset-0 pointer-events-none rounded-md"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120'%3E%3Ctext x='50%25' y='50%25' font-family='Arial,sans-serif' font-size='24' font-weight='bold' fill='%231f8f7a' fill-opacity='0.12' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 90 60)'%3EGRE%3C/text%3E%3C/svg%3E")`,
+                backgroundRepeat: 'repeat',
+              }}
             />
           </motion.div>
         </div>
