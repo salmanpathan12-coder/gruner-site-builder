@@ -1,340 +1,220 @@
 
-# Full Website Comparison Report: React vs Static HTML
 
-## Executive Summary
+# Plan: Add Blog Page to Static HTML Version
 
-The **React/Lovable source is the LATEST and AUTHORITATIVE version**. The static HTML version in `static-html/` is **outdated** and requires significant updates to achieve parity with the current React implementation.
+## Overview
 
----
-
-## Section 1: Overall Structure Comparison
-
-### Pages Present in Both Versions
-
-| Page | React Path | HTML Path | Status |
-|------|-----------|-----------|--------|
-| Home | `src/pages/Index.tsx` | `static-html/index.html` | Outdated |
-| About | `src/pages/About.tsx` | `static-html/about.html` | Significantly Outdated |
-| Technology | `src/pages/Technology.tsx` | `static-html/technology.html` | Outdated (CTA styling) |
-| Solutions | `src/pages/Solutions.tsx` | `static-html/solutions.html` | Minor differences |
-| Media | `src/pages/Media.tsx` | `static-html/media.html` | Outdated (different images) |
-| Careers | `src/pages/Careers.tsx` | `static-html/careers.html` | Minor differences |
-| Contact | `src/pages/Contact.tsx` | `static-html/contact.html` | Significantly Outdated |
-| Blog | `src/pages/Blog.tsx` | Missing | Not converted |
-
-### Solution Subpages (All 6 present in both)
-- Project Development
-- Engineering & Construction
-- R&D
-- CNG Retail
-- Bio-Gas
-- O&M
+Create a complete `blog.html` page matching the React `Blog.tsx` component, along with required CSS and navigation updates across all 13 HTML pages.
 
 ---
 
-## Section 2: Critical Differences by Page
+## Phase 1: Create Blog HTML Page
 
-### 2.1 About Page - MAJOR UPDATES REQUIRED
+### File: `static-html/blog.html`
 
-**Leadership Section (`LeadershipSection.tsx` vs `about.html#leadership`)**
+**Structure (matching React exactly):**
 
-| Feature | React Version | HTML Version | Delta |
-|---------|---------------|--------------|-------|
-| Layout | Embla Carousel slider | Static grid | Major rewrite |
-| Team Members | 6 leaders + 1 founder | 2 leaders + 1 founder | Missing 4 people |
-| Navigation | Left/Right arrow buttons with `w-11 h-11` circular UI | None | Add carousel JS |
-| LinkedIn Icons | Visible by default below names (`w-7 h-7 rounded-full bg-[#0077b5]`) | Hidden/hover only | UI update |
-| Carousel Features | Infinite loop, touch/drag support | N/A | Add Embla or custom JS |
-
-**Missing Team Members in HTML:**
-1. Mr. Asit Chaterjee - Group President
-2. Mr. Rajesh Gupta - EVP Engineering  
-3. Ajmal Singh Kathat - EVP Projects
-4. Mr. Sanjay Nandre - EVP Design
-
----
-
-### 2.2 Contact Page - MAJOR LAYOUT CHANGES
-
-**Layout Structure Comparison:**
-
-```text
-REACT VERSION (Current):
-+------------------------------------------+
-|  Contact Hero (white background)          |
-+------------------------------------------+
-|  Contact Form Section (creamy bg #FAF7F2) |
-|  +-------------------+------------------+ |
-|  |  Contact Form     |  Contact Info    | |
-|  |  (lg:col-span-3)  |  Sidebar Cards   | |
-|  +-------------------+------------------+ |
-|  +--------------------------------------+ |
-|  |  Quick Response Promise (full width) | |
-|  +--------------------------------------+ |
-|  +--------------------------------------+ |
-|  |  Connect With Us (full width)        | |
-|  |  [FB] [IG] [LinkedIn] [X] [YT]       | |
-|  +--------------------------------------+ |
-+------------------------------------------+
-|  Map Section (with branding overlay)     |
-+------------------------------------------+
-
-HTML VERSION (Outdated):
-+------------------------------------------+
-|  Contact Hero                             |
-+------------------------------------------+
-|  +-------------------+------------------+ |
-|  |  Contact Form     |  Contact Info    | |
-|  |                   |  Cards           | |
-|  +-------------------+------------------+ |
-+------------------------------------------+
-|  Map Section (generic iframe)            |
-+------------------------------------------+
+```
+blog.html
+├── Page Loader (standard)
+├── Header (with Blog link active)
+├── Main Content
+│   ├── Hero Section
+│   │   ├── Breadcrumb (Home / Blog)
+│   │   ├── Title: "Blog"
+│   │   └── Description text
+│   ├── Blog Posts Grid
+│   │   ├── Card 1: "The Future of Bio-CNG..."
+│   │   ├── Card 2: "Understanding CSTR Technology..."
+│   │   └── Card 3: "Agricultural Waste to Clean Energy..."
+│   └── Coming Soon Notice
+└── Footer
 ```
 
-**Key Differences:**
-- HTML missing: Full-width stacked "Quick Response Promise" and "Connect With Us" cards
-- HTML missing: Social media icons (Facebook, Instagram, LinkedIn, X, YouTube)
-- HTML: Contact info cards are in sidebar; React: Business Hours + form then stacked cards
-- Map: React has branded overlay with Gruner logo; HTML has plain iframe
+### Blog Post Cards - Data to Include:
+
+| # | Title | Category | Author | Date | Read Time | Image URL |
+|---|-------|----------|--------|------|-----------|-----------|
+| 1 | The Future of Bio-CNG in India's Energy Transition | Industry Insights | Gruner Team | Jan 15, 2025 | 5 min read | S3: 1efe4048fa1.jpeg |
+| 2 | Understanding CSTR Technology for Biogas Production | Technology | Technical Team | Jan 10, 2025 | 8 min read | S3: 873015d8f04.jpeg |
+| 3 | Agricultural Waste to Clean Energy: The Complete Process | Process | Operations Team | Jan 5, 2025 | 6 min read | S3: 026c6cb8455.jpeg |
+
+### Card UI Components:
+- Category badge (top-left overlay on image)
+- Image with hover scale effect
+- Date icon + text (Calendar icon)
+- Read time icon + text (Clock icon)
+- Title (line-clamp-2)
+- Excerpt (line-clamp-3)
+- Author with icon (User icon)
+- "Read More" link with arrow
 
 ---
 
-### 2.3 Technology Page - CTA STYLING UPDATE
+## Phase 2: Create Blog CSS
 
-**Section Labels (CTA Badges):**
+### File: `static-html/css/pages/blog.css`
 
-| Element | React (Current) | HTML (Outdated) |
-|---------|-----------------|-----------------|
-| Font Size | `text-base` | `text-sm` (or smaller) |
-| Padding | `px-6 py-3` | `px-5 py-2.5` |
-| Labels | "Our Technology", "The Process", "Benefits", "Sustainability" | Same labels |
+**CSS Classes to Create:**
 
-**Additional differences:**
-- React has GRE watermark overlay on CSTR image and video (copy protection)
-- React uses height-matching between content and media columns
+```css
+/* Hero Section */
+.blog-hero
+.blog-hero__breadcrumb
+.blog-hero__title
+.blog-hero__description
 
----
+/* Blog Grid */
+.blog-grid
+.blog-card
+.blog-card__image
+.blog-card__category
+.blog-card__content
+.blog-card__meta
+.blog-card__title
+.blog-card__excerpt
+.blog-card__footer
+.blog-card__author
+.blog-card__read-more
 
-### 2.4 Home Page - Map Section
-
-**Projects Map (`ProjectsMapSection.tsx` vs `index.html#projects`):**
-
-| Feature | React | HTML |
-|---------|-------|------|
-| Map Styling | `filter: brightness(1.8) contrast(1.1) invert(1)` for dark bg visibility | Basic filter |
-| Gruner Brand Label | Present below map with logo | Missing |
-| Interactive Markers | SVG markers with hover tooltips | Static or basic markers |
-
----
-
-### 2.5 Home Page - Trusted By Section
-
-| Feature | React | HTML |
-|---------|-------|------|
-| Animation | Infinite auto-scroll with Framer Motion | Static or basic CSS animation |
-| Reliance Logo | Featured with scale increase and glow effect | Same as others |
-| Gradient Fades | Left/right fade edges | May be missing |
-
----
-
-### 2.6 Media Page - Content Differences
-
-| Feature | React | HTML |
-|---------|-------|------|
-| Article Images | S3 bucket URLs (grunerrenewable.s3...) | Local assets or different URLs |
-| Article Count | 8 articles with real links | Potentially fewer |
-| Press Highlights | 3 stats (60M, 220 Cr, 8+ Publications) | May differ |
-
----
-
-### 2.7 Blog Page - MISSING IN HTML
-
-The `src/pages/Blog.tsx` page has **no HTML equivalent**. This is a complete gap.
-
----
-
-## Section 3: Header/Footer/Navigation
-
-### Header (`Header.tsx` vs header in HTML files)
-
-| Feature | React | HTML |
-|---------|-------|------|
-| Scroll Effect | Framer Motion opacity transform | CSS class toggle |
-| Mobile Menu | AnimatePresence animations | Basic toggle |
-| Dropdown | Hover with AnimatePresence | CSS hover |
-| Active Link | Dynamic based on `location.pathname` | Manual per-page |
-
-**Navigation Structure Match:** Both versions have identical menu items and dropdown structure.
-
-### Footer (`Footer.tsx` vs footer in HTML files)
-
-| Feature | React | HTML |
-|---------|-------|------|
-| Year | Dynamic `new Date().getFullYear()` | Hardcoded "2024" |
-| Social Links | LinkedIn, Twitter with hover effects | Similar |
-| Logo | Inverted with `brightness-0 invert` | Similar filter |
-
----
-
-## Section 4: Global Components Comparison
-
-### Page Loader
-- Both implement branded loading screen with logo and progress bar
-- Implementation differs: React uses component, HTML uses standalone JS
-
-### Animations
-- React: Framer Motion (`motion.div`, `useInView`, `AnimatePresence`)
-- HTML: CSS keyframes + IntersectionObserver in `animations.js`
-
-### Form Validation
-- React: `react-hook-form` + `zod` schemas
-- HTML: Vanilla JS in `form.js`
-
----
-
-## Section 5: Assets Comparison
-
-### Images
-| Location | React | HTML |
-|----------|-------|------|
-| Logo | `src/assets/gruner-logo.png` | `static-html/assets/images/gruner-logo.png` |
-| Hero Video | `src/assets/hero-video.mp4` | `static-html/assets/images/hero-video.mp4` |
-| CSTR Images | `src/assets/cstr-*.jpg` | `static-html/assets/images/cstr-*.jpg` |
-
-**Status:** Assets appear synchronized from previous conversion.
-
-### External Images (S3)
-- Leadership photos use S3 URLs in both versions
-- Media page images use S3 URLs in React but may use local files in HTML
-
----
-
-## Section 6: CSS Architecture Notes
-
-HTML version uses modular CSS with BEM compatibility layer:
-- `variables.css` - Design tokens
-- `base.css` - Reset/typography
-- `bem-compat.css` - ~700 lines bridging BEM to flat CSS
-- Page-specific CSS files
-
-The BEM compatibility approach is working but adds maintenance overhead.
-
----
-
-## Section 7: Technical Observations
-
-### Missing in HTML
-1. Blog page completely absent
-2. Embla carousel library not included
-3. Updated leadership data (4 team members)
-4. Contact page restructured layout
-5. Social media icons in contact section
-6. Map branding overlay
-7. Technology CTA updated styling
-
-### Unchanged/Synced
-1. Solution subpages structure
-2. Careers page
-3. General navigation structure
-4. Most text content (company description, vision, mission)
-5. Basic page layouts
-
----
-
-## Section 8: Update Strategy Plan
-
-### Option A: Targeted Sync (Recommended)
-
-Estimated effort: Medium
-Risk level: Low
-
-```text
-Priority 1 - Critical (UI Regressions)
-+---------------------------------------+
-| 1. About Page Leadership Section      |
-|    - Add 4 missing team members       |
-|    - Convert to carousel layout       |
-|    - Add navigation arrows            |
-|    - Update LinkedIn icon visibility  |
-+---------------------------------------+
-| 2. Contact Page Layout                |
-|    - Restructure to vertical flow     |
-|    - Add Quick Response Promise card  |
-|    - Add Connect With Us card         |
-|    - Add social media icons           |
-|    - Update map with branding overlay |
-+---------------------------------------+
-
-Priority 2 - Visual Refinements
-+---------------------------------------+
-| 3. Technology CTA Styling             |
-|    - Increase text-sm to text-base    |
-|    - Update padding px-5 to px-6      |
-+---------------------------------------+
-| 4. Home Page Map                      |
-|    - Add Gruner brand label           |
-|    - Verify filter for dark bg        |
-+---------------------------------------+
-| 5. Media Page                         |
-|    - Verify all article links/images  |
-+---------------------------------------+
-
-Priority 3 - New Content
-+---------------------------------------+
-| 6. Create Blog Page (blog.html)       |
-|    - Full page conversion             |
-+---------------------------------------+
+/* Coming Soon Notice */
+.blog-coming-soon
+.blog-coming-soon__title
+.blog-coming-soon__text
 ```
 
-### Option B: Full Rebuild
-
-Estimated effort: High
-Risk level: Medium (regression potential)
-
-Re-convert all 13+ pages from scratch using current React source as reference. This ensures 100% parity but requires more time.
-
----
-
-## Section 9: Dependency Impact Analysis
-
-### Leadership Carousel
-- Requires: Embla Carousel JS or custom slider implementation
-- CSS: New styles for carousel navigation, slide containers
-- Files affected: `about.html`, `css/pages/about.css`, new JS file
-
-### Contact Layout
-- Requires: Grid restructuring only (no new JS)
-- CSS: New card styles, stacking layout
-- Files affected: `contact.html`, `css/pages/contact.css`
-
-### Blog Page
-- Requires: Full new page creation
-- CSS: New `css/pages/blog.css`
-- Files affected: New `blog.html`, CSS, update navigation in all 13 pages
+**Styling Approach:**
+- Follow existing CSS patterns from `media.css` (article cards)
+- Use CSS variables from `variables.css`
+- Maintain responsive grid: 1 col mobile, 2 col tablet, 3 col desktop
+- Match Tailwind utility translations:
+  - `rounded-xl` = `border-radius: 0.75rem`
+  - `shadow-md` = `var(--shadow-md)`
+  - `line-clamp-2/3` = `-webkit-line-clamp: 2/3`
+  - `bg-muted/30` = `var(--muted-alpha-30)` or equivalent
 
 ---
 
-## Section 10: Risk Assessment
+## Phase 3: Update Navigation (13 Files)
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Carousel JS complexity | Medium | Use established library (Swiper/Glide) |
-| Breaking existing styles | Low | Test incrementally, backup before changes |
-| Navigation updates for Blog | Low | Global header is templated |
-| Missing assets | Low | All assets appear synced already |
-| Footer year hardcode | Trivial | Change "2024" to dynamic JS |
+### Files to Update:
+
+**Main Pages (7 files):**
+1. `static-html/index.html`
+2. `static-html/about.html`
+3. `static-html/technology.html`
+4. `static-html/solutions.html`
+5. `static-html/media.html`
+6. `static-html/careers.html`
+7. `static-html/contact.html`
+
+**Solution Subpages (6 files):**
+8. `static-html/solutions/project-development.html`
+9. `static-html/solutions/engineering-construction.html`
+10. `static-html/solutions/rd.html`
+11. `static-html/solutions/cng-retail.html`
+12. `static-html/solutions/bio-gas.html`
+13. `static-html/solutions/om.html`
+
+### Navigation Changes Per File:
+
+**Desktop Nav - Add Blog link after Media:**
+```html
+<!-- Before -->
+<a href="media.html" class="header__link">Media</a>
+<a href="careers.html" class="header__link">Careers</a>
+
+<!-- After -->
+<a href="media.html" class="header__link">Media</a>
+<a href="blog.html" class="header__link">Blog</a>
+<a href="careers.html" class="header__link">Careers</a>
+```
+
+**Mobile Nav - Same addition:**
+```html
+<!-- Add after Media link -->
+<a href="blog.html" class="header__mobile-link">Blog</a>
+```
+
+**Note for subpages:** Use `../blog.html` relative path.
 
 ---
 
-## Recommendation
+## Phase 4: Minor Updates
 
-**Proceed with Option A: Targeted Sync**
+### Footer Year (Optional but Recommended)
 
-Focus on the 6 priority items above. The HTML structure is solid and the BEM compatibility layer works. A surgical update of specific sections is more efficient than a full rebuild.
+Update hardcoded "2024" to dynamic year using existing `utils.js`:
 
-Estimated update scope:
-- 2 major page restructures (About Leadership, Contact)
-- 2 minor style updates (Technology, Home Map)
-- 1 new page creation (Blog)
-- Navigation updates across all pages for Blog link
+```javascript
+// In footer section of each page, or via JS:
+document.querySelector('.footer__copyright-year').textContent = 
+  GrunerUtils.getCurrentYear();
+```
+
+---
+
+## File Summary
+
+| Action | File | Type |
+|--------|------|------|
+| CREATE | `static-html/blog.html` | HTML |
+| CREATE | `static-html/css/pages/blog.css` | CSS |
+| UPDATE | 7 main HTML pages | Navigation |
+| UPDATE | 6 solution subpages | Navigation |
+
+**Total: 2 new files + 13 file updates**
+
+---
+
+## Dependencies
+
+| Dependency | Source | Status |
+|------------|--------|--------|
+| CSS Variables | `variables.css` | Already exists |
+| Base Styles | `base.css` | Already exists |
+| BEM Compat | `bem-compat.css` | May need additions |
+| Animations | `animations.css` | Already exists |
+| Utils JS | `utils.js` | Already exists |
+
+---
+
+## Risk Assessment
+
+| Risk | Level | Mitigation |
+|------|-------|------------|
+| CSS naming conflicts | Low | Use `.blog-` prefix consistently |
+| Navigation breaks | Low | Test all 13 pages after update |
+| Path issues in subpages | Low | Use relative paths (`../blog.html`) |
+| Missing icons | Low | Use inline SVG (Calendar, Clock, User, Arrow) |
+| Image loading | None | Same S3 URLs as React |
+
+---
+
+## Parity Confirmation
+
+After implementing this plan:
+
+| Feature | React | HTML | Parity |
+|---------|-------|------|--------|
+| All 14 pages | ✅ | ✅ | 100% |
+| Navigation | ✅ | ✅ | 100% |
+| Leadership Carousel | ✅ | ✅ | 100% |
+| Contact Layout | ✅ | ✅ | 100% |
+| Technology CTAs | ✅ | ✅ | 100% |
+| Blog Page | ✅ | ✅ | 100% |
+| Footer Year | Dynamic | Dynamic | 100% |
+
+**Result: Full parity between React and HTML versions.**
+
+---
+
+## Execution Order
+
+1. Create `css/pages/blog.css` (styles first)
+2. Create `blog.html` (page structure)
+3. Update 7 main page navigations
+4. Update 6 subpage navigations
+5. Verify all links work
+6. Optional: Update footer year to dynamic
+
