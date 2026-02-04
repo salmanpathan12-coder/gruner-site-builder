@@ -15,7 +15,7 @@
     if (!mapContainer) return;
 
     markers = mapContainer.querySelectorAll('[data-marker]');
-    listItems = document.querySelectorAll('[data-project-item]');
+    listItems = document.querySelectorAll('.projects-map__state');
 
     // Initialize marker interactions
     markers.forEach((marker, index) => {
@@ -65,6 +65,7 @@
     if (!tooltip || !markers[index]) return;
 
     const marker = markers[index];
+    const mapContainer = document.querySelector('[data-map]');
     const data = {
       state: marker.dataset.state,
       plants: marker.dataset.plants,
@@ -72,16 +73,20 @@
     };
 
     // Update tooltip content
-    tooltip.querySelector('[data-tooltip-state]').textContent = data.state;
-    tooltip.querySelector('[data-tooltip-plants]').textContent = `${data.plants} Plants`;
-    tooltip.querySelector('[data-tooltip-status]').textContent = data.status;
-
-    // Position tooltip
-    const markerRect = marker.getBoundingClientRect();
-    const containerRect = marker.closest('[data-map]').getBoundingClientRect();
+    const stateEl = tooltip.querySelector('[data-tooltip-state]');
+    const plantsEl = tooltip.querySelector('[data-tooltip-plants]');
+    const statusEl = tooltip.querySelector('[data-tooltip-status]');
     
-    tooltip.style.left = `${markerRect.left - containerRect.left + markerRect.width / 2}px`;
-    tooltip.style.top = `${markerRect.top - containerRect.top - 10}px`;
+    if (stateEl) stateEl.textContent = data.state;
+    if (plantsEl) plantsEl.textContent = `${data.plants} Plants`;
+    if (statusEl) statusEl.textContent = ` • ${data.status}`;
+
+    // Position tooltip based on marker coordinates
+    const cx = parseFloat(marker.getAttribute('cx'));
+    const cy = parseFloat(marker.getAttribute('cy'));
+    
+    tooltip.style.left = `${cx}%`;
+    tooltip.style.top = `${cy - 8}%`;
     tooltip.classList.add('visible');
   }
 
