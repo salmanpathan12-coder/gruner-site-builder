@@ -217,48 +217,189 @@
     <!-- Leadership -->
     <section class="leadership section-padding" id="leadership">
       <div class="container-wide">
-        <div class="section-header section-header--center section-header--light scroll-fade-up">
-          <div class="divider-accent"></div>
-          <h2>Meet The Team</h2>
-          <p>Experienced leadership driving India's bioenergy transformation</p>
+        <div class="section-header section-header--left section-header--light scroll-fade-up">
+          <span class="leadership__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            Meet The Team
+          </span>
+          <h2>Our <span class="gradient-text">Leadership</span></h2>
+          <p>Seasoned industry veterans guiding Gruner Renewable with deep expertise.</p>
         </div>
-        <div class="leadership__grid">
-          <div class="leadership__founder scroll-fade-up">
-            <div class="leadership__founder-inner">
-              <div class="leadership__founder-image">
-                <img src="https://s3.us-west-1.amazonaws.com/appsinvo-staging-ys/Gruner/1b7dd6b268d.jpeg" alt="Mr. Utkarsh Gupta">
-              </div>
-              <div class="leadership__founder-info">
-                <span class="leadership__founder-badge">Founder & Visionary</span>
-                <h3 class="leadership__founder-name">Mr. Utkarsh Gupta</h3>
-                <p class="leadership__founder-role">Founder and CEO</p>
-                <p class="leadership__founder-bio">Visionary leader driving India's clean energy revolution through innovative Bio-CNG solutions and sustainable infrastructure development.</p>
-                <div class="leadership__founder-social">
-                  <a href="#" class="leadership__social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-                  <a href="#" class="leadership__social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
-                </div>
+
+        <!-- Founder Featured Block -->
+        <div class="leadership__founder scroll-fade-up">
+          <div class="leadership__founder-inner">
+            <div class="leadership__founder-image">
+              <img src="https://s3.us-west-1.amazonaws.com/appsinvo-staging-ys/Gruner/1b7dd6b268d.jpeg" alt="Mr. Utkarsh Gupta">
+            </div>
+            <div class="leadership__founder-info">
+              <span class="leadership__founder-badge">Founder & Visionary</span>
+              <h3 class="leadership__founder-name">Mr. Utkarsh Gupta</h3>
+              <p class="leadership__founder-role">Founder and CEO</p>
+              <p class="leadership__founder-bio">Visionary leader driving India's clean energy revolution through innovative Bio-CNG solutions and sustainable infrastructure development.</p>
+              <div class="leadership__founder-social">
+                <a href="https://www.linkedin.com/in/utkarsh-gupta-gruner/" target="_blank" rel="noopener noreferrer" class="leadership__social-btn leadership__social-btn--linkedin" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="mailto:utkarsh@grunerrenewable.com" class="leadership__social-btn" aria-label="Email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
               </div>
             </div>
           </div>
-          <div class="leadership__leaders">
-            <div class="leadership__leader-card scroll-fade-up" style="--delay: 0.1s">
-              <div class="leadership__leader-image">
-                <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/60737fd0ffe.png" alt="Mr. Anil Dhussa">
+        </div>
+
+        <!-- Team Carousel -->
+        <div class="leadership-carousel scroll-fade-up">
+          <!-- Left Arrow -->
+          <button class="leadership-carousel__prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <!-- Right Arrow -->
+          <button class="leadership-carousel__next" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <!-- Carousel Track -->
+          <div class="leadership-carousel__viewport">
+            <div class="leadership-carousel__track">
+              <!-- Leader 1 -->
+              <div class="leadership-carousel__slide">
+                <div class="leadership-card">
+                  <div class="leadership-card__image">
+                    <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/9c778952225.png" alt="Mr. Anil Kumar Tyagi">
+                    <div class="leadership-card__overlay">
+                      <p class="leadership-card__bio">Strategic advisor with decades of experience in renewable energy infrastructure.</p>
+                      <div class="leadership-card__social-hover">
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="mailto:anil.tyagi@grunerrenewable.com" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leadership-card__info">
+                    <h4 class="leadership-card__name">Mr. Anil Kumar Tyagi</h4>
+                    <p class="leadership-card__role">Chief Consultant</p>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__linkedin" aria-label="LinkedIn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div class="leadership__leader-info">
-                <h4 class="leadership__leader-name">Mr. Anil Dhussa</h4>
-                <p class="leadership__leader-role">Chief Advisor</p>
-                <p class="leadership__leader-bio">Industry pioneer with expertise in biogas technology and sustainable solutions.</p>
+
+              <!-- Leader 2 -->
+              <div class="leadership-carousel__slide">
+                <div class="leadership-card">
+                  <div class="leadership-card__image">
+                    <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/21eff9bca03.jpeg" alt="Mr. Asit Chaterjee">
+                    <div class="leadership-card__overlay">
+                      <p class="leadership-card__bio">Veteran leader driving organizational excellence and strategic partnerships.</p>
+                      <div class="leadership-card__social-hover">
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="mailto:asit.chaterjee@grunerrenewable.com" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leadership-card__info">
+                    <h4 class="leadership-card__name">Mr. Asit Chaterjee</h4>
+                    <p class="leadership-card__role">Group President</p>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__linkedin" aria-label="LinkedIn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="leadership__leader-card scroll-fade-up" style="--delay: 0.2s">
-              <div class="leadership__leader-image">
-                <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/9c778952225.png" alt="Mr. Anil Kumar Tyagi">
+
+              <!-- Leader 3 -->
+              <div class="leadership-carousel__slide">
+                <div class="leadership-card">
+                  <div class="leadership-card__image">
+                    <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/60737fd0ffe.png" alt="Mr. Anil Dhussa">
+                    <div class="leadership-card__overlay">
+                      <p class="leadership-card__bio">Industry pioneer with expertise in biogas technology and sustainable solutions.</p>
+                      <div class="leadership-card__social-hover">
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="mailto:anil.dhussa@grunerrenewable.com" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leadership-card__info">
+                    <h4 class="leadership-card__name">Mr. Anil Dhussa</h4>
+                    <p class="leadership-card__role">Chief Advisor</p>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__linkedin" aria-label="LinkedIn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div class="leadership__leader-info">
-                <h4 class="leadership__leader-name">Mr. Anil Kumar Tyagi</h4>
-                <p class="leadership__leader-role">Chief Consultant</p>
-                <p class="leadership__leader-bio">Strategic advisor with decades of experience in renewable energy infrastructure.</p>
+
+              <!-- Leader 4 -->
+              <div class="leadership-carousel__slide">
+                <div class="leadership-card">
+                  <div class="leadership-card__image">
+                    <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/457decaf8d4.jpeg" alt="Mr. Rajesh Gupta">
+                    <div class="leadership-card__overlay">
+                      <p class="leadership-card__bio">Engineering excellence leader ensuring highest quality standards.</p>
+                      <div class="leadership-card__social-hover">
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="mailto:rajesh.gupta@grunerrenewable.com" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leadership-card__info">
+                    <h4 class="leadership-card__name">Mr. Rajesh Gupta</h4>
+                    <p class="leadership-card__role">EVP - Engineering</p>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__linkedin" aria-label="LinkedIn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Leader 5 -->
+              <div class="leadership-carousel__slide">
+                <div class="leadership-card">
+                  <div class="leadership-card__image">
+                    <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/36a83cac955.jpeg" alt="Ajmal Singh Kathat">
+                    <div class="leadership-card__overlay">
+                      <p class="leadership-card__bio">Project management expert overseeing multi-state operations.</p>
+                      <div class="leadership-card__social-hover">
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="mailto:ajmal.kathat@grunerrenewable.com" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leadership-card__info">
+                    <h4 class="leadership-card__name">Ajmal Singh Kathat</h4>
+                    <p class="leadership-card__role">EVP - Projects</p>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__linkedin" aria-label="LinkedIn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Leader 6 -->
+              <div class="leadership-carousel__slide">
+                <div class="leadership-card">
+                  <div class="leadership-card__image">
+                    <img src="https://grunerrenewable.s3.ap-south-1.amazonaws.com/Grunerrenewable/c6b23a5abd9.jpeg" alt="Mr. Sanjay Nandre">
+                    <div class="leadership-card__overlay">
+                      <p class="leadership-card__bio">Innovative design leader creating cutting-edge Bio-CNG architectures.</p>
+                      <div class="leadership-card__social-hover">
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="mailto:sanjay.nandre@grunerrenewable.com" class="leadership-card__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="leadership-card__info">
+                    <h4 class="leadership-card__name">Mr. Sanjay Nandre</h4>
+                    <p class="leadership-card__role">EVP - Design</p>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="leadership-card__linkedin" aria-label="LinkedIn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -324,5 +465,6 @@
   <script src="js/header.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/counter.js"></script>
+  <script src="js/leadership-carousel.js"></script>
 </body>
 </html>
