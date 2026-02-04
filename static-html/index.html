@@ -80,9 +80,20 @@
           </div>
         </div>
         
-        <a href="media.html" class="header__link">Media</a>
+        <div class="header__dropdown">
+          <a href="media.html" class="header__link">
+            Media
+            <svg class="header__dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="header__dropdown-menu">
+            <a href="media.html" class="header__dropdown-link">Media</a>
+            <a href="media.html#gallery" class="header__dropdown-link">Gallery</a>
+            <a href="media.html#coverage" class="header__dropdown-link">News</a>
+          </div>
+        </div>
         <a href="blog.html" class="header__link">Blog</a>
-        <a href="careers.html" class="header__link">Careers</a>
         <a href="contact.html" class="header__link">Contact</a>
       </nav>
       
@@ -102,7 +113,6 @@
         <a href="solutions.html" class="header__mobile-link">Solutions</a>
         <a href="media.html" class="header__mobile-link">Media</a>
         <a href="blog.html" class="header__mobile-link">Blog</a>
-        <a href="careers.html" class="header__mobile-link">Careers</a>
         <a href="contact.html" class="header__mobile-link">Contact</a>
         <a href="contact.html" class="btn btn-primary">Partner With Us</a>
       </nav>
@@ -224,23 +234,26 @@
             <div class="context__stats scroll-fade-up">
               <div class="context__stat">
                 <div class="context__stat-icon">
+                  <!-- TrendingUp icon -->
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
                 </div>
-                <span class="context__stat-value gradient-text" data-counter="500">0</span><span class="context__stat-suffix">M+</span>
+                <div class="context__stat-value gradient-text"><span data-counter="500">0</span><span class="context__stat-suffix">M+</span></div>
                 <span class="context__stat-label">Tonnes agri-waste yearly</span>
               </div>
               <div class="context__stat">
                 <div class="context__stat-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h6v6h-6z"></path><path d="M4 14h6v6H4z"></path><path d="M17 17 7 7"></path></svg>
+                  <!-- Fuel icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22h12M5 22V11a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v11"></path><path d="M13 11V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2"></path><path d="M7 9V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4"></path></svg>
                 </div>
-                <span class="context__stat-value gradient-text" data-counter="85">0</span><span class="context__stat-suffix">%</span>
+                <div class="context__stat-value gradient-text"><span data-counter="85">0</span><span class="context__stat-suffix">%</span></div>
                 <span class="context__stat-label">Import dependency on fuel</span>
               </div>
               <div class="context__stat">
                 <div class="context__stat-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path></svg>
+                  <!-- Leaf icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
                 </div>
-                <span class="context__stat-value gradient-text" data-counter="2070">0</span>
+                <div class="context__stat-value gradient-text"><span data-counter="2070">0</span></div>
                 <span class="context__stat-label">Net-zero target year</span>
               </div>
             </div>
@@ -517,7 +530,7 @@
         </div>
         
         <div class="projects-map__grid">
-          <div class="projects-map__list scroll-fade-up">
+          <div class="projects-map__list scroll-fade-left">
             <div class="projects-map__states">
               <div class="projects-map__state" data-state="punjab">
                 <span class="projects-map__state-count">4</span>
@@ -587,9 +600,44 @@
             </div>
           </div>
           
-          <div class="projects-map__visual scroll-fade-up">
+          <div class="projects-map__visual scroll-fade-right">
             <div class="projects-map__glow"></div>
-            <img src="assets/images/india-map.svg" alt="India Map" class="projects-map__image">
+            <div class="projects-map__map-container" data-map>
+              <img src="assets/images/india-map.svg" alt="India Map" class="projects-map__image">
+              
+              <!-- Interactive SVG markers overlay -->
+              <svg class="projects-map__markers" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="markerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="hsl(168, 65%, 32%)" />
+                    <stop offset="100%" stop-color="hsl(85, 55%, 45%)" />
+                  </linearGradient>
+                </defs>
+                <circle class="projects-map__marker" cx="44" cy="18" r="1.5" fill="url(#markerGradient)" data-marker data-state="Punjab" data-plants="4" data-status="Soon"/>
+                <circle class="projects-map__marker" cx="46" cy="24" r="1.5" fill="url(#markerGradient)" data-marker data-state="Haryana" data-plants="3" data-status="Soon"/>
+                <circle class="projects-map__marker" cx="54" cy="32" r="1.5" fill="url(#markerGradient)" data-marker data-state="Uttar Pradesh" data-plants="6" data-status="Soon"/>
+                <circle class="projects-map__marker" cx="48" cy="52" r="1.5" fill="url(#markerGradient)" data-marker data-state="Maharashtra" data-plants="5" data-status="Soon"/>
+                <circle class="projects-map__marker projects-map__marker--active" cx="38" cy="42" r="1.5" fill="url(#markerGradient)" data-marker data-state="Gujarat" data-plants="4" data-status="Active"/>
+                <circle class="projects-map__marker" cx="50" cy="40" r="1.5" fill="url(#markerGradient)" data-marker data-state="Madhya Pradesh" data-plants="4" data-status="Soon"/>
+                <circle class="projects-map__marker" cx="48" cy="65" r="1.5" fill="url(#markerGradient)" data-marker data-state="Karnataka" data-plants="3" data-status="Soon"/>
+                <circle class="projects-map__marker" cx="52" cy="75" r="1.5" fill="url(#markerGradient)" data-marker data-state="Tamil Nadu" data-plants="3" data-status="Soon"/>
+                <circle class="projects-map__marker" cx="40" cy="30" r="1.5" fill="url(#markerGradient)" data-marker data-state="Rajasthan" data-plants="3" data-status="Soon"/>
+                <circle class="projects-map__marker" cx="62" cy="32" r="1.5" fill="url(#markerGradient)" data-marker data-state="Bihar" data-plants="2" data-status="Soon"/>
+              </svg>
+              
+              <!-- Tooltip -->
+              <div class="projects-map__tooltip" data-map-tooltip>
+                <span data-tooltip-state>State</span>
+                <span data-tooltip-plants>0 Plants</span>
+                <span data-tooltip-status>Status</span>
+              </div>
+            </div>
+            
+            <!-- Brand Label -->
+            <div class="projects-map__brand">
+              <img src="assets/images/gruner-logo.png" alt="Gruner" class="projects-map__brand-logo">
+              <span>Gruner Renewable Energy</span>
+            </div>
             
             <!-- Map Legend -->
             <div class="projects-map__legend">
@@ -845,8 +893,8 @@
           <h4 class="footer__heading">Resources</h4>
           <ul class="footer__list">
             <li><a href="about.html">Investor Relations</a></li>
-            <li><a href="#">Sustainability</a></li>
-            <li><a href="#awards">Certifications</a></li>
+            <li><a href="technology.html">Sustainability</a></li>
+            <li><a href="index.html#awards">Certifications</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -855,7 +903,7 @@
     
     <div class="footer__bottom">
       <div class="container-wide footer__bottom-inner">
-        <p class="footer__copyright">© 2024 Gruner Renewable Energy Pvt. Ltd. All rights reserved.</p>
+        <p class="footer__copyright">© <span id="footerYear">2024</span> Gruner Renewable Energy Pvt. Ltd. All rights reserved.</p>
         
         <div class="footer__social">
           <a href="#" class="footer__social-link" aria-label="LinkedIn">
@@ -882,6 +930,14 @@
   <script src="js/counter.js"></script>
   <script src="js/form.js"></script>
   <script src="js/map-interaction.js"></script>
+  <script src="js/solutions-cards.js"></script>
+  <script src="js/process-timeline.js"></script>
+  <script src="js/media-slider.js"></script>
+  
+  <!-- Dynamic footer year -->
+  <script>
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+  </script>
   
   <!-- Particles Animation -->
   <script>
