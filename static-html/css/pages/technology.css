@@ -4,6 +4,33 @@
  */
 
 /* ============================================
+   SECTION BADGE (CTA Styling)
+   ============================================ */
+.tech-section-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  background: linear-gradient(135deg, hsl(168, 65%, 32%), hsl(85, 55%, 45%));
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 15px -3px rgba(31, 143, 122, 0.2);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.tech-section-badge:hover {
+  box-shadow: 0 20px 25px -5px rgba(31, 143, 122, 0.3);
+  transform: translateY(-2px);
+}
+
+.tech-section-badge--light {
+  background: linear-gradient(135deg, hsl(168, 65%, 32%), hsl(85, 55%, 45%));
+}
+
+/* ============================================
    TECHNOLOGY HERO
    ============================================ */
 .tech-hero {
