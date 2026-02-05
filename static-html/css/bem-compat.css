@@ -2036,8 +2036,15 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+.section-header__subtitle {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
 .section-header--light .section-header__subtitle {
-  color: var(--primary);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ===================== BUTTON OUTLINE LIGHT ===================== */

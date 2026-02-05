@@ -58,11 +58,7 @@
         }
       });
 
-      // Initialize features state
-      const features = card.querySelector('.solutions__card-features');
-      if (features && expandedIndices.has(index)) {
-        features.classList.add('solutions__card-features--expanded');
-      }
+      // Features are expanded by default via CSS, no need to add class
     });
   }
 
