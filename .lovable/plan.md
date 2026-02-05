@@ -1,163 +1,208 @@
-# Static HTML Export Fix Plan - ✅ COMPLETED
 
-## Summary
+# Static HTML Home Page Visual Parity Fix Plan
 
-All phases of the static HTML export fix plan have been successfully implemented on 2025-02-05.
-
----
-
-## ✅ Completed Tasks
-
-### Phase 1: Template Standardization
-
-**Page Loader standardized across all pages:**
-- Added missing `<p class="page-loader__text">Loading...</p>` to:
-  - `about.html`
-  - `technology.html`
-  - `solutions.html`
-  - `media.html`
-  - `contact.html`
-  - `careers.html`
-- Solution subpages already had correct loader structure with the `<p>` tag
-
-**Header/Footer:** Already using consistent BEM naming across all pages
+## Objective
+Fix all visual differences between the static HTML home page and React version to achieve 100% visual parity. No design changes - only corrections to match React exactly.
 
 ---
 
-### Phase 2: CSS Consistency Fixes
+## Priority Issues to Fix
 
-**footer.css converted to BEM:**
-- Updated all flat selectors (`.footer-grid`, `.footer-brand`, etc.) to BEM (`.footer__grid`, `.footer__brand`, etc.)
-- Added legacy flat selector compatibility layer for backward compatibility
-- All footer BEM classes now properly defined:
-  - `.footer__divider`
-  - `.footer__main`
-  - `.footer__grid`
-  - `.footer__column`
-  - `.footer__heading`
-  - `.footer__list`
-  - `.footer__description`
-  - `.footer__bottom`
-  - `.footer__bottom-inner`
-  - `.footer__copyright`
-  - `.footer__social`
-  - `.footer__social-link`
-  - `.footer__legal`
+### 1. Solutions Section - Missing "Our Expertise" Subtitle
+**Current HTML:** Title starts with "Why Partners Choose Gruner Renewable"
+**React has:** "Our Expertise" subtitle ABOVE the main title
 
-**BEM compatibility layer:** Already comprehensive (2466 lines in bem-compat.css)
+**Fix:** Add the subtitle span before the main heading
+```html
+<span class="solutions__subtitle">Our Expertise</span>
+<h2>Why Partners Choose <span class="gradient-text">Gruner Renewable</span></h2>
+```
 
----
-
-### Phase 3: JavaScript Consolidation
-
-**Created `js/core.js`:**
-- Unified entry point for shared functionality
-- Handles:
-  - Page loader show/hide
-  - Mobile menu toggle
-  - Header scroll effect
-  - Dropdown navigation
-  - Scroll animations via IntersectionObserver
-  - Smooth scroll for anchor links
-  - Dynamic footer year
-
-**Existing JS files retained** for backward compatibility
-
----
-
-### Phase 4: Asset Path Verification
-
-**All asset paths verified correct:**
-- Root pages use: `assets/images/...`
-- Solution subpages use: `../assets/images/...`
-
----
-
-### Phase 5: Animation Conversion
-
-**Already complete** - Framer Motion behaviors were already converted to vanilla JS:
-- `animations.js` uses IntersectionObserver
-- CSS transitions handle animations
-- `.scroll-fade-up`, `.scroll-fade-left`, etc. classes work with `.in-view`
-
----
-
-### Phase 6: Quality Gates
-
-| Check | Status |
-|-------|--------|
-| Template consistency | ✅ All pages have identical loader/header/footer structure |
-| Class-CSS match | ✅ All BEM classes have CSS definitions |
-| Asset paths | ✅ All paths verified correct |
-| Console clean | ✅ No expected JS errors |
-
----
-
-## Files Modified
-
-| File | Changes |
-|------|---------|
-| `css/footer.css` | Converted to BEM + legacy compatibility |
-| `js/core.js` | NEW - Consolidated JS entry point |
-| `about.html` | Added loader text |
-| `technology.html` | Added loader text |
-| `solutions.html` | Added loader text |
-| `media.html` | Added loader text |
-| `contact.html` | Added loader text |
-| `careers.html` | Added loader text |
-
----
-
-## Output Structure (Verified)
-
-```text
-static-html/
-├── assets/
-│   ├── images/
-│   └── logos/
-├── css/
-│   ├── variables.css
-│   ├── base.css
-│   ├── layout.css
-│   ├── components.css
-│   ├── animations.css
-│   ├── header.css
-│   ├── footer.css (updated)
-│   ├── bem-compat.css
-│   └── pages/
-│       └── [page-specific CSS files]
-├── js/
-│   ├── core.js (NEW)
-│   ├── utils.js
-│   ├── header.js
-│   ├── animations.js
-│   ├── page-loader.js
-│   └── [page-specific scripts]
-├── index.html
-├── about.html
-├── technology.html
-├── solutions.html
-├── media.html
-├── blog.html
-├── careers.html
-├── contact.html
-└── solutions/
-    ├── project-development.html
-    ├── engineering-construction.html
-    ├── rd.html
-    ├── cng-retail.html
-    ├── bio-gas.html
-    └── om.html
+**CSS needed:**
+```css
+.solutions__subtitle {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
 ```
 
 ---
 
-## Confirmation
+### 2. Leadership Section - Wrong Layout Structure
+**Current HTML:** Shows founder + 2 leaders in same-width columns
+**React:** Founder card spans 2 columns (larger), leaders stacked in 1 column
 
-**All quality gates satisfied:**
-1. ✅ BEM naming convention used consistently
-2. ✅ Templates standardized (loader, header, footer)
-3. ✅ Asset paths correct for all pages
-4. ✅ CSS variables complete
-5. ✅ Animations use vanilla JS/CSS (no Framer Motion)
-6. ✅ JavaScript consolidated in core.js
+**Fix:** Update grid structure
+```html
+<div class="team__grid">
+  <div class="team__founder"><!-- spans 2 cols --></div>
+  <div class="team__leaders">
+    <div class="team__leader">...</div>
+    <div class="team__leader">...</div>
+  </div>
+</div>
+```
+
+**CSS fix:**
+```css
+@media (min-width: 768px) {
+  .team__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.team__leaders {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+```
+
+---
+
+### 3. Media Mentions - Wrong Position & Missing Infinite Scroll
+**Current HTML:** Below "How It Works" section
+**React:** Below "Projects Map" section with infinite scrolling animation
+
+**Fix Part A - Position:** Move the media-mentions section to AFTER the projects-map section
+
+**Fix Part B - Infinite scroll CSS:**
+```css
+.media-mentions__track {
+  display: flex;
+  animation: media-scroll 20s linear infinite;
+}
+
+@keyframes media-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+```
+
+**HTML update:** Duplicate logos for seamless loop
+
+---
+
+### 4. Process Timeline Animation
+**Missing:** Animated line fill and moving progress dot
+
+**Fix:** Add animated elements and JS trigger
+```html
+<div class="process__line">
+  <div class="process__line-fill"></div>
+  <div class="process__line-dot"></div>
+</div>
+```
+
+**CSS animation:**
+```css
+.process__line-fill--animated {
+  transform: scaleX(1);
+  transition: transform 1.5s ease-out;
+}
+
+.process__line-dot--animated {
+  animation: process-dot-move 4s linear infinite;
+}
+```
+
+---
+
+### 5. Trusted By Logo Grid
+**Issue:** Logo spacing and count visibility
+
+**Fix:** Ensure proper responsive gap and visibility
+```css
+.trusted-by__logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .trusted-by__logos {
+    gap: 3.5rem;
+  }
+}
+```
+
+---
+
+### 6. Map Marker Pulse Animation
+**Missing:** Markers should have subtle pulse effect
+
+**CSS fix:**
+```css
+.projects-map__marker--active {
+  animation: marker-pulse 2s ease-in-out infinite;
+}
+
+@keyframes marker-pulse {
+  0%, 100% { r: 1.5; opacity: 1; }
+  50% { r: 2.5; opacity: 0.7; }
+}
+```
+
+---
+
+### 7. Solutions Card Features Expansion
+**Current:** Features always visible
+**React:** Features start expanded but can toggle
+
+**Fix:** Initialize features as expanded (matching React default state)
+```css
+.solutions__card-features {
+  max-height: 200px;
+  opacity: 1;
+}
+```
+
+---
+
+## Files to Modify
+
+| File | Changes |
+|------|---------|
+| `static-html/index.html` | Add "Our Expertise" subtitle, reorder media mentions section, fix leadership grid |
+| `static-html/css/pages/home.css` | Add missing animations, fix grid layouts, add subtitle styles |
+| `static-html/js/process-timeline.js` | Already exists - ensure IntersectionObserver triggers |
+| `static-html/js/media-slider.js` | Already exists - verify infinite scroll works |
+
+---
+
+## Implementation Order
+
+1. **Solutions section subtitle** - Quick HTML + CSS fix
+2. **Leadership grid restructure** - HTML structure + CSS grid
+3. **Media mentions reorder** - Move HTML section
+4. **Process timeline animation** - Verify JS triggers
+5. **Map marker pulse** - CSS animation
+6. **Trusted By spacing** - CSS tweak
+7. **Verify all animations working** - Test pass
+
+---
+
+## Quality Gates
+
+After implementation:
+- [ ] "Our Expertise" subtitle visible in Solutions section
+- [ ] Leadership shows founder (2 cols) + stacked leaders (1 col)
+- [ ] Media mentions appear AFTER Projects Map
+- [ ] Media logos scroll infinitely
+- [ ] Process timeline fills on scroll
+- [ ] Map markers pulse on active state
+- [ ] All hover effects match React smoothness
+
+---
+
+## Technical Notes
+
+1. **No structural redesign** - Only fixing to match existing React layout
+2. **CSS animations** - Use same timing functions as React (ease-out, linear)
+3. **JavaScript** - Leverage existing IntersectionObserver pattern from animations.js
+4. **BEM naming** - Maintain existing class naming convention
