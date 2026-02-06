@@ -1,6 +1,6 @@
 /**
  * GRUNER RENEWABLE - TECHNOLOGY PAGE STYLES
- * Specific styles for Technology page sections
+ * Complete styles matching React Technology page
  */
 
 /* ============================================
@@ -26,36 +26,43 @@
   transform: translateY(-2px);
 }
 
-.tech-section-badge--light {
-  background: linear-gradient(135deg, hsl(168, 65%, 32%), hsl(85, 55%, 45%));
-}
-
 /* ============================================
-   TECHNOLOGY HERO
+   TECHNOLOGY HERO - React Matching Layout
    ============================================ */
 .tech-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
-  background: var(--background);
+  background: white;
   overflow: hidden;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .tech-hero {
+    min-height: 70vh;
+    padding-top: 9rem;
+    padding-bottom: 5rem;
+  }
 }
 
 .tech-hero__container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
 }
 
 @media (min-width: 1024px) {
   .tech-hero__container {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
   }
 }
 
+/* Hero Content (Left) */
 .tech-hero__content {
   max-width: 600px;
 }
@@ -65,112 +72,90 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: var(--muted-foreground);
-  margin-bottom: 1.5rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.75rem;
 }
 
 .tech-hero__breadcrumb a {
-  color: var(--primary);
+  color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
+  transition: color 0.2s;
 }
 
 .tech-hero__breadcrumb a:hover {
-  text-decoration: underline;
+  color: var(--foreground);
 }
 
-.tech-hero__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+.tech-hero__breadcrumb span:last-child {
+  font-weight: 600;
+  color: var(--foreground);
 }
 
-.tech-hero__tag {
-  padding: 0.25rem 0.75rem;
-  background: linear-gradient(135deg, var(--primary-alpha-10), var(--accent-alpha-10));
-  border-radius: 2rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--primary);
+.tech-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.75rem;
+}
+
+.tech-hero__badge-icon {
+  animation: spin-slow 4s linear infinite;
+  color: hsl(120, 40%, 35%);
+}
+
+.tech-hero__badge span {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--foreground);
 }
 
 .tech-hero__title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
+  font-family: var(--font-heading);
 }
 
-.tech-hero__title span {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.tech-hero__title-line {
+  height: 6px;
+  background: hsl(120, 40%, 35%);
+  margin-top: 2rem;
+  margin-bottom: 1.75rem;
+  width: 0;
+  animation: line-expand 0.9s ease-out 0.5s forwards;
+}
+
+@keyframes line-expand {
+  from { width: 0; }
+  to { width: 200px; }
 }
 
 .tech-hero__description {
   font-size: 1.125rem;
-  color: var(--muted-foreground);
+  color: rgba(0, 0, 0, 0.7);
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  max-width: 36rem;
 }
 
-/* Biogas Visual */
-.tech-hero__visual {
-  position: relative;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--foreground), hsl(0, 0%, 15%));
-  border-radius: 1rem;
-  border: 1px solid hsl(0, 0%, 20%);
-  min-height: 400px;
-}
-
-.tech-hero__visual-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.tech-hero__visual-icon {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
-  background: var(--gradient-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tech-hero__visual-icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: white;
-}
-
-.tech-hero__visual-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: white;
-}
-
-.tech-hero__visual-subtitle {
-  font-size: 0.75rem;
-  color: hsl(0, 0%, 60%);
-}
-
-.tech-hero__metrics {
+/* Hero Metrics Row */
+.tech-hero__metrics-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.tech-hero__metric {
-  text-align: center;
-  padding: 1rem;
-  background: hsl(0, 0%, 10%);
-  border-radius: 0.5rem;
-  border: 1px solid hsl(0, 0%, 20%);
+.tech-hero__metric-item {
+  display: flex;
+  flex-direction: column;
 }
 
 .tech-hero__metric-value {
@@ -183,11 +168,795 @@
   color: transparent;
 }
 
+@media (min-width: 768px) {
+  .tech-hero__metric-value {
+    font-size: 1.875rem;
+  }
+}
+
+.tech-hero__metric-suffix {
+  font-size: inherit;
+}
+
 .tech-hero__metric-label {
-  font-size: 0.625rem;
-  color: hsl(0, 0%, 50%);
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* Hero Tags */
+.tech-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tech-hero__tag {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.2s;
+}
+
+.tech-hero__tag:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Hero Indicators */
+.tech-hero__indicators {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding-top: 2rem;
+}
+
+.tech-hero__indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tech-hero__indicator svg {
+  color: hsl(120, 40%, 35%);
+}
+
+.tech-hero__indicator span {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   BIOGAS SYSTEM VISUAL
+   ============================================ */
+.tech-hero__system {
+  position: relative;
+}
+
+.tech-hero__system-panel {
+  position: relative;
+  background: rgba(10, 26, 15, 0.9);
+  border: 2px solid rgba(136, 196, 68, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(136, 196, 68, 0.3);
+  overflow: hidden;
+}
+
+/* Corner Accents */
+.tech-hero__corner {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border-color: rgba(136, 196, 68, 0.6);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tech-hero__corner--tl {
+  top: 0;
+  left: 0;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-color: inherit;
+}
+
+.tech-hero__corner--tr {
+  top: 0;
+  right: 0;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  border-color: inherit;
+}
+
+.tech-hero__corner--bl {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-color: inherit;
+}
+
+.tech-hero__corner--br {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-color: inherit;
+}
+
+/* Biogas Visual Container */
+.biogas-visual {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual {
+    min-height: 500px;
+  }
+}
+
+/* Central Reactor */
+.biogas-visual__reactor {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8rem;
+  height: 10rem;
+  animation: fade-scale-in 0.8s ease-out 0.3s both;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__reactor {
+    width: 10rem;
+    height: 12rem;
+  }
+}
+
+.biogas-visual__reactor-body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(31, 143, 122, 0.3), rgba(136, 196, 68, 0.2));
+  border: 2px solid rgba(136, 196, 68, 0.6);
+  border-radius: 9999px 9999px 0.5rem 0.5rem;
+  box-shadow: 0 25px 50px -12px rgba(31, 143, 122, 0.4);
+  overflow: hidden;
+}
+
+.biogas-visual__reactor-level {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(136, 196, 68, 0.5), rgba(31, 143, 122, 0.3), transparent);
+  border-radius: 0 0 0.5rem 0.5rem;
+  animation: level-pulse 5s ease-in-out infinite;
+}
+
+.biogas-visual__reactor-cap {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7rem;
+  height: 1.25rem;
+  background: linear-gradient(to right, hsl(85, 55%, 45%), hsl(168, 65%, 32%));
+  border-radius: 9999px;
+  border: 2px solid hsl(85, 55%, 45%);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__reactor-cap {
+    width: 8rem;
+  }
+}
+
+/* Reactor Bubbles */
+.biogas-visual__bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.biogas-visual__bubble {
+  position: absolute;
+  bottom: 25%;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(to top, rgba(136, 196, 68, 0.7), rgba(31, 143, 122, 0.5));
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  animation: bubble-rise 2.5s ease-in-out infinite;
+}
+
+.biogas-visual__bubble:nth-child(1) { left: 15%; animation-delay: 0s; width: 8px; height: 8px; }
+.biogas-visual__bubble:nth-child(2) { left: 28%; animation-delay: 0.4s; width: 12px; height: 12px; }
+.biogas-visual__bubble:nth-child(3) { left: 41%; animation-delay: 0.8s; width: 9px; height: 9px; }
+.biogas-visual__bubble:nth-child(4) { left: 54%; animation-delay: 1.2s; width: 11px; height: 11px; }
+.biogas-visual__bubble:nth-child(5) { left: 67%; animation-delay: 1.6s; width: 8px; height: 8px; }
+.biogas-visual__bubble:nth-child(6) { left: 80%; animation-delay: 2.0s; width: 10px; height: 10px; }
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes level-pulse {
+  0%, 100% { height: 55%; }
+  50% { height: 75%; }
+}
+
+/* Feedstock Conveyor */
+.biogas-visual__conveyor {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slide-in-left 0.6s ease-out 0.5s both;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__conveyor {
+    left: 2rem;
+  }
+}
+
+.biogas-visual__conveyor-belt {
+  position: relative;
+  width: 7rem;
+  height: 2.5rem;
+  background: linear-gradient(to right, rgba(31, 143, 122, 0.3), rgba(136, 196, 68, 0.3));
+  border: 2px solid rgba(136, 196, 68, 0.5);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__conveyor-belt {
+    width: 9rem;
+  }
+}
+
+.biogas-visual__conveyor-block {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  background: linear-gradient(to bottom right, hsl(85, 55%, 45%), hsl(168, 65%, 32%));
+  border-radius: 0.125rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  animation: conveyor-move 2.2s linear infinite;
+}
+
+.biogas-visual__conveyor-block:nth-child(1) { animation-delay: 0s; }
+.biogas-visual__conveyor-block:nth-child(2) { animation-delay: 0.5s; }
+.biogas-visual__conveyor-block:nth-child(3) { animation-delay: 1.0s; }
+.biogas-visual__conveyor-block:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes conveyor-move {
+  from { left: -1rem; opacity: 1; }
+  to { left: 100%; opacity: 0; }
+}
+
+/* Labels */
+.biogas-visual__label {
+  display: block;
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Energy Flow Lines */
+.biogas-visual__flow {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(to right, rgba(31, 143, 122, 0.2), rgba(136, 196, 68, 0.2));
+  overflow: hidden;
+}
+
+.biogas-visual__flow::after {
+  content: '';
+  position: absolute;
+  width: 5rem;
+  height: 100%;
+  background: linear-gradient(to right, transparent, hsl(85, 55%, 45%), transparent);
+  filter: blur(2px);
+  animation: flow-move 3s linear infinite;
+}
+
+.biogas-visual__flow--1 {
+  left: 8rem;
+  top: 50%;
+  width: 4rem;
+}
+
+.biogas-visual__flow--2 {
+  right: 9rem;
+  top: 33%;
+  width: 3rem;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__flow--1 {
+    left: 11rem;
+    width: 5rem;
+  }
+  .biogas-visual__flow--2 {
+    right: 11rem;
+    width: 4rem;
+  }
+}
+
+@keyframes flow-move {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(200%); }
+}
+
+/* Gas Storage Tank */
+.biogas-visual__tank {
+  position: absolute;
+  right: 1rem;
+  top: 33%;
+  animation: slide-in-right 0.6s ease-out 0.7s both;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__tank {
+    right: 2rem;
+  }
+}
+
+.biogas-visual__tank-body {
+  position: relative;
+  width: 4rem;
+  height: 6rem;
+  background: linear-gradient(to bottom, rgba(31, 143, 122, 0.3), rgba(136, 196, 68, 0.2));
+  border: 2px solid rgba(31, 143, 122, 0.6);
+  border-radius: 0.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__tank-body {
+    width: 5rem;
+    height: 7rem;
+  }
+}
+
+.biogas-visual__tank-level {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(136, 196, 68, 0.6), rgba(31, 143, 122, 0.4));
+  border-radius: 0 0 0.375rem 0.375rem;
+  animation: tank-level-pulse 5s ease-in-out infinite;
+}
+
+@keyframes tank-level-pulse {
+  0%, 100% { height: 40%; }
+  50% { height: 60%; }
+}
+
+.biogas-visual__tank-gauge {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid hsl(85, 55%, 45%);
+  border-radius: 50%;
+  background: rgba(10, 26, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.biogas-visual__tank-needle {
+  width: 2px;
+  height: 0.75rem;
+  background: hsl(168, 65%, 32%);
+  transform-origin: bottom center;
+  animation: gauge-swing 3s ease-in-out infinite;
+}
+
+@keyframes gauge-swing {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+}
+
+/* Compressor */
+.biogas-visual__compressor {
+  position: absolute;
+  right: 2rem;
+  bottom: 4rem;
+  animation: slide-in-up 0.6s ease-out 0.6s both;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__compressor {
+    right: 4rem;
+    bottom: 5rem;
+  }
+}
+
+.biogas-visual__compressor-outer {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid rgba(136, 196, 68, 0.6);
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, rgba(31, 143, 122, 0.3), rgba(136, 196, 68, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: compressor-rotate 4s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__compressor-outer {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+.biogas-visual__compressor-inner {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(31, 143, 122, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__compressor-inner {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.biogas-visual__compressor-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: hsl(85, 55%, 45%);
+  border-radius: 50%;
+  animation: dot-pulse 1s ease-in-out infinite;
+}
+
+@keyframes compressor-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Grid Node */
+.biogas-visual__grid {
+  position: absolute;
+  right: 3rem;
+  top: 2rem;
+  animation: scale-in 0.5s ease-out 0.9s both;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__grid {
+    right: 5rem;
+    top: 3rem;
+  }
+}
+
+.biogas-visual__grid-box {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(to bottom right, rgba(136, 196, 68, 0.4), rgba(31, 143, 122, 0.4));
+  border: 1px solid rgba(136, 196, 68, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: grid-glow 2s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__grid-box {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.biogas-visual__grid-box svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: hsl(85, 55%, 45%);
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__grid-box svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@keyframes grid-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(136, 196, 68, 0.4); }
+  50% { box-shadow: 0 0 35px rgba(136, 196, 68, 0.8); }
+}
+
+/* Processing Unit */
+.biogas-visual__processing {
+  position: absolute;
+  left: 2rem;
+  bottom: 3rem;
+  animation: slide-in-up 0.6s ease-out 0.4s both;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__processing {
+    left: 4rem;
+    bottom: 4rem;
+  }
+}
+
+.biogas-visual__processing-outer {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 2px dashed rgba(31, 143, 122, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: processing-rotate 8s linear infinite reverse;
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__processing-outer {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.biogas-visual__processing-inner {
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(to bottom right, rgba(136, 196, 68, 0.4), rgba(31, 143, 122, 0.3));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__processing-inner {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.biogas-visual__processing-inner svg {
+  width: 1rem;
+  height: 1rem;
+  color: hsl(168, 65%, 32%);
+}
+
+@media (min-width: 768px) {
+  .biogas-visual__processing-inner svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@keyframes processing-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Energy Flow Paths SVG */
+.biogas-visual__paths {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.biogas-visual__path {
+  fill: none;
+  stroke: url(#energyGradient);
+  stroke-width: 4;
+  stroke-dasharray: 12 6;
+  stroke-dashoffset: 100;
+  animation: path-draw 2s ease-out forwards;
+}
+
+.biogas-visual__path--2 {
+  animation-delay: 1.2s;
+}
+
+.biogas-visual__path--3 {
+  animation-delay: 1.4s;
+}
+
+@keyframes path-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Floating Particles */
+.biogas-visual__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.biogas-visual__particle {
+  position: absolute;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: linear-gradient(to right, hsl(85, 55%, 45%), hsl(168, 65%, 32%));
+  box-shadow: 0 4px 6px -1px rgba(136, 196, 68, 0.6);
+  filter: blur(1px);
+  animation: particle-float var(--duration, 5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(var(--float-x, 20px), var(--float-y, -20px));
+    opacity: 1;
+  }
+}
+
+/* Status Overlay */
+.biogas-visual__status {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: rgba(10, 26, 15, 0.8);
+  border: 2px solid rgba(136, 196, 68, 0.5);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: fade-in 0.5s ease-out 1.5s both;
+}
+
+.biogas-visual__status-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.biogas-visual__status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.biogas-visual__status-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: linear-gradient(to right, hsl(85, 55%, 45%), hsl(168, 65%, 32%));
+  box-shadow: 0 4px 6px -1px rgba(136, 196, 68, 0.4);
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+.biogas-visual__status-indicator span:last-child {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes status-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+.biogas-visual__status-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.biogas-visual__status-right svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: hsl(85, 55%, 45%);
+}
+
+.biogas-visual__status-online {
+  font-size: 1.125rem;
+  font-family: monospace;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: online-blink 2s ease-in-out infinite;
+}
+
+@keyframes online-blink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Utility Animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-scale-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-50px) translateY(-50%); }
+  to { opacity: 1; transform: translateX(0) translateY(-50%); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* ============================================
@@ -195,14 +964,14 @@
    ============================================ */
 .cstr-intro {
   padding: var(--section-padding-y) 0;
-  background: var(--off-white);
+  background: white;
 }
 
 .cstr-intro__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  align-items: start;
+  align-items: center;
 }
 
 @media (min-width: 1024px) {
@@ -212,14 +981,26 @@
 }
 
 .cstr-intro__image {
-  border-radius: 1rem;
+  position: relative;
+  border-radius: 0.375rem;
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
 }
 
 .cstr-intro__image img {
   width: 100%;
   height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cstr-intro__watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120'%3E%3Ctext x='50%25' y='50%25' font-family='Arial,sans-serif' font-size='24' font-weight='bold' fill='%231f8f7a' fill-opacity='0.12' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 90 60)'%3EGRE%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
 .cstr-intro__content {
@@ -227,9 +1008,17 @@
 }
 
 .cstr-intro__title {
-  font-size: 2rem;
+  font-size: 1.875rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: var(--foreground);
+  font-family: var(--font-heading);
+}
+
+@media (min-width: 768px) {
+  .cstr-intro__title {
+    font-size: 2.25rem;
+  }
 }
 
 .cstr-intro__title span {
@@ -239,11 +1028,21 @@
   color: transparent;
 }
 
-.cstr-intro__description {
+.cstr-intro__text {
+  margin-bottom: 1.5rem;
+}
+
+.cstr-intro__text p {
   font-size: 1rem;
   color: var(--muted-foreground);
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cstr-intro__text p {
+    font-size: 1.125rem;
+  }
 }
 
 .cstr-intro__specs {
@@ -253,76 +1052,130 @@
 }
 
 .cstr-intro__spec {
-  padding: 1.25rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
   transition: all 0.3s ease;
 }
 
 .cstr-intro__spec:hover {
-  border-color: var(--primary-alpha-30);
   box-shadow: var(--shadow-md);
 }
 
+.cstr-intro__spec-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.cstr-intro__spec-icon svg {
+  color: white;
+}
+
 .cstr-intro__spec-label {
+  display: block;
   font-size: 0.75rem;
-  color: var(--muted-foreground);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .cstr-intro__spec-value {
-  font-size: 1.25rem;
+  display: block;
+  font-size: 0.875rem;
   font-weight: 600;
-  font-family: var(--font-heading);
   color: var(--foreground);
 }
 
 /* ============================================
-   PROCESS STEPS
+   PROCESS SECTION
    ============================================ */
 .tech-process {
   padding: var(--section-padding-y) 0;
-  background: var(--background);
+  background: var(--off-white);
 }
 
 .tech-process__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  align-items: start;
+  align-items: flex-start;
 }
 
 @media (min-width: 1024px) {
   .tech-process__grid {
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-.tech-process__video {
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: var(--shadow-xl);
+.tech-process__content {
+  order: 2;
 }
 
-.tech-process__video video {
-  width: 100%;
-  height: auto;
+@media (min-width: 1024px) {
+  .tech-process__content {
+    order: 1;
+  }
 }
 
-.tech-process__content h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
+.tech-process__title {
+  font-size: 1.875rem;
+  font-weight: 700;
   margin-bottom: 2rem;
+  color: var(--foreground);
+  font-family: var(--font-heading);
 }
 
-.tech-process__content h3 span {
+@media (min-width: 768px) {
+  .tech-process__title {
+    font-size: 2.25rem;
+  }
+}
+
+.tech-process__title span {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Timeline */
+.tech-process__timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.tech-process__line {
+  position: absolute;
+  left: 0.25rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gradient-primary);
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.tech-process__line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: var(--gradient-primary);
+  animation: line-fill 1.2s ease-out forwards;
+}
+
+@keyframes line-fill {
+  to { height: 100%; }
 }
 
 .tech-process__steps {
@@ -332,53 +1185,89 @@
 }
 
 .tech-process__step {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  position: relative;
+}
+
+.tech-process__step-node {
+  position: absolute;
+  left: -1.375rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  transition: transform 0.3s ease;
+}
+
+.tech-process__step.active .tech-process__step-node {
+  animation: node-pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes node-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.tech-process__step-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
-.tech-process__step.active {
-  border-color: var(--primary-alpha-30);
+.tech-process__step.active .tech-process__step-card {
   box-shadow: var(--shadow-md);
+}
+
+.tech-process__step-card:hover {
+  box-shadow: var(--shadow-sm);
 }
 
 .tech-process__step-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.25rem;
+  gap: 0.75rem;
+  padding: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.2s;
 }
 
 .tech-process__step-header:hover {
   background: var(--muted);
 }
 
-.tech-process__step-number {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.5rem;
+.tech-process__step-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.375rem;
   background: var(--gradient-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.tech-process__step-icon svg {
   color: white;
-  font-weight: 700;
-  font-size: 0.875rem;
+}
+
+.tech-process__step-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .tech-process__step-title {
-  flex: 1;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
   color: var(--foreground);
 }
 
 .tech-process__step-chevron {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1rem;
+  height: 1rem;
   color: var(--muted-foreground);
   transition: transform 0.3s ease;
 }
@@ -395,13 +1284,45 @@
 
 .tech-process__step.active .tech-process__step-content {
   max-height: 200px;
-  padding: 0 1.25rem 1.25rem;
+  padding: 0 1rem 1rem;
 }
 
 .tech-process__step-text {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--muted-foreground);
   line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+/* Process Video */
+.tech-process__video {
+  position: relative;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  order: 1;
+}
+
+@media (min-width: 1024px) {
+  .tech-process__video {
+    order: 2;
+  }
+}
+
+.tech-process__video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.tech-process__watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120'%3E%3Ctext x='50%25' y='50%25' font-family='Arial,sans-serif' font-size='24' font-weight='bold' fill='%231f8f7a' fill-opacity='0.12' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 90 60)'%3EGRE%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
 /* ============================================
@@ -409,74 +1330,77 @@
    ============================================ */
 .tech-advantages {
   padding: var(--section-padding-y) 0;
-  background: var(--off-white);
+  background: white;
+}
+
+.tech-advantages__header {
+  margin-bottom: 2.5rem;
+}
+
+.tech-advantages__header h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+  font-family: var(--font-heading);
+}
+
+@media (min-width: 768px) {
+  .tech-advantages__header h2 {
+    font-size: 2.25rem;
+  }
 }
 
 .tech-advantages__grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
-@media (min-width: 640px) {
-  .tech-advantages__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .tech-advantages__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .tech-advantages__card {
-  padding: 2rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  text-align: center;
+  padding: 1.25rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
   transition: all 0.3s ease;
 }
 
 .tech-advantages__card:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: var(--primary-alpha-30);
+  box-shadow: var(--shadow-md);
   transform: translateY(-4px);
 }
 
 .tech-advantages__icon {
-  width: 4rem;
-  height: 4rem;
-  margin: 0 auto 1.5rem;
-  border-radius: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.375rem;
   background: var(--gradient-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
-}
-
-.tech-advantages__card:hover .tech-advantages__icon {
-  transform: scale(1.1);
+  margin-bottom: 0.5rem;
 }
 
 .tech-advantages__icon svg {
-  width: 2rem;
-  height: 2rem;
+  width: 1rem;
+  height: 1rem;
   color: white;
 }
 
 .tech-advantages__title {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--foreground);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .tech-advantages__text {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--muted-foreground);
   line-height: 1.6;
 }
@@ -486,8 +1410,7 @@
    ============================================ */
 .tech-sustainability {
   padding: var(--section-padding-y) 0;
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--off-white);
 }
 
 .tech-sustainability__grid {
@@ -504,24 +1427,34 @@
 }
 
 .tech-sustainability__content h3 {
-  font-size: 2rem;
+  font-size: 1.875rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: white;
+  color: var(--foreground);
+  font-family: var(--font-heading);
 }
 
-.tech-sustainability__content h3 span {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+@media (min-width: 768px) {
+  .tech-sustainability__content h3 {
+    font-size: 2.25rem;
+  }
 }
 
 .tech-sustainability__text {
+  margin-bottom: 0;
+}
+
+.tech-sustainability__text p {
   font-size: 1rem;
-  color: hsl(0, 0%, 70%);
+  color: var(--muted-foreground);
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .tech-sustainability__text p {
+    font-size: 1.125rem;
+  }
 }
 
 .tech-sustainability__metrics {
@@ -531,70 +1464,34 @@
 }
 
 .tech-sustainability__metric {
-  padding: 1.5rem;
-  background: hsl(0, 0%, 12%);
-  border: 1px solid hsl(0, 0%, 20%);
-  border-radius: 0.75rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
   text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tech-sustainability__metric:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .tech-sustainability__metric-value {
-  font-size: 2rem;
+  display: block;
+  font-size: 1.125rem;
   font-weight: 700;
   font-family: var(--font-heading);
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
-.tech-sustainability__metric-label {
-  font-size: 0.75rem;
-  color: hsl(0, 0%, 60%);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.tech-sustainability__visual {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.tech-sustainability__bar {
-  padding: 1rem 1.5rem;
-  background: hsl(0, 0%, 12%);
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.tech-sustainability__bar-label {
-  font-size: 0.875rem;
-  color: hsl(0, 0%, 70%);
-  min-width: 120px;
-}
-
-.tech-sustainability__bar-track {
-  flex: 1;
-  height: 0.5rem;
-  background: hsl(0, 0%, 20%);
-  border-radius: 0.25rem;
-  overflow: hidden;
-}
-
-.tech-sustainability__bar-fill {
-  height: 100%;
-  background: var(--gradient-primary);
-  border-radius: 0.25rem;
-  transition: width 1s ease;
-}
-
-.tech-sustainability__bar-value {
+.tech-sustainability__metric-title {
+  display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: white;
-  min-width: 3rem;
-  text-align: right;
+  color: var(--foreground);
+}
+
+.tech-sustainability__metric-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
 }

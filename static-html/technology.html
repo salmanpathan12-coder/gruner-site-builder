@@ -79,46 +79,195 @@
   </header>
 
   <main>
-    <!-- Technology Hero -->
-    <section class="tech-hero section-padding">
+    <!-- Technology Hero - Matching React Layout -->
+    <section class="tech-hero">
       <div class="container-wide tech-hero__container">
+        <!-- LEFT: Content -->
         <div class="tech-hero__content scroll-fade-up">
-          <div class="tech-hero__breadcrumb">
+          <!-- Breadcrumb -->
+          <nav class="tech-hero__breadcrumb">
             <a href="index.html">Home</a>
-            <span>/</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"></polyline></svg>
             <span>Technology</span>
+          </nav>
+
+          <!-- Badge -->
+          <div class="tech-hero__badge">
+            <div class="tech-hero__badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            </div>
+            <span>Advanced Engineering</span>
           </div>
+
+          <!-- Title -->
+          <h1 class="tech-hero__title">
+            <span class="gradient-text">CSTR Technology</span>
+          </h1>
+          <div class="tech-hero__title-line"></div>
+
+          <!-- Description -->
+          <p class="tech-hero__description">
+            Continuous-Flow Stirred Tank Reactor — the backbone of efficient biogas production. Engineering clean energy through advanced anaerobic digestion systems.
+          </p>
+
+          <!-- Metrics -->
+          <div class="tech-hero__metrics-row">
+            <div class="tech-hero__metric-item">
+              <span class="tech-hero__metric-value">
+                <span class="counter" data-counter="85">0</span><span class="tech-hero__metric-suffix">%</span>
+              </span>
+              <span class="tech-hero__metric-label">Efficiency</span>
+            </div>
+            <div class="tech-hero__metric-item">
+              <span class="tech-hero__metric-value">
+                <span class="counter" data-counter="60">0</span><span class="tech-hero__metric-suffix"> Days</span>
+              </span>
+              <span class="tech-hero__metric-label">Retention</span>
+            </div>
+            <div class="tech-hero__metric-item">
+              <span class="tech-hero__metric-value">
+                <span class="counter" data-counter="10">0</span><span class="tech-hero__metric-suffix">% DS</span>
+              </span>
+              <span class="tech-hero__metric-label">Max Solid</span>
+            </div>
+          </div>
+
+          <!-- Tags -->
           <div class="tech-hero__tags">
-            <span class="tech-hero__tag">German Engineering</span>
-            <span class="tech-hero__tag">CSTR Technology</span>
-            <span class="tech-hero__tag">97%+ Methane</span>
+            <span class="tech-hero__tag">Mesophilic</span>
+            <span class="tech-hero__tag">Thermophilic</span>
+            <span class="tech-hero__tag">Bio-CNG</span>
+            <span class="tech-hero__tag">Smart Grid</span>
           </div>
-          <h1 class="tech-hero__title">Advanced <span>CSTR Technology</span></h1>
-          <p class="tech-hero__description">Our state-of-the-art Continuous Stirred Tank Reactor (CSTR) technology, developed in partnership with BioEnergy Germany, delivers industry-leading biogas production efficiency and quality.</p>
-          <a href="contact.html" class="btn btn-primary">Learn More</a>
+
+          <!-- Indicators -->
+          <div class="tech-hero__indicators">
+            <div class="tech-hero__indicator">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+              <span>Biogas Output</span>
+            </div>
+            <div class="tech-hero__indicator">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <span>Process Control</span>
+            </div>
+          </div>
         </div>
-        <div class="tech-hero__visual scroll-fade-up">
-          <div class="tech-hero__visual-header">
-            <div class="tech-hero__visual-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-            </div>
-            <div>
-              <h3 class="tech-hero__visual-title">System Status</h3>
-              <p class="tech-hero__visual-subtitle">Real-time Performance</p>
-            </div>
-          </div>
-          <div class="tech-hero__metrics">
-            <div class="tech-hero__metric">
-              <span class="tech-hero__metric-value">97%+</span>
-              <span class="tech-hero__metric-label">Methane Purity</span>
-            </div>
-            <div class="tech-hero__metric">
-              <span class="tech-hero__metric-value">99.5%</span>
-              <span class="tech-hero__metric-label">Uptime</span>
-            </div>
-            <div class="tech-hero__metric">
-              <span class="tech-hero__metric-value">24/7</span>
-              <span class="tech-hero__metric-label">Monitoring</span>
+
+        <!-- RIGHT: Biogas System Visual -->
+        <div class="tech-hero__system scroll-fade-up" data-delay="0.2">
+          <div class="tech-hero__system-panel">
+            <!-- Corner accents -->
+            <div class="tech-hero__corner tech-hero__corner--tl"></div>
+            <div class="tech-hero__corner tech-hero__corner--tr"></div>
+            <div class="tech-hero__corner tech-hero__corner--bl"></div>
+            <div class="tech-hero__corner tech-hero__corner--br"></div>
+
+            <!-- Biogas Visual Container -->
+            <div class="biogas-visual">
+              <!-- Central Reactor -->
+              <div class="biogas-visual__reactor">
+                <div class="biogas-visual__reactor-body">
+                  <div class="biogas-visual__reactor-level"></div>
+                  <div class="biogas-visual__bubbles">
+                    <span class="biogas-visual__bubble"></span>
+                    <span class="biogas-visual__bubble"></span>
+                    <span class="biogas-visual__bubble"></span>
+                    <span class="biogas-visual__bubble"></span>
+                    <span class="biogas-visual__bubble"></span>
+                    <span class="biogas-visual__bubble"></span>
+                  </div>
+                </div>
+                <div class="biogas-visual__reactor-cap"></div>
+              </div>
+
+              <!-- Feedstock Conveyor -->
+              <div class="biogas-visual__conveyor">
+                <div class="biogas-visual__conveyor-belt">
+                  <span class="biogas-visual__conveyor-block"></span>
+                  <span class="biogas-visual__conveyor-block"></span>
+                  <span class="biogas-visual__conveyor-block"></span>
+                  <span class="biogas-visual__conveyor-block"></span>
+                </div>
+                <span class="biogas-visual__label">Feedstock</span>
+              </div>
+
+              <!-- Energy Flow Lines -->
+              <div class="biogas-visual__flow biogas-visual__flow--1"></div>
+              <div class="biogas-visual__flow biogas-visual__flow--2"></div>
+
+              <!-- Gas Storage Tank -->
+              <div class="biogas-visual__tank">
+                <div class="biogas-visual__tank-body">
+                  <div class="biogas-visual__tank-level"></div>
+                </div>
+                <div class="biogas-visual__tank-gauge">
+                  <div class="biogas-visual__tank-needle"></div>
+                </div>
+                <span class="biogas-visual__label">Bio-CNG</span>
+              </div>
+
+              <!-- Compressor -->
+              <div class="biogas-visual__compressor">
+                <div class="biogas-visual__compressor-outer">
+                  <div class="biogas-visual__compressor-inner">
+                    <div class="biogas-visual__compressor-dot"></div>
+                  </div>
+                </div>
+                <span class="biogas-visual__label">Compressor</span>
+              </div>
+
+              <!-- Grid Node -->
+              <div class="biogas-visual__grid">
+                <div class="biogas-visual__grid-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
+                <span class="biogas-visual__label">Grid</span>
+              </div>
+
+              <!-- Processing Unit -->
+              <div class="biogas-visual__processing">
+                <div class="biogas-visual__processing-outer">
+                  <div class="biogas-visual__processing-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"></path><path d="M9.6 4.6A2 2 0 1 1 11 8H2"></path><path d="M12.6 19.4A2 2 0 1 0 14 16H2"></path></svg>
+                  </div>
+                </div>
+                <span class="biogas-visual__label">Processing</span>
+              </div>
+
+              <!-- Energy Flow Paths SVG -->
+              <svg class="biogas-visual__paths" viewBox="0 0 400 400">
+                <defs>
+                  <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="hsl(85, 55%, 45%)" stop-opacity="0.7"/>
+                    <stop offset="50%" stop-color="hsl(168, 65%, 32%)" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="hsl(85, 55%, 45%)" stop-opacity="0.7"/>
+                  </linearGradient>
+                </defs>
+                <path class="biogas-visual__path" d="M200 150 Q 280 150 300 200"/>
+                <path class="biogas-visual__path biogas-visual__path--2" d="M100 320 Q 150 280 200 250"/>
+                <path class="biogas-visual__path biogas-visual__path--3" d="M320 300 Q 340 250 320 100"/>
+              </svg>
+
+              <!-- Floating Particles (generated by JS) -->
+              <div class="biogas-visual__particles" id="biogasParticles"></div>
+
+              <!-- Status Overlay -->
+              <div class="biogas-visual__status">
+                <div class="biogas-visual__status-left">
+                  <div class="biogas-visual__status-indicator">
+                    <span class="biogas-visual__status-dot"></span>
+                    <span>System Active</span>
+                  </div>
+                  <div class="biogas-visual__status-indicator">
+                    <span class="biogas-visual__status-dot"></span>
+                    <span>Digestion</span>
+                  </div>
+                </div>
+                <div class="biogas-visual__status-right">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                  <span class="biogas-visual__status-online">ONLINE</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -129,29 +278,46 @@
     <section class="cstr-intro section-padding">
       <div class="container-wide">
         <div class="cstr-intro__grid">
-          <div class="cstr-intro__image scroll-fade-up">
+          <div class="cstr-intro__image scroll-fade-left">
             <img src="assets/images/cstr-cutaway-illustration.jpg" alt="CSTR Biogas Reactor Cutaway">
+            <!-- GRE Watermark Overlay -->
+            <div class="cstr-intro__watermark"></div>
           </div>
-          <div class="cstr-intro__content scroll-fade-up">
+          <div class="cstr-intro__content scroll-fade-right">
             <span class="tech-section-badge">Our Technology</span>
             <h2 class="cstr-intro__title">Introduction to <span>CSTR Technology</span></h2>
-            <p class="cstr-intro__description">The Continuous Stirred Tank Reactor (CSTR) is the heart of our Bio-CNG production process. This advanced anaerobic digestion technology ensures consistent, high-quality biogas production from diverse organic feedstocks.</p>
+            <div class="cstr-intro__text">
+              <p>Ever wondered what makes CSTR (Continuous-Flow Stirred Tank Reactor) technology a key player in biogas production? CSTRs ensure perfect homogenization of biomass with continuous mixing.</p>
+              <p>Ideal for dry matter contents below 10%, they operate at controlled temperatures, providing flexible and efficient biogas production. This makes them suitable for diverse biomass types, contributing significantly to renewable energy generation.</p>
+            </div>
             <div class="cstr-intro__specs">
-              <div class="cstr-intro__spec">
-                <span class="cstr-intro__spec-label">Reactor Type</span>
-                <span class="cstr-intro__spec-value">CSTR</span>
+              <div class="cstr-intro__spec scroll-fade-up" data-delay="0.1">
+                <div class="cstr-intro__spec-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
+                </div>
+                <span class="cstr-intro__spec-label">Dry Substance</span>
+                <span class="cstr-intro__spec-value">5% &lt; DS &lt; 10%</span>
               </div>
-              <div class="cstr-intro__spec">
-                <span class="cstr-intro__spec-label">Temperature</span>
-                <span class="cstr-intro__spec-value">35-55°C</span>
+              <div class="cstr-intro__spec scroll-fade-up" data-delay="0.2">
+                <div class="cstr-intro__spec-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path></svg>
+                </div>
+                <span class="cstr-intro__spec-label">Thermal Regime</span>
+                <span class="cstr-intro__spec-value">Mesophilic or Thermophilic</span>
               </div>
-              <div class="cstr-intro__spec">
+              <div class="cstr-intro__spec scroll-fade-up" data-delay="0.3">
+                <div class="cstr-intro__spec-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
                 <span class="cstr-intro__spec-label">Retention Time</span>
-                <span class="cstr-intro__spec-value">20-30 Days</span>
+                <span class="cstr-intro__spec-value">20 &lt; days &lt; 60</span>
               </div>
-              <div class="cstr-intro__spec">
-                <span class="cstr-intro__spec-label">Gas Yield</span>
-                <span class="cstr-intro__spec-value">High Efficiency</span>
+              <div class="cstr-intro__spec scroll-fade-up" data-delay="0.4">
+                <div class="cstr-intro__spec-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </div>
+                <span class="cstr-intro__spec-label">Mixing System</span>
+                <span class="cstr-intro__spec-value">Mechanical (slow & fast mixers)</span>
               </div>
             </div>
           </div>
@@ -163,56 +329,100 @@
     <section class="tech-process section-padding">
       <div class="container-wide">
         <div class="tech-process__grid">
-          <div class="tech-process__video scroll-fade-up">
-            <video autoplay loop muted playsinline>
-              <source src="assets/images/cstr-process-video.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="tech-process__content scroll-fade-up">
+          <!-- LEFT CONTENT -->
+          <div class="tech-process__content scroll-fade-left">
             <span class="tech-section-badge">The Process</span>
-            <h3>How CSTR Transforms <span>Biomass into Energy</span></h3>
-            <div class="tech-process__steps" id="processSteps">
-              <div class="tech-process__step active" data-step="1">
-                <div class="tech-process__step-header">
-                  <span class="tech-process__step-number">01</span>
-                  <span class="tech-process__step-title">Feedstock Reception</span>
-                  <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </div>
-                <div class="tech-process__step-content">
-                  <p class="tech-process__step-text">Agricultural residue, cattle dung, and Napier Grass are received, weighed, and quality-checked at our facility.</p>
-                </div>
+            <h3 class="tech-process__title">How CSTR Transforms <span>Biomass into Energy</span></h3>
+            
+            <!-- Animated Timeline -->
+            <div class="tech-process__timeline">
+              <div class="tech-process__line">
+                <div class="tech-process__line-fill"></div>
               </div>
-              <div class="tech-process__step" data-step="2">
-                <div class="tech-process__step-header">
-                  <span class="tech-process__step-number">02</span>
-                  <span class="tech-process__step-title">Pre-Treatment</span>
-                  <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              
+              <div class="tech-process__steps" id="processSteps">
+                <div class="tech-process__step active" data-step="1">
+                  <div class="tech-process__step-node"></div>
+                  <div class="tech-process__step-card">
+                    <div class="tech-process__step-header">
+                      <div class="tech-process__step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                      </div>
+                      <div class="tech-process__step-info">
+                        <span class="tech-process__step-title">Biomass Loading</span>
+                        <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </div>
+                    </div>
+                    <div class="tech-process__step-content">
+                      <p class="tech-process__step-text">Solid and liquid biomasses are loaded through a pre-tank or loader into digesters made of concrete or steel.</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="tech-process__step-content">
-                  <p class="tech-process__step-text">Feedstock is shredded, mixed with water, and homogenized to create optimal conditions for digestion.</p>
+
+                <div class="tech-process__step" data-step="2">
+                  <div class="tech-process__step-node"></div>
+                  <div class="tech-process__step-card">
+                    <div class="tech-process__step-header">
+                      <div class="tech-process__step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                      </div>
+                      <div class="tech-process__step-info">
+                        <span class="tech-process__step-title">Mixing & Digestion</span>
+                        <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </div>
+                    </div>
+                    <div class="tech-process__step-content">
+                      <p class="tech-process__step-text">Digesters equipped with slow and fast mixers ensure thorough homogenization, preventing crust and sediment formation.</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="tech-process__step" data-step="3">
-                <div class="tech-process__step-header">
-                  <span class="tech-process__step-number">03</span>
-                  <span class="tech-process__step-title">Anaerobic Digestion</span>
-                  <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+
+                <div class="tech-process__step" data-step="3">
+                  <div class="tech-process__step-node"></div>
+                  <div class="tech-process__step-card">
+                    <div class="tech-process__step-header">
+                      <div class="tech-process__step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                      </div>
+                      <div class="tech-process__step-info">
+                        <span class="tech-process__step-title">Biogas Production</span>
+                        <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </div>
+                    </div>
+                    <div class="tech-process__step-content">
+                      <p class="tech-process__step-text">Under controlled temperatures, anaerobic digestion produces biogas with high methane content.</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="tech-process__step-content">
-                  <p class="tech-process__step-text">In our CSTR reactors, microorganisms break down organic matter at controlled temperatures to produce raw biogas.</p>
-                </div>
-              </div>
-              <div class="tech-process__step" data-step="4">
-                <div class="tech-process__step-header">
-                  <span class="tech-process__step-number">04</span>
-                  <span class="tech-process__step-title">Purification & Compression</span>
-                  <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </div>
-                <div class="tech-process__step-content">
-                  <p class="tech-process__step-text">Biogas is purified to remove CO2, H2S, and moisture, then compressed to produce 97%+ pure Bio-CNG.</p>
+
+                <div class="tech-process__step" data-step="4">
+                  <div class="tech-process__step-node"></div>
+                  <div class="tech-process__step-card">
+                    <div class="tech-process__step-header">
+                      <div class="tech-process__step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
+                      </div>
+                      <div class="tech-process__step-info">
+                        <span class="tech-process__step-title">Gas Storage</span>
+                        <svg class="tech-process__step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </div>
+                    </div>
+                    <div class="tech-process__step-content">
+                      <p class="tech-process__step-text">Digesters are covered with a gasometer to efficiently store the biogas produced.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- RIGHT VISUAL -->
+          <div class="tech-process__video scroll-fade-right">
+            <video autoplay loop muted playsinline>
+              <source src="assets/images/cstr-process-video.mp4" type="video/mp4">
+            </video>
+            <!-- GRE Watermark Overlay -->
+            <div class="tech-process__watermark"></div>
           </div>
         </div>
       </div>
@@ -221,25 +431,31 @@
     <!-- Advantages -->
     <section class="tech-advantages section-padding">
       <div class="container-wide">
-        <div class="section-header section-header--left scroll-fade-up">
+        <div class="tech-advantages__header scroll-fade-up">
           <span class="tech-section-badge">Benefits</span>
           <h2>Technology <span class="gradient-text">Advantages</span></h2>
         </div>
         <div class="tech-advantages__grid">
-          <div class="tech-advantages__card scroll-fade-up" style="--delay: 0.1s">
-            <div class="tech-advantages__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
-            <h4 class="tech-advantages__title">High Efficiency</h4>
-            <p class="tech-advantages__text">Industry-leading gas yields with 97%+ methane purity for superior fuel quality.</p>
+          <div class="tech-advantages__card scroll-fade-up" data-delay="0.1">
+            <div class="tech-advantages__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            </div>
+            <h4 class="tech-advantages__title">Complex Biomass Handling</h4>
+            <p class="tech-advantages__text">Suitable for feeding the plant with biomass with a complex digestion process.</p>
           </div>
-          <div class="tech-advantages__card scroll-fade-up" style="--delay: 0.15s">
-            <div class="tech-advantages__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div>
-            <h4 class="tech-advantages__title">German Engineering</h4>
-            <p class="tech-advantages__text">Partnership with BioEnergy Germany ensures world-class technology and quality standards.</p>
+          <div class="tech-advantages__card scroll-fade-up" data-delay="0.2">
+            <div class="tech-advantages__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+            </div>
+            <h4 class="tech-advantages__title">Co-Digestion Capability</h4>
+            <p class="tech-advantages__text">Provides the possibility to implement co-digestion with a varied recipe of biomass inputs.</p>
           </div>
-          <div class="tech-advantages__card scroll-fade-up" style="--delay: 0.2s">
-            <div class="tech-advantages__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></div>
-            <h4 class="tech-advantages__title">Multi-Feedstock</h4>
-            <p class="tech-advantages__text">Capable of processing diverse organic materials including agricultural residue and cattle dung.</p>
+          <div class="tech-advantages__card scroll-fade-up" data-delay="0.3">
+            <div class="tech-advantages__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
+            </div>
+            <h4 class="tech-advantages__title">pH Buffering Capacity</h4>
+            <p class="tech-advantages__text">High buffering capacity for pH variation, ensuring stable and consistent operations.</p>
           </div>
         </div>
       </div>
@@ -249,49 +465,34 @@
     <section class="tech-sustainability section-padding">
       <div class="container-wide">
         <div class="tech-sustainability__grid">
-          <div class="tech-sustainability__content scroll-fade-up">
-            <span class="tech-section-badge tech-section-badge--light">Sustainability</span>
+          <div class="tech-sustainability__content scroll-fade-left">
+            <span class="tech-section-badge">Sustainability</span>
             <h3>CSTRs and <span class="gradient-text">Environmental Impact</span></h3>
-            <p class="tech-sustainability__text">Our Bio-CNG technology delivers significant environmental benefits by converting agricultural waste into clean fuel, reducing greenhouse gas emissions and improving air quality.</p>
-            <div class="tech-sustainability__metrics">
-              <div class="tech-sustainability__metric">
-                <span class="tech-sustainability__metric-value" data-counter="80">0</span><span>%</span>
-                <span class="tech-sustainability__metric-label">CO2 Reduction</span>
-              </div>
-              <div class="tech-sustainability__metric">
-                <span class="tech-sustainability__metric-value">Zero</span>
-                <span class="tech-sustainability__metric-label">Waste to Landfill</span>
-              </div>
-              <div class="tech-sustainability__metric">
-                <span class="tech-sustainability__metric-value">100%</span>
-                <span class="tech-sustainability__metric-label">Renewable Fuel</span>
-              </div>
-              <div class="tech-sustainability__metric">
-                <span class="tech-sustainability__metric-value">Organic</span>
-                <span class="tech-sustainability__metric-label">Fertilizer Byproduct</span>
-              </div>
+            <div class="tech-sustainability__text">
+              <p>How do CSTRs contribute to environmental sustainability? CSTRs enable the conversion of diverse biomasses into renewable energy, reducing reliance on fossil fuels and lowering greenhouse gas emissions.</p>
+              <p>Their efficient digestion process minimizes waste and emissions, contributing to a cleaner and greener environment. This technology is at the heart of our commitment to sustainable energy solutions.</p>
             </div>
           </div>
-          <div class="tech-sustainability__visual scroll-fade-up">
-            <div class="tech-sustainability__bar">
-              <span class="tech-sustainability__bar-label">Carbon Reduction</span>
-              <div class="tech-sustainability__bar-track"><div class="tech-sustainability__bar-fill" style="width: 80%"></div></div>
-              <span class="tech-sustainability__bar-value">80%</span>
+          <div class="tech-sustainability__metrics scroll-fade-right">
+            <div class="tech-sustainability__metric scroll-fade-up" data-delay="0.1">
+              <span class="tech-sustainability__metric-value gradient-text">40%+</span>
+              <span class="tech-sustainability__metric-title">CO₂ Reduction</span>
+              <span class="tech-sustainability__metric-desc">Lower emissions vs fossil fuels</span>
             </div>
-            <div class="tech-sustainability__bar">
-              <span class="tech-sustainability__bar-label">Waste Diverted</span>
-              <div class="tech-sustainability__bar-track"><div class="tech-sustainability__bar-fill" style="width: 95%"></div></div>
-              <span class="tech-sustainability__bar-value">95%</span>
+            <div class="tech-sustainability__metric scroll-fade-up" data-delay="0.2">
+              <span class="tech-sustainability__metric-value gradient-text">100%</span>
+              <span class="tech-sustainability__metric-title">Waste Diverted</span>
+              <span class="tech-sustainability__metric-desc">Zero waste to landfill</span>
             </div>
-            <div class="tech-sustainability__bar">
-              <span class="tech-sustainability__bar-label">Energy Efficiency</span>
-              <div class="tech-sustainability__bar-track"><div class="tech-sustainability__bar-fill" style="width: 92%"></div></div>
-              <span class="tech-sustainability__bar-value">92%</span>
+            <div class="tech-sustainability__metric scroll-fade-up" data-delay="0.3">
+              <span class="tech-sustainability__metric-value gradient-text">85%+</span>
+              <span class="tech-sustainability__metric-title">Energy Efficiency</span>
+              <span class="tech-sustainability__metric-desc">Conversion rate achieved</span>
             </div>
-            <div class="tech-sustainability__bar">
-              <span class="tech-sustainability__bar-label">Gas Purity</span>
-              <div class="tech-sustainability__bar-track"><div class="tech-sustainability__bar-fill" style="width: 97%"></div></div>
-              <span class="tech-sustainability__bar-value">97%</span>
+            <div class="tech-sustainability__metric scroll-fade-up" data-delay="0.4">
+              <span class="tech-sustainability__metric-value gradient-text">Yes</span>
+              <span class="tech-sustainability__metric-title">Carbon Credits</span>
+              <span class="tech-sustainability__metric-desc">Eligible for certification</span>
             </div>
           </div>
         </div>
@@ -355,6 +556,6 @@
   <script src="js/header.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/counter.js"></script>
-  <script src="js/accordion.js"></script>
+  <script src="js/technology-visual.js"></script>
 </body>
 </html>
