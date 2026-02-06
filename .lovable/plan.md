@@ -1,8 +1,43 @@
 
-# Static HTML Home Page - Complete Recreation Plan
+
+# Static HTML Technology Page - Complete Recreation Plan
 
 ## Overview
-This plan creates a complete static HTML version of the React home page with identical structure, content, effects, and animations. All Framer Motion animations will be converted to CSS animations and vanilla JavaScript using IntersectionObserver.
+This plan recreates the React Technology page as static HTML with identical structure, content, effects, and animations. All Framer Motion animations will be converted to CSS animations and vanilla JavaScript.
+
+---
+
+## Current Issues (from Screenshot)
+
+The existing static HTML technology page:
+1. **Missing animated biogas system visual** - React has a complex animated visualization with reactor vessel, particles, conveyor, compressor, energy flow lines
+2. **Hero layout different** - React has left content + right visual (dark panel with system), HTML has simplified layout
+3. **Process accordion not working** - Click interactions not functioning
+4. **Scroll animations not triggering** - Elements not fading in on scroll
+
+---
+
+## React Component Analysis
+
+### TechnologyHero.tsx Key Elements:
+- **BiogasSystemVisual** - Complex animated visualization with:
+  - Central reactor vessel with bubbles animation
+  - Feedstock conveyor with moving blocks
+  - Gas storage tank with level animation
+  - Compressor with rotating element
+  - Grid node with pulsing glow
+  - Processing unit with rotating dashed circle
+  - Energy flow paths (SVG animated paths)
+  - Floating particles (12 particles)
+  - Status overlay bar
+- **Left content**: Breadcrumb, badge, title, description, metrics, tags, indicators
+- **AnimatedMetric** - Counter animation for 85%, 60 Days, 10% DS
+
+### Technology.tsx Sections:
+1. **CSTR Intro** - Image + content with specs grid
+2. **Process** - Animated vertical timeline with accordion steps
+3. **Benefits** - 3 advantage cards
+4. **Sustainability** - Content + 4 metric cards
 
 ---
 
@@ -10,612 +45,530 @@ This plan creates a complete static HTML version of the React home page with ide
 
 | File | Purpose |
 |------|---------|
-| `static-html/index.html` | Complete HTML structure |
-| `static-html/css/pages/home.css` | All home page styles |
-| `static-html/css/animations.css` | Animation keyframes and classes |
-| `static-html/js/core.js` | Main initialization and page loader |
-| `static-html/js/animations.js` | IntersectionObserver scroll animations |
-| `static-html/js/counter.js` | Animated number counters |
-| `static-html/js/header.js` | Header scroll behavior |
-| `static-html/js/process-timeline.js` | Process section animations |
-| `static-html/js/media-slider.js` | Infinite logo scrolling |
-| `static-html/js/map-interaction.js` | Map marker interactions |
-| `static-html/js/solutions-cards.js` | Solutions card hover effects |
-| `static-html/js/form.js` | Contact form validation |
+| `static-html/technology.html` | Complete HTML structure |
+| `static-html/css/pages/technology.css` | All technology page styles |
+| `static-html/js/technology-visual.js` | Biogas system animations |
 
 ---
 
-## HTML Structure (Section Order)
+## HTML Structure Changes
 
-```text
-1. Page Loader (overlay)
-2. Header (fixed navigation)
-3. Hero Section (video background + metrics)
-4. Trusted By Section (infinite scroll logos)
-5. Context Section (India's Waste Problem - split layout)
-6. About Gruner Section (mission + highlights)
-7. Solutions Section (dark background - 4 cards)
-8. Process Section (How It Works - 4 steps timeline)
-9. Media Mentions Section (infinite scroll - opposite direction)
-10. Projects Map Section (dark background - map + project list)
-11. Team Section (founder + leaders grid)
-12. Awards Section (6 recognition cards)
-13. Contact Section (form + info)
-14. Footer
+### 1. Technology Hero - Complete Rewrite
+
+```html
+<section class="tech-hero">
+  <div class="container-wide tech-hero__container">
+    <!-- LEFT: Content -->
+    <div class="tech-hero__content scroll-fade-up">
+      <nav class="tech-hero__breadcrumb">
+        <a href="index.html">Home</a>
+        <svg>...</svg>
+        <span>Technology</span>
+      </nav>
+      
+      <div class="tech-hero__badge">
+        <div class="tech-hero__badge-icon animate-spin-slow">
+          <svg><!-- Cpu icon --></svg>
+        </div>
+        <span>Advanced Engineering</span>
+      </div>
+      
+      <h1 class="tech-hero__title">
+        <span class="gradient-text">CSTR Technology</span>
+      </h1>
+      <div class="tech-hero__title-line"></div>
+      
+      <p class="tech-hero__description">
+        Continuous-Flow Stirred Tank Reactor — the backbone of efficient biogas production...
+      </p>
+      
+      <div class="tech-hero__metrics">
+        <div class="tech-hero__metric">
+          <span class="tech-hero__metric-value counter" data-target="85">0</span>
+          <span class="tech-hero__metric-suffix">%</span>
+          <span class="tech-hero__metric-label">Efficiency</span>
+        </div>
+        <div class="tech-hero__metric">
+          <span class="tech-hero__metric-value counter" data-target="60">0</span>
+          <span class="tech-hero__metric-suffix"> Days</span>
+          <span class="tech-hero__metric-label">Retention</span>
+        </div>
+        <div class="tech-hero__metric">
+          <span class="tech-hero__metric-value counter" data-target="10">0</span>
+          <span class="tech-hero__metric-suffix">% DS</span>
+          <span class="tech-hero__metric-label">Max Solid</span>
+        </div>
+      </div>
+      
+      <div class="tech-hero__tags">
+        <span class="tech-hero__tag">Mesophilic</span>
+        <span class="tech-hero__tag">Thermophilic</span>
+        <span class="tech-hero__tag">Bio-CNG</span>
+        <span class="tech-hero__tag">Smart Grid</span>
+      </div>
+      
+      <div class="tech-hero__indicators">
+        <div class="tech-hero__indicator">
+          <svg><!-- Flame icon --></svg>
+          <span>Biogas Output</span>
+        </div>
+        <div class="tech-hero__indicator">
+          <svg><!-- Gauge icon --></svg>
+          <span>Process Control</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RIGHT: Biogas System Visual -->
+    <div class="tech-hero__system scroll-fade-up">
+      <div class="tech-hero__system-panel">
+        <!-- Corner accents -->
+        <div class="tech-hero__corner tech-hero__corner--tl"></div>
+        <div class="tech-hero__corner tech-hero__corner--tr"></div>
+        <div class="tech-hero__corner tech-hero__corner--bl"></div>
+        <div class="tech-hero__corner tech-hero__corner--br"></div>
+        
+        <!-- Biogas Visual Container -->
+        <div class="biogas-visual">
+          <!-- Central Reactor -->
+          <div class="biogas-visual__reactor">
+            <div class="biogas-visual__reactor-body">
+              <div class="biogas-visual__reactor-level"></div>
+              <div class="biogas-visual__bubbles">
+                <span class="biogas-visual__bubble"></span>
+                <span class="biogas-visual__bubble"></span>
+                <span class="biogas-visual__bubble"></span>
+                <span class="biogas-visual__bubble"></span>
+                <span class="biogas-visual__bubble"></span>
+                <span class="biogas-visual__bubble"></span>
+              </div>
+            </div>
+            <div class="biogas-visual__reactor-cap"></div>
+          </div>
+          
+          <!-- Feedstock Conveyor -->
+          <div class="biogas-visual__conveyor">
+            <div class="biogas-visual__conveyor-belt">
+              <span class="biogas-visual__conveyor-block"></span>
+              <span class="biogas-visual__conveyor-block"></span>
+              <span class="biogas-visual__conveyor-block"></span>
+              <span class="biogas-visual__conveyor-block"></span>
+            </div>
+            <span class="biogas-visual__label">Feedstock</span>
+          </div>
+          
+          <!-- Energy Flow Lines -->
+          <div class="biogas-visual__flow biogas-visual__flow--1"></div>
+          <div class="biogas-visual__flow biogas-visual__flow--2"></div>
+          
+          <!-- Gas Storage Tank -->
+          <div class="biogas-visual__tank">
+            <div class="biogas-visual__tank-body">
+              <div class="biogas-visual__tank-level"></div>
+            </div>
+            <div class="biogas-visual__tank-gauge"></div>
+            <span class="biogas-visual__label">Bio-CNG</span>
+          </div>
+          
+          <!-- Compressor -->
+          <div class="biogas-visual__compressor">
+            <div class="biogas-visual__compressor-outer">
+              <div class="biogas-visual__compressor-inner">
+                <div class="biogas-visual__compressor-dot"></div>
+              </div>
+            </div>
+            <span class="biogas-visual__label">Compressor</span>
+          </div>
+          
+          <!-- Grid Node -->
+          <div class="biogas-visual__grid">
+            <div class="biogas-visual__grid-box">
+              <svg><!-- Zap icon --></svg>
+            </div>
+            <span class="biogas-visual__label">Grid</span>
+          </div>
+          
+          <!-- Processing Unit -->
+          <div class="biogas-visual__processing">
+            <div class="biogas-visual__processing-outer">
+              <div class="biogas-visual__processing-inner">
+                <svg><!-- Wind icon --></svg>
+              </div>
+            </div>
+            <span class="biogas-visual__label">Processing</span>
+          </div>
+          
+          <!-- Energy Flow Paths SVG -->
+          <svg class="biogas-visual__paths" viewBox="0 0 400 400">
+            <defs>
+              <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="hsl(85, 55%, 45%)" stop-opacity="0.7"/>
+                <stop offset="50%" stop-color="hsl(168, 65%, 32%)" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="hsl(85, 55%, 45%)" stop-opacity="0.7"/>
+              </linearGradient>
+            </defs>
+            <path class="biogas-visual__path" d="M200 150 Q 280 150 300 200"/>
+            <path class="biogas-visual__path" d="M100 320 Q 150 280 200 250"/>
+            <path class="biogas-visual__path" d="M320 300 Q 340 250 320 100"/>
+          </svg>
+          
+          <!-- Floating Particles -->
+          <div class="biogas-visual__particles">
+            <!-- 12 particles generated by CSS/JS -->
+          </div>
+          
+          <!-- Status Overlay -->
+          <div class="biogas-visual__status">
+            <div class="biogas-visual__status-left">
+              <div class="biogas-visual__status-indicator">
+                <span class="biogas-visual__status-dot"></span>
+                <span>System Active</span>
+              </div>
+              <div class="biogas-visual__status-indicator">
+                <span class="biogas-visual__status-dot"></span>
+                <span>Digestion</span>
+              </div>
+            </div>
+            <div class="biogas-visual__status-right">
+              <svg><!-- Activity icon --></svg>
+              <span class="biogas-visual__status-online">ONLINE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 ```
 
----
+### 2. Process Section - Fix Accordion
 
-## Animation Conversions
+Update the process steps to use proper accordion data attributes:
 
-### Framer Motion to CSS/JS Mapping
-
-| React Animation | Static HTML Solution |
-|-----------------|---------------------|
-| `initial={{ opacity: 0, y: 30 }}` | `.scroll-fade-up` class + IntersectionObserver |
-| `initial={{ opacity: 0, x: -30 }}` | `.scroll-fade-left` class |
-| `initial={{ opacity: 0, x: 30 }}` | `.scroll-fade-right` class |
-| `useInView` hook | IntersectionObserver API |
-| `animate={{ x: ["0%", "-50%"] }}` | CSS `@keyframes infinite-scroll` |
-| `whileHover={{ scale: 1.02 }}` | CSS `:hover { transform: scale(1.02) }` |
-| `AnimatedCounter` component | Vanilla JS counter with IntersectionObserver |
-| `FloatingParticles` | CSS `@keyframes particle-float` |
-| `useScroll`, `useTransform` | JS `scroll` event listener |
-
----
-
-## Section-by-Section Implementation
-
-### 1. Page Loader
 ```html
-<div class="page-loader" id="pageLoader">
-  <div class="page-loader__content">
-    <img src="assets/images/gruner-logo.png" alt="Gruner" class="page-loader__logo">
-    <div class="page-loader__bar">
-      <div class="page-loader__progress"></div>
+<div class="tech-process__steps" id="processSteps">
+  <div class="tech-process__step active" data-step="1">
+    <div class="tech-process__step-header" data-accordion-trigger>
+      <span class="tech-process__step-number">01</span>
+      <span class="tech-process__step-title">Feedstock Reception</span>
+      <svg class="tech-process__step-chevron">...</svg>
     </div>
-    <p class="page-loader__tagline">Energies for Tomorrow</p>
+    <div class="tech-process__step-content" data-accordion-content>
+      <p class="tech-process__step-text">...</p>
+    </div>
   </div>
+  <!-- More steps... -->
 </div>
 ```
 
-**CSS Animation:**
-```css
-.page-loader__progress {
-  animation: loader-fill 1.5s ease-in-out forwards;
-}
-
-@keyframes loader-fill {
-  from { width: 0%; }
-  to { width: 100%; }
-}
-```
-
-### 2. Header
-- Fixed position with scroll-based opacity change
-- White background with blur on scroll
-- Dropdown menus for About, Solutions, Media
-- Mobile hamburger menu
-
-### 3. Hero Section
-```html
-<section class="hero">
-  <video class="hero__video" autoplay loop muted playsinline>
-    <source src="assets/images/hero-video.mp4" type="video/mp4">
-  </video>
-  <div class="hero__overlay"></div>
-  <div class="hero__particles"></div>
-  <div class="hero__content container-wide">
-    <h1>India's Leading Bio-CNG Infrastructure Company</h1>
-    <p>Gruner Renewable Energy designs, builds, and operates Bio-CNG plants...</p>
-    <div class="hero__metrics">
-      <div class="hero__metric">
-        <div class="hero__metric-icon"><!-- TrendingUp SVG --></div>
-        <div class="hero__metric-value">
-          <span class="counter" data-target="1500">0</span>
-          <span class="hero__metric-suffix">Cr+</span>
-        </div>
-        <span class="hero__metric-label">Secured Projects</span>
-      </div>
-      <!-- 2 more metrics -->
-    </div>
-    <div class="hero__cta">
-      <a href="#projects" class="btn btn--primary">Explore Our Projects</a>
-      <a href="#contact" class="btn btn--outline-white">Partner With Us</a>
-    </div>
-  </div>
-  <div class="hero__scroll-indicator">
-    <span>Scroll</span>
-    <div class="hero__scroll-arrow"></div>
-  </div>
-</section>
-```
-
-**CSS Animations:**
-- Floating particles with random positions
-- Scroll indicator bouncing arrow
-- Video scale on scroll (parallax)
-- Metric counters on page load
-
-### 4. Trusted By Section
-```html
-<section class="trusted-by">
-  <div class="trusted-by__header">
-    <span>Trusted by Industry Leaders</span>
-  </div>
-  <div class="trusted-by__scroll">
-    <div class="trusted-by__track">
-      <!-- 12 logos (6 duplicated for seamless loop) -->
-      <img src="assets/logos/gail.png" alt="GAIL">
-      <img src="assets/logos/io.png" alt="Indian Oil">
-      <!-- ... -->
-    </div>
-  </div>
-</section>
-```
-
-**CSS Animation:**
-```css
-.trusted-by__track {
-  animation: scroll-left 25s linear infinite;
-}
-
-@keyframes scroll-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-```
-
-### 5. Context Section (Split Layout)
-```html
-<section class="context">
-  <div class="context__left bg-gradient-dark-teal">
-    <div class="container-wide">
-      <div class="divider-accent"></div>
-      <h2>
-        <span class="context__subtitle">India's Waste Problem</span>
-        <span>Is Also an</span>
-        <span class="gradient-text">Energy Opportunity</span>
-      </h2>
-    </div>
-    <!-- Animated gradient orbs -->
-  </div>
-  <div class="context__right bg-off-white">
-    <div class="container-wide">
-      <p>India generates over 500 million tonnes...</p>
-      <p>The nation depends on costly fossil fuel imports...</p>
-      <p>Bio-CNG presents a strategic opportunity...</p>
-      <div class="context__stats">
-        <div class="context__stat">
-          <div class="context__stat-icon"><!-- TrendingUp --></div>
-          <span class="counter" data-target="500">0</span>M+
-          <span>Tonnes agri-waste yearly</span>
-        </div>
-        <!-- 2 more stats -->
-      </div>
-    </div>
-  </div>
-</section>
-```
-
-### 6. About Gruner Section
-- Centered header with gradient divider
-- 2-column grid: Story card + 4 highlight cards
-- Bottom stats bar with gradient background
-
-### 7. Solutions Section (Dark)
-```html
-<section class="solutions bg-foreground">
-  <div class="container-wide">
-    <div class="section-header section-header--center">
-      <div class="divider-accent"></div>
-      <span class="solutions__subtitle">Our Expertise</span>
-      <h2>Why Partners Choose <span class="gradient-text">Gruner Renewable</span></h2>
-      <p>Complete capabilities across the bioenergy value chain...</p>
-    </div>
-    <div class="solutions__grid">
-      <!-- 4 solution cards -->
-      <div class="solutions__card">
-        <div class="solutions__card-header">
-          <div class="solutions__card-icon"><!-- Factory SVG --></div>
-          <div class="solutions__card-stat">
-            <span class="solutions__card-stat-value">50+</span>
-            <span class="solutions__card-stat-label">Plants Planned</span>
-          </div>
-        </div>
-        <h3>EPC Services</h3>
-        <p>End-to-end turnkey Bio-CNG plant development...</p>
-        <div class="solutions__card-features">
-          <span class="solutions__feature-tag">Feasibility studies</span>
-          <!-- more tags -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-```
-
-### 8. Process Section (Timeline)
-```html
-<section class="process">
-  <div class="container-wide">
-    <div class="section-header section-header--center">
-      <div class="divider-accent"></div>
-      <h2>How It Works</h2>
-      <p>From agricultural waste to clean energy — a proven transformation process</p>
-    </div>
-    
-    <!-- Desktop: Horizontal timeline -->
-    <div class="process__desktop">
-      <div class="process__line">
-        <div class="process__line-bg"></div>
-        <div class="process__line-fill"></div>
-        <div class="process__line-dot"></div>
-      </div>
-      <div class="process__steps">
-        <!-- 4 steps with circular icons -->
-      </div>
-    </div>
-    
-    <!-- Mobile: Vertical timeline -->
-    <div class="process__mobile">
-      <!-- Vertical layout -->
-    </div>
-  </div>
-</section>
-```
-
-**CSS Animations:**
-```css
-.process__line-fill {
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1.5s ease-out;
-}
-
-.process__line-fill--animated {
-  transform: scaleX(1);
-}
-
-.process__line-dot {
-  animation: process-dot-move 4s linear infinite;
-}
-
-@keyframes process-dot-move {
-  from { left: 0%; }
-  to { left: 100%; }
-}
-```
-
-### 9. Media Mentions Section
-- Same structure as Trusted By but with media logos
-- Animation in opposite direction (right to left becomes left to right)
-
-### 10. Projects Map Section (Dark)
-```html
-<section class="projects-map bg-foreground">
-  <div class="container-wide">
-    <div class="section-header section-header--center">
-      <div class="divider-accent"></div>
-      <h2>Upcoming Bio-CNG Plants Across India</h2>
-      <p>Strategic expansion targeting high-feedstock regions...</p>
-    </div>
-    <div class="projects-map__grid">
-      <div class="projects-map__list">
-        <!-- 10 project state cards -->
-        <!-- Summary stats card -->
-      </div>
-      <div class="projects-map__visual">
-        <div class="projects-map__glow"></div>
-        <img src="assets/images/india-map.svg" alt="India Map">
-        <svg class="projects-map__markers">
-          <!-- State markers with pulse animations -->
-        </svg>
-        <div class="projects-map__tooltip" id="mapTooltip"></div>
-        <div class="projects-map__legend">
-          <img src="assets/images/gruner-logo.png" alt="Gruner">
-          <span>Gruner Renewable Energy</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-```
-
-**JS Interaction:**
-```javascript
-// Map marker hover effects
-markers.forEach((marker, index) => {
-  marker.addEventListener('mouseenter', () => {
-    showTooltip(projects[index]);
-    marker.classList.add('projects-map__marker--active');
-  });
-});
-```
-
-### 11. Team Section (Leadership)
-```html
-<section class="team bg-off-white">
-  <div class="container-wide">
-    <div class="section-header section-header--center">
-      <div class="divider-accent"></div>
-      <h2>Our Leadership</h2>
-      <p>Experienced team driving India's bioenergy transformation...</p>
-    </div>
-    <div class="team__grid">
-      <!-- Founder card (spans 2 cols) -->
-      <div class="team__founder">
-        <div class="team__founder-content">
-          <div class="team__founder-image">
-            <img src="..." alt="Mr. Utkarsh Gupta">
-          </div>
-          <div class="team__founder-info">
-            <span class="team__founder-badge">Founder & Visionary</span>
-            <h3>Mr. Utkarsh Gupta</h3>
-            <p class="team__founder-role">Founder and CEO</p>
-            <p class="team__founder-bio">Visionary leader driving...</p>
-            <div class="team__founder-social">
-              <a href="#" class="team__social-btn"><!-- LinkedIn --></a>
-              <a href="#" class="team__social-btn"><!-- Mail --></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Leaders column (stacked) -->
-      <div class="team__leaders">
-        <div class="team__leader">...</div>
-        <div class="team__leader">...</div>
-      </div>
-    </div>
-  </div>
-</section>
-```
-
-### 12. Awards Section
-- 6 recognition cards in responsive grid (2 cols mobile, 3 cols tablet, 6 cols desktop)
-- Gradient icon backgrounds
-- Hover effects with scale and shadow
-
-### 13. Contact Section (Dark)
-```html
-<section class="contact bg-foreground">
-  <div class="container-wide">
-    <div class="section-header section-header--center">
-      <div class="divider-accent"></div>
-      <h2>Get in Touch</h2>
-      <p>Interested in partnering with us...</p>
-    </div>
-    <div class="contact__grid">
-      <div class="contact__form">
-        <form id="contactForm">
-          <div class="contact__field">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name" required>
-            <span class="contact__error"></span>
-          </div>
-          <!-- Email, Phone, Message fields -->
-          <button type="submit" class="btn btn--primary btn--full">
-            <span class="contact__btn-icon"><!-- Send --></span>
-            Send Message
-          </button>
-        </form>
-        <div class="contact__success" id="contactSuccess">
-          <!-- Success message -->
-        </div>
-      </div>
-      <div class="contact__info">
-        <div class="contact__info-card">
-          <h3>Contact Information</h3>
-          <div class="contact__info-item">
-            <div class="contact__info-icon"><!-- Mail --></div>
-            <div>
-              <span>Email</span>
-              <span>info@grunerrenewable.com</span>
-            </div>
-          </div>
-          <!-- Phone, Office -->
-        </div>
-        <div class="contact__partnerships">
-          <h3>Partnership Inquiries</h3>
-          <p>For business partnerships...</p>
-          <a href="mailto:partnerships@grunerrenewable.com">
-            partnerships@grunerrenewable.com
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-```
-
-### 14. Footer
-- 4-column grid (brand 2 cols + 3 link columns)
-- Bottom bar with copyright, social icons, legal links
-
 ---
 
-## JavaScript Modules
+## CSS Additions for Technology Page
 
-### core.js - Initialization
-```javascript
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize page loader
-  initPageLoader();
-  
-  // Initialize all modules
-  initHeader();
-  initScrollAnimations();
-  initCounters();
-  initProcessTimeline();
-  initMapInteraction();
-  initContactForm();
-  initSolutionsCards();
-});
-```
-
-### animations.js - Scroll Animations
-```javascript
-const observerOptions = {
-  root: null,
-  rootMargin: '-50px',
-  threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      // Add stagger delay based on data-delay attribute
-      const delay = entry.target.dataset.delay || 0;
-      entry.target.style.transitionDelay = `${delay}s`;
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.scroll-fade-up, .scroll-fade-left, .scroll-fade-right')
-  .forEach(el => observer.observe(el));
-```
-
-### counter.js - Animated Counters
-```javascript
-function animateCounter(element) {
-  const target = parseInt(element.dataset.target);
-  const duration = 2000;
-  const steps = 60;
-  const increment = target / steps;
-  let current = 0;
-  
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = target;
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(current);
-    }
-  }, duration / steps);
-}
-```
-
----
-
-## CSS Animation Classes
+### Biogas Visual Animations
 
 ```css
-/* Scroll reveal base states */
-.scroll-fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* Reactor bubbles animation */
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-60px) scale(1.2);
+    opacity: 0;
+  }
 }
 
-.scroll-fade-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.biogas-visual__bubble {
+  animation: bubble-rise 2.5s ease-in-out infinite;
+}
+.biogas-visual__bubble:nth-child(1) { animation-delay: 0s; left: 15%; }
+.biogas-visual__bubble:nth-child(2) { animation-delay: 0.4s; left: 28%; }
+.biogas-visual__bubble:nth-child(3) { animation-delay: 0.8s; left: 41%; }
+.biogas-visual__bubble:nth-child(4) { animation-delay: 1.2s; left: 54%; }
+.biogas-visual__bubble:nth-child(5) { animation-delay: 1.6s; left: 67%; }
+.biogas-visual__bubble:nth-child(6) { animation-delay: 2.0s; left: 80%; }
+
+/* Reactor level animation */
+@keyframes level-pulse {
+  0%, 100% { height: 55%; }
+  50% { height: 75%; }
 }
 
-.scroll-fade-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.biogas-visual__reactor-level,
+.biogas-visual__tank-level {
+  animation: level-pulse 5s ease-in-out infinite;
 }
 
-/* Revealed state */
-.scroll-fade-up.is-visible,
-.scroll-fade-left.is-visible,
-.scroll-fade-right.is-visible {
-  opacity: 1;
-  transform: translateX(0) translateY(0);
-}
-
-/* Infinite scroll for logos */
-@keyframes infinite-scroll-left {
+/* Conveyor blocks animation */
+@keyframes conveyor-move {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(100px); opacity: 0; }
 }
 
-@keyframes infinite-scroll-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+.biogas-visual__conveyor-block {
+  animation: conveyor-move 2.2s linear infinite;
+}
+.biogas-visual__conveyor-block:nth-child(1) { animation-delay: 0s; }
+.biogas-visual__conveyor-block:nth-child(2) { animation-delay: 0.5s; }
+.biogas-visual__conveyor-block:nth-child(3) { animation-delay: 1.0s; }
+.biogas-visual__conveyor-block:nth-child(4) { animation-delay: 1.5s; }
+
+/* Compressor rotation */
+@keyframes compressor-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.biogas-visual__compressor-outer {
+  animation: compressor-rotate 4s linear infinite;
+}
+
+/* Compressor dot pulse */
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.biogas-visual__compressor-dot {
+  animation: dot-pulse 1s ease-in-out infinite;
+}
+
+/* Processing unit reverse rotation */
+.biogas-visual__processing-outer {
+  animation: compressor-rotate 8s linear infinite reverse;
+}
+
+/* Tank gauge rotation */
+@keyframes gauge-swing {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+}
+
+.biogas-visual__tank-gauge {
+  animation: gauge-swing 3s ease-in-out infinite;
+}
+
+/* Grid node glow */
+@keyframes grid-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(136, 196, 68, 0.4); }
+  50% { box-shadow: 0 0 35px rgba(136, 196, 68, 0.8); }
+}
+
+.biogas-visual__grid-box {
+  animation: grid-glow 2s ease-in-out infinite;
+}
+
+/* Energy flow line animation */
+@keyframes flow-move {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.biogas-visual__flow::after {
+  animation: flow-move 3s linear infinite;
+}
+
+/* SVG path animation */
+@keyframes path-draw {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+.biogas-visual__path {
+  stroke-dasharray: 12 6;
+  animation: path-draw 2s ease-out forwards;
 }
 
 /* Floating particles */
 @keyframes particle-float {
   0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.1;
+    transform: translate(0, 0);
+    opacity: 0.5;
   }
   50% {
-    transform: translateY(-100px) translateX(25px);
-    opacity: 0.3;
+    transform: translate(var(--float-x, 20px), var(--float-y, -20px));
+    opacity: 1;
   }
 }
 
-/* Scroll indicator bounce */
-@keyframes scroll-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+/* Status dot pulse */
+@keyframes status-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
 }
 
-/* Map marker pulse */
-@keyframes marker-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0; }
+.biogas-visual__status-dot {
+  animation: status-pulse 2s ease-in-out infinite;
 }
 
-/* Gradient orb animation */
-@keyframes orb-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.2; }
-  50% { transform: scale(1.2); opacity: 0.3; }
+/* Online text pulse */
+@keyframes online-blink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.biogas-visual__status-online {
+  animation: online-blink 2s ease-in-out infinite;
+}
+
+/* Slow spin for badge icon */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 4s linear infinite;
+}
+
+/* Title line animation */
+@keyframes line-expand {
+  from { width: 0; }
+  to { width: 200px; }
+}
+
+.tech-hero__title-line {
+  animation: line-expand 0.9s ease-out 0.5s forwards;
+  width: 0;
 }
 ```
 
 ---
 
-## Key Implementation Notes
+## JavaScript Additions
 
-1. **All animations use CSS transforms** for GPU acceleration
-2. **IntersectionObserver** replaces Framer Motion's `useInView` 
-3. **Stagger delays** applied via `data-delay` attributes
-4. **Parallax effects** use `scroll` event with `requestAnimationFrame`
-5. **Form validation** uses native HTML5 + custom JavaScript
-6. **Responsive breakpoints**: 768px (md), 1024px (lg)
-7. **BEM naming** consistent throughout
-8. **CSS custom properties** from existing variables.css
+### technology-visual.js
+
+```javascript
+/**
+ * Technology Page Visual Animations
+ * Initializes biogas system particles and entrance animations
+ */
+
+(function() {
+  'use strict';
+
+  function initBiogasVisual() {
+    const visual = document.querySelector('.biogas-visual');
+    if (!visual) return;
+
+    // Generate floating particles
+    const particlesContainer = visual.querySelector('.biogas-visual__particles');
+    if (particlesContainer && particlesContainer.children.length === 0) {
+      for (let i = 0; i < 12; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'biogas-visual__particle';
+        particle.style.left = `${8 + Math.random() * 84}%`;
+        particle.style.top = `${8 + Math.random() * 84}%`;
+        particle.style.setProperty('--float-x', `${Math.random() * 60 - 30}px`);
+        particle.style.setProperty('--float-y', `${Math.random() * 60 - 30}px`);
+        particle.style.animationDuration = `${4 + Math.random() * 2}s`;
+        particle.style.animationDelay = `${i * 0.3}s`;
+        particlesContainer.appendChild(particle);
+      }
+    }
+  }
+
+  function initProcessAccordion() {
+    const steps = document.querySelectorAll('.tech-process__step');
+    
+    steps.forEach(step => {
+      const header = step.querySelector('.tech-process__step-header');
+      if (!header) return;
+
+      header.addEventListener('click', () => {
+        // Close all other steps
+        steps.forEach(s => {
+          if (s !== step) s.classList.remove('active');
+        });
+        
+        // Toggle current step
+        step.classList.toggle('active');
+      });
+    });
+  }
+
+  function init() {
+    initBiogasVisual();
+    initProcessAccordion();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.GrunerTechnology = { init };
+})();
+```
+
+---
+
+## Files to Modify/Create
+
+| File | Action | Changes |
+|------|--------|---------|
+| `static-html/technology.html` | Rewrite | Complete HTML matching React structure |
+| `static-html/css/pages/technology.css` | Update | Add biogas visual styles, fix hero layout |
+| `static-html/js/technology-visual.js` | Create | Particle generation, accordion logic |
+
+---
+
+## Implementation Order
+
+1. **Update technology.html** - Complete HTML restructure matching React
+2. **Update technology.css** - Add all biogas visual animations
+3. **Create technology-visual.js** - Particle generation and accordion
+4. **Update script imports** - Add technology-visual.js to page
+5. **Test all animations** - Verify bubbles, rotations, glows, particles
 
 ---
 
 ## Quality Assurance Checklist
 
-- [ ] Page loader with logo + progress bar
-- [ ] Header scroll opacity transition
-- [ ] Header mobile menu toggle
-- [ ] Hero video background with gradient overlay
-- [ ] Hero floating particles animation
-- [ ] Hero metric counters animate on load
-- [ ] Hero scroll indicator bouncing
-- [ ] Trusted By infinite scroll (left direction)
-- [ ] Context section split layout
-- [ ] Context animated gradient orbs
-- [ ] Context stat counters on scroll
-- [ ] About Gruner highlight cards hover effects
-- [ ] About Gruner bottom stats bar
-- [ ] Solutions section dark background
-- [ ] Solutions cards hover border + shadow
-- [ ] Solutions feature tags visible by default
-- [ ] Process timeline gradient line fill
-- [ ] Process moving dot animation
-- [ ] Process step reveal on scroll
-- [ ] Media Mentions infinite scroll (right direction)
-- [ ] Projects Map marker interactions
-- [ ] Projects Map tooltip on hover
-- [ ] Projects Map marker pulse animation
-- [ ] Team founder card horizontal layout
-- [ ] Team leaders stacked with grayscale effect
-- [ ] Awards cards hover scale
-- [ ] Contact form validation
-- [ ] Contact form success state
-- [ ] Footer 4-column grid layout
-- [ ] All sections fade-up on scroll
-- [ ] All hover transitions smooth
+- [ ] Hero has white background with left content + right system visual
+- [ ] Breadcrumb shows Home > Technology
+- [ ] Badge has rotating Cpu icon with "Advanced Engineering" text
+- [ ] Title shows "CSTR Technology" with gradient + animated underline
+- [ ] Metrics show animated counters (85%, 60 Days, 10% DS)
+- [ ] Tags show Mesophilic, Thermophilic, Bio-CNG, Smart Grid
+- [ ] Indicators show Biogas Output + Process Control with icons
+- [ ] Biogas visual has dark panel with corner accents
+- [ ] Reactor shows bubbling animation + level pulse
+- [ ] Conveyor shows moving blocks
+- [ ] Compressor rotates with pulsing center dot
+- [ ] Processing unit has reverse-rotating dashed circle
+- [ ] Tank shows level animation + swinging gauge
+- [ ] Grid node has pulsing glow effect
+- [ ] Energy flow lines animate along paths
+- [ ] Floating particles move randomly
+- [ ] Status bar shows "ONLINE" with blinking effect
+- [ ] CSTR Intro section scroll-reveals on view
+- [ ] Process accordion steps expand/collapse on click
+- [ ] Advantage cards hover with lift effect
+- [ ] Sustainability bars animate on scroll
+- [ ] All scroll-fade-up elements trigger correctly
+
+---
+
+## Key Animation Mappings
+
+| React Framer Motion | Static CSS/JS |
+|---------------------|---------------|
+| `animate={{ scale: [1, 1.3, 1] }}` (status dot) | `@keyframes status-pulse` |
+| `animate={{ rotate: 360 }}` (compressor) | `@keyframes compressor-rotate` |
+| `animate={{ height: ["55%", "75%", "60%"] }}` | `@keyframes level-pulse` |
+| `animate={{ y: [50, -30] }}` (bubbles) | `@keyframes bubble-rise` |
+| `animate={{ x: [0, 100] }}` (conveyor) | `@keyframes conveyor-move` |
+| `animate={{ rotate: [-20, 20, -20] }}` (gauge) | `@keyframes gauge-swing` |
+| `animate={{ boxShadow: [...] }}` (grid) | `@keyframes grid-glow` |
+| `animate={{ opacity: [0.7, 1, 0.7] }}` (online) | `@keyframes online-blink` |
+| `AnimatedMetric` component | Vanilla JS counter with IntersectionObserver |
+| `motion.div initial/animate` | CSS `.scroll-fade-up` + IntersectionObserver |
+
